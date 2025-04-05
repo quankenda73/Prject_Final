@@ -1,0 +1,331 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #e3f2fd, #ffffff); /* Xanh nhạt -> Trắng */
+}
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(90deg, #4caf50, #357a38);
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+/* Login container */
+.login-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.login-link, .login-icon {
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.login-icon {
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+    background-color: #2c3e50; /* Màu nền xanh đậm hơn */
+    padding: 15px 30px; /* Thêm padding bên trái và phải */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ hơn */
+    border-radius: 5px; /* Bo góc cho thanh điều hướng */
+}
+
+nav a {
+    color: #ecf0f1; /* Màu chữ sáng hơn */
+    text-decoration: none;
+    padding: 10px 20px; /* Thay đổi padding để tạo không gian */
+    margin: 0 15px; /* Căn giữa các liên kết */
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s; /* Hiệu ứng chuyển màu và phóng to */
+}
+
+nav a:hover,
+nav a.active {
+    background-color: #3498db; /* Màu nền xanh dương cho hiệu ứng hover */
+    color: #ffffff; /* Đổi màu chữ khi hover */
+    transform: scale(1.1); /* Tăng kích thước khi hover */
+}
+/* ===== MAIN CONTENT ===== */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+section {
+    width: 30%;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s ease-in-out;
+}
+
+section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+section i {
+    font-size: 40px;
+    color: #4caf50;
+    margin-bottom: 10px;
+}
+
+section h2 {
+    font-size: 1.8rem;
+    color: #4caf50;
+    margin-bottom: 10px;
+}
+
+section p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4caf50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #45a049, #3d8e43);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    section h2 {
+        font-size: 1.4rem;
+    }
+
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+/* ===== SLIDER ===== */
+/* Slider Container */
+.slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 400px;
+}
+
+/* Slider Images */
+.slider-images {
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
+.slider-images img {
+    width: 100vw; /* Chiều rộng của từng slide */
+    flex-shrink: 0; /* Ngăn slide thu nhỏ */
+    height: 100%; /* Đảm bảo chiều cao đầy đủ */
+    object-fit: cover; /* Cắt ảnh để phù hợp với khung hình */
+}
+
+/* Navigation Buttons */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.slider-nav button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.slider-nav button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* ===== SLIDER INDICATORS ===== */
+.slider-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.slider-indicators button {
+    width: 12px;
+    height: 12px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.slider-indicators button.active {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.slider-indicators button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Tự động chuyển slide */
+@keyframes slideAnimation {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(0); }
+    30% { transform: translateX(-100%); }
+    55% { transform: translateX(-100%); }
+    60% { transform: translateX(-200%); }
+    100% { transform: translateX(-200%); }
+}
+
+.slider-images {
+    animation: slideAnimation 10s infinite; /* Thời gian và số lần lặp lại */
+}
+.test-category {
+    display: flex;
+    flex-direction: column; /* Đặt các thẻ p theo chiều dọc */
+    align-items: flex-start; /* Căn trái cho các thẻ p */
+}
+footer {
+    background-color: #005982;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.test-categories {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.test-category {
+    flex: 1 1 18%; /* Chiếm khoảng 18% chiều rộng */
+    margin: 10px;
+}
+
+.test-category h3 {
+    color: #FFD700; /* Màu vàng cho tiêu đề */
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-info {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer-info a {
+    color: #FFD700; /* Màu vàng cho liên kết */
+    text-decoration: underline;
+}
+
+.footer-info p {
+    color: white; /* Màu chữ mặc định */
+    text-decoration: none; /* Bỏ gạch dưới mặc định */
+}
+
+.footer-info p:hover {
+    text-decoration: underline; /* Thêm gạch dưới khi hover */
+}
+
+.test-category p {
+    color: white; /* Màu chữ mặc định */
+    text-decoration: none; /* Bỏ gạch dưới mặc định */
+}
+
+.test-category p:hover {
+    text-decoration: underline; /* Thêm gạch dưới khi hover */
+}
+

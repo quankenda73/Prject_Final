@@ -1,0 +1,1110 @@
+{
+    "questions": [
+
+        {
+            "question": "Giới hạn lim(x→∞) (3x² + 5x - 2)/(2x² - x + 1) bằng bao nhiêu?",
+            "options": ["1.5", "3", "0", "2"],
+            "correctAnswer": 0,
+            "explanation": "Khi x → ∞, lấy hệ số cao nhất: 3x²/2x² = 3/2 = 1.5.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Đạo hàm của hàm số f(x) = x³ - 3x² + 2x là?",
+            "options": ["3x² - 6x + 2", "x² - 3x", "3x² - 6x", "2x - 3"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = 3x² - 6x + 2 theo quy tắc đạo hàm.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Nguyên hàm của f(x) = 3x² là?",
+            "options": ["x³ + C", "x³", "3x + C", "x²"],
+            "correctAnswer": 0,
+            "explanation": "∫3x² dx = x³ + C.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Số phức liên hợp của z = 3 - 4i là?",
+            "options": ["3 + 4i", "-3 - 4i", "3 - 4i", "-3 + 4i"],
+            "correctAnswer": 0,
+            "explanation": "Số phức liên hợp của z = a + bi là a - bi, do đó là 3 + 4i.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Hàm số y = x³ - 3x + 2 có cực trị tại điểm nào?",
+            "options": ["x = -1 và x = 1", "x = 2 và x = -2", "x = 0", "x = 1"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = 3x² - 3 = 0 => x = ±1, cực trị tại x = -1 và x = 1.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Thể tích khối chóp tứ giác đều có cạnh đáy a và chiều cao h là?",
+            "options": ["(1/3) * a² * h", "(1/2) * a² * h", "a² * h", "(1/3) * a³ * h"],
+            "correctAnswer": 0,
+            "explanation": "V = (1/3) * diện tích đáy * chiều cao = (1/3) * a² * h.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Công thức tính diện tích mặt cầu có bán kính R là?",
+            "options": ["4πR²", "2πR", "πR²", "3πR²"],
+            "correctAnswer": 0,
+            "explanation": "Diện tích mặt cầu = 4πR².",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Có bao nhiêu cách chọn 2 học sinh từ nhóm 5 học sinh?",
+            "options": ["10", "20", "5", "15"],
+            "correctAnswer": 0,
+            "explanation": "C(5,2) = 10.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Một lớp có 30 học sinh. Chọn ngẫu nhiên 5 học sinh. Có bao nhiêu cách chọn?",
+            "options": ["142506", "100000", "30000", "200000"],
+            "correctAnswer": 0,
+            "explanation": "C(30,5) = 142506.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Xác suất để gieo một con xúc xắc và được số chẵn là?",
+            "options": ["1/2", "1/3", "2/3", "1/6"],
+            "correctAnswer": 0,
+            "explanation": "Có 3 số chẵn (2, 4, 6), xác suất = 3/6 = 1/2.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Giá trị của sin(π/6) là bao nhiêu?",
+            "options": ["0.5", "√3/2", "1", "0"],
+            "correctAnswer": 0,
+            "explanation": "sin(π/6) = sin(30°) = 0.5.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Tích phân ∫(2x + 1)dx bằng bao nhiêu?",
+            "options": ["x² + x + C", "2x² + C", "x² + C", "2x + x² + C"],
+            "correctAnswer": 0,
+            "explanation": "∫(2x + 1)dx = x² + x + C.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Mô-đun của số phức z = 5 + 12i là bao nhiêu?",
+            "options": ["13", "17", "15", "10"],
+            "correctAnswer": 0,
+            "explanation": "|z| = √(5² + 12²) = √(25 + 144) = 13.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Phương trình x² - 5x + 6 = 0 có nghiệm là?",
+            "options": ["2 và 3", "1 và 5", "3 và 4", "2 và 4"],
+            "correctAnswer": 0,
+            "explanation": "x² - 5x + 6 = (x - 2)(x - 3) = 0 => x = 2 hoặc x = 3.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Giá trị của cos(π/3) là bao nhiêu?",
+            "options": ["0.5", "√3/2", "1", "0"],
+            "correctAnswer": 0,
+            "explanation": "cos(π/3) = cos(60°) = 0.5.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Đạo hàm của f(x) = sin(x) là gì?",
+            "options": ["cos(x)", "-sin(x)", "sin(x)", "-cos(x)"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = cos(x) theo quy tắc đạo hàm hàm lượng giác.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Tích phân ∫(e^x)dx bằng bao nhiêu?",
+            "options": ["e^x + C", "e^x", "x e^x + C", "-e^x + C"],
+            "correctAnswer": 0,
+            "explanation": "∫e^x dx = e^x + C.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Hàm số y = x² - 4x + 3 có giá trị nhỏ nhất là bao nhiêu?",
+            "options": ["-1", "1", "3", "0"],
+            "correctAnswer": 0,
+            "explanation": "Giá trị nhỏ nhất tại đỉnh x = 2, y = 4 - 8 + 3 = -1.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Logarit log₂(8) bằng bao nhiêu?",
+            "options": ["3", "2", "4", "1"],
+            "correctAnswer": 0,
+            "explanation": "log₂(8) = 3 vì 2³ = 8.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Tích phân ∫(cos(x))dx bằng bao nhiêu?",
+            "options": ["sin(x) + C", "-cos(x) + C", "cos(x) + C", "-sin(x) + C"],
+            "correctAnswer": 0,
+            "explanation": "∫cos(x) dx = sin(x) + C.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Đạo hàm của f(x) = ln(x) là gì?",
+            "options": ["1/x", "x", "ln(x)", "e^x"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = 1/x theo quy tắc đạo hàm hàm logarit.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Phương trình x² + 2x - 3 = 0 có nghiệm là?",
+            "options": ["-3 và 1", "-1 và 3", "2 và -3", "1 và -3"],
+            "correctAnswer": 1,
+            "explanation": "x² + 2x - 3 = (x + 3)(x - 1) = 0 => x = -3 hoặc x = 1.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Thể tích khối cầu có bán kính r là?",
+            "options": ["(4/3)πr³", "4πr²", "πr³", "(2/3)πr³"],
+            "correctAnswer": 0,
+            "explanation": "Thể tích khối cầu V = (4/3)πr³.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Giá trị của tan(π/4) là bao nhiêu?",
+            "options": ["1", "√2", "√3", "0"],
+            "correctAnswer": 0,
+            "explanation": "tan(π/4) = tan(45°) = 1.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Đạo hàm của f(x) = e^(2x) là gì?",
+            "options": ["2e^(2x)", "e^(2x)", "e^x", "2e^x"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = 2e^(2x) theo quy tắc dây chuyền.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Tích phân ∫(x²)dx bằng bao nhiêu?",
+            "options": ["x³/3 + C", "x³ + C", "x²/2 + C", "x"],
+            "correctAnswer": 0,
+            "explanation": "∫x² dx = x³/3 + C.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Hàm số y = x³ - 6x² + 9x + 1 có bao nhiêu điểm cực trị?",
+            "options": ["2", "1", "3", "0"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = 3x² - 12x + 9 = 0 => x = 1, x = 3, có 2 cực trị.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Giá trị của log₁₀(100) là bao nhiêu?",
+            "options": ["2", "1", "3", "10"],
+            "correctAnswer": 0,
+            "explanation": "log₁₀(100) = 2 vì 10² = 100.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Phương trình x² - 4 = 0 có nghiệm là?",
+            "options": ["2 và -2", "4 và -4", "1 và -1", "3 và -3"],
+            "correctAnswer": 0,
+            "explanation": "x² - 4 = 0 => x = ±2.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Đạo hàm của f(x) = cos(x) là gì?",
+            "options": ["-sin(x)", "sin(x)", "cos(x)", "-cos(x)"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = -sin(x) theo quy tắc đạo hàm hàm lượng giác.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Tích phân ∫(1/x)dx bằng bao nhiêu?",
+            "options": ["ln|x| + C", "1/x + C", "x + C", "-1/x + C"],
+            "correctAnswer": 0,
+            "explanation": "∫(1/x) dx = ln|x| + C.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Hàm số y = -x² + 4x - 3 có giá trị lớn nhất là bao nhiêu?",
+            "options": ["1", "0", "-1", "2"],
+            "correctAnswer": 0,
+            "explanation": "Giá trị lớn nhất tại đỉnh x = 2, y = -4 + 8 - 3 = 1.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Mô-đun của số phức z = -1 + i là bao nhiêu?",
+            "options": ["√2", "2", "1", "√3"],
+            "correctAnswer": 0,
+            "explanation": "|z| = √((-1)² + 1²) = √2.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Phương trình 2x² - 5x + 2 = 0 có nghiệm là?",
+            "options": ["1/2 và 2", "1 và 2", "1/2 và 3", "2 và 3"],
+            "correctAnswer": 0,
+            "explanation": "2x² - 5x + 2 = (2x - 1)(x - 2) = 0 => x = 1/2 hoặc x = 2.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Giá trị của tan(π/3) là bao nhiêu?",
+            "options": ["√3", "1", "√2", "0"],
+            "correctAnswer": 0,
+            "explanation": "tan(π/3) = tan(60°) = √3.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Đạo hàm của f(x) = x e^x là gì?",
+            "options": ["e^x + x e^x", "x e^x", "e^x", "x + e^x"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = e^x + x e^x theo quy tắc tích.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Tích phân ∫(sin(x))dx bằng bao nhiêu?",
+            "options": ["-cos(x) + C", "cos(x) + C", "sin(x) + C", "-sin(x) + C"],
+            "correctAnswer": 0,
+            "explanation": "∫sin(x) dx = -cos(x) + C.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Hàm số y = x³ - 3x² + 2 có bao nhiêu điểm cực trị?",
+            "options": ["2", "1", "3", "0"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = 3x² - 6x = 0 => x = 0, x = 2, có 2 cực trị.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Giá trị của log₃(9) là bao nhiêu?",
+            "options": ["2", "1", "3", "9"],
+            "correctAnswer": 0,
+            "explanation": "log₃(9) = 2 vì 3² = 9.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Phương trình x² - 6x + 8 = 0 có nghiệm là?",
+            "options": ["2 và 4", "3 và 5", "1 và 6", "2 và 5"],
+            "correctAnswer": 0,
+            "explanation": "x² - 6x + 8 = (x - 2)(x - 4) = 0 => x = 2 hoặc x = 4.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Đạo hàm của f(x) = tan(x) là gì?",
+            "options": ["sec²(x)", "tan(x)", "cos(x)", "-sin(x)"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = sec²(x) theo quy tắc đạo hàm hàm tan.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Tích phân ∫(x³)dx bằng bao nhiêu?",
+            "options": ["x⁴/4 + C", "x⁴ + C", "x³/3 + C", "x² + C"],
+            "correctAnswer": 0,
+            "explanation": "∫x³ dx = x⁴/4 + C.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Hàm số y = -x² + 2x + 3 có giá trị lớn nhất là bao nhiêu?",
+            "options": ["4", "3", "2", "1"],
+            "correctAnswer": 0,
+            "explanation": "Giá trị lớn nhất tại đỉnh x = 1, y = -1 + 2 + 3 = 4.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Mô-đun của số phức z = 6 - 8i là bao nhiêu?",
+            "options": ["10", "14", "12", "8"],
+            "correctAnswer": 0,
+            "explanation": "|z| = √(6² + (-8)²) = √(36 + 64) = 10.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Phương trình x² - 8x + 15 = 0 có nghiệm là?",
+            "options": ["3 và 5", "2 và 6", "4 và 4", "1 và 7"],
+            "correctAnswer": 0,
+            "explanation": "x² - 8x + 15 = (x - 3)(x - 5) = 0 => x = 3 hoặc x = 5.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Giá trị của sin(π/4) là bao nhiêu?",
+            "options": ["√2/2", "0.5", "1", "√3/2"],
+            "correctAnswer": 0,
+            "explanation": "sin(π/4) = sin(45°) = √2/2.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Đạo hàm của f(x) = x² ln(x) là gì?",
+            "options": ["2x ln(x) + x", "ln(x) + x", "2x + ln(x)", "x ln(x)"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = 2x ln(x) + x² * (1/x) = 2x ln(x) + x.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Tích phân ∫(x e^x)dx bằng bao nhiêu?",
+            "options": ["x e^x - e^x + C", "x e^x + C", "e^x + C", "x e^x + e^x + C"],
+            "correctAnswer": 0,
+            "explanation": "Dùng tích phân từng phần: ∫x e^x dx = x e^x - ∫e^x dx = x e^x - e^x + C.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Hàm số y = x³ + 3x² - 9x + 2 có bao nhiêu điểm cực trị?",
+            "options": ["2", "1", "3", "0"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = 3x² + 6x - 9 = 0 => x = 1, x = -3, có 2 cực trị.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Giá trị của log₅(25) là bao nhiêu?",
+            "options": ["2", "1", "3", "5"],
+            "correctAnswer": 0,
+            "explanation": "log₅(25) = 2 vì 5² = 25.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+
+
+
+        {
+            "question": "Tác phẩm nào của Nguyễn Du?",
+            "options": ["Truyện Kiều", "Chinh Phụ Ngâm", "Cung Oán Ngâm Khúc", "Nam Quốc Sơn Hà"],
+            "correctAnswer": 0,
+            "explanation": "Nguyễn Du là tác giả của Truyện Kiều.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật chính trong Truyện Kiều là ai?",
+            "options": ["Thúy Kiều", "Thúy Vân", "Kim Trọng", "Từ Hải"],
+            "correctAnswer": 0,
+            "explanation": "Thúy Kiều là nhân vật chính trong Truyện Kiều.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào thuộc văn học trung đại Việt Nam?",
+            "options": ["Bình Ngô Đại Cáo", "Lão Hạc", "Số Đỏ", "Chí Phèo"],
+            "correctAnswer": 0,
+            "explanation": "Bình Ngô Đại Cáo là tác phẩm trung đại của Nguyễn Trãi.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Ai là tác giả của 'Nam Quốc Sơn Hà'?",
+            "options": ["Lý Thường Kiệt", "Nguyễn Trãi", "Trần Hưng Đạo", "Nguyễn Du"],
+            "correctAnswer": 0,
+            "explanation": "Lý Thường Kiệt là tác giả của 'Nam Quốc Sơn Hà'.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Lão Hạc' của Nam Cao thuộc thể loại nào?",
+            "options": ["Truyện ngắn", "Truyện dài", "Thơ", "Kịch"],
+            "correctAnswer": 0,
+            "explanation": "'Lão Hạc' là truyện ngắn của Nam Cao.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật nào trong 'Chí Phèo' đại diện cho tầng lớp nông dân bị tha hóa?",
+            "options": ["Chí Phèo", "Bá Kiến", "Thị Nở", "Năm Thọ"],
+            "correctAnswer": 0,
+            "explanation": "Chí Phèo là hình tượng nông dân bị tha hóa trong xã hội cũ.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào của Nguyễn Bỉnh Khiêm có nội dung triết lý sống ẩn dật?",
+            "options": ["Bạch Vân Am Thi Tập", "Truyện Kiều", "Bình Ngô Đại Cáo", "Chí Phèo"],
+            "correctAnswer": 0,
+            "explanation": "'Bạch Vân Am Thi Tập' thể hiện tư tưởng ẩn dật của Nguyễn Bỉnh Khiêm.",
+            "difficulty": "khó",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật Từ Hải trong Truyện Kiều tượng trưng cho điều gì?",
+            "options": ["Khí phách anh hùng", "Tình yêu lãng mạn", "Sự giàu có", "Nỗi đau đời"],
+            "correctAnswer": 0,
+            "explanation": "Từ Hải là biểu tượng của khí phách anh hùng và khát vọng tự do.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Số Đỏ' của Vũ Trọng Phụng thuộc phong cách nào?",
+            "options": ["Hiện thực phê phán", "Lãng mạn", "Trào phúng", "Cả a và c"],
+            "correctAnswer": 3,
+            "explanation": "'Số Đỏ' là tác phẩm hiện thực phê phán kết hợp trào phúng.",
+            "difficulty": "khó",
+            "subject": "literature"
+        },
+        {
+            "question": "Ai là tác giả của bài thơ 'Tràng Giang'?",
+            "options": ["Huy Cận", "Xuân Diệu", "Hàn Mặc Tử", "Lưu Trọng Lư"],
+            "correctAnswer": 0,
+            "explanation": "Huy Cận là tác giả của 'Tràng Giang'.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Bài thơ 'Tây Tiến' của Quang Dũng thuộc phong trào thơ nào?",
+            "options": ["Thơ mới", "Thơ trung đại", "Thơ hiện đại", "Thơ cách mạng"],
+            "correctAnswer": 0,
+            "explanation": "'Tây Tiến' nằm trong phong trào Thơ mới (1932-1945).",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật nào trong 'Lão Hạc' thể hiện lòng tự trọng của người nông dân?",
+            "options": ["Lão Hạc", "Bá Kiến", "Ông giáo", "Cậu Vàng"],
+            "correctAnswer": 0,
+            "explanation": "Lão Hạc giữ lòng tự trọng bằng cách không bán đất và chọn cái chết.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Đời Mưa Gió' của Nhất Linh thuộc thể loại nào?",
+            "options": ["Truyện ngắn", "Tiểu thuyết", "Thơ", "Tùy bút"],
+            "correctAnswer": 1,
+            "explanation": "'Đời Mưa Gió' là tiểu thuyết của Nhất Linh.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Bài thơ nào của Xuân Diệu thể hiện khát khao sống mãnh liệt?",
+            "options": ["Vội Vàng", "Tràng Giang", "Tây Tiến", "Đất Nước"],
+            "correctAnswer": 0,
+            "explanation": "'Vội Vàng' thể hiện khát khao sống và yêu mãnh liệt của Xuân Diệu.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Chữ Người Tử Tù' của Nguyễn Tuân có nhân vật chính là ai?",
+            "options": ["Huấn Cao", "Quản ngục", "Thầy thơ lại", "Chí Phèo"],
+            "correctAnswer": 0,
+            "explanation": "Huấn Cao là nhân vật chính, thể hiện cái đẹp bất khuất.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào của Hồ Chí Minh được viết trong tù?",
+            "options": ["Nhật Ký Trong Tù", "Tuyên Ngôn Độc Lập", "Đường Kách Mệnh", "Lão Hạc"],
+            "correctAnswer": 0,
+            "explanation": "'Nhật Ký Trong Tù' được Hồ Chí Minh sáng tác khi bị giam cầm.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật Thị Nở trong 'Chí Phèo' tượng trưng cho điều gì?",
+            "options": ["Lòng nhân hậu", "Sự giàu có", "Cái ác", "Sự thông minh"],
+            "correctAnswer": 0,
+            "explanation": "Thị Nở là biểu tượng của lòng nhân hậu và khát vọng hoàn lương.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Đồng Chí' của Chính Hữu thuộc thể loại nào?",
+            "options": ["Thơ", "Truyện ngắn", "Tiểu thuyết", "Tùy bút"],
+            "correctAnswer": 0,
+            "explanation": "'Đồng Chí' là bài thơ của Chính Hữu.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Bài thơ 'Việt Bắc' của Tố Hữu viết về chủ đề gì?",
+            "options": ["Tình yêu quê hương, cách mạng", "Tình yêu đôi lứa", "Nỗi buồn đời", "Cuộc sống lao động"],
+            "correctAnswer": 0,
+            "explanation": "'Việt Bắc' ca ngợi tình yêu quê hương và tinh thần cách mạng.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Rừng Xà Nu' của Nguyễn Trung Thành có nhân vật chính là ai?",
+            "options": ["Tnú", "Mai", "Dít", "Heng"],
+            "correctAnswer": 0,
+            "explanation": "Tnú là nhân vật chính, biểu tượng cho sức mạnh đấu tranh của dân tộc.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Ai là tác giả của bài thơ 'Ông Đồ'?",
+            "options": ["Vũ Đình Liên", "Xuân Diệu", "Hàn Mặc Tử", "Tế Hanh"],
+            "correctAnswer": 0,
+            "explanation": "Vũ Đình Liên là tác giả của 'Ông Đồ'.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào của Nguyễn Khải viết về chiến tranh cách mạng?",
+            "options": ["Mùa Lạc", "Truyện Kiều", "Lão Hạc", "Số Đỏ"],
+            "correctAnswer": 0,
+            "explanation": "'Mùa Lạc' của Nguyễn Khải nói về đời sống cách mạng.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật nào trong 'Tuyên Ngôn Độc Lập' thể hiện tư tưởng yêu nước?",
+            "options": ["Không có nhân vật cụ thể", "Hồ Chí Minh", "Trần Hưng Đạo", "Nguyễn Trãi"],
+            "correctAnswer": 0,
+            "explanation": "'Tuyên Ngôn Độc Lập' là văn bản chính luận, không có nhân vật cụ thể.",
+            "difficulty": "khó",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Hồn Trương Ba, Da Hàng Thịt' của Lưu Quang Vũ thuộc thể loại gì?",
+            "options": ["Kịch", "Truyện ngắn", "Thơ", "Tiểu thuyết"],
+            "correctAnswer": 0,
+            "explanation": "'Hồn Trương Ba, Da Hàng Thịt' là vở kịch nổi tiếng.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Bài thơ 'Từ Ấy' của Tố Hữu viết về sự kiện gì?",
+            "options": ["Gia nhập Đảng Cộng sản", "Tình yêu quê hương", "Chiến tranh", "Tình bạn"],
+            "correctAnswer": 0,
+            "explanation": "'Từ Ấy' nói về sự giác ngộ lý tưởng cách mạng khi vào Đảng.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật Đỗ trong 'Đời Mưa Gió' của Nhất Linh có tính cách gì?",
+            "options": ["Mạnh mẽ, phóng khoáng", "Yếu đuối, nhu nhược", "Lạnh lùng, kiêu ngạo", "Hiền lành, giản dị"],
+            "correctAnswer": 0,
+            "explanation": "Đỗ là nhân vật mạnh mẽ, phóng khoáng, phá cách.",
+            "difficulty": "khó",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào của Hàn Mặc Tử mang phong cách siêu thực?",
+            "options": ["Đây Thôn Vỹ Dạ", "Tràng Giang", "Vội Vàng", "Tây Tiến"],
+            "correctAnswer": 0,
+            "explanation": "'Đây Thôn Vỹ Dạ' có nét siêu thực và lãng mạn của Hàn Mặc Tử.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Bài thơ 'Nhớ Rừng' của Thế Lữ nói về điều gì?",
+            "options": ["Khát vọng tự do", "Tình yêu thiên nhiên", "Nỗi nhớ quê", "Cuộc sống lao động"],
+            "correctAnswer": 0,
+            "explanation": "'Nhớ Rừng' thể hiện khát vọng tự do qua hình tượng con hổ.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Ai là tác giả của 'Chiếc Lược Ngà'?",
+            "options": ["Nguyễn Quang Sáng", "Nam Cao", "Nguyễn Tuân", "Tố Hữu"],
+            "correctAnswer": 0,
+            "explanation": "Nguyễn Quang Sáng là tác giả của 'Chiếc Lược Ngà'.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Đất Nước' của Nguyễn Khoa Điềm thuộc thể loại gì?",
+            "options": ["Thơ", "Truyện ngắn", "Tiểu thuyết", "Tùy bút"],
+            "correctAnswer": 0,
+            "explanation": "'Đất Nước' là bài thơ trong trường ca 'Mặt Đường Khát Vọng'.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật anh thanh niên trong 'Lặng Lẽ Sa Pa' của Nguyễn Thành Long có đặc điểm gì?",
+            "options": ["Cô đơn nhưng yêu đời", "Lạnh lùng, xa cách", "Giàu có, kiêu ngạo", "Yếu đuối, bi lụy"],
+            "correctAnswer": 0,
+            "explanation": "Anh thanh niên sống cô đơn nhưng yêu đời, tận tụy với công việc.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào của Nguyễn Đình Chiểu ca ngợi người anh hùng nông dân?",
+            "options": ["Văn Tế Nghĩa Sĩ Cần Giuộc", "Truyện Kiều", "Nam Quốc Sơn Hà", "Tây Tiến"],
+            "correctAnswer": 0,
+            "explanation": "'Văn Tế Nghĩa Sĩ Cần Giuộc' ca ngợi nghĩa sĩ nông dân chống Pháp.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Bài thơ 'Đoàn Thuyền Đánh Cá' của Huy Cận có hình ảnh trung tâm là gì?",
+            "options": ["Đoàn thuyền trên biển", "Núi rừng", "Con sông", "Mặt trời"],
+            "correctAnswer": 0,
+            "explanation": "Hình ảnh đoàn thuyền đánh cá là trung tâm của bài thơ.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Những Ngày Đầu Của Nước Việt Nam Mới' của Võ Nguyên Giáp thuộc thể loại nào?",
+            "options": ["Hồi ký", "Truyện ngắn", "Thơ", "Tiểu thuyết"],
+            "correctAnswer": 0,
+            "explanation": "Đây là tác phẩm hồi ký của Võ Nguyên Giáp.",
+            "difficulty": "khó",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật Mị trong 'Vợ Chồng A Phủ' của Tô Hoài có sức sống tiềm tàng biểu hiện qua đâu?",
+            "options": ["Cắt dây trói cho A Phủ", "Làm việc chăm chỉ", "Yêu đời trong đau khổ", "Chấp nhận số phận"],
+            "correctAnswer": 0,
+            "explanation": "Mị cắt dây trói cho A Phủ thể hiện sức sống tiềm tàng và khát vọng tự do.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào của Trần Đăng Khoa viết về tuổi thơ?",
+            "options": ["Góc Sân Và Khoảng Trời", "Truyện Kiều", "Lão Hạc", "Số Đỏ"],
+            "correctAnswer": 0,
+            "explanation": "'Góc Sân Và Khoảng Trời' là tập thơ về tuổi thơ của Trần Đăng Khoa.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Bài thơ 'Sang Thu' của Hữu Thỉnh có hình ảnh nào báo hiệu mùa thu?",
+            "options": ["Hương ổi", "Nắng vàng", "Lá rụng", "Gió lạnh"],
+            "correctAnswer": 0,
+            "explanation": "Hương ổi là dấu hiệu tinh tế báo hiệu mùa thu trong bài thơ.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Tôi Thấy Hoa Vàng Trên Cỏ Xanh' của Nguyễn Nhật Ánh thuộc thể loại nào?",
+            "options": ["Tiểu thuyết", "Truyện ngắn", "Thơ", "Kịch"],
+            "correctAnswer": 0,
+            "explanation": "'Tôi Thấy Hoa Vàng Trên Cỏ Xanh' là tiểu thuyết của Nguyễn Nhật Ánh.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật Tràng trong 'Vợ Nhặt' của Kim Lân có đặc điểm gì?",
+            "options": ["Nghèo khó nhưng nhân hậu", "Giàu có, kiêu ngạo", "Lạnh lùng, xa cách", "Hèn nhát, nhu nhược"],
+            "correctAnswer": 0,
+            "explanation": "Tràng nghèo khó nhưng nhân hậu, sẵn sàng cưu mang người khác.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào của Nguyễn Thi viết về chiến tranh chống Mỹ?",
+            "options": ["Xung Đột", "Truyện Kiều", "Lão Hạc", "Số Đỏ"],
+            "correctAnswer": 0,
+            "explanation": "'Xung Đột' của Nguyễn Thi nói về chiến tranh chống Mỹ.",
+            "difficulty": "khó",
+            "subject": "literature"
+        },
+        {
+            "question": "Bài thơ 'Mùa Xuân Nho Nhỏ' của Thanh Hải có hình ảnh trung tâm là gì?",
+            "options": ["Mùa xuân", "Con chim", "Dòng sông", "Cánh đồng"],
+            "correctAnswer": 0,
+            "explanation": "Mùa xuân là hình ảnh trung tâm, biểu tượng cho khát vọng cống hiến.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào của Nguyễn Công Hoan phê phán xã hội phong kiến?",
+            "options": ["Đôi Bạn", "Truyện Kiều", "Lão Hạc", "Chí Phèo"],
+            "correctAnswer": 0,
+            "explanation": "'Đôi Bạn' của Nguyễn Công Hoan phê phán xã hội phong kiến.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật Xuân Tóc Đỏ trong 'Số Đỏ' của Vũ Trọng Phụng có đặc điểm gì?",
+            "options": ["Lưu manh, cơ hội", "Hiền lành, thật thà", "Giàu có, chính trực", "Thông minh, học giỏi"],
+            "correctAnswer": 0,
+            "explanation": "Xuân Tóc Đỏ là kẻ lưu manh, cơ hội, tượng trưng cho xã hội lố lăng.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào của Tự Lực Văn Đoàn mang phong cách lãng mạn?",
+            "options": ["Hồn Bướm Mơ Tiên", "Tràng Giang", "Đồng Chí", "Nhật Ký Trong Tù"],
+            "correctAnswer": 0,
+            "explanation": "'Hồn Bướm Mơ Tiên' của Khái Hưng mang phong cách lãng mạn.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Bài thơ 'Tựa Trích Tiên Tập' của Nguyễn Trãi có nội dung gì?",
+            "options": ["Ca ngợi vẻ đẹp thiên nhiên", "Tình yêu đôi lứa", "Nỗi nhớ quê", "Tư tưởng yêu nước"],
+            "correctAnswer": 0,
+            "explanation": "'Tựa Trích Tiên Tập' ca ngợi vẻ đẹp thiên nhiên và tư tưởng thanh tao.",
+            "difficulty": "khó",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm 'Những Người Khốn Khổ' của Victor Hugo được nhắc đến trong chương trình Ngữ văn 12 qua trích đoạn nào?",
+            "options": ["Phăng-tin", "Truyện Kiều", "Lão Hạc", "Chí Phèo"],
+            "correctAnswer": 0,
+            "explanation": "Trích đoạn 'Phăng-tin' được học trong chương trình lớp 12.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật anh hùng trong 'Rừng Xà Nu' của Nguyễn Trung Thành có hành động gì nổi bật?",
+            "options": ["Đốt cháy tay để giữ bí mật", "Cưới Mai", "Dạy học cho làng", "Chạy trốn kẻ thù"],
+            "correctAnswer": 0,
+            "explanation": "Tnú đốt cháy tay để giữ bí mật, thể hiện tinh thần kiên cường.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+
+     
+        {
+            "question": "Công thức tính vận tốc trong chuyển động thẳng đều?",
+            "options": ["v = s/t", "v = a*t", "v = F/m", "v = √(2gh)"],
+            "correctAnswer": 0,
+            "explanation": "Trong chuyển động thẳng đều, v = s/t.",
+            "difficulty": "dễ",
+            "subject": "physics"
+        },
+        {
+            "question": "Định luật II Newton có công thức nào?",
+            "options": ["F = m*a", "F = m*v", "F = m/g", "F = m*t"],
+            "correctAnswer": 0,
+            "explanation": "F = m*a là công thức của định luật II Newton.",
+            "difficulty": "dễ",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính công suất là?",
+            "options": ["P = W/t", "P = F*s", "P = m*v", "P = F/t"],
+            "correctAnswer": 0,
+            "explanation": "Công suất P = công/thời gian = W/t.",
+            "difficulty": "trung bình",
+            "subject": "physics"
+        },
+        {
+            "question": "Đơn vị của lực trong SI là gì?",
+            "options": ["Newton (N)", "Joule (J)", "Watt (W)", "Pascal (Pa)"],
+            "correctAnswer": 0,
+            "explanation": "Lực có đơn vị là Newton (N).",
+            "difficulty": "dễ",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính gia tốc trong chuyển động thẳng nhanh dần đều là?",
+            "options": ["a = (v - v₀)/t", "a = F/m", "a = s/t²", "Cả a và b"],
+            "correctAnswer": 3,
+            "explanation": "Gia tốc a = (v - v₀)/t hoặc a = F/m đều đúng.",
+            "difficulty": "trung bình",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính động năng là?",
+            "options": ["Eₖ = (1/2)mv²", "Eₖ = mgh", "Eₖ = F*s", "Eₖ = Pt"],
+            "correctAnswer": 0,
+            "explanation": "Động năng Eₖ = (1/2)mv².",
+            "difficulty": "trung bình",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính thế năng trọng trường là?",
+            "options": ["Eₚ = mgh", "Eₚ = (1/2)mv²", "Eₚ = F*s", "Eₚ = Pt"],
+            "correctAnswer": 0,
+            "explanation": "Thế năng trọng trường Eₚ = mgh.",
+            "difficulty": "dễ",
+            "subject": "physics"
+        },
+        {
+            "question": "Tần số của dao động điều hòa được tính bằng công thức nào?",
+            "options": ["f = 1/T", "f = ω/2π", "f = v/λ", "Cả a và b"],
+            "correctAnswer": 3,
+            "explanation": "f = 1/T hoặc f = ω/2π đều đúng.",
+            "difficulty": "trung bình",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính chu kỳ dao động điều hòa là?",
+            "options": ["T = 2π√(m/k)", "T = 1/f", "T = 2π/ω", "Cả a và c"],
+            "correctAnswer": 3,
+            "explanation": "T = 2π√(m/k) hoặc T = 2π/ω đều đúng.",
+            "difficulty": "khó",
+            "subject": "physics"
+        },
+        {
+            "question": "Định luật bảo toàn cơ năng áp dụng khi nào?",
+            "options": ["Không có lực cản", "Có lực cản", "Có lực ma sát", "Có lực kéo"],
+            "correctAnswer": 0,
+            "explanation": "Cơ năng bảo toàn khi không có lực cản làm tiêu hao năng lượng.",
+            "difficulty": "trung bình",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính lực điện từ trong từ trường đều là?",
+            "options": ["F = qvB sinθ", "F = qE", "F = IlB sinθ", "Cả a và c"],
+            "correctAnswer": 3,
+            "explanation": "F = qvB sinθ (đối với hạt mang điện) hoặc F = IlB sinθ (đối với dây dẫn) đều đúng.",
+            "difficulty": "khó",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính điện trường của một điện tích điểm là?",
+            "options": ["E = k|q|/r²", "E = F/q", "E = V/d", "Cả a và b"],
+            "correctAnswer": 3,
+            "explanation": "E = k|q|/r² hoặc E = F/q đều đúng.",
+            "difficulty": "trung bình",
+            "subject": "physics"
+        },
+        {
+            "question": "Định luật Ohm có công thức nào?",
+            "options": ["U = I*R", "I = U/R", "R = U/I", "Cả a và b"],
+            "correctAnswer": 3,
+            "explanation": "U = I*R hoặc I = U/R đều là định luật Ohm.",
+            "difficulty": "dễ",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính công của lực điện trường là?",
+            "options": ["W = qU", "W = F*s", "W = P/t", "W = mgh"],
+            "correctAnswer": 0,
+            "explanation": "Công của lực điện trường W = qU.",
+            "difficulty": "trung bình",
+            "subject": "physics"
+        },
+        {
+            "question": "Đơn vị của điện trở là gì?",
+            "options": ["Ohm (Ω)", "Volt (V)", "Ampere (A)", "Watt (W)"],
+            "correctAnswer": 0,
+            "explanation": "Điện trở có đơn vị là Ohm (Ω).",
+            "difficulty": "dễ",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính năng lượng điện tiêu thụ là?",
+            "options": ["W = UIt", "W = Pt", "W = U²t/R", "Cả a, b và c"],
+            "correctAnswer": 3,
+            "explanation": "W = UIt, W = Pt, W = U²t/R đều đúng.",
+            "difficulty": "khó",
+            "subject": "physics"
+        },
+        {
+            "question": "Tần số của sóng âm được tính bằng công thức nào?",
+            "options": ["f = v/λ", "f = 1/T", "f = ω/2π", "Cả a và b"],
+            "correctAnswer": 3,
+            "explanation": "f = v/λ hoặc f = 1/T đều đúng.",
+            "difficulty": "trung bình",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính bước sóng là?",
+            "options": ["λ = v/f", "λ = v*T", "λ = f/v", "Cả a và b"],
+            "correctAnswer": 3,
+            "explanation": "λ = v/f hoặc λ = v*T đều đúng.",
+            "difficulty": "trung bình",
+            "subject": "physics"
+        },
+        {
+            "question": "Hiện tượng giao thoa xảy ra khi nào?",
+            "options": ["Hai sóng có cùng tần số và hiệu pha không đổi", "Hai sóng có tần số khác nhau", "Hai sóng không cùng biên độ", "Hai sóng không cùng hướng"],
+            "correctAnswer": 0,
+            "explanation": "Giao thoa yêu cầu hai sóng cùng tần số và hiệu pha không đổi.",
+            "difficulty": "khó",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính vận tốc ánh sáng trong môi trường là?",
+            "options": ["v = c/n", "v = c*n", "v = λ*f", "Cả a và c"],
+            "correctAnswer": 3,
+            "explanation": "v = c/n (n là chiết suất) hoặc v = λ*f đều đúng.",
+            "difficulty": "khó",
+            "subject": "physics"
+        },
+        
+
+
+        {
+            "question": "Choose the correct word: She ___ to school every day.",
+            "options": ["goes", "go", "going", "gone"],
+            "correctAnswer": 0,
+            "explanation": "Động từ 'go' chia ở thì hiện tại đơn với chủ ngữ 'she' là 'goes'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "What is the past tense of 'run'?",
+            "options": ["ran", "run", "running", "runned"],
+            "correctAnswer": 0,
+            "explanation": "Quá khứ của 'run' là 'ran'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "Choose the correct sentence: ___ you ever been to London?",
+            "options": ["Have", "Has", "Do", "Did"],
+            "correctAnswer": 0,
+            "explanation": "Câu hỏi hiện tại hoàn thành dùng 'Have'.",
+            "difficulty": "trung bình",
+            "subject": "english"
+        },
+        {
+            "question": "The capital of France is ___?",
+            "options": ["Paris", "London", "Berlin", "Madrid"],
+            "correctAnswer": 0,
+            "explanation": "The capital of France is Paris.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "Which word is a synonym of 'happy'?",
+            "options": ["joyful", "sad", "angry", "tired"],
+            "correctAnswer": 0,
+            "explanation": "'Joyful' is a synonym of 'happy'.",
+            "difficulty": "trung bình",
+            "subject": "english"
+        },
+        {
+            "question": "Choose the correct form: I ___ TV when the phone rang.",
+            "options": ["was watching", "watched", "watch", "am watching"],
+            "correctAnswer": 0,
+            "explanation": "Thì quá khứ tiếp diễn: 'was watching'.",
+            "difficulty": "khó",
+            "subject": "english"
+        },
+        {
+            "question": "What does 'book' mean in Vietnamese?",
+            "options": ["sách", "bút", "bàn", "ghế"],
+            "correctAnswer": 0,
+            "explanation": "'Book' nghĩa là 'sách'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "Choose the correct preposition: She is good ___ English.",
+            "options": ["at", "in", "on", "with"],
+            "correctAnswer": 0,
+            "explanation": "'Good at' là cụm từ đúng.",
+            "difficulty": "trung bình",
+            "subject": "english"
+        },
+        {
+            "question": "Which sentence is grammatically correct?",
+            "options": ["He go to school.", "He goes to school.", "He going to school.", "He gone to school."],
+            "correctAnswer": 1,
+            "explanation": "'He goes to school.' là câu đúng ngữ pháp.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "What is the plural form of 'child'?",
+            "options": ["children", "childs", "childes", "childrens"],
+            "correctAnswer": 0,
+            "explanation": "Dạng số nhiều của 'child' là 'children'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "Choose the correct word: They ___ a new car last week.",
+            "options": ["bought", "buy", "buying", "buys"],
+            "correctAnswer": 0,
+            "explanation": "Thì quá khứ đơn: 'bought'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "What is the opposite of 'big'?",
+            "options": ["small", "large", "huge", "tall"],
+            "correctAnswer": 0,
+            "explanation": "'Small' là từ trái nghĩa với 'big'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "Choose the correct form: If I ___ you, I would study harder.",
+            "options": ["were", "am", "was", "be"],
+            "correctAnswer": 0,
+            "explanation": "Câu điều kiện loại 2 dùng 'were'.",
+            "difficulty": "khó",
+            "subject": "english"
+        },
+        {
+            "question": "The teacher asked me ___ my homework.",
+            "options": ["to do", "do", "doing", "did"],
+            "correctAnswer": 0,
+            "explanation": "'Asked me to do' là cấu trúc đúng.",
+            "difficulty": "trung bình",
+            "subject": "english"
+        },
+        {
+            "question": "What is the meaning of 'hope'?",
+            "options": ["hy vọng", "nỗi sợ", "sự giận dữ", "niềm vui"],
+            "correctAnswer": 0,
+            "explanation": "'Hope' nghĩa là 'hy vọng'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "Choose the correct word: This book is ___ than that one.",
+            "options": ["more interesting", "interesting", "most interesting", "interestinger"],
+            "correctAnswer": 0,
+            "explanation": "So sánh hơn dùng 'more interesting'.",
+            "difficulty": "trung bình",
+            "subject": "english"
+        },
+        {
+            "question": "Which tense is used in: 'I have just finished my homework'?",
+            "options": ["Present perfect", "Past simple", "Present continuous", "Future simple"],
+            "correctAnswer": 0,
+            "explanation": "'Have just finished' thuộc thì hiện tại hoàn thành.",
+            "difficulty": "trung bình",
+            "subject": "english"
+        },
+        {
+            "question": "Choose the correct word: He ___ his homework before dinner.",
+            "options": ["did", "does", "doing", "do"],
+            "correctAnswer": 0,
+            "explanation": "Thì quá khứ đơn: 'did'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "What is the synonym of 'difficult'?",
+            "options": ["hard", "easy", "simple", "soft"],
+            "correctAnswer": 0,
+            "explanation": "'Hard' là từ đồng nghĩa với 'difficult'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "Choose the correct form: She ___ to the park yesterday.",
+            "options": ["went", "go", "going", "gone"],
+            "correctAnswer": 0,
+            "explanation": "Thì quá khứ đơn: 'went'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        }
+      
+    ]
+}

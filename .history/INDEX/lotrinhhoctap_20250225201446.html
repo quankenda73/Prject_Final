@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hỗ Trợ Học Tập</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Giữ nguyên CSS của bạn */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI Hỗ Trợ Học Tập</h1>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Chọn Thông Tin</h2>
+            <select id="class">
+                <option value="">Chọn lớp</option>
+                <option value="10">Lớp 10</option>
+                <option value="11">Lớp 11</option>
+                <option value="12">Lớp 12</option>
+            </select>
+
+            <select id="subject" onchange="updateKnowledgeCheckboxes()">
+                <option value="">Chọn môn học</option>
+                <option value="Toán">Toán</option>
+                <option value="Văn">Văn</option>
+                <option value="Anh">Tiếng Anh</option>
+                <option value="Lý">Vật Lý</option>
+                <option value="Hóa">Hóa Học</option>
+            </select>
+
+            <!-- Checkboxes cho các môn học giữ nguyên như bạn đã viết -->
+
+            <input type="text" id="currentScore" placeholder="Điểm số hiện tại" required>
+            <input type="text" id="desiredScore" placeholder="Điểm số mong muốn" required>
+            <input type="text" id="otherIssues" placeholder="Các vấn đề khác">
+
+            <button onclick="getStudyPlan()">Nhận lộ trình học tập</button>
+        </div>
+
+        <div class="result-container">
+            <h2>Kết Quả</h2>
+            <div class="response" id="response"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 AI Hỗ Trợ Học Tập. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        function getSelectedKnowledgeNeeds() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
+            return selectedValues.length ? selectedValues.join(', ') : "Không chọn";
+        }
+
+        function updateKnowledgeCheckboxes() {
+            const subject = document.getElementById("subject").value;
+
+            // Ẩn tất cả checkbox
+            document.querySelectorAll('.knowledge-checkboxes').forEach((element) => {
+                element.style.display = 'none';
+            });
+
+            // Hiển thị checkbox tương ứng với môn học đã chọn
+            if (subject === "Toán") {
+                document.getElementById("mathCheckboxes").style.display = 'block';
+            } else if (subject === "Văn") {
+                document.getElementById("literatureCheckboxes").style.display = 'block';
+            } else if (subject === "Anh") {
+                document.getElementById("englishCheckboxes").style.display = 'block';
+            } else if (subject === "Lý") {
+                document.getElementById("physicsCheckboxes").style.display = 'block';
+            } else if (subject === "Hóa") {
+                document.getElementById("chemistryCheckboxes").style.display = 'block';
+            }
+        }
+
+        async function getStudyPlan() {
+            const classLevel = document.getElementById("class").value;
+            const subject = document.getElementById("subject").value;
+            const currentScore = document.getElementById("currentScore").value;
+            const desiredScore = document.getElementById("desiredScore").value;
+            const knowledgeNeed = getSelectedKnowledgeNeeds();
+            const otherIssues = document.getElementById("otherIssues").value || "Không có";
+
+            const responseDiv = document.getElementById("response");
+
+            if (!classLevel || !subject || !currentScore || !desiredScore) {
+                responseDiv.innerHTML = "Vui lòng điền đầy đủ thông tin bắt buộc!";
+                return;
+            }
+
+            const userMessage = `Tôi học lớp ${classLevel}, môn ${subject}. Điểm hiện tại của tôi là ${currentScore}, tôi muốn đạt ${desiredScore}. Kiến thức cần cải thiện: ${knowledgeNeed}. Các vấn đề khác: ${otherIssues}. Hãy đề xuất lộ trình học tập chi tiết cho tôi.`;
+
+            try {
+                responseDiv.innerHTML = "Đang xử lý...";
+
+                const response = await fetch('http://localhost:3000/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: userMessage })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Lỗi từ server: ${response.status}`);
+                }
+
+                const data = await response.json();
+                responseDiv.innerHTML = formatResponse(data.message);
+            } catch (error) {
+                console.error("Lỗi:", error);
+                responseDiv.innerHTML = `Đã xảy ra lỗi: ${error.message}. Vui lòng kiểm tra server hoặc thử lại sau.`;
+            }
+        }
+
+        function formatResponse(rawContent) {
+            let formattedContent = `<h2>Lộ trình học tập đề xuất:</h2>`;
+            const sections = rawContent.split("\n").filter(line => line.trim());
+
+            sections.forEach(section => {
+                if (section.startsWith("**") && section.endsWith("**")) {
+                    formattedContent += `<h3>${section.slice(2, -2)}</h3>`;
+                } else if (section.startsWith("*") || section.startsWith("-")) {
+                    formattedContent += `<p style="margin-left: 20px;">${section.slice(1).trim()}</p>`;
+                } else {
+                    formattedContent += `<p>${section}</p>`;
+                }
+            });
+
+            return formattedContent;
+        }
+    </script>
+</body>
+</html>

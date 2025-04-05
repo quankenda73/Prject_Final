@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lộ trình học tập cá nhân hóa</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+        canvas {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Lộ trình học tập cá nhân hóa: Kết quả thử nghiệm</h1>
+
+    <!-- Biểu đồ cột: Điểm trung bình -->
+    <div class="chart-container">
+        <canvas id="scoreChart"></canvas>
+    </div>
+
+    <!-- Biểu đồ tròn: Ưu tiên môn yếu -->
+    <div class="chart-container">
+        <canvas id="priorityChart"></canvas>
+    </div>
+
+    <!-- Biểu đồ tròn: Tỷ lệ kế hoạch phù hợp -->
+    <div class="chart-container">
+        <canvas id="fitChart"></canvas>
+    </div>
+
+    <!-- Biểu đồ đường: Ví dụ học sinh A -->
+    <div class="chart-container">
+        <canvas id="studentAChart"></canvas>
+    </div>
+
+    <script>
+        // 1. Biểu đồ cột: Điểm trung bình
+        const scoreCtx = document.getElementById('scoreChart').getContext('2d');
+        new Chart(scoreCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Trước', 'Sau'],
+                datasets: [{
+                    label: 'Điểm trung bình',
+                    data: [6.4, 7.5],
+                    backgroundColor: ['#95a5a6', '#2ecc71'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true, max: 10, title: { display: true, text: 'Điểm số' } }
+                },
+                plugins: {
+                    title: { display: true, text: 'Cải thiện điểm trung bình (+17%)' },
+                    annotation: {
+                        annotations: {
+                            label: {
+                                type: 'label',
+                                xValue: 1,
+                                yValue: 7.5,
+                                content: ['+17%'],
+                                color: '#e74c3c',
+                                font: { size: 14, weight: 'bold' }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 2. Biểu đồ tròn: Ưu tiên môn yếu
+        const priorityCtx = document.getElementById('priorityChart').getContext('2d');
+        new Chart(priorityCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Ưu tiên môn yếu', 'Khác'],
+                datasets: [{
+                    data: [53.3, 46.7],
+                    backgroundColor: ['#e67e22', '#ecf0f1']
+                }]
+            },
+            options: {
+                plugins: {
+                    title: { display: true, text: '53.3% học sinh ưu tiên môn yếu (120 người)' },
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // 3. Biểu đồ tròn: Tỷ lệ kế hoạch phù hợp
+        const fitCtx = document.getElementById('fitChart').getContext('2d');
+        new Chart(fitCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Phù hợp (25/30)', 'Không phù hợp'],
+                datasets: [{
+                    data: [83, 17],
+                    backgroundColor: ['#3498db', '#95a5a6']
+                }]
+            },
+            options: {
+                plugins: {
+                    title: { display: true, text: '83% nhận kế hoạch phù hợp (vượt 80%)' },
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // 4. Biểu đồ đường: Ví dụ học sinh A
+        const studentACtx = document.getElementById('studentAChart').getContext('2d');
+        new Chart(studentACtx, {
+            type: 'line',
+            data: {
+                labels: ['Trước', 'Sau 5 ngày'],
+                datasets: [{
+                    label: 'Điểm của học sinh A',
+                    data: [5, 8],
+                    borderColor: '#e74c3c',
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true, max: 10, title: { display: true, text: 'Điểm số' } }
+                },
+                plugins: {
+                    title: { display: true, text: 'Ví dụ: Học sinh A - Toán đại số' },
+                    annotation: {
+                        annotations: {
+                            label: {
+                                type: 'label',
+                                xValue: 1,
+                                yValue: 8,
+                                content: ['Tăng từ 5 lên 8'],
+                                color: '#e74c3c',
+                                font: { size: 12 }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

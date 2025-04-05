@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Thi Trắc Nghiệm</title>
+    <style>
+        /* CSS cho trang */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e9f1ff, #d9e8ff, #f0f7ff);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #e6e6e6;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        section {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        #quizQuestions {
+            margin-top: 20px;
+        }
+
+        h3 {
+            color: #1e3c72;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        div {
+            margin-bottom: 30px;
+        }
+
+        p strong {
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #ffd700;
+        }
+
+        label {
+            font-size: 1.1rem;
+            color: #4a5a6b;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        label:hover {
+            color: #1e3c72;
+        }
+
+        footer {
+            width: 100%;
+            padding: 25px 0;
+            background: linear-gradient(135deg, #1e3c72, #0a192f);
+            color: #e6e6e6;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #countdown {
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        button {
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #ffd700, #f7b733);
+            color: #0a192f;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #f7b733, #ffd700);
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 15px;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            section {
+                padding: 25px;
+            }
+
+            h3 {
+                font-size: 1.6rem;
+            }
+
+            p strong {
+                font-size: 1.1rem;
+            }
+
+            label {
+                font-size: 1rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 0;
+            }
+
+            #countdown {
+                font-size: 1rem;
+            }
+
+            button {
+                padding: 12px 25px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bài Thi Trắc Nghiệm</h1>
+        <p>Chúc bạn thi tốt!</p>
+    </header>
+
+    <section id="quizQuestions"></section>
+
+    <footer>
+        <div>
+            <p id="countdown"></p>
+        </div>
+        <button onclick="submitQuiz()">Nộp Bài</button>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const subject = urlParams.get('subject');
+        const level = urlParams.get('level');
+        const timeParam = urlParams.get('time');
+        const timeLimit = timeParam ? parseInt(timeParam) * 60 : 600; // Mặc định 10 phút
+
+        if (!subject || !level) {
+            alert("Thiếu môn học hoặc cấp độ. Vui lòng kiểm tra lại URL!");
+            throw new Error("Thiếu subject hoặc level trong URL");
+        }
+
+        let remainingTime = timeLimit;
+        let questionsData = [];
+
+        // Tải dữ liệu từ file dethi.json
+        fetch('../data/dethi.json') // Đường dẫn tới file JSON
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Không thể tải file dethi.json. Mã lỗi: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                questionsData = data.filter(q => q.subject === subject && q.level === level);
+                if (questionsData.length > 0) {
+                    loadQuiz();
+                    startCountdown();
+                } else {
+                    throw new Error("Không tìm thấy câu hỏi nào phù hợp với môn học và cấp độ!");
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi khi tải dữ liệu:", error);
+                document.getElementById('quizQuestions').innerHTML = `
+                    <p style="color: #e74c3c; text-align: center;">
+                        Không thể tải dữ liệu bài thi từ file dethi.json!<br>
+                        Lý do: ${error.message}<br>
+                        Vui lòng kiểm tra đường dẫn file hoặc chạy qua server cục bộ (như Live Server).
+                    </p>`;
+            });
+
+        // Hiển thị câu hỏi
+        function loadQuiz() {
+            if (!questionsData.length) {
+                document.getElementById('quizQuestions').innerHTML = "<p>Không có câu hỏi nào.</p>";
+                return;
+            }
+
+            let quizHTML = "<h3>Câu Hỏi</h3>";
+            questionsData.forEach((q, index) => {
+                quizHTML += `
+                    <div>
+                        <p><strong>${index + 1}. ${q.question}</strong></p>
+                        ${q.options.map((option, i) => `
+                            <input type="radio" name="q${index}" value="${option}" id="q${index}_option${i}">
+                            <label for="q${index}_option${i}">${option}</label><br>
+                        `).join('')}
+                    </div>
+                `;
+            });
+
+            document.getElementById('quizQuestions').innerHTML = quizHTML;
+        }
+
+        // Đếm ngược thời gian
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const interval = setInterval(() => {
+                if (remainingTime <= 0) {
+                    clearInterval(interval);
+                    alert('Hết giờ! Bài thi đã được nộp.');
+                    submitQuiz();
+                } else {
+                    const minutes = Math.floor(remainingTime / 60);
+                    const seconds = remainingTime % 60;
+                    countdownElement.textContent = `Thời gian còn lại: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    remainingTime--;
+                }
+            }, 1000);
+        }
+
+        // Xử lý nộp bài
+        function submitQuiz() {
+            let score = 0;
+            let explanations = [];
+            let promises = [];
+
+            questionsData.forEach((q, index) => {
+                const selectedAnswer = document.querySelector(`input[name="q${index}"]:checked`);
+                const selectedValue = selectedAnswer ? selectedAnswer.value : "Chưa chọn";
+
+                if (selectedValue === "Chưa chọn") {
+                    explanations.push({
+                        question: q.question,
+                        selected: "Chưa chọn",
+                        correct: q.answer,
+                        explanation: "Không có giải thích vì bạn chưa chọn đáp án."
+                    });
+                    return;
+                }
+
+                const isCorrect = selectedValue.trim() === q.answer.trim();
+
+                if (isCorrect) {
+                    score++;
+                } else {
+                    const promise = getGeminiExplanation(`Câu hỏi: ${q.question}\nBạn chọn: ${selectedValue}\nĐáp án đúng: ${q.answer}`)
+                        .then(explanation => {
+                            explanations.push({
+                                question: q.question,
+                                selected: selectedValue,
+                                correct: q.answer,
+                                explanation: explanation
+                            });
+                        })
+                        .catch(error => {
+                            console.error("Lỗi AI:", error);
+                            explanations.push({
+                                question: q.question,
+                                selected: selectedValue,
+                                correct: q.answer,
+                                explanation: "Không thể lấy lời giải thích."
+                            });
+                        });
+                    promises.push(promise);
+                }
+            });
+
+            Promise.all(promises).then(() => {
+                const answerParams = questionsData.map((_, index) => `q${index}=${encodeURIComponent(explanations[index]?.selected || "Chưa chọn")}`).join('&');
+                window.location.href = `results.html?subject=${subject}&level=${level}&score=${score}&explanations=${encodeURIComponent(JSON.stringify(explanations))}&${answerParams}`;
+            });
+        }
+
+        // Gọi API Gemini để giải thích đáp án (giữ nguyên nhưng không bắt buộc nếu không dùng)
+        async function getGeminiExplanation(text) {
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Lỗi từ server AI");
+                }
+
+                const data = await response.json();
+                return data.reply || "Không có lời giải thích.";
+            } catch (error) {
+                console.error("Lỗi khi gọi AI Gemini:", error);
+                return "Không thể lấy lời giải thích.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+    "math": {
+        "easy": [
+            {
+                "question": "Giá trị của sin(30°) là bao nhiêu?",
+                "options": ["0.5", "1", "0"],
+                "answer": "0.5",
+                "explanation": "Sin(30°) = 1/2 = 0.5."
+            },
+            {
+                "question": "Giá trị của log₂(8) là bao nhiêu?",
+                "options": ["2", "3", "4"],
+                "answer": "3",
+                "explanation": "Vì 2³ = 8 nên log₂(8) = 3."
+            }
+        ],
+        "medium": [
+            {
+                "question": "Nghiệm của phương trình x² - 4x + 3 = 0 là gì?",
+                "options": ["1 và 3", "2 và 3", "1 và 4"],
+                "answer": "1 và 3",
+                "explanation": "Giải phương trình: (x - 1)(x - 3) = 0 → x = 1 hoặc x = 3."
+            },
+            {
+                "question": "Tích phân của ∫(2x)dx là gì?",
+                "options": ["x² + C", "2x + C", "x + C"],
+                "answer": "x² + C",
+                "explanation": "Tích phân của 2x là x² + C."
+            }
+        ],
+        "hard": [
+            {
+                "question": "Đạo hàm của f(x) = e^(2x) là gì?",
+                "options": ["2e^(2x)", "e^(2x)", "3e^(2x)"],
+                "answer": "2e^(2x)",
+                "explanation": "f'(x) = 2e^(2x) theo quy tắc đạo hàm hàm mũ."
+            },
+            {
+                "question": "Giá trị lớn nhất của hàm số f(x) = -x² + 4x + 1 là bao nhiêu?",
+                "options": ["5", "6", "7"],
+                "answer": "5",
+                "explanation": "Giá trị lớn nhất tại x = -b/2a = 2, f(2) = 5."
+            }
+        ]
+    }
+}

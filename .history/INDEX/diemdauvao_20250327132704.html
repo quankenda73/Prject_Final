@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm Đầu Vào</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+</head>
+<body>
+<header>
+    <h1>Điểm Đầu Vào</h1>
+</header>
+<nav>
+    <ul class="nav-list">
+        <li><a href="/home">Trang Chủ</a></li>
+        <li><a href="/input-test">Kiểm Tra Đầu Vào</a></li>
+        <li><a href="/diemdauvao" class="active">Điểm Số</a></li>
+        <li><a href="/student-info">Thông Tin Sinh Viên</a></li>
+    </ul>
+</nav>
+<main>
+    <div class="scores-container">
+        <h2>Bảng Điểm Kiểm Tra Đầu Vào</h2>
+        <table id="scoresTable">
+            <thead>
+                <tr>
+                    <th>Mã Sinh Viên</th>
+                    <th>Họ Tên</th>
+                    <th>Môn Học</th>
+                    <th>Điểm Số</th>
+                    <th>Ngày Thi</th>
+                </tr>
+            </thead>
+            <tbody id="scoresBody"></tbody>
+        </table>
+    </div>
+</main>
+<footer>
+    <p>© 2025 Tạo Lộ Trình Học Tập Cá Nhân Hóa | Mọi quyền được bảo lưu.</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", async function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let studentId = urlParams.get('studentId');
+    const tbody = document.querySelector('#scoresBody');
+
+    let currentStudent;
+    try {
+        currentStudent = JSON.parse(localStorage.getItem('currentStudent'));
+    } catch (error) {
+        console.error('Error parsing currentStudent from localStorage:', error);
+    }
+
+    if (!studentId && currentStudent) {
+        studentId = currentStudent.studentId;
+    }
+
+    let allScores;
+    try {
+        allScores = JSON.parse(localStorage.getItem('allScores')) || {};
+    } catch (error) {
+        console.error('Error parsing allScores from localStorage:', error);
+        allScores = {};
+    }
+
+    if (studentId && !Array.isArray(allScores[studentId])) {
+        allScores[studentId] = [];
+    }
+
+    async function displayScores(selectedStudentId = null) {
+        tbody.innerHTML = '<tr><td colspan="5">Đang tải dữ liệu...</td></tr>';
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/scores${selectedStudentId ? `?studentId=${selectedStudentId}` : ''}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (!response.ok) throw new Error('Không thể lấy điểm từ server');
+
+            const data = await response.json();
+            const scores = data.scores;
+
+            if (scores && scores.length > 0) {
+                scores.forEach(serverScore => {
+                    if (!allScores[serverScore.studentId]) {
+                        allScores[serverScore.studentId] = [];
+                    }
+                    const existingScore = allScores[serverScore.studentId].find(s => s._id === serverScore._id);
+                    if (!existingScore) {
+                        allScores[serverScore.studentId].push(serverScore);
+                    }
+                });
+                localStorage.setItem('allScores', JSON.stringify(allScores));
+            }
+        } catch (error) {
+            console.error('Lỗi khi lấy từ server:', error);
+            // Nếu không có server, tiếp tục dùng dữ liệu từ localStorage
+        }
+
+        // Thêm latestScore vào allScores nếu có
+        try {
+            const latestScore = JSON.parse(localStorage.getItem('latestScore'));
+            if (latestScore) {
+                const sid = latestScore.studentId;
+                if (!allScores[sid]) {
+                    allScores[sid] = [];
+                }
+                const existingScore = allScores[sid].find(score => score.date === latestScore.date && score.subject === latestScore.subject);
+                if (!existingScore) {
+                    latestScore._id = latestScore._id || 'local_' + Date.now();
+                    allScores[sid].push(latestScore);
+                    localStorage.setItem('allScores', JSON.stringify(allScores));
+                }
+                // Chỉ xóa latestScore sau khi chắc chắn nó đã được lưu vào allScores
+                localStorage.removeItem('latestScore');
+            }
+        } catch (error) {
+            console.error('Error handling latestScore from localStorage:', error);
+        }
+
+        // Hiển thị điểm số
+        tbody.innerHTML = '';
+        if (selectedStudentId) {
+            const filteredScores = allScores[selectedStudentId] || [];
+            displayStudentScores(filteredScores, selectedStudentId);
+        } else {
+            let hasData = false;
+            for (const sid in allScores) {
+                if (allScores[sid].length > 0) {
+                    displayStudentScores(allScores[sid], sid);
+                    hasData = true;
+                }
+            }
+            if (!hasData) {
+                tbody.innerHTML = '<tr><td colspan="5">Chưa có điểm số nào được lưu.</td></tr>';
+            }
+        }
+    }
+
+    function displayStudentScores(scores, studentId) {
+        const subjectMap = { 'math': 'Toán', 'literature': 'Ngữ Văn', 'physics': 'Vật Lý', 'english': 'Tiếng Anh', 'chemistry': 'Hóa Học' };
+        scores.forEach(score => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${score.studentId}</td>
+                <td>${score.name}</td>
+                <td>${subjectMap[score.subject] || score.subject}</td>
+                <td>${score.score}</td>
+                <td>${score.date}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    // Gọi hàm hiển thị điểm số khi tải trang
+    displayScores(studentId || null);
+});
+</script>
+</body>
+</html>

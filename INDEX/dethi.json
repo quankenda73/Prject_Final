@@ -1,0 +1,3279 @@
+{
+    "math": {
+        "easy": [
+            {
+                "question": "Giá trị của sin(π/6) là bao nhiêu?",
+                "options": ["0", "0.5", "1"],
+                "answer": "0.5",
+                "explanation": "sin(π/6) = sin(30°) = 0.5."
+            },
+            {
+                "question": "Giá trị của cos(π/3) là bao nhiêu?",
+                "options": ["0.5", "1", "√3/2"],
+                "answer": "0.5",
+                "explanation": "cos(π/3) = cos(60°) = 0.5."
+            },
+            {
+                "question": "Giá trị của log₂(16) là bao nhiêu?",
+                "options": ["3", "4", "5"],
+                "answer": "4",
+                "explanation": "Vì 2⁴ = 16 nên log₂(16) = 4."
+            },
+            {
+                "question": "Phương trình x² - 4 = 0 có nghiệm nào?",
+                "options": ["2 và -2", "4 và -4", "1 và -1"],
+                "answer": "2 và -2",
+                "explanation": "x² = 4 → x = 2 hoặc x = -2."
+            },
+            {
+                "question": "Mô-đun của số phức z = 3 + 4i là bao nhiêu?",
+                "options": ["5", "7", "9"],
+                "answer": "5",
+                "explanation": "|z| = √(3² + 4²) = √(9 + 16) = 5."
+            },
+            {
+                "question": "Đạo hàm của f(x) = 2x + 3 là gì?",
+                "options": ["2", "3", "5"],
+                "answer": "2",
+                "explanation": "f'(x) = 2 (đạo hàm của hằng số là 0, của 2x là 2)."
+            },
+            {
+                "question": "Tích phân ∫(4)dx bằng bao nhiêu?",
+                "options": ["4x + C", "x + C", "2x + C"],
+                "answer": "4x + C",
+                "explanation": "Tích phân của hằng số 4 là 4x + C."
+            },
+            {
+                "question": "Giá trị của tan(π/4) là bao nhiêu?",
+                "options": ["0", "1", "√3"],
+                "answer": "1",
+                "explanation": "tan(π/4) = tan(45°) = 1."
+            },
+            {
+                "question": "Số phức liên hợp của z = 2 - 3i là gì?",
+                "options": ["2 + 3i", "-2 + 3i", "3 - 2i"],
+                "answer": "2 + 3i",
+                "explanation": "Liên hợp của z = 2 - 3i là z̅ = 2 + 3i."
+            },
+            {
+                "question": "Giá trị của e⁰ là bao nhiêu?",
+                "options": ["0", "1", "e"],
+                "answer": "1",
+                "explanation": "e⁰ = 1 theo quy tắc lũy thừa."
+            },
+            {
+                "question": "Phương trình x² - 6x + 9 = 0 có bao nhiêu nghiệm?",
+                "options": ["1", "2", "0"],
+                "answer": "1",
+                "explanation": "x² - 6x + 9 = (x - 3)² = 0 → x = 3 (1 nghiệm duy nhất)."
+            },
+            {
+                "question": "Giá trị của log₁₀(100) là bao nhiêu?",
+                "options": ["1", "2", "3"],
+                "answer": "2",
+                "explanation": "Vì 10² = 100 nên log₁₀(100) = 2."
+            },
+            {
+                "question": "Đạo hàm của f(x) = x² là gì?",
+                "options": ["2x", "x", "x²"],
+                "answer": "2x",
+                "explanation": "f'(x) = 2x theo quy tắc đạo hàm lũy thừa."
+            },
+            {
+                "question": "Tích phân ∫(2x)dx bằng bao nhiêu?",
+                "options": ["x² + C", "2x² + C", "x + C"],
+                "answer": "x² + C",
+                "explanation": "Tích phân của 2x là x² + C."
+            },
+            {
+                "question": "Giá trị của sin(0) là bao nhiêu?",
+                "options": ["0", "0.5", "1"],
+                "answer": "0",
+                "explanation": "sin(0) = 0."
+            },
+            {
+                "question": "Giá trị của cos(π/2) là bao nhiêu?",
+                "options": ["0", "0.5", "1"],
+                "answer": "0",
+                "explanation": "cos(π/2) = cos(90°) = 0."
+            },
+            {
+                "question": "Phương trình x² + 1 = 0 có bao nhiêu nghiệm thực?",
+                "options": ["0", "1", "2"],
+                "answer": "0",
+                "explanation": "x² + 1 = 0 → x² = -1, không có nghiệm thực."
+            },
+            {
+                "question": "Mô-đun của z = -1 + i là bao nhiêu?",
+                "options": ["√2", "2", "1"],
+                "answer": "√2",
+                "explanation": "|z| = √((-1)² + 1²) = √(1 + 1) = √2."
+            },
+            {
+                "question": "Đạo hàm của f(x) = 3x³ là gì?",
+                "options": ["9x²", "3x²", "6x"],
+                "answer": "9x²",
+                "explanation": "f'(x) = 9x² theo quy tắc đạo hàm lũy thừa."
+            },
+            {
+                "question": "Tích phân ∫(3x²)dx bằng bao nhiêu?",
+                "options": ["x³ + C", "3x³ + C", "x² + C"],
+                "answer": "x³ + C",
+                "explanation": "Tích phân của 3x² là x³ + C."
+            },
+            {
+                "question": "Giá trị của log₃(9) là bao nhiêu?",
+                "options": ["1", "2", "3"],
+                "answer": "2",
+                "explanation": "Vì 3² = 9 nên log₃(9) = 2."
+            },
+            {
+                "question": "Phương trình x² - 2x + 1 = 0 có bao nhiêu nghiệm?",
+                "options": ["1", "2", "0"],
+                "answer": "1",
+                "explanation": "x² - 2x + 1 = (x - 1)² = 0 → x = 1 (1 nghiệm duy nhất)."
+            },
+            {
+                "question": "Giá trị của e¹ là bao nhiêu?",
+                "options": ["e", "1", "0"],
+                "answer": "e",
+                "explanation": "e¹ = e."
+            },
+            {
+                "question": "Số phức liên hợp của z = -2 + 5i là gì?",
+                "options": ["-2 - 5i", "2 + 5i", "-2 + 5i"],
+                "answer": "-2 - 5i",
+                "explanation": "Liên hợp của z = -2 + 5i là z̅ = -2 - 5i."
+            },
+            {
+                "question": "Đạo hàm của f(x) = 4x là gì?",
+                "options": ["4", "x", "2x"],
+                "answer": "4",
+                "explanation": "f'(x) = 4 (đạo hàm của 4x là 4)."
+            },
+            {
+                "question": "Tích phân ∫(5)dx bằng bao nhiêu?",
+                "options": ["5x + C", "x + C", "5 + C"],
+                "answer": "5x + C",
+                "explanation": "Tích phân của hằng số 5 là 5x + C."
+            },
+            {
+                "question": "Giá trị của tan(0) là bao nhiêu?",
+                "options": ["0", "1", "√3"],
+                "answer": "0",
+                "explanation": "tan(0) = sin(0)/cos(0) = 0/1 = 0."
+            },
+            {
+                "question": "Phương trình x² - 5 = 0 có nghiệm nào?",
+                "options": ["√5 và -√5", "5 và -5", "2 và -2"],
+                "answer": "√5 và -√5",
+                "explanation": "x² = 5 → x = √5 hoặc x = -√5."
+            },
+            {
+                "question": "Mô-đun của z = 5 - 12i là bao nhiêu?",
+                "options": ["13", "17", "15"],
+                "answer": "13",
+                "explanation": "|z| = √(5² + (-12)²) = √(25 + 144) = √169 = 13."
+            },
+            {
+                "question": "Đạo hàm của f(x) = x⁴ là gì?",
+                "options": ["4x³", "x³", "3x²"],
+                "answer": "4x³",
+                "explanation": "f'(x) = 4x³ theo quy tắc đạo hàm lũy thừa."
+            }
+        ],
+        "medium": [
+            {
+                "question": "Nghiệm của phương trình x² - 5x + 6 = 0 là gì?",
+                "options": ["2 và 3", "1 và 5", "3 và 4"],
+                "answer": "2 và 3",
+                "explanation": "Giải phương trình: x² - 5x + 6 = (x - 2)(x - 3) = 0 → x = 2 hoặc x = 3."
+            },
+            {
+                "question": "Giá trị của sin(π/3) là bao nhiêu?",
+                "options": ["0.5", "√3/2", "1"],
+                "answer": "√3/2",
+                "explanation": "sin(π/3) = sin(60°) = √3/2."
+            },
+            {
+                "question": "Tích phân của ∫(3x²)dx là gì?",
+                "options": ["x³ + C", "3x³ + C", "x² + C"],
+                "answer": "x³ + C",
+                "explanation": "Tích phân của 3x² là x³ + C."
+            },
+            {
+                "question": "Đạo hàm của f(x) = 2x³ - x là gì?",
+                "options": ["6x² - 1", "6x²", "2x² - 1"],
+                "answer": "6x² - 1",
+                "explanation": "f'(x) = 6x² - 1 theo quy tắc đạo hàm lũy thừa."
+            },
+            {
+                "question": "Mô-đun của số phức z = 2 + 3i là bao nhiêu?",
+                "options": ["√13", "5", "√5"],
+                "answer": "√13",
+                "explanation": "|z| = √(2² + 3²) = √(4 + 9) = √13."
+            },
+            {
+                "question": "Phương trình x² - 4x + 4 = 0 có bao nhiêu nghiệm?",
+                "options": ["1", "2", "0"],
+                "answer": "1",
+                "explanation": "x² - 4x + 4 = (x - 2)² = 0 → x = 2 (1 nghiệm)."
+            },
+            {
+                "question": "Giá trị của log₂(32) là bao nhiêu?",
+                "options": ["4", "5", "6"],
+                "answer": "5",
+                "explanation": "Vì 2⁵ = 32 nên log₂(32) = 5."
+            },
+            {
+                "question": "Tích phân của ∫(2x + 1)dx là gì?",
+                "options": ["x² + x + C", "2x² + x + C", "x² + C"],
+                "answer": "x² + x + C",
+                "explanation": "Tích phân của 2x + 1 là x² + x + C."
+            },
+            {
+                "question": "Đạo hàm của f(x) = sin(x) là gì?",
+                "options": ["cos(x)", "-sin(x)", "sin(x)"],
+                "answer": "cos(x)",
+                "explanation": "f'(x) = cos(x) theo quy tắc đạo hàm hàm sin."
+            },
+            {
+                "question": "Số phức liên hợp của z = 1 - 2i là gì?",
+                "options": ["1 + 2i", "-1 + 2i", "2 - i"],
+                "answer": "1 + 2i",
+                "explanation": "Liên hợp của z = 1 - 2i là z̅ = 1 + 2i."
+            },
+            {
+                "question": "Nghiệm của phương trình x² - 6x + 8 = 0 là gì?",
+                "options": ["2 và 4", "3 và 5", "1 và 6"],
+                "answer": "2 và 4",
+                "explanation": "x² - 6x + 8 = (x - 2)(x - 4) = 0 → x = 2 hoặc x = 4."
+            },
+            {
+                "question": "Giá trị của cos(π/4) là bao nhiêu?",
+                "options": ["√2/2", "0.5", "1"],
+                "answer": "√2/2",
+                "explanation": "cos(π/4) = cos(45°) = √2/2."
+            },
+            {
+                "question": "Tích phân của ∫(4x³)dx là gì?",
+                "options": ["x⁴ + C", "2x⁴ + C", "4x⁴ + C"],
+                "answer": "x⁴ + C",
+                "explanation": "Tích phân của 4x³ là x⁴ + C."
+            },
+            {
+                "question": "Đạo hàm của f(x) = x² + 3x là gì?",
+                "options": ["2x + 3", "x + 3", "2x"],
+                "answer": "2x + 3",
+                "explanation": "f'(x) = 2x + 3 theo quy tắc đạo hàm."
+            },
+            {
+                "question": "Mô-đun của z = -3 + 4i là bao nhiêu?",
+                "options": ["5", "7", "√7"],
+                "answer": "5",
+                "explanation": "|z| = √((-3)² + 4²) = √(9 + 16) = 5."
+            },
+            {
+                "question": "Phương trình x² - 9 = 0 có nghiệm nào?",
+                "options": ["3 và -3", "2 và -2", "4 và -4"],
+                "answer": "3 và -3",
+                "explanation": "x² = 9 → x = 3 hoặc x = -3."
+            },
+            {
+                "question": "Giá trị của tan(π/3) là bao nhiêu?",
+                "options": ["√3", "1", "√3/3"],
+                "answer": "√3",
+                "explanation": "tan(π/3) = tan(60°) = √3."
+            },
+            {
+                "question": "Tích phân của ∫(5x)dx là gì?",
+                "options": ["5x²/2 + C", "5x + C", "x² + C"],
+                "answer": "5x²/2 + C",
+                "explanation": "Tích phân của 5x là (5/2)x² + C."
+            },
+            {
+                "question": "Đạo hàm của f(x) = cos(x) là gì?",
+                "options": ["-sin(x)", "sin(x)", "cos(x)"],
+                "answer": "-sin(x)",
+                "explanation": "f'(x) = -sin(x) theo quy tắc đạo hàm hàm cos."
+            },
+            {
+                "question": "Số phức liên hợp của z = -4 - i là gì?",
+                "options": ["-4 + i", "4 - i", "-4 - i"],
+                "answer": "-4 + i",
+                "explanation": "Liên hợp của z = -4 - i là z̅ = -4 + i."
+            },
+            {
+                "question": "Nghiệm của phương trình x² + 2x - 3 = 0 là gì?",
+                "options": ["-3 và 1", "-1 và 3", "2 và -3"],
+                "answer": "-1 và 3",
+                "explanation": "x² + 2x - 3 = (x + 3)(x - 1) = 0 → x = -3 hoặc x = 1 (sửa đáp án: -1 và 3)."
+            },
+            {
+                "question": "Giá trị của log₁₀(1000) là bao nhiêu?",
+                "options": ["2", "3", "4"],
+                "answer": "3",
+                "explanation": "Vì 10³ = 1000 nên log₁₀(1000) = 3."
+            },
+            {
+                "question": "Tích phân của ∫(x + 2)dx là gì?",
+                "options": ["x²/2 + 2x + C", "x² + 2x + C", "x + C"],
+                "answer": "x²/2 + 2x + C",
+                "explanation": "Tích phân của x + 2 là x²/2 + 2x + C."
+            },
+            {
+                "question": "Đạo hàm của f(x) = 4x² - 2x là gì?",
+                "options": ["8x - 2", "4x - 2", "8x"],
+                "answer": "8x - 2",
+                "explanation": "f'(x) = 8x - 2 theo quy tắc đạo hàm."
+            },
+            {
+                "question": "Mô-đun của z = 1 + i là bao nhiêu?",
+                "options": ["√2", "2", "1"],
+                "answer": "√2",
+                "explanation": "|z| = √(1² + 1²) = √2."
+            },
+            {
+                "question": "Phương trình x² - 7x + 10 = 0 có nghiệm nào?",
+                "options": ["2 và 5", "3 và 4", "1 và 6"],
+                "answer": "2 và 5",
+                "explanation": "x² - 7x + 10 = (x - 2)(x - 5) = 0 → x = 2 hoặc x = 5."
+            },
+            {
+                "question": "Giá trị của sin(π/6) là bao nhiêu?",
+                "options": ["0.5", "√3/2", "1"],
+                "answer": "0.5",
+                "explanation": "sin(π/6) = sin(30°) = 0.5."
+            },
+            {
+                "question": "Tích phân của ∫(6x²)dx là gì?",
+                "options": ["2x³ + C", "6x³ + C", "3x² + C"],
+                "answer": "2x³ + C",
+                "explanation": "Tích phân của 6x² là 2x³ + C."
+            },
+            {
+                "question": "Đạo hàm của f(x) = tan(x) là gì?",
+                "options": ["sec²(x)", "tan(x)", "cos(x)"],
+                "answer": "sec²(x)",
+                "explanation": "f'(x) = sec²(x) theo quy tắc đạo hàm hàm tan."
+            },
+            {
+                "question": "Số phức liên hợp của z = 3 - 5i là gì?",
+                "options": ["3 + 5i", "-3 + 5i", "5 - 3i"],
+                "answer": "3 + 5i",
+                "explanation": "Liên hợp của z = 3 - 5i là z̅ = 3 + 5i."
+            }
+        ],
+        "hard": [
+            {
+                "question": "Đạo hàm của f(x) = e^(2x) là gì?",
+                "options": ["2e^(2x)", "e^(2x)", "e^x"],
+                "answer": "2e^(2x)",
+                "explanation": "f'(x) = e^(2x) · 2 = 2e^(2x) theo quy tắc dây chuyền."
+            },
+            {
+                "question": "Tích phân của ∫(x e^x)dx là gì?",
+                "options": ["x e^x - e^x + C", "x e^x + C", "e^x + C"],
+                "answer": "x e^x - e^x + C",
+                "explanation": "Dùng tích phân từng phần: ∫x e^x dx = x e^x - ∫e^x dx = x e^x - e^x + C."
+            },
+            {
+                "question": "Giá trị lớn nhất của f(x) = -x² + 4x - 3 trên đoạn [0, 3] là bao nhiêu?",
+                "options": ["1", "2", "3"],
+                "answer": "1",
+                "explanation": "f'(x) = -2x + 4 = 0 → x = 2, f(2) = -4 + 8 - 3 = 1; biên: f(0) = -3, f(3) = -6 → max = 1."
+            },
+            {
+                "question": "Đạo hàm của f(x) = sin(2x) là gì?",
+                "options": ["2cos(2x)", "cos(2x)", "-2sin(2x)"],
+                "answer": "2cos(2x)",
+                "explanation": "f'(x) = cos(2x) · 2 = 2cos(2x) theo quy tắc dây chuyền."
+            },
+            {
+                "question": "Tích phân của ∫(cos(x))dx là gì?",
+                "options": ["sin(x) + C", "-cos(x) + C", "cos(x) + C"],
+                "answer": "sin(x) + C",
+                "explanation": "Tích phân của cos(x) là sin(x) + C."
+            },
+            {
+                "question": "Thể tích khối trụ có bán kính đáy 3 và chiều cao 4 là bao nhiêu?",
+                "options": ["36π", "48π", "12π"],
+                "answer": "36π",
+                "explanation": "V = πr²h = π × 3² × 4 = 36π."
+            },
+            {
+                "question": "Đạo hàm của f(x) = ln(x² + 1) là gì?",
+                "options": ["2x/(x² + 1)", "1/(x² + 1)", "2x"],
+                "answer": "2x/(x² + 1)",
+                "explanation": "f'(x) = (2x)/(x² + 1) theo quy tắc dây chuyền."
+            },
+            {
+                "question": "Tích phân của ∫(x² sin(x))dx là gì?",
+                "options": ["-x² cos(x) + 2x sin(x) + 2 cos(x) + C", "x² sin(x) + C", "sin(x) + C"],
+                "answer": "-x² cos(x) + 2x sin(x) + 2 cos(x) + C",
+                "explanation": "Dùng tích phân từng phần hai lần: ∫x² sin(x) dx = -x² cos(x) + 2x sin(x) + 2 cos(x) + C."
+            },
+            {
+                "question": "Giá trị nhỏ nhất của f(x) = x² - 6x + 8 trên đoạn [1, 4] là bao nhiêu?",
+                "options": ["-1", "0", "1"],
+                "answer": "-1",
+                "explanation": "f'(x) = 2x - 6 = 0 → x = 3, f(3) = -1; biên: f(1) = 3, f(4) = 0 → min = -1."
+            },
+            {
+                "question": "Đạo hàm của f(x) = x e^x là gì?",
+                "options": ["e^x + x e^x", "x e^x", "e^x"],
+                "answer": "e^x + x e^x",
+                "explanation": "f'(x) = e^x + x e^x theo quy tắc tích."
+            },
+            {
+                "question": "Tích phân của ∫(x ln(x))dx là gì?",
+                "options": ["x² ln(x)/2 - x²/4 + C", "x ln(x) + C", "ln(x)/x + C"],
+                "answer": "x² ln(x)/2 - x²/4 + C",
+                "explanation": "Dùng tích phân từng phần: ∫x ln(x) dx = x² ln(x)/2 - ∫x²/2 dx = x² ln(x)/2 - x²/4 + C."
+            },
+            {
+                "question": "Khoảng cách từ điểm M(0, 0, 1) đến mặt phẳng Oxy là bao nhiêu?",
+                "options": ["1", "2", "0"],
+                "answer": "1",
+                "explanation": "Khoảng cách từ M(0, 0, 1) đến Oxy (z = 0) là |z| = 1."
+            },
+            {
+                "question": "Đạo hàm của f(x) = cos(x²) là gì?",
+                "options": ["-2x sin(x²)", "sin(x²)", "-sin(x²)"],
+                "answer": "-2x sin(x²)",
+                "explanation": "f'(x) = -sin(x²) · 2x theo quy tắc dây chuyền."
+            },
+            {
+                "question": "Tích phân của ∫(e^(2x))dx là gì?",
+                "options": ["e^(2x)/2 + C", "e^(2x) + C", "2e^(2x) + C"],
+                "answer": "e^(2x)/2 + C",
+                "explanation": "Tích phân của e^(2x) là e^(2x)/2 + C (dùng u = 2x)."
+            },
+            {
+                "question": "Thể tích khối nón có bán kính đáy 2 và chiều cao 6 là bao nhiêu?",
+                "options": ["8π", "12π", "24π"],
+                "answer": "8π",
+                "explanation": "V = (1/3)πr²h = (1/3)π × 2² × 6 = 8π."
+            },
+            {
+                "question": "Đạo hàm của f(x) = ln(x)/(x + 1) là gì?",
+                "options": ["(1 - ln(x))/(x + 1)²", "ln(x)/(x + 1)", "1/(x + 1)"],
+                "answer": "(1 - ln(x))/(x + 1)²",
+                "explanation": "f'(x) = [(1/x)(x + 1) - ln(x)]/(x + 1)² = (1 - ln(x))/(x + 1)² theo quy tắc thương."
+            },
+            {
+                "question": "Tích phân của ∫(x² cos(x))dx là gì?",
+                "options": ["x² sin(x) + 2x cos(x) - 2 sin(x) + C", "x² cos(x) + C", "sin(x) + C"],
+                "answer": "x² sin(x) + 2x cos(x) - 2 sin(x) + C",
+                "explanation": "Dùng tích phân từng phần hai lần: ∫x² cos(x) dx = x² sin(x) + 2x cos(x) - 2 sin(x) + C."
+            },
+            {
+                "question": "Giá trị lớn nhất của f(x) = -2x² + 8x - 6 trên đoạn [1, 3] là bao nhiêu?",
+                "options": ["2", "3", "4"],
+                "answer": "2",
+                "explanation": "f'(x) = -4x + 8 = 0 → x = 2, f(2) = -8 + 16 - 6 = 2; biên: f(1) = 0, f(3) = -6 → max = 2."
+            },
+            {
+                "question": "Đạo hàm của f(x) = sin(x) cos(x) là gì?",
+                "options": ["cos²(x) - sin²(x)", "2sin(x)", "sin²(x)"],
+                "answer": "cos²(x) - sin²(x)",
+                "explanation": "f'(x) = cos(x) cos(x) + sin(x) (-sin(x)) = cos²(x) - sin²(x) hoặc cos(2x)."
+            },
+            {
+                "question": "Tích phân của ∫(x³ e^x)dx là gì?",
+                "options": ["x³ e^x - 3x² e^x + 6x e^x - 6e^x + C", "x³ e^x + C", "e^x + C"],
+                "answer": "x³ e^x - 3x² e^x + 6x e^x - 6e^x + C",
+                "explanation": "Dùng tích phân từng phần ba lần: ∫x³ e^x dx = x³ e^x - 3x² e^x + 6x e^x - 6e^x + C."
+            },
+            {
+                "question": "Khoảng cách từ điểm M(1, 0, 0) đến mặt phẳng yz là bao nhiêu?",
+                "options": ["0", "1", "2"],
+                "answer": "1",
+                "explanation": "Mặt phẳng yz là x = 0, khoảng cách từ M(1, 0, 0) là |x| = 1."
+            },
+            {
+                "question": "Đạo hàm của f(x) = tan(2x) là gì?",
+                "options": ["2sec²(2x)", "sec²(2x)", "tan(x)"],
+                "answer": "2sec²(2x)",
+                "explanation": "f'(x) = sec²(2x) · 2 = 2sec²(2x) theo quy tắc dây chuyền."
+            },
+            {
+                "question": "Tích phân của ∫(x²/x + 1)dx là gì?",
+                "options": ["x²/2 - ln|x + 1| + C", "x - ln|x + 1| + C", "ln|x + 1| + C"],
+                "answer": "x²/2 - ln|x + 1| + C",
+                "explanation": "Chia: x²/(x + 1) = x - 1 + 1/(x + 1) → ∫(x - 1 + 1/(x + 1)) dx = x²/2 - x + ln|x + 1| + C (điều chỉnh hằng số)."
+            },
+            {
+                "question": "Thể tích khối cầu có bán kính 2 là bao nhiêu?",
+                "options": ["8π/3", "16π/3", "32π/3"],
+                "answer": "32π/3",
+                "explanation": "V = (4/3)πr³ = (4/3)π × 2³ = 32π/3."
+            },
+            {
+                "question": "Đạo hàm của f(x) = e^x ln(x) là gì?",
+                "options": ["e^x ln(x) + e^x/x", "e^x/x", "ln(x)"],
+                "answer": "e^x ln(x) + e^x/x",
+                "explanation": "f'(x) = e^x ln(x) + e^x · (1/x) theo quy tắc tích."
+            },
+            {
+                "question": "Tích phân của ∫(x e^(2x))dx là gì?",
+                "options": ["(x e^(2x))/2 - e^(2x)/4 + C", "x e^(2x) + C", "e^(2x)/2 + C"],
+                "answer": "(x e^(2x))/2 - e^(2x)/4 + C",
+                "explanation": "Dùng tích phân từng phần: ∫x e^(2x) dx = (x e^(2x))/2 - ∫e^(2x)/2 dx = (x e^(2x))/2 - e^(2x)/4 + C."
+            },
+            {
+                "question": "Giá trị nhỏ nhất của f(x) = x² + 4x + 5 trên đoạn [-3, 0] là bao nhiêu?",
+                "options": ["1", "2", "3"],
+                "answer": "1",
+                "explanation": "f'(x) = 2x + 4 = 0 → x = -2, f(-2) = 1; biên: f(-3) = 2, f(0) = 5 → min = 1."
+            },
+            {
+                "question": "Đạo hàm của f(x) = sin(x² + 1) là gì?",
+                "options": ["2x cos(x² + 1)", "cos(x² + 1)", "sin(2x)"],
+                "answer": "2x cos(x² + 1)",
+                "explanation": "f'(x) = cos(x² + 1) · 2x theo quy tắc dây chuyền."
+            },
+            {
+                "question": "Tích phân của ∫(x² ln(x))dx là gì?",
+                "options": ["x³ ln(x)/3 - x³/9 + C", "x² ln(x) + C", "ln(x)/x + C"],
+                "answer": "x³ ln(x)/3 - x³/9 + C",
+                "explanation": "Dùng tích phân từng phần: ∫x² ln(x) dx = x³ ln(x)/3 - ∫x²/3 dx = x³ ln(x)/3 - x³/9 + C."
+            },
+            {
+                "question": "Khoảng cách từ điểm M(2, 1, 0) đến mặt phẳng z = 0 là bao nhiêu?",
+                "options": ["0", "1", "2"],
+                "answer": "0",
+                "explanation": "M(2, 1, 0) nằm trên mặt phẳng z = 0, khoảng cách = 0."
+            }
+        ]
+    },
+    "physics": {
+        "easy": [
+            {
+                "question": "Công thức tính vận tốc trong chuyển động thẳng đều là gì?",
+                "options": ["v = s/t", "v = a/t", "v = s*t"],
+                "answer": "v = s/t",
+                "explanation": "Trong chuyển động thẳng đều, vận tốc v được tính bằng quãng đường s chia cho thời gian t."
+            },
+            {
+                "question": "Gia tốc trong chuyển động thẳng nhanh dần đều được tính như thế nào?",
+                "options": ["a = v/t", "a = Δv/Δt", "a = s/t²"],
+                "answer": "a = Δv/Δt",
+                "explanation": "Gia tốc a là độ biến thiên vận tốc Δv chia cho thời gian Δt."
+            },
+            {
+                "question": "Đơn vị của lực trong hệ SI là gì?",
+                "options": ["Newton (N)", "Joule (J)", "Watt (W)"],
+                "answer": "Newton (N)",
+                "explanation": "Lực có đơn vị là Newton (N), được định nghĩa từ công thức F = m*a."
+            },
+            {
+                "question": "Công thức tính quãng đường trong chuyển động thẳng đều là gì?",
+                "options": ["s = v*t", "s = v/t", "s = a*t²"],
+                "answer": "s = v*t",
+                "explanation": "Quãng đường s trong chuyển động thẳng đều là tích của vận tốc v và thời gian t."
+            },
+            {
+                "question": "Định luật I Newton nói về điều gì?",
+                "options": ["Quán tính", "Gia tốc", "Phản lực"],
+                "answer": "Quán tính",
+                "explanation": "Định luật I Newton phát biểu rằng vật giữ nguyên trạng thái đứng yên hoặc chuyển động thẳng đều nếu không chịu lực tác dụng."
+            },
+            {
+                "question": "Tần số của dao động được đo bằng đơn vị gì?",
+                "options": ["Hertz (Hz)", "Metre (m)", "Second (s)"],
+                "answer": "Hertz (Hz)",
+                "explanation": "Tần số đo số dao động trong 1 giây, đơn vị là Hertz (Hz)."
+            },
+            {
+                "question": "Công thức tính lực hấp dẫn giữa hai vật là gì?",
+                "options": ["F = G*m₁*m₂/r²", "F = m*a", "F = m*v"],
+                "answer": "F = G*m₁*m₂/r²",
+                "explanation": "Lực hấp dẫn giữa hai vật tỉ lệ với tích khối lượng và nghịch đảo bình phương khoảng cách."
+            },
+            {
+                "question": "Đơn vị của công trong hệ SI là gì?",
+                "options": ["Joule (J)", "Newton (N)", "Watt (W)"],
+                "answer": "Joule (J)",
+                "explanation": "Công được đo bằng Joule (J), tính bằng công thức W = F*s."
+            },
+            {
+                "question": "Chu kỳ của dao động được ký hiệu là gì?",
+                "options": ["T", "f", "ω"],
+                "answer": "T",
+                "explanation": "Chu kỳ của dao động là thời gian để thực hiện một dao động toàn phần, ký hiệu là T."
+            },
+            {
+                "question": "Công thức tính công suất là gì?",
+                "options": ["P = W/t", "P = F*v", "Cả hai đều đúng"],
+                "answer": "Cả hai đều đúng",
+                "explanation": "Công suất P có thể tính bằng P = W/t hoặc P = F*v trong trường hợp lực và vận tốc cùng hướng."
+            },
+            {
+                "question": "Gia tốc trọng trường trên Trái Đất xấp xỉ bao nhiêu?",
+                "options": ["9.8 m/s²", "10 m/s²", "8 m/s²"],
+                "answer": "9.8 m/s²",
+                "explanation": "Gia tốc trọng trường trên Trái Đất là khoảng 9.8 m/s²."
+            },
+            {
+                "question": "Động năng của một vật phụ thuộc vào yếu tố nào?",
+                "options": ["Khối lượng và vận tốc", "Khối lượng và gia tốc", "Vận tốc và thời gian"],
+                "answer": "Khối lượng và vận tốc",
+                "explanation": "Động năng phụ thuộc vào khối lượng m và vận tốc v, theo công thức Ek = 1/2*m*v²."
+            },
+            {
+                "question": "Công thức tính thế năng trọng trường là gì?",
+                "options": ["Ep = m*g*h", "Ep = 1/2*k*x²", "Ep = m*v²"],
+                "answer": "Ep = m*g*h",
+                "explanation": "Thế năng trọng trường là Ep = m*g*h, với m là khối lượng, g là gia tốc trọng trường, h là độ cao."
+            },
+            {
+                "question": "Tần số và chu kỳ có quan hệ như thế nào?",
+                "options": ["f = 1/T", "f = T", "f = T²"],
+                "answer": "f = 1/T",
+                "explanation": "Tần số f là nghịch đảo của chu kỳ T: f = 1/T."
+            },
+            {
+                "question": "Đơn vị của điện trở là gì?",
+                "options": ["Ohm (Ω)", "Volt (V)", "Ampere (A)"],
+                "answer": "Ohm (Ω)",
+                "explanation": "Điện trở được đo bằng Ohm (Ω), theo định luật Ohm R = U/I."
+            },
+            {
+                "question": "Công thức định luật Ohm là gì?",
+                "options": ["U = R*I", "U = I/R", "U = R/I"],
+                "answer": "U = R*I",
+                "explanation": "Định luật Ohm: Điện áp U bằng tích của điện trở R và cường độ dòng điện I."
+            },
+            {
+                "question": "Đơn vị của cường độ dòng điện là gì?",
+                "options": ["Ampere (A)", "Volt (V)", "Watt (W)"],
+                "answer": "Ampere (A)",
+                "explanation": "Cường độ dòng điện được đo bằng Ampere (A)."
+            },
+            {
+                "question": "Vật nào sau đây có quán tính lớn hơn?",
+                "options": ["Xe tải", "Xe máy", "Xe đạp"],
+                "answer": "Xe tải",
+                "explanation": "Quán tính tỉ lệ với khối lượng, xe tải có khối lượng lớn hơn nên quán tính lớn hơn."
+            },
+            {
+                "question": "Công thức tính gia tốc trong chuyển động rơi tự do là gì?",
+                "options": ["a = g", "a = v/t", "a = s/t²"],
+                "answer": "a = g",
+                "explanation": "Trong chuyển động rơi tự do, gia tốc bằng gia tốc trọng trường g."
+            },
+            {
+                "question": "Định luật III Newton nói về điều gì?",
+                "options": ["Lực và phản lực", "Quán tính", "Gia tốc"],
+                "answer": "Lực và phản lực",
+                "explanation": "Định luật III Newton: Mọi lực tác dụng đều có phản lực bằng về độ lớn và ngược chiều."
+            },
+            {
+                "question": "Công thức tính lực ma sát nghỉ là gì?",
+                "options": ["Fms = μ*N", "Fms = m*a", "Fms = m*v"],
+                "answer": "Fms = μ*N",
+                "explanation": "Lực ma sát nghỉ Fms bằng tích của hệ số ma sát μ và lực pháp tuyến N."
+            },
+            {
+                "question": "Đơn vị của năng lượng là gì?",
+                "options": ["Joule (J)", "Newton (N)", "Watt (W)"],
+                "answer": "Joule (J)",
+                "explanation": "Năng lượng được đo bằng Joule (J), tương đương với công."
+            },
+            {
+                "question": "Vận tốc góc được ký hiệu là gì?",
+                "options": ["ω", "v", "a"],
+                "answer": "ω",
+                "explanation": "Vận tốc góc trong chuyển động tròn được ký hiệu là ω."
+            },
+            {
+                "question": "Công thức tính lực đẩy Archimedes là gì?",
+                "options": ["F = ρ*V*g", "F = m*g", "F = m*v"],
+                "answer": "F = ρ*V*g",
+                "explanation": "Lực đẩy Archimedes bằng tích của khối lượng riêng ρ, thể tích V và gia tốc trọng trường g."
+            },
+            {
+                "question": "Điện áp được đo bằng đơn vị gì?",
+                "options": ["Volt (V)", "Ampere (A)", "Ohm (Ω)"],
+                "answer": "Volt (V)",
+                "explanation": "Điện áp được đo bằng Volt (V), biểu thị hiệu điện thế."
+            },
+            {
+                "question": "Công thức tính quãng đường trong chuyển động thẳng nhanh dần đều là gì?",
+                "options": ["s = v₀*t + 1/2*a*t²", "s = v*t", "s = a*t"],
+                "answer": "s = v₀*t + 1/2*a*t²",
+                "explanation": "Quãng đường trong chuyển động thẳng nhanh dần đều là s = v₀*t + 1/2*a*t²."
+            },
+            {
+                "question": "Đơn vị của tần số góc là gì?",
+                "options": ["rad/s", "Hz", "m/s"],
+                "answer": "rad/s",
+                "explanation": "Tần số góc được đo bằng radian trên giây (rad/s)."
+            },
+            {
+                "question": "Công thức tính năng lượng toàn phần của con lắc lò xo là gì?",
+                "options": ["E = 1/2*k*A²", "E = m*g*h", "E = 1/2*m*v²"],
+                "answer": "E = 1/2*k*A²",
+                "explanation": "Năng lượng toàn phần của con lắc lò xo là E = 1/2*k*A², với k là độ cứng, A là biên độ."
+            },
+            {
+                "question": "Công thức tính vận tốc trong chuyển động tròn đều là gì?",
+                "options": ["v = ω*r", "v = r/ω", "v = ω/r"],
+                "answer": "v = ω*r",
+                "explanation": "Vận tốc trong chuyển động tròn đều là v = ω*r, với ω là vận tốc góc, r là bán kính."
+            }
+        ],
+        "medium": [
+            {
+                "question": "Công thức tính động năng của một vật là gì?",
+                "options": ["Ek = m*v²", "Ek = 1/2*m*v²", "Ek = m*g*h"],
+                "answer": "Ek = 1/2*m*v²",
+                "explanation": "Động năng Ek của vật có khối lượng m và vận tốc v là Ek = 1/2*m*v²."
+            },
+            {
+                "question": "Định luật II Newton được phát biểu như thế nào?",
+                "options": ["F = m*a", "F = m*v", "F = m/g"],
+                "answer": "F = m*a",
+                "explanation": "Định luật II Newton: Lực F tỉ lệ với gia tốc a và khối lượng m: F = m*a."
+            },
+            {
+                "question": "Chu kỳ dao động của con lắc lò xo được tính như thế nào?",
+                "options": ["T = 2π√(m/k)", "T = 2π√(k/m)", "T = √(m/k)"],
+                "answer": "T = 2π√(m/k)",
+                "explanation": "Chu kỳ T của con lắc lò xo tỉ lệ với √(m/k), công thức là T = 2π√(m/k)."
+            },
+            {
+                "question": "Công thức tính vận tốc cuối trong chuyển động thẳng nhanh dần đều là gì?",
+                "options": ["v = v₀ + a*t", "v = v₀*t", "v = a*t²"],
+                "answer": "v = v₀ + a*t",
+                "explanation": "Vận tốc cuối v trong chuyển động thẳng nhanh dần đều là v = v₀ + a*t."
+            },
+            {
+                "question": "Công thức tính công của lực không đổi là gì?",
+                "options": ["W = F*s*cosα", "W = F*s", "W = F/s"],
+                "answer": "W = F*s*cosα",
+                "explanation": "Công W của lực không đổi là W = F*s*cosα, với α là góc giữa lực và hướng chuyển động."
+            },
+            {
+                "question": "Gia tốc hướng tâm trong chuyển động tròn đều được tính như thế nào?",
+                "options": ["a = v²/r", "a = v/r", "a = ω*r"],
+                "answer": "a = v²/r",
+                "explanation": "Gia tốc hướng tâm là a = v²/r, với v là vận tốc, r là bán kính."
+            },
+            {
+                "question": "Công thức tính thế năng đàn hồi của lò xo là gì?",
+                "options": ["Ep = 1/2*k*x²", "Ep = m*g*h", "Ep = k*x"],
+                "answer": "Ep = 1/2*k*x²",
+                "explanation": "Thế năng đàn hồi của lò xo là Ep = 1/2*k*x², với k là độ cứng, x là độ biến dạng."
+            },
+            {
+                "question": "Định luật bảo toàn cơ năng áp dụng khi nào?",
+                "options": ["Không có lực cản", "Có ma sát", "Có lực kéo"],
+                "answer": "Không có lực cản",
+                "explanation": "Cơ năng được bảo toàn khi không có lực cản hoặc lực ngoài làm tiêu hao năng lượng."
+            },
+            {
+                "question": "Công thức tính tần số dao động của con lắc đơn là gì?",
+                "options": ["f = 1/(2π)√(g/l)", "f = 2π√(l/g)", "f = √(g/l)"],
+                "answer": "f = 1/(2π)√(g/l)",
+                "explanation": "Tần số dao động của con lắc đơn là f = 1/(2π)√(g/l), với g là gia tốc trọng trường, l là chiều dài dây."
+            },
+            {
+                "question": "Công thức tính công suất trung bình của dòng điện là gì?",
+                "options": ["P = U*I", "P = U/I", "P = I²*R"],
+                "answer": "P = U*I",
+                "explanation": "Công suất trung bình của dòng điện là P = U*I, với U là điện áp, I là cường độ dòng điện."
+            },
+            {
+                "question": "Điện trở tương đương của hai điện trở mắc song song được tính như thế nào?",
+                "options": ["1/R = 1/R₁ + 1/R₂", "R = R₁ + R₂", "R = R₁*R₂"],
+                "answer": "1/R = 1/R₁ + 1/R₂",
+                "explanation": "Điện trở tương đương của hai điện trở song song được tính bằng công thức 1/R = 1/R₁ + 1/R₂."
+            },
+            {
+                "question": "Công thức tính lực Lorentz là gì?",
+                "options": ["F = q*v*B*sinα", "F = q*v*B", "F = q*B"],
+                "answer": "F = q*v*B*sinα",
+                "explanation": "Lực Lorentz là F = q*v*B*sinα, với q là điện tích, v là vận tốc, B là từ trường, α là góc giữa v và B."
+            },
+            {
+                "question": "Định luật bảo toàn động lượng áp dụng trong trường hợp nào?",
+                "options": ["Hệ kín", "Có ma sát", "Có lực ngoài"],
+                "answer": "Hệ kín",
+                "explanation": "Động lượng được bảo toàn trong hệ kín, không chịu lực ngoài hoặc tổng lực ngoài bằng 0."
+            },
+            {
+                "question": "Công thức tính vận tốc góc trong chuyển động tròn đều là gì?",
+                "options": ["ω = 2π/T", "ω = T/2π", "ω = v/r²"],
+                "answer": "ω = 2π/T",
+                "explanation": "Vận tốc góc ω = 2π/T, với T là chu kỳ quay."
+            },
+            {
+                "question": "Công thức tính năng lượng điện trường của tụ điện là gì?",
+                "options": ["W = 1/2*C*U²", "W = C*U", "W = U/I"],
+                "answer": "W = 1/2*C*U²",
+                "explanation": "Năng lượng điện trường của tụ điện là W = 1/2*C*U², với C là điện dung, U là điện áp."
+            },
+            {
+                "question": "Công thức tính điện dung của tụ điện là gì?",
+                "options": ["C = Q/U", "C = U/Q", "C = Q*I"],
+                "answer": "C = Q/U",
+                "explanation": "Điện dung C là tỉ số giữa điện tích Q và điện áp U: C = Q/U."
+            },
+            {
+                "question": "Công thức tính cường độ dòng điện trong mạch kín là gì?",
+                "options": ["I = E/(R + r)", "I = E/R", "I = E*r"],
+                "answer": "I = E/(R + r)",
+                "explanation": "Cường độ dòng điện trong mạch kín là I = E/(R + r), với E là suất điện động, R là điện trở ngoài, r là điện trở trong."
+            },
+            {
+                "question": "Công thức tính chu kỳ dao động của con lắc đơn là gì?",
+                "options": ["T = 2π√(l/g)", "T = 2π√(g/l)", "T = √(l/g)"],
+                "answer": "T = 2π√(l/g)",
+                "explanation": "Chu kỳ T của con lắc đơn là T = 2π√(l/g), với l là chiều dài dây, g là gia tốc trọng trường."
+            },
+            {
+                "question": "Công thức tính công suất tiêu thụ của mạch điện xoay chiều là gì?",
+                "options": ["P = U*I*cosφ", "P = U*I", "P = U²/R"],
+                "answer": "P = U*I*cosφ",
+                "explanation": "Công suất tiêu thụ trong mạch xoay chiều là P = U*I*cosφ, với cosφ là hệ số công suất."
+            },
+            {
+                "question": "Công thức tính lực căng dây trong chuyển động tròn đều là gì?",
+                "options": ["F = m*v²/r", "F = m*g", "F = m*a"],
+                "answer": "F = m*v²/r",
+                "explanation": "Lực căng dây cung cấp lực hướng tâm, tính bằng F = m*v²/r."
+            },
+            {
+                "question": "Công thức tính tần số góc của con lắc lò xo là gì?",
+                "options": ["ω = √(k/m)", "ω = √(m/k)", "ω = k/m"],
+                "answer": "ω = √(k/m)",
+                "explanation": "Tần số góc của con lắc lò xo là ω = √(k/m), với k là độ cứng, m là khối lượng."
+            },
+            {
+                "question": "Công thức tính vận tốc truyền sóng là gì?",
+                "options": ["v = λ*f", "v = λ/f", "v = f/λ"],
+                "answer": "v = λ*f",
+                "explanation": "Vận tốc truyền sóng v là tích của bước sóng λ và tần số f: v = λ*f."
+            },
+            {
+                "question": "Công thức tính bước sóng là gì?",
+                "options": ["λ = v/f", "λ = f/v", "λ = v*f"],
+                "answer": "λ = v/f",
+                "explanation": "Bước sóng λ là tỉ số giữa vận tốc v và tần số f: λ = v/f."
+            },
+            {
+                "question": "Công thức tính công của lực điện trường là gì?",
+                "options": ["W = q*U", "W = q*v", "W = U/I"],
+                "answer": "W = q*U",
+                "explanation": "Công của lực điện trường là W = q*U, với q là điện tích, U là điện áp."
+            },
+            {
+                "question": "Công thức tính lực từ tác dụng lên dây dẫn có dòng điện là gì?",
+                "options": ["F = I*L*B*sinα", "F = I*L*B", "F = I*B"],
+                "answer": "F = I*L*B*sinα",
+                "explanation": "Lực từ là F = I*L*B*sinα, với I là dòng điện, L là chiều dài dây, B là từ trường, α là góc giữa dây và từ trường."
+            },
+            {
+                "question": "Công thức tính suất điện động cảm ứng là gì?",
+                "options": ["E = -ΔΦ/Δt", "E = ΔΦ*Δt", "E = Φ/t"],
+                "answer": "E = -ΔΦ/Δt",
+                "explanation": "Suất điện động cảm ứng theo định luật Faraday là E = -ΔΦ/Δt, với ΔΦ là độ biến thiên từ thông."
+            },
+            {
+                "question": "Công thức tính năng lượng photon là gì?",
+                "options": ["E = h*f", "E = h/λ", "E = h*v"],
+                "answer": "E = h*f",
+                "explanation": "Năng lượng photon là E = h*f, với h là hằng số Planck, f là tần số."
+            },
+            {
+                "question": "Công thức tính độ dài tiêu cự của thấu kính là gì?",
+                "options": ["1/f = 1/d₀ + 1/dᵢ", "f = d₀ + dᵢ", "f = d₀*dᵢ"],
+                "answer": "1/f = 1/d₀ + 1/dᵢ",
+                "explanation": "Công thức thấu kính: 1/f = 1/d₀ + 1/dᵢ, với f là tiêu cự, d₀ là khoảng cách vật, dᵢ là khoảng cách ảnh."
+            },
+            {
+                "question": "Công thức tính độ lớn từ trường của dòng điện thẳng là gì?",
+                "options": ["B = μ₀*I/(2π*r)", "B = μ₀*I*r", "B = μ₀*I/2r"],
+                "answer": "B = μ₀*I/(2π*r)",
+                "explanation": "Độ lớn từ trường của dòng điện thẳng là B = μ₀*I/(2π*r), với μ₀ là hằng số từ thẩm, I là dòng điện, r là khoảng cách."
+            }
+        ],
+        "hard": [
+            {
+                "question": "Công thức tính năng lượng toàn phần của dao động điều hòa là gì?",
+                "options": ["E = 1/2*k*A²", "E = m*v²", "E = k*x²"],
+                "answer": "E = 1/2*k*A²",
+                "explanation": "Năng lượng toàn phần của dao động điều hòa là E = 1/2*k*A², với k là độ cứng, A là biên độ."
+            },
+            {
+                "question": "Gia tốc của vật trong chuyển động tròn đều được tính như thế nào?",
+                "options": ["a = v²/r", "a = v/r", "a = ω*r"],
+                "answer": "a = v²/r",
+                "explanation": "Gia tốc hướng tâm trong chuyển động tròn đều là a = v²/r, với v là vận tốc, r là bán kính."
+            },
+            {
+                "question": "Tần số góc của dao động điều hòa được tính như thế nào?",
+                "options": ["ω = 2π*f", "ω = f/2π", "ω = √(k/m)"],
+                "answer": "ω = 2π*f",
+                "explanation": "Tần số góc ω = 2π*f, với f là tần số dao động."
+            },
+            {
+                "question": "Công thức tính vận tốc của electron trong mô hình Bohr là gì?",
+                "options": ["v = nh/(2π*m*r)", "v = h/(m*r)", "v = n*h*r"],
+                "answer": "v = nh/(2π*m*r)",
+                "explanation": "Vận tốc electron trong mô hình Bohr là v = nh/(2π*m*r), với n là số lượng tử, h là hằng số Planck, m là khối lượng electron, r là bán kính quỹ đạo."
+            },
+            {
+                "question": "Công thức tính năng lượng của electron trong nguyên tử hydro là gì?",
+                "options": ["E = -13.6/n² (eV)", "E = 13.6*n²", "E = -13.6*n"],
+                "answer": "E = -13.6/n² (eV)",
+                "explanation": "Năng lượng của electron trong nguyên tử hydro là E = -13.6/n² (eV), với n là số lượng tử chính."
+            },
+            {
+                "question": "Công thức tính độ lớn từ thông qua một khung dây là gì?",
+                "options": ["Φ = B*S*cosα", "Φ = B*S", "Φ = B/S"],
+                "answer": "Φ = B*S*cosα",
+                "explanation": "Từ thông Φ = B*S*cosα, với B là từ trường, S là diện tích khung, α là góc giữa B và pháp tuyến."
+            },
+            {
+                "question": "Công thức tính suất điện động tự cảm của cuộn dây là gì?",
+                "options": ["E = -L*ΔI/Δt", "E = L*I", "E = L/Δt"],
+                "answer": "E = -L*ΔI/Δt",
+                "explanation": "Suất điện động tự cảm là E = -L*ΔI/Δt, với L là độ tự cảm, ΔI/Δt là tốc độ biến thiên dòng điện."
+            },
+            {
+                "question": "Công thức tính độ tự cảm của cuộn dây là gì?",
+                "options": ["L = N*Φ/I", "L = N*I/Φ", "L = Φ/I²"],
+                "answer": "L = N*Φ/I",
+                "explanation": "Độ tự cảm L = N*Φ/I, với N là số vòng dây, Φ là từ thông, I là dòng điện."
+            },
+            {
+                "question": "Công thức tính vận tốc sóng trong hiện tượng giao thoa là gì?",
+                "options": ["v = λ*f", "v = λ/f", "v = f/λ"],
+                "answer": "v = λ*f",
+                "explanation": "Vận tốc sóng v = λ*f, với λ là bước sóng, f là tần số."
+            },
+            {
+                "question": "Công thức tính khoảng cách giữa hai vân sáng liên tiếp trong giao thoa ánh sáng là gì?",
+                "options": ["Δx = λ*D/d", "Δx = λ*d/D", "Δx = D*d/λ"],
+                "answer": "Δx = λ*D/d",
+                "explanation": "Khoảng cách giữa hai vân sáng là Δx = λ*D/d, với λ là bước sóng, D là khoảng cách từ khe đến màn, d là khoảng cách giữa hai khe."
+            },
+            {
+                "question": "Công thức tính năng lượng nghỉ của hạt nhân là gì?",
+                "options": ["E = m*c²", "E = m*v²", "E = h*f"],
+                "answer": "E = m*c²",
+                "explanation": "Năng lượng nghỉ của hạt nhân là E = m*c², với m là khối lượng, c là tốc độ ánh sáng."
+            },
+            {
+                "question": "Công thức tính độ giảm khối trong phản ứng hạt nhân là gì?",
+                "options": ["Δm = m trước - m sau", "Δm = m sau - m trước", "Δm = m*c²"],
+                "answer": "Δm = m trước - m sau",
+                "explanation": "Độ giảm khối Δm là hiệu khối lượng trước và sau phản ứng: Δm = m trước - m sau."
+            },
+            {
+                "question": "Công thức tính chu kỳ bán rã của chất phóng xạ là gì?",
+                "options": ["T = ln(2)/λ", "T = λ/ln(2)", "T = 2/λ"],
+                "answer": "T = ln(2)/λ",
+                "explanation": "Chu kỳ bán rã T = ln(2)/λ, với λ là hằng số phân rã."
+            },
+            {
+                "question": "Công thức tính số hạt nhân còn lại sau thời gian t là gì?",
+                "options": ["N = N₀*e^(-λ*t)", "N = N₀*e^(λ*t)", "N = N₀/λ*t"],
+                "answer": "N = N₀*e^(-λ*t)",
+                "explanation": "Số hạt nhân còn lại là N = N₀*e^(-λ*t), với N₀ là số hạt ban đầu, λ là hằng số phân rã, t là thời gian."
+            },
+            {
+                "question": "Công thức tính độ phóng đại của kính hiển vi là gì?",
+                "options": ["k = k₁*k₂", "k = f₁/f₂", "k = f₁ + f₂"],
+                "answer": "k = k₁*k₂",
+                "explanation": "Độ phóng đại của kính hiển vi là k = k₁*k₂, với k₁ và k₂ là độ phóng đại của vật kính và thị kính."
+            },
+            {
+                "question": "Công thức tính tần số dao động của mạch LC là gì?",
+                "options": ["f = 1/(2π√(L*C))", "f = 2π√(L*C)", "f = √(L*C)"],
+                "answer": "f = 1/(2π√(L*C))",
+                "explanation": "Tần số dao động của mạch LC là f = 1/(2π√(L*C)), với L là độ tự cảm, C là điện dung."
+            },
+            {
+                "question": "Công thức tính vận tốc ánh sáng trong môi trường là gì?",
+                "options": ["v = c/n", "v = n*c", "v = c*n²"],
+                "answer": "v = c/n",
+                "explanation": "Vận tốc ánh sáng trong môi trường là v = c/n, với c là tốc độ ánh sáng trong chân không, n là chiết suất."
+            },
+            {
+                "question": "Công thức tính góc lệch pha trong mạch RLC là gì?",
+                "options": ["tanφ = (X_L - X_C)/R", "tanφ = R/(X_L - X_C)", "tanφ = X_L/X_C"],
+                "answer": "tanφ = (X_L - X_C)/R",
+                "explanation": "Góc lệch pha tanφ = (X_L - X_C)/R, với X_L là dung kháng, X_C là cảm kháng, R là điện trở."
+            },
+            {
+                "question": "Công thức tính công suất phản kháng trong mạch xoay chiều là gì?",
+                "options": ["Q = U*I*sinφ", "Q = U*I", "Q = U*I*cosφ"],
+                "answer": "Q = U*I*sinφ",
+                "explanation": "Công suất phản kháng Q = U*I*sinφ, với sinφ là hệ số phản kháng."
+            },
+            {
+                "question": "Công thức tính vận tốc của sóng âm trong không khí là gì?",
+                "options": ["v = 331 + 0.6*T", "v = 331*T", "v = 331/T"],
+                "answer": "v = 331 + 0.6*T",
+                "explanation": "Vận tốc sóng âm trong không khí là v = 331 + 0.6*T (m/s), với T là nhiệt độ (°C)."
+            },
+            {
+                "question": "Công thức tính hiệu suất của máy biến áp là gì?",
+                "options": ["η = P₂/P₁", "η = P₁/P₂", "η = P₂ - P₁"],
+                "answer": "η = P₂/P₁",
+                "explanation": "Hiệu suất η = P₂/P₁, với P₂ là công suất ra, P₁ là công suất vào."
+            },
+            {
+                "question": "Công thức tính năng lượng của photon trong hiệu ứng quang điện là gì?",
+                "options": ["E = h*f", "E = h*c/λ", "Cả hai đều đúng"],
+                "answer": "Cả hai đều đúng",
+                "explanation": "Năng lượng photon là E = h*f hoặc E = h*c/λ, với h là hằng số Planck, f là tần số, λ là bước sóng."
+            },
+            {
+                "question": "Công thức tính công thoát của kim loại trong hiệu ứng quang điện là gì?",
+                "options": ["W = h*f₀", "W = h*f", "W = h/λ"],
+                "answer": "W = h*f₀",
+                "explanation": "Công thoát W = h*f₀, với h là hằng số Planck, f₀ là tần số ngưỡng."
+            },
+            {
+                "question": "Công thức tính vận tốc tối đa của electron trong hiệu ứng quang điện là gì?",
+                "options": ["v_max = √(2*(h*f - W)/m)", "v_max = h*f/m", "v_max = √(h*f/m)"],
+                "answer": "v_max = √(2*(h*f - W)/m)",
+                "explanation": "Vận tốc tối đa v_max = √(2*(h*f - W)/m), với h*f là năng lượng photon, W là công thoát, m là khối lượng electron."
+            },
+            {
+                "question": "Công thức tính bán kính quỹ đạo trong mô hình Bohr là gì?",
+                "options": ["r = n²*h²/(4π²*m*k*Z*e²)", "r = n*h/m", "r = n²*m/h"],
+                "answer": "r = n²*h²/(4π²*m*k*Z*e²)",
+                "explanation": "Bán kính quỹ đạo r = n²*h²/(4π²*m*k*Z*e²), với n là số lượng tử, h là hằng số Planck, m là khối lượng electron, k là hằng số Coulomb, Z là số proton, e là điện tích electron."
+            },
+            {
+                "question": "Công thức tính năng lượng liên kết của hạt nhân là gì?",
+                "options": ["E = Δm*c²", "E = m*c²", "E = Δm/c²"],
+                "answer": "E = Δm*c²",
+                "explanation": "Năng lượng liên kết E = Δm*c², với Δm là độ giảm khối, c là tốc độ ánh sáng."
+            },
+            {
+                "question": "Công thức tính độ phóng đại của kính thiên văn là gì?",
+                "options": ["k = f₁/f₂", "k = f₂/f₁", "k = f₁ + f₂"],
+                "answer": "k = f₁/f₂",
+                "explanation": "Độ phóng đại của kính thiên văn là k = f₁/f₂, với f₁ là tiêu cự vật kính, f₂ là tiêu cự thị kính."
+            },
+            {
+                "question": "Công thức tính tần số của sóng dừng trên dây là gì?",
+                "options": ["f = n*v/(2L)", "f = v/(n*L)", "f = n*L/v"],
+                "answer": "f = n*v/(2L)",
+                "explanation": "Tần số sóng dừng trên dây là f = n*v/(2L), với n là số bụng sóng, v là vận tốc sóng, L là chiều dài dây."
+            },
+            {
+                "question": "Công thức tính vận tốc của hạt trong thuyết tương đối hẹp là gì?",
+                "options": ["v = c*√(1 - (m₀*c²/E)²)", "v = c/E", "v = E/m₀"],
+                "answer": "v = c*√(1 - (m₀*c²/E)²)",
+                "explanation": "Vận tốc của hạt trong thuyết tương đối hẹp là v = c*√(1 - (m₀*c²/E)²), với m₀ là khối lượng nghỉ, E là năng lượng toàn phần, c là tốc độ ánh sáng."
+            },
+            {
+                "question": "Công thức tính thời gian trôi chậm trong thuyết tương đối hẹp là gì?",
+                "options": ["Δt = Δt₀/√(1 - v²/c²)", "Δt = Δt₀*√(1 - v²/c²)", "Δt = Δt₀*v/c"],
+                "answer": "Δt = Δt₀/√(1 - v²/c²)",
+                "explanation": "Thời gian trôi chậm Δt = Δt₀/√(1 - v²/c²), với Δt₀ là thời gian trong hệ quy chiếu nghỉ, v là vận tốc, c là tốc độ ánh sáng."
+            }
+        ]
+    },
+    "chemistry": {
+        "easy": [
+            {
+                "question": "Nguyên tố nào thuộc nhóm VIIA trong bảng tuần hoàn?",
+                "options": ["Cl", "Fe", "Na"],
+                "answer": "Cl",
+                "explanation": "Nhóm VIIA là nhóm halogen, trong đó có Clo (Cl)."
+            },
+            {
+                "question": "Công thức của axit sulfuric là gì?",
+                "options": ["H₂SO₄", "HCl", "HNO₃"],
+                "answer": "H₂SO₄",
+                "explanation": "Axit sulfuric có công thức hóa học là H₂SO₄."
+            },
+            {
+                "question": "Chất nào là oxit axit?",
+                "options": ["CO₂", "Na₂O", "CaO"],
+                "answer": "CO₂",
+                "explanation": "CO₂ là oxit axit vì nó tác dụng với bazơ tạo thành muối."
+            },
+            {
+                "question": "Nguyên tố nào có số proton là 8?",
+                "options": ["Oxi (O)", "Nitơ (N)", "Cacbon (C)"],
+                "answer": "Oxi (O)",
+                "explanation": "Oxi có số hiệu nguyên tử là 8, tức là có 8 proton."
+            },
+            {
+                "question": "Kim loại nào thuộc nhóm IA?",
+                "options": ["Na", "Mg", "Al"],
+                "answer": "Na",
+                "explanation": "Nhóm IA là nhóm kim loại kiềm, trong đó có Natri (Na)."
+            },
+            {
+                "question": "Công thức của nước là gì?",
+                "options": ["H₂O", "H₂O₂", "HO"],
+                "answer": "H₂O",
+                "explanation": "Nước có công thức hóa học là H₂O."
+            },
+            {
+                "question": "Chất nào là bazơ?",
+                "options": ["NaOH", "HCl", "H₂SO₄"],
+                "answer": "NaOH",
+                "explanation": "NaOH là bazơ vì nó tạo ion OH⁻ trong dung dịch."
+            },
+            {
+                "question": "Nguyên tố nào có ký hiệu Fe?",
+                "options": ["Sắt", "Đồng", "Kẽm"],
+                "answer": "Sắt",
+                "explanation": "Fe là ký hiệu hóa học của nguyên tố Sắt."
+            },
+            {
+                "question": "Công thức của muối ăn là gì?",
+                "options": ["NaCl", "KCl", "CaCl₂"],
+                "answer": "NaCl",
+                "explanation": "Muối ăn có công thức hóa học là NaCl."
+            },
+            {
+                "question": "Chất nào là khí trơ?",
+                "options": ["He", "O₂", "N₂"],
+                "answer": "He",
+                "explanation": "He (Heli) là khí trơ thuộc nhóm VIIIA."
+            },
+            {
+                "question": "Số khối của nguyên tử bằng tổng của gì?",
+                "options": ["Proton và neutron", "Proton và electron", "Neutron và electron"],
+                "answer": "Proton và neutron",
+                "explanation": "Số khối là tổng số proton và neutron trong hạt nhân."
+            },
+            {
+                "question": "Công thức của khí cacbonic là gì?",
+                "options": ["CO₂", "CO", "CH₄"],
+                "answer": "CO₂",
+                "explanation": "Khí cacbonic có công thức hóa học là CO₂."
+            },
+            {
+                "question": "Nguyên tố nào thuộc nhóm VA?",
+                "options": ["N", "O", "S"],
+                "answer": "N",
+                "explanation": "Nhóm VA bao gồm Nitơ (N)."
+            },
+            {
+                "question": "Chất nào là hợp chất hữu cơ?",
+                "options": ["CH₄", "NaCl", "H₂O"],
+                "answer": "CH₄",
+                "explanation": "CH₄ (Metan) là hợp chất hữu cơ vì chứa liên kết C-H."
+            },
+            {
+                "question": "Công thức của axit nitric là gì?",
+                "options": ["HNO₃", "HCl", "H₂SO₄"],
+                "answer": "HNO₃",
+                "explanation": "Axit nitric có công thức hóa học là HNO₃."
+            },
+            {
+                "question": "Nguyên tố nào có số electron lớp ngoài cùng là 2?",
+                "options": ["He", "Ne", "Ar"],
+                "answer": "He",
+                "explanation": "Heli (He) có 2 electron ở lớp ngoài cùng."
+            },
+            {
+                "question": "Chất nào là oxit bazơ?",
+                "options": ["CaO", "SO₂", "CO₂"],
+                "answer": "CaO",
+                "explanation": "CaO là oxit bazơ vì nó tác dụng với axit tạo muối."
+            },
+            {
+                "question": "Công thức của khí metan là gì?",
+                "options": ["CH₄", "C₂H₅OH", "CO₂"],
+                "answer": "CH₄",
+                "explanation": "Metan có công thức hóa học là CH₄."
+            },
+            {
+                "question": "Nguyên tố nào thuộc nhóm IIIA?",
+                "options": ["Al", "Mg", "Na"],
+                "answer": "Al",
+                "explanation": "Nhóm IIIA bao gồm Nhôm (Al)."
+            },
+            {
+                "question": "Chất nào là muối trung hòa?",
+                "options": ["NaCl", "NaHSO₄", "NH₄Cl"],
+                "answer": "NaCl",
+                "explanation": "NaCl là muối trung hòa, tạo từ axit mạnh và bazơ mạnh."
+            },
+            {
+                "question": "Công thức của khí oxi là gì?",
+                "options": ["O₂", "O₃", "CO₂"],
+                "answer": "O₂",
+                "explanation": "Khí oxi có công thức hóa học là O₂."
+            },
+            {
+                "question": "Nguyên tố nào có ký hiệu Cu?",
+                "options": ["Đồng", "Sắt", "Kẽm"],
+                "answer": "Đồng",
+                "explanation": "Cu là ký hiệu hóa học của nguyên tố Đồng."
+            },
+            {
+                "question": "Chất nào là axit yếu?",
+                "options": ["CH₃COOH", "HCl", "H₂SO₄"],
+                "answer": "CH₃COOH",
+                "explanation": "CH₃COOH (axit axetic) là axit yếu vì không phân li hoàn toàn trong nước."
+            },
+            {
+                "question": "Công thức của khí nitơ là gì?",
+                "options": ["N₂", "NH₃", "NO₂"],
+                "answer": "N₂",
+                "explanation": "Khí nitơ có công thức hóa học là N₂."
+            },
+            {
+                "question": "Nguyên tố nào có số hiệu nguyên tử là 11?",
+                "options": ["Na", "Mg", "Al"],
+                "answer": "Na",
+                "explanation": "Natri (Na) có số hiệu nguyên tử là 11."
+            },
+            {
+                "question": "Chất nào là hợp chất vô cơ?",
+                "options": ["NaCl", "CH₄", "C₂H₅OH"],
+                "answer": "NaCl",
+                "explanation": "NaCl là hợp chất vô cơ, không chứa liên kết C-H."
+            },
+            {
+                "question": "Công thức của khí clo là gì?",
+                "options": ["Cl₂", "HCl", "NaCl"],
+                "answer": "Cl₂",
+                "explanation": "Khí clo có công thức hóa học là Cl₂."
+            },
+            {
+                "question": "Nguyên tố nào thuộc nhóm VIA?",
+                "options": ["O", "N", "C"],
+                "answer": "O",
+                "explanation": "Nhóm VIA bao gồm Oxi (O)."
+            },
+            {
+                "question": "Chất nào là bazơ mạnh?",
+                "options": ["NaOH", "NH₃", "Ca(OH)₂"],
+                "answer": "NaOH",
+                "explanation": "NaOH là bazơ mạnh vì phân li hoàn toàn trong nước."
+            },
+            {
+                "question": "Công thức của khí hiđro là gì?",
+                "options": ["H₂", "H₂O", "HCl"],
+                "answer": "H₂",
+                "explanation": "Khí hiđro có công thức hóa học là H₂."
+            }
+        ],
+        "medium": [
+            {
+                "question": "Phản ứng giữa NaOH và HCl tạo ra sản phẩm gì?",
+                "options": ["NaCl và H₂O", "NaCl và H₂", "NaOH và Cl₂"],
+                "answer": "NaCl và H₂O",
+                "explanation": "NaOH + HCl → NaCl + H₂O là phản ứng trung hòa."
+            },
+            {
+                "question": "Chất nào sau đây là este?",
+                "options": ["CH₃COOCH₃", "CH₃COOH", "CH₃OH"],
+                "answer": "CH₃COOCH₃",
+                "explanation": "CH₃COOCH₃ là este, có nhóm chức -COO-."
+            },
+            {
+                "question": "Kim loại nào tác dụng với dung dịch H₂SO₄ loãng sinh ra khí H₂?",
+                "options": ["Zn", "Cu", "Ag"],
+                "answer": "Zn",
+                "explanation": "Zn + H₂SO₄ → ZnSO₄ + H₂, Zn là kim loại hoạt động mạnh hơn H."
+            },
+            {
+                "question": "Công thức của hợp chất tạo ra từ phản ứng giữa CaO và H₂O là gì?",
+                "options": ["Ca(OH)₂", "CaCl₂", "CaSO₄"],
+                "answer": "Ca(OH)₂",
+                "explanation": "CaO + H₂O → Ca(OH)₂, phản ứng tạo bazơ."
+            },
+            {
+                "question": "Chất nào là amin?",
+                "options": ["CH₃NH₂", "CH₃OH", "CH₃COOH"],
+                "answer": "CH₃NH₂",
+                "explanation": "CH₃NH₂ là amin, có nhóm chức -NH₂."
+            },
+            {
+                "question": "Phản ứng cháy hoàn toàn của CH₄ tạo ra sản phẩm gì?",
+                "options": ["CO₂ và H₂O", "CO và H₂", "C và H₂O"],
+                "answer": "CO₂ và H₂O",
+                "explanation": "CH₄ + 2O₂ → CO₂ + 2H₂O là phản ứng cháy hoàn toàn."
+            },
+            {
+                "question": "Chất nào là ankan?",
+                "options": ["C₃H₈", "C₂H₅OH", "C₂H₄"],
+                "answer": "C₃H₈",
+                "explanation": "C₃H₈ (propan) là ankan, có liên kết đơn C-C và C-H."
+            },
+            {
+                "question": "Kim loại nào không tác dụng với dung dịch HCl?",
+                "options": ["Cu", "Fe", "Mg"],
+                "answer": "Cu",
+                "explanation": "Cu đứng sau H trong dãy hoạt động hóa học nên không tác dụng với HCl."
+            },
+            {
+                "question": "Công thức của hợp chất tạo từ phản ứng giữa Na và Cl₂ là gì?",
+                "options": ["NaCl", "NaCl₂", "Na₂Cl"],
+                "answer": "NaCl",
+                "explanation": "2Na + Cl₂ → 2NaCl, tạo muối natri clorua."
+            },
+            {
+                "question": "Chất nào là anken?",
+                "options": ["C₂H₄", "C₂H₆", "C₂H₅OH"],
+                "answer": "C₂H₄",
+                "explanation": "C₂H₄ (etilen) là anken, có liên kết đôi C=C."
+            },
+            {
+                "question": "Phản ứng giữa Fe và dung dịch CuSO₄ tạo ra sản phẩm gì?",
+                "options": ["FeSO₄ và Cu", "FeCu và SO₂", "Cu và FeS"],
+                "answer": "FeSO₄ và Cu",
+                "explanation": "Fe + CuSO₄ → FeSO₄ + Cu, Fe đẩy Cu ra khỏi muối."
+            },
+            {
+                "question": "Chất nào là rượu?",
+                "options": ["C₂H₅OH", "CH₃COOH", "CH₃CHO"],
+                "answer": "C₂H₅OH",
+                "explanation": "C₂H₅OH (etanol) là rượu, có nhóm chức -OH."
+            },
+            {
+                "question": "Công thức của hợp chất tạo từ phản ứng giữa CO₂ và Ca(OH)₂ là gì?",
+                "options": ["CaCO₃", "CaO", "CaSO₄"],
+                "answer": "CaCO₃",
+                "explanation": "CO₂ + Ca(OH)₂ → CaCO₃ + H₂O, tạo kết tủa canxi cacbonat."
+            },
+            {
+                "question": "Chất nào là axit hữu cơ?",
+                "options": ["CH₃COOH", "HCl", "HNO₃"],
+                "answer": "CH₃COOH",
+                "explanation": "CH₃COOH (axit axetic) là axit hữu cơ, chứa nhóm -COOH."
+            },
+            {
+                "question": "Phản ứng giữa NaCl và AgNO₃ tạo ra sản phẩm gì?",
+                "options": ["AgCl và NaNO₃", "Ag và NaCl", "NaCl và Ag"],
+                "answer": "AgCl và NaNO₃",
+                "explanation": "NaCl + AgNO₃ → AgCl↓ + NaNO₃, tạo kết tủa bạc clorua."
+            },
+            {
+                "question": "Chất nào là anđehit?",
+                "options": ["CH₃CHO", "CH₃COOH", "CH₃OH"],
+                "answer": "CH₃CHO",
+                "explanation": "CH₃CHO (axetanđehit) là anđehit, có nhóm chức -CHO."
+            },
+            {
+                "question": "Kim loại nào tác dụng với nước ở nhiệt độ thường?",
+                "options": ["Na", "Fe", "Cu"],
+                "answer": "Na",
+                "explanation": "Na + H₂O → NaOH + H₂, Na là kim loại kiềm tác dụng với nước."
+            },
+            {
+                "question": "Công thức của hợp chất tạo từ phản ứng giữa NH₃ và HCl là gì?",
+                "options": ["NH₄Cl", "NH₃Cl", "NCl₃"],
+                "answer": "NH₄Cl",
+                "explanation": "NH₃ + HCl → NH₄Cl, tạo muối amoni clorua."
+            },
+            {
+                "question": "Chất nào là xeton?",
+                "options": ["CH₃COCH₃", "CH₃CHO", "CH₃COOH"],
+                "answer": "CH₃COCH₃",
+                "explanation": "CH₃COCH₃ (axeton) là xeton, có nhóm chức C=O giữa hai gốc hidrocacbon."
+            },
+            {
+                "question": "Phản ứng giữa Al và dung dịch HNO₃ loãng tạo ra khí gì?",
+                "options": ["NO", "H₂", "N₂"],
+                "answer": "NO",
+                "explanation": "Al + HNO₃ → Al(NO₃)₃ + NO + H₂O, HNO₃ bị khử thành NO."
+            },
+            {
+                "question": "Chất nào là axit vô cơ?",
+                "options": ["HNO₃", "CH₃COOH", "C₆H₅COOH"],
+                "answer": "HNO₃",
+                "explanation": "HNO₃ (axit nitric) là axit vô cơ, không chứa C."
+            },
+            {
+                "question": "Công thức của hợp chất tạo từ phản ứng giữa Fe(OH)₃ và H₂SO₄ là gì?",
+                "options": ["Fe₂(SO₄)₃", "FeSO₄", "FeS"],
+                "answer": "Fe₂(SO₄)₃",
+                "explanation": "2Fe(OH)₃ + 3H₂SO₄ → Fe₂(SO₄)₃ + 6H₂O, tạo muối sắt(III) sunfat."
+            },
+            {
+                "question": "Chất nào là polime?",
+                "options": ["PVC", "CH₃OH", "C₂H₄"],
+                "answer": "PVC",
+                "explanation": "PVC (polyvinyl clorua) là polime, được tạo từ monome vinyl clorua."
+            },
+            {
+                "question": "Phản ứng giữa C₂H₅OH và O₂ tạo ra sản phẩm gì?",
+                "options": ["CO₂ và H₂O", "CO và H₂", "C và H₂O"],
+                "answer": "CO₂ và H₂O",
+                "explanation": "C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O, phản ứng cháy hoàn toàn."
+            },
+            {
+                "question": "Chất nào là hợp chất thơm?",
+                "options": ["C₆H₆", "C₂H₆", "CH₄"],
+                "answer": "C₆H₆",
+                "explanation": "C₆H₆ (benzen) là hợp chất thơm, có vòng benzen."
+            },
+            {
+                "question": "Kim loại nào tác dụng với dung dịch NaOH sinh ra khí H₂?",
+                "options": ["Al", "Fe", "Cu"],
+                "answer": "Al",
+                "explanation": "2Al + 2NaOH + 2H₂O → 2NaAlO₂ + 3H₂, Al là kim loại lưỡng tính."
+            },
+            {
+                "question": "Công thức của hợp chất tạo từ phản ứng giữa CH₃COOH và NaOH là gì?",
+                "options": ["CH₃COONa", "CH₃Cl", "CH₃OH"],
+                "answer": "CH₃COONa",
+                "explanation": "CH₃COOH + NaOH → CH₃COONa + H₂O, tạo muối natri axetat."
+            },
+            {
+                "question": "Chất nào là gluxit?",
+                "options": ["C₆H₁₂O₆", "CH₃COOH", "C₂H₅OH"],
+                "answer": "C₆H₁₂O₆",
+                "explanation": "C₆H₁₂O₆ (glucozo) là gluxit, thuộc nhóm đường."
+            },
+            {
+                "question": "Phản ứng giữa Mg và O₂ tạo ra sản phẩm gì?",
+                "options": ["MgO", "MgO₂", "Mg₂O"],
+                "answer": "MgO",
+                "explanation": "2Mg + O₂ → 2MgO, tạo oxit magiê."
+            },
+            {
+                "question": "Chất nào là muối axit?",
+                "options": ["NaHSO₄", "NaCl", "KNO₃"],
+                "answer": "NaHSO₄",
+                "explanation": "NaHSO₄ là muối axit, chứa H⁺ trong cấu trúc."
+            }
+        ],
+        "hard": [
+            {
+                "question": "Phản ứng este hóa giữa CH₃COOH và C₂H₅OH tạo ra este nào?",
+                "options": ["CH₃COOC₂H₅", "C₂H₅COOCH₃", "CH₃CH₂COOH"],
+                "answer": "CH₃COOC₂H₅",
+                "explanation": "CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O, tạo etyl axetat."
+            },
+            {
+                "question": "Chất nào là sản phẩm chính khi cracking C₄H₁₀?",
+                "options": ["C₂H₄", "C₃H₆", "CH₄"],
+                "answer": "C₂H₄",
+                "explanation": "Cracking C₄H₁₀ → C₂H₄ + C₂H₆, sản phẩm chính là etilen."
+            },
+            {
+                "question": "Kim loại nào tạo phức với NH₃ trong dung dịch?",
+                "options": ["Cu", "Fe", "Na"],
+                "answer": "Cu",
+                "explanation": "Cu + 4NH₃ → [Cu(NH₃)₄]²⁺, Cu tạo phức đồng amoni."
+            },
+            {
+                "question": "Phản ứng giữa C₆H₆ và Br₂ với xúc tác FeBr₃ tạo ra sản phẩm gì?",
+                "options": ["C₆H₅Br", "C₆H₆Br₂", "C₆H₅Br₃"],
+                "answer": "C₆H₅Br",
+                "explanation": "C₆H₆ + Br₂ → C₆H₅Br + HBr, phản ứng thế tạo bromobenzen."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi thủy phân protein?",
+                "options": ["Axit amin", "Glucozo", "Etanol"],
+                "answer": "Axit amin",
+                "explanation": "Protein thủy phân tạo ra các axit amin, đơn vị cấu tạo của nó."
+            },
+            {
+                "question": "Phản ứng giữa CH₃CHO và H₂ với xúc tác Ni tạo ra sản phẩm gì?",
+                "options": ["CH₃CH₂OH", "CH₃COOH", "CH₃CH₃"],
+                "answer": "CH₃CH₂OH",
+                "explanation": "CH₃CHO + H₂ → CH₃CH₂OH, phản ứng hydro hóa tạo etanol."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi oxi hóa C₂H₅OH với CuO ở nhiệt độ cao?",
+                "options": ["CH₃CHO", "CH₃COOH", "CO₂"],
+                "answer": "CH₃CHO",
+                "explanation": "C₂H₅OH + CuO → CH₃CHO + Cu + H₂O, tạo axetanđehit."
+            },
+            {
+                "question": "Kim loại nào bị thụ động bởi dung dịch HNO₃ đặc nguội?",
+                "options": ["Fe", "Cu", "Zn"],
+                "answer": "Fe",
+                "explanation": "Fe bị thụ động bởi HNO₃ đặc nguội do tạo lớp oxit bảo vệ."
+            },
+            {
+                "question": "Phản ứng giữa CH₃COOCH₃ và NaOH tạo ra sản phẩm gì?",
+                "options": ["CH₃COONa và CH₃OH", "CH₃OH và NaCl", "CH₃COOH và CH₃ONa"],
+                "answer": "CH₃COONa và CH₃OH",
+                "explanation": "CH₃COOCH₃ + NaOH → CH₃COONa + CH₃OH, phản ứng xà phòng hóa."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi trùng hợp CH₂=CH₂?",
+                "options": ["Polietilen", "PVC", "Polistiren"],
+                "answer": "Polietilen",
+                "explanation": "nCH₂=CH₂ → [-CH₂-CH₂-]n, tạo polietilen."
+            },
+            {
+                "question": "Phản ứng giữa Al và dung dịch NaOH sinh ra bao nhiêu mol H₂ từ 1 mol Al?",
+                "options": ["1.5 mol", "1 mol", "2 mol"],
+                "answer": "1.5 mol",
+                "explanation": "2Al + 2NaOH + 2H₂O → 2NaAlO₂ + 3H₂, 1 mol Al sinh ra 1.5 mol H₂."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi oxi hóa hoàn toàn glucozo?",
+                "options": ["CO₂ và H₂O", "CH₃COOH", "C₂H₅OH"],
+                "answer": "CO₂ và H₂O",
+                "explanation": "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O, oxi hóa hoàn toàn glucozo."
+            },
+            {
+                "question": "Phản ứng giữa CH₃CH₂NH₂ và HCl tạo ra sản phẩm gì?",
+                "options": ["CH₃CH₂NH₃Cl", "CH₃CH₂Cl", "NH₄Cl"],
+                "answer": "CH₃CH₂NH₃Cl",
+                "explanation": "CH₃CH₂NH₂ + HCl → CH₃CH₂NH₃Cl, tạo muối amin."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi khử CH₃COCH₃ bằng H₂ với xúc tác Ni?",
+                "options": ["CH₃CH(OH)CH₃", "CH₃CH₂CH₃", "CH₃CHO"],
+                "answer": "CH₃CH(OH)CH₃",
+                "explanation": "CH₃COCH₃ + H₂ → CH₃CH(OH)CH₃, tạo propan-2-ol."
+            },
+            {
+                "question": "Phản ứng giữa C₆H₅OH và NaOH tạo ra sản phẩm gì?",
+                "options": ["C₆H₅ONa", "C₆H₅Cl", "C₆H₆"],
+                "answer": "C₆H₅ONa",
+                "explanation": "C₆H₅OH + NaOH → C₆H₅ONa + H₂O, tạo natri phenolat."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi thủy phân este CH₃CH₂COOCH₃ trong môi trường kiềm?",
+                "options": ["CH₃CH₂COONa và CH₃OH", "CH₃CH₂OH và CH₃COONa", "CH₃CH₂COOH và CH₃OH"],
+                "answer": "CH₃CH₂COONa và CH₃OH",
+                "explanation": "CH₃CH₂COOCH₃ + NaOH → CH₃CH₂COONa + CH₃OH, phản ứng xà phòng hóa."
+            },
+            {
+                "question": "Phản ứng giữa Fe₂O₃ và CO ở nhiệt độ cao tạo ra sản phẩm gì?",
+                "options": ["Fe và CO₂", "FeO và CO", "Fe₃O₄ và CO₂"],
+                "answer": "Fe và CO₂",
+                "explanation": "Fe₂O₃ + 3CO → 2Fe + 3CO₂, phản ứng khử oxit sắt."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi trùng hợp CH₂=CHCl?",
+                "options": ["PVC", "Polietilen", "Polistiren"],
+                "answer": "PVC",
+                "explanation": "nCH₂=CHCl → [-CH₂-CHCl-]n, tạo polyvinyl clorua (PVC)."
+            },
+            {
+                "question": "Phản ứng giữa CH₃COOH và CaCO₃ tạo ra sản phẩm gì?",
+                "options": ["Ca(CH₃COO)₂, CO₂ và H₂O", "CaCl₂ và CO₂", "CaO và CH₄"],
+                "answer": "Ca(CH₃COO)₂, CO₂ và H₂O",
+                "explanation": "2CH₃COOH + CaCO₃ → Ca(CH₃COO)₂ + CO₂ + H₂O."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi oxi hóa CH₃CH=CH₂ với KMnO₄ loãng?",
+                "options": ["CH₃CH(OH)CH₂OH", "CH₃COOH", "CO₂ và H₂O"],
+                "answer": "CH₃CH(OH)CH₂OH",
+                "explanation": "CH₃CH=CH₂ + KMnO₄ → CH₃CH(OH)CH₂OH, tạo propan-1,2-diol."
+            },
+            {
+                "question": "Phản ứng giữa Al(OH)₃ và NaOH tạo ra sản phẩm gì?",
+                "options": ["NaAlO₂ và H₂O", "Al₂O₃ và Na₂O", "NaOH và Al"],
+                "answer": "NaAlO₂ và H₂O",
+                "explanation": "Al(OH)₃ + NaOH → NaAlO₂ + 2H₂O, Al(OH)₃ là chất lưỡng tính."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi điều chế benzen từ C₆H₅COOH?",
+                "options": ["C₆H₆", "C₆H₅OH", "C₆H₅Cl"],
+                "answer": "C₆H₆",
+                "explanation": "C₆H₅COOH + CaO → C₆H₆ + CaCO₃, phản ứng khử cacboxyl."
+            },
+            {
+                "question": "Phản ứng giữa CH₃CH₂OH và H₂SO₄ đặc ở 170°C tạo ra sản phẩm gì?",
+                "options": ["CH₂=CH₂", "CH₃CH₂OCH₂CH₃", "CH₃CHO"],
+                "answer": "CH₂=CH₂",
+                "explanation": "CH₃CH₂OH + H₂SO₄ → CH₂=CH₂ + H₂O, phản ứng tách nước tạo etilen."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi thủy phân tinh bột?",
+                "options": ["Glucozo", "Fructozo", "Saccarozo"],
+                "answer": "Glucozo",
+                "explanation": "(C₆H₁₀O₅)n + nH₂O → nC₆H₁₂O₆, thủy phân tinh bột tạo glucozo."
+            },
+            {
+                "question": "Phản ứng giữa CH₃NH₂ và CH₃Cl tạo ra sản phẩm gì?",
+                "options": ["CH₃NHCH₃", "CH₃CH₂NH₂", "CH₃NH₃Cl"],
+                "answer": "CH₃NHCH₃",
+                "explanation": "CH₃NH₂ + CH₃Cl → CH₃NHCH₃ + HCl, phản ứng thế tạo đimetilamin."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi oxi hóa CH₂=CH₂ với O₃ rồi thủy phân?",
+                "options": ["HCHO", "CH₃CHO", "CO₂"],
+                "answer": "HCHO",
+                "explanation": "CH₂=CH₂ + O₃ → 2HCHO, oxi hóa bằng ozon tạo fomanđehit."
+            },
+            {
+                "question": "Phản ứng giữa FeSO₄ và KMnO₄ trong môi trường axit tạo ra sản phẩm gì?",
+                "options": ["Fe₂(SO₄)₃ và MnSO₄", "FeO và MnO₂", "FeS và K₂SO₄"],
+                "answer": "Fe₂(SO₄)₃ và MnSO₄",
+                "explanation": "5FeSO₄ + 2KMnO₄ + 8H₂SO₄ → 5/2Fe₂(SO₄)₃ + 2MnSO₄ + K₂SO₄ + 8H₂O."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi trùng hợp CH₃CH=CH₂?",
+                "options": ["Polipropilen", "Polietilen", "PVC"],
+                "answer": "Polipropilen",
+                "explanation": "nCH₃CH=CH₂ → [-CH(CH₃)-CH₂-]n, tạo polipropilen."
+            },
+            {
+                "question": "Phản ứng giữa C₆H₅NH₂ và HNO₂ ở 0°C tạo ra sản phẩm gì?",
+                "options": ["C₆H₅OH", "C₆H₅N₂Cl", "C₆H₆"],
+                "answer": "C₆H₅N₂Cl",
+                "explanation": "C₆H₅NH₂ + HNO₂ + HCl → C₆H₅N₂Cl + 2H₂O, phản ứng điazoni hóa."
+            },
+            {
+                "question": "Chất nào là sản phẩm khi điều chế xà phòng từ CH₃(CH₂)₁₆COOH và NaOH?",
+                "options": ["CH₃(CH₂)₁₆COONa", "CH₃(CH₂)₁₆OH", "CH₃(CH₂)₁₆Cl"],
+                "answer": "CH₃(CH₂)₁₆COONa",
+                "explanation": "CH₃(CH₂)₁₆COOH + NaOH → CH₃(CH₂)₁₆COONa + H₂O, tạo natri stearat."
+            }
+        ]
+    },
+        "english": {
+            "easy": [
+                {
+                    "question": "What is the past tense of 'go'?",
+                    "options": ["Went", "Gone", "Goes"],
+                    "answer": "Went",
+                    "explanation": "The past tense of 'go' is 'went'."
+                },
+                {
+                    "question": "Which word is a noun?",
+                    "options": ["Book", "Run", "Quickly"],
+                    "answer": "Book",
+                    "explanation": "'Book' is a noun, referring to a thing."
+                },
+                {
+                    "question": "What does 'happy' mean?",
+                    "options": ["Vui vẻ", "Buồn", "Tức giận"],
+                    "answer": "Vui vẻ",
+                    "explanation": "'Happy' means 'vui vẻ' in Vietnamese."
+                },
+                {
+                    "question": "Which is the correct sentence?",
+                    "options": ["She is a teacher.", "She are a teacher.", "She am a teacher."],
+                    "answer": "She is a teacher.",
+                    "explanation": "The correct form is 'She is a teacher' with 'is' for third-person singular."
+                },
+                {
+                    "question": "What is the plural form of 'child'?",
+                    "options": ["Children", "Childs", "Childes"],
+                    "answer": "Children",
+                    "explanation": "The plural of 'child' is 'children'."
+                },
+                {
+                    "question": "Which word is an adjective?",
+                    "options": ["Beautiful", "Run", "Desk"],
+                    "answer": "Beautiful",
+                    "explanation": "'Beautiful' is an adjective, describing a noun."
+                },
+                {
+                    "question": "What does 'eat' mean?",
+                    "options": ["Ăn", "Uống", "Ngủ"],
+                    "answer": "Ăn",
+                    "explanation": "'Eat' means 'ăn' in Vietnamese."
+                },
+                {
+                    "question": "Which is a correct question?",
+                    "options": ["Where are you?", "Where you are?", "You are where?"],
+                    "answer": "Where are you?",
+                    "explanation": "The correct word order for a question is 'Where are you?'."
+                },
+                {
+                    "question": "What is the opposite of 'big'?",
+                    "options": ["Small", "Large", "Tall"],
+                    "answer": "Small",
+                    "explanation": "The opposite of 'big' is 'small'."
+                },
+                {
+                    "question": "Which word is a verb?",
+                    "options": ["Sing", "Song", "Singer"],
+                    "answer": "Sing",
+                    "explanation": "'Sing' is a verb, indicating an action."
+                },
+                {
+                    "question": "What is the past tense of 'see'?",
+                    "options": ["Saw", "Seen", "Sees"],
+                    "answer": "Saw",
+                    "explanation": "The past tense of 'see' is 'saw'."
+                },
+                {
+                    "question": "Which word means 'nhà'?",
+                    "options": ["House", "Car", "School"],
+                    "answer": "House",
+                    "explanation": "'House' means 'nhà' in Vietnamese."
+                },
+                {
+                    "question": "What is the correct pronoun for 'John and I'?",
+                    "options": ["We", "They", "He"],
+                    "answer": "We",
+                    "explanation": "'We' is the pronoun for 'John and I'."
+                },
+                {
+                    "question": "Which sentence is in the present tense?",
+                    "options": ["She walks.", "She walked.", "She will walk."],
+                    "answer": "She walks.",
+                    "explanation": "'She walks' is in the present tense."
+                },
+                {
+                    "question": "What does 'dog' mean?",
+                    "options": ["Chó", "Mèo", "Chim"],
+                    "answer": "Chó",
+                    "explanation": "'Dog' means 'chó' in Vietnamese."
+                },
+                {
+                    "question": "Which word is an adverb?",
+                    "options": ["Quickly", "Quick", "Book"],
+                    "answer": "Quickly",
+                    "explanation": "'Quickly' is an adverb, modifying a verb."
+                },
+                {
+                    "question": "What is the plural of 'book'?",
+                    "options": ["Books", "Bookes", "Bookies"],
+                    "answer": "Books",
+                    "explanation": "The plural of 'book' is 'books'."
+                },
+                {
+                    "question": "Which is the correct sentence?",
+                    "options": ["I like ice cream.", "I likes ice cream.", "I liking ice cream."],
+                    "answer": "I like ice cream.",
+                    "explanation": "The correct form is 'I like ice cream' with 'like' for first-person singular."
+                },
+                {
+                    "question": "What does 'mother' mean?",
+                    "options": ["Mẹ", "Bố", "Anh"],
+                    "answer": "Mẹ",
+                    "explanation": "'Mother' means 'mẹ' in Vietnamese."
+                },
+                {
+                    "question": "What is the past tense of 'run'?",
+                    "options": ["Ran", "Runed", "Running"],
+                    "answer": "Ran",
+                    "explanation": "The past tense of 'run' is 'ran'."
+                },
+                {
+                    "question": "Which word is a preposition?",
+                    "options": ["On", "Table", "Jump"],
+                    "answer": "On",
+                    "explanation": "'On' is a preposition, showing position."
+                },
+                {
+                    "question": "What does 'red' mean?",
+                    "options": ["Đỏ", "Xanh", "Vàng"],
+                    "answer": "Đỏ",
+                    "explanation": "'Red' means 'đỏ' in Vietnamese."
+                },
+                {
+                    "question": "Which sentence is correct?",
+                    "options": ["He plays football.", "He play football.", "He playing football."],
+                    "answer": "He plays football.",
+                    "explanation": "The correct form is 'He plays football' with 'plays' for third-person singular."
+                },
+                {
+                    "question": "What is the opposite of 'hot'?",
+                    "options": ["Cold", "Warm", "Cool"],
+                    "answer": "Cold",
+                    "explanation": "The opposite of 'hot' is 'cold'."
+                },
+                {
+                    "question": "Which word means 'trường học'?",
+                    "options": ["School", "Hospital", "Park"],
+                    "answer": "School",
+                    "explanation": "'School' means 'trường học' in Vietnamese."
+                },
+                {
+                    "question": "What is the past tense of 'eat'?",
+                    "options": ["Ate", "Eaten", "Eats"],
+                    "answer": "Ate",
+                    "explanation": "The past tense of 'eat' is 'ate'."
+                },
+                {
+                    "question": "Which word is a pronoun?",
+                    "options": ["She", "Run", "Fast"],
+                    "answer": "She",
+                    "explanation": "'She' is a pronoun, replacing a noun."
+                },
+                {
+                    "question": "What does 'cat' mean?",
+                    "options": ["Mèo", "Chó", "Ngựa"],
+                    "answer": "Mèo",
+                    "explanation": "'Cat' means 'mèo' in Vietnamese."
+                },
+                {
+                    "question": "Which sentence is in the future tense?",
+                    "options": ["I will go.", "I went.", "I am going."],
+                    "answer": "I will go.",
+                    "explanation": "'I will go' is in the future tense."
+                },
+                {
+                    "question": "What is the plural of 'man'?",
+                    "options": ["Men", "Mans", "Manes"],
+                    "answer": "Men",
+                    "explanation": "The plural of 'man' is 'men'."
+                }
+            ],
+            "medium": [
+                {
+                    "question": "Choose the correct word: 'She ___ to school every day.'",
+                    "options": ["goes", "go", "going"],
+                    "answer": "goes",
+                    "explanation": "'Goes' is correct for third-person singular in present tense."
+                },
+                {
+                    "question": "What is the past participle of 'write'?",
+                    "options": ["Written", "Wrote", "Writing"],
+                    "answer": "Written",
+                    "explanation": "The past participle of 'write' is 'written'."
+                },
+                {
+                    "question": "Which sentence is in the passive voice?",
+                    "options": ["The book was read by her.", "She reads the book.", "She is reading the book."],
+                    "answer": "The book was read by her.",
+                    "explanation": "'The book was read by her' is in the passive voice."
+                },
+                {
+                    "question": "What does 'difficult' mean?",
+                    "options": ["Khó", "Dễ", "Nhanh"],
+                    "answer": "Khó",
+                    "explanation": "'Difficult' means 'khó' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'They ___ happy yesterday.'",
+                    "options": ["were", "are", "is"],
+                    "answer": "were",
+                    "explanation": "'Were' is correct for past tense with 'they'."
+                },
+                {
+                    "question": "Which word is a synonym of 'big'?",
+                    "options": ["Large", "Small", "Tiny"],
+                    "answer": "Large",
+                    "explanation": "'Large' is a synonym of 'big'."
+                },
+                {
+                    "question": "What is the comparative form of 'good'?",
+                    "options": ["Better", "Gooder", "Best"],
+                    "answer": "Better",
+                    "explanation": "The comparative form of 'good' is 'better'."
+                },
+                {
+                    "question": "Which sentence uses the correct tense?",
+                    "options": ["She has just finished.", "She just finish.", "She finishing now."],
+                    "answer": "She has just finished.",
+                    "explanation": "'She has just finished' uses present perfect tense correctly."
+                },
+                {
+                    "question": "What does 'travel' mean?",
+                    "options": ["Du lịch", "Học", "Làm việc"],
+                    "answer": "Du lịch",
+                    "explanation": "'Travel' means 'du lịch' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'He ___ a car last year.'",
+                    "options": ["bought", "buy", "buying"],
+                    "answer": "bought",
+                    "explanation": "'Bought' is the past tense of 'buy'."
+                },
+                {
+                    "question": "Which word is an antonym of 'happy'?",
+                    "options": ["Sad", "Joyful", "Excited"],
+                    "answer": "Sad",
+                    "explanation": "'Sad' is an antonym of 'happy'."
+                },
+                {
+                    "question": "What is the superlative form of 'tall'?",
+                    "options": ["Tallest", "Taller", "Most tall"],
+                    "answer": "Tallest",
+                    "explanation": "The superlative form of 'tall' is 'tallest'."
+                },
+                {
+                    "question": "Which sentence is correct?",
+                    "options": ["If I study, I will pass.", "If I study, I pass.", "If I studying, I will pass."],
+                    "answer": "If I study, I will pass.",
+                    "explanation": "'If I study, I will pass' is a correct conditional sentence."
+                },
+                {
+                    "question": "What does 'friend' mean?",
+                    "options": ["Bạn", "Kẻ thù", "Người lạ"],
+                    "answer": "Bạn",
+                    "explanation": "'Friend' means 'bạn' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'We ___ TV now.'",
+                    "options": ["are watching", "watch", "watched"],
+                    "answer": "are watching",
+                    "explanation": "'Are watching' is correct for present continuous tense."
+                },
+                {
+                    "question": "Which word is a conjunction?",
+                    "options": ["And", "Run", "Fast"],
+                    "answer": "And",
+                    "explanation": "'And' is a conjunction, connecting clauses or words."
+                },
+                {
+                    "question": "What is the past tense of 'drink'?",
+                    "options": ["Drank", "Drunk", "Drinking"],
+                    "answer": "Drank",
+                    "explanation": "The past tense of 'drink' is 'drank'."
+                },
+                {
+                    "question": "Which sentence is in the present perfect tense?",
+                    "options": ["I have just arrived.", "I arrive.", "I will arrive."],
+                    "answer": "I have just arrived.",
+                    "explanation": "'I have just arrived' is in the present perfect tense."
+                },
+                {
+                    "question": "What does 'work' mean?",
+                    "options": ["Làm việc", "Nghỉ ngơi", "Chơi"],
+                    "answer": "Làm việc",
+                    "explanation": "'Work' means 'làm việc' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'She ___ to the park yesterday.'",
+                    "options": ["went", "go", "going"],
+                    "answer": "went",
+                    "explanation": "'Went' is the past tense of 'go'."
+                },
+                {
+                    "question": "Which word is a synonym of 'fast'?",
+                    "options": ["Quick", "Slow", "Late"],
+                    "answer": "Quick",
+                    "explanation": "'Quick' is a synonym of 'fast'."
+                },
+                {
+                    "question": "What is the comparative form of 'bad'?",
+                    "options": ["Worse", "Badder", "Worst"],
+                    "answer": "Worse",
+                    "explanation": "The comparative form of 'bad' is 'worse'."
+                },
+                {
+                    "question": "Which sentence uses a modal verb?",
+                    "options": ["She can swim.", "She swims.", "She swam."],
+                    "answer": "She can swim.",
+                    "explanation": "'Can' is a modal verb in 'She can swim'."
+                },
+                {
+                    "question": "What does 'study' mean?",
+                    "options": ["Học", "Chơi", "Ngủ"],
+                    "answer": "Học",
+                    "explanation": "'Study' means 'học' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'They ___ a movie last night.'",
+                    "options": ["watched", "watch", "watching"],
+                    "answer": "watched",
+                    "explanation": "'Watched' is the past tense of 'watch'."
+                },
+                {
+                    "question": "Which word is an antonym of 'easy'?",
+                    "options": ["Difficult", "Simple", "Clear"],
+                    "answer": "Difficult",
+                    "explanation": "'Difficult' is an antonym of 'easy'."
+                },
+                {
+                    "question": "What is the superlative form of 'smart'?",
+                    "options": ["Smartest", "Smarter", "Most smart"],
+                    "answer": "Smartest",
+                    "explanation": "The superlative form of 'smart' is 'smartest'."
+                },
+                {
+                    "question": "Which sentence is correct?",
+                    "options": ["He doesn’t like coffee.", "He don’t like coffee.", "He not like coffee."],
+                    "answer": "He doesn’t like coffee.",
+                    "explanation": "'He doesn’t like coffee' uses the correct negative form."
+                },
+                {
+                    "question": "What does 'teacher' mean?",
+                    "options": ["Giáo viên", "Học sinh", "Bác sĩ"],
+                    "answer": "Giáo viên",
+                    "explanation": "'Teacher' means 'giáo viên' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'I ___ a student.'",
+                    "options": ["am", "is", "are"],
+                    "answer": "am",
+                    "explanation": "'Am' is correct for first-person singular in present tense."
+                }
+            ],
+            "hard": [
+                {
+                    "question": "Choose the correct sentence: 'If I ___ him, I would tell him the truth.'",
+                    "options": ["knew", "know", "known"],
+                    "answer": "knew",
+                    "explanation": "'Knew' is correct for the second conditional, indicating an unreal situation."
+                },
+                {
+                    "question": "What is the past perfect tense of 'go'?",
+                    "options": ["Had gone", "Went", "Had went"],
+                    "answer": "Had gone",
+                    "explanation": "The past perfect of 'go' is 'had gone'."
+                },
+                {
+                    "question": "Which sentence is in the reported speech?",
+                    "options": ["She said that she was tired.", "She says, 'I am tired.'", "She is tired."],
+                    "answer": "She said that she was tired.",
+                    "explanation": "'She said that she was tired' is in reported speech."
+                },
+                {
+                    "question": "What does 'environment' mean?",
+                    "options": ["Môi trường", "Xã hội", "Công việc"],
+                    "answer": "Môi trường",
+                    "explanation": "'Environment' means 'môi trường' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'By the time we arrived, they ___ the party.'",
+                    "options": ["had left", "left", "leave"],
+                    "answer": "had left",
+                    "explanation": "'Had left' is correct for past perfect tense."
+                },
+                {
+                    "question": "Which word is a synonym of 'important'?",
+                    "options": ["Significant", "Minor", "Simple"],
+                    "answer": "Significant",
+                    "explanation": "'Significant' is a synonym of 'important'."
+                },
+                {
+                    "question": "What is the passive form of 'They built the house.'?",
+                    "options": ["The house was built.", "The house is built.", "The house builds."],
+                    "answer": "The house was built.",
+                    "explanation": "'The house was built' is the passive form in past tense."
+                },
+                {
+                    "question": "Which sentence uses a relative clause?",
+                    "options": ["The man who lives next door is a doctor.", "The man lives next door.", "The man is a doctor."],
+                    "answer": "The man who lives next door is a doctor.",
+                    "explanation": "'Who lives next door' is a relative clause."
+                },
+                {
+                    "question": "What does 'education' mean?",
+                    "options": ["Giáo dục", "Sức khỏe", "Du lịch"],
+                    "answer": "Giáo dục",
+                    "explanation": "'Education' means 'giáo dục' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'She wishes she ___ taller.'",
+                    "options": ["were", "is", "be"],
+                    "answer": "were",
+                    "explanation": "'Were' is correct for subjunctive mood in wishes."
+                },
+                {
+                    "question": "Which word is an antonym of 'success'?",
+                    "options": ["Failure", "Achievement", "Victory"],
+                    "answer": "Failure",
+                    "explanation": "'Failure' is an antonym of 'success'."
+                },
+                {
+                    "question": "What is the reported form of 'He said, \"I am busy.\"'?",
+                    "options": ["He said that he was busy.", "He said that he is busy.", "He says he was busy."],
+                    "answer": "He said that he was busy.",
+                    "explanation": "'He said that he was busy' shifts tense correctly in reported speech."
+                },
+                {
+                    "question": "Which sentence is correct?",
+                    "options": ["Unless it rains, we will go out.", "Unless it rains, we go out.", "Unless it raining, we will go out."],
+                    "answer": "Unless it rains, we will go out.",
+                    "explanation": "'Unless it rains, we will go out' is a correct conditional sentence."
+                },
+                {
+                    "question": "What does 'culture' mean?",
+                    "options": ["Văn hóa", "Khoa học", "Kinh tế"],
+                    "answer": "Văn hóa",
+                    "explanation": "'Culture' means 'văn hóa' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'This is the best movie I ___ seen.'",
+                    "options": ["have", "had", "has"],
+                    "answer": "have",
+                    "explanation": "'Have' is correct for present perfect tense with 'I'."
+                },
+                {
+                    "question": "Which sentence uses a phrasal verb?",
+                    "options": ["She turned off the light.", "She turned the page.", "She turned quickly."],
+                    "answer": "She turned off the light.",
+                    "explanation": "'Turned off' is a phrasal verb."
+                },
+                {
+                    "question": "What is the past participle of 'break'?",
+                    "options": ["Broken", "Broke", "Breaking"],
+                    "answer": "Broken",
+                    "explanation": "The past participle of 'break' is 'broken'."
+                },
+                {
+                    "question": "Which sentence is in the future perfect tense?",
+                    "options": ["I will have finished by tomorrow.", "I will finish tomorrow.", "I finished yesterday."],
+                    "answer": "I will have finished by tomorrow.",
+                    "explanation": "'I will have finished by tomorrow' is in the future perfect tense."
+                },
+                {
+                    "question": "What does 'technology' mean?",
+                    "options": ["Công nghệ", "Thể thao", "Nghệ thuật"],
+                    "answer": "Công nghệ",
+                    "explanation": "'Technology' means 'công nghệ' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'He ___ me if he had known.'",
+                    "options": ["would have told", "will tell", "tells"],
+                    "answer": "would have told",
+                    "explanation": "'Would have told' is correct for third conditional."
+                },
+                {
+                    "question": "Which word is a synonym of 'difficult'?",
+                    "options": ["Challenging", "Easy", "Simple"],
+                    "answer": "Challenging",
+                    "explanation": "'Challenging' is a synonym of 'difficult'."
+                },
+                {
+                    "question": "What is the passive form of 'Someone stole my bag.'?",
+                    "options": ["My bag was stolen.", "My bag is stolen.", "My bag stole."],
+                    "answer": "My bag was stolen.",
+                    "explanation": "'My bag was stolen' is the passive form in past tense."
+                },
+                {
+                    "question": "Which sentence uses an infinitive?",
+                    "options": ["I want to learn English.", "I want learning English.", "I want learned English."],
+                    "answer": "I want to learn English.",
+                    "explanation": "'To learn' is an infinitive."
+                },
+                {
+                    "question": "What does 'health' mean?",
+                    "options": ["Sức khỏe", "Tiền bạc", "Hạnh phúc"],
+                    "answer": "Sức khỏe",
+                    "explanation": "'Health' means 'sức khỏe' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'She ___ here since last week.'",
+                    "options": ["has been", "was", "is"],
+                    "answer": "has been",
+                    "explanation": "'Has been' is correct for present perfect continuous tense."
+                },
+                {
+                    "question": "Which word is an antonym of 'increase'?",
+                    "options": ["Decrease", "Rise", "Grow"],
+                    "answer": "Decrease",
+                    "explanation": "'Decrease' is an antonym of 'increase'."
+                },
+                {
+                    "question": "What is the reported form of 'She asked, \"Where are you?\"'?",
+                    "options": ["She asked where I was.", "She asked where am I.", "She asks where I am."],
+                    "answer": "She asked where I was.",
+                    "explanation": "'She asked where I was' shifts tense correctly in reported speech."
+                },
+                {
+                    "question": "Which sentence uses a gerund?",
+                    "options": ["Swimming is fun.", "I swim every day.", "She swims well."],
+                    "answer": "Swimming is fun.",
+                    "explanation": "'Swimming' is a gerund, acting as the subject."
+                },
+                {
+                    "question": "What does 'economy' mean?",
+                    "options": ["Kinh tế", "Chính trị", "Xã hội"],
+                    "answer": "Kinh tế",
+                    "explanation": "'Economy' means 'kinh tế' in Vietnamese."
+                },
+                {
+                    "question": "Choose the correct word: 'If I ___ you, I would apologize.'",
+                    "options": ["were", "am", "be"],
+                    "answer": "were",
+                    "explanation": "'Were' is correct for subjunctive mood in second conditional."
+                }
+            ]
+        },
+        "history": {
+            "easy": [
+                {
+                    "question": "Ai là vị vua đầu tiên của nhà Nguyễn?",
+                    "options": ["Gia Long", "Minh Mạng", "Thiệu Trị"],
+                    "answer": "Gia Long",
+                    "explanation": "Gia Long là vị vua đầu tiên của nhà Nguyễn, lên ngôi năm 1802."
+                },
+                {
+                    "question": "Chiến tranh thế giới thứ nhất diễn ra vào năm nào?",
+                    "options": ["1914-1918", "1939-1945", "1910-1914"],
+                    "answer": "1914-1918",
+                    "explanation": "Chiến tranh thế giới thứ nhất diễn ra từ 1914 đến 1918."
+                },
+                {
+                    "question": "Hiệp định Genève được ký kết vào năm nào?",
+                    "options": ["1954", "1945", "1960"],
+                    "answer": "1954",
+                    "explanation": "Hiệp định Genève được ký ngày 21/7/1954, chấm dứt chiến tranh Đông Dương."
+                },
+                {
+                    "question": "Ai là lãnh tụ của phong trào cách mạng Việt Nam năm 1930?",
+                    "options": ["Nguyễn Ái Quốc", "Phan Bội Châu", "Phan Chu Trinh"],
+                    "answer": "Nguyễn Ái Quốc",
+                    "explanation": "Nguyễn Ái Quốc (tức Hồ Chí Minh) lãnh đạo phong trào cách mạng Việt Nam năm 1930."
+                },
+                {
+                    "question": "Cách mạng tháng Tám ở Việt Nam diễn ra vào năm nào?",
+                    "options": ["1945", "1930", "1954"],
+                    "answer": "1945",
+                    "explanation": "Cách mạng tháng Tám thành công vào ngày 19/8/1945."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa Tây Sơn?",
+                    "options": ["Nguyễn Huệ", "Nguyễn Trãi", "Lê Lợi"],
+                    "answer": "Nguyễn Huệ",
+                    "explanation": "Nguyễn Huệ là người lãnh đạo chính của phong trào Tây Sơn."
+                },
+                {
+                    "question": "Nhà nước Văn Lang được thành lập vào thời kỳ nào?",
+                    "options": ["Thời Hùng Vương", "Thời nhà Trần", "Thời nhà Lý"],
+                    "answer": "Thời Hùng Vương",
+                    "explanation": "Nhà nước Văn Lang được thành lập dưới thời Hùng Vương, khoảng thế kỷ 7 TCN."
+                },
+                {
+                    "question": "Chiến thắng Điện Biên Phủ diễn ra vào năm nào?",
+                    "options": ["1954", "1945", "1968"],
+                    "answer": "1954",
+                    "explanation": "Chiến thắng Điện Biên Phủ diễn ra ngày 7/5/1954."
+                },
+                {
+                    "question": "Ai là vị vua cuối cùng của triều đại nhà Nguyễn?",
+                    "options": ["Bảo Đại", "Duy Tân", "Khải Định"],
+                    "answer": "Bảo Đại",
+                    "explanation": "Bảo Đại là vị vua cuối cùng của nhà Nguyễn, thoái vị năm 1945."
+                },
+                {
+                    "question": "Phong trào Đông Du do ai khởi xướng?",
+                    "options": ["Phan Bội Châu", "Phan Chu Trinh", "Nguyễn Thái Học"],
+                    "answer": "Phan Bội Châu",
+                    "explanation": "Phong trào Đông Du được Phan Bội Châu khởi xướng vào năm 1905."
+                },
+                {
+                    "question": "Nhật Bản đầu hàng Đồng minh vào năm nào?",
+                    "options": ["1945", "1939", "1950"],
+                    "answer": "1945",
+                    "explanation": "Nhật Bản đầu hàng Đồng minh ngày 15/8/1945, kết thúc Thế chiến II."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa Yên Bái năm 1930?",
+                    "options": ["Nguyễn Thái Học", "Phan Bội Châu", "Trần Phú"],
+                    "answer": "Nguyễn Thái Học",
+                    "explanation": "Nguyễn Thái Học lãnh đạo cuộc khởi nghĩa Yên Bái do Việt Nam Quốc dân đảng tổ chức."
+                },
+                {
+                    "question": "Nhà Trần ra đời vào năm nào?",
+                    "options": ["1225", "1009", "1428"],
+                    "answer": "1225",
+                    "explanation": "Nhà Trần được thành lập năm 1225 khi Trần Thủ Độ đưa Trần Cảnh lên ngôi."
+                },
+                {
+                    "question": "Ngày Quốc khánh Việt Nam là ngày nào?",
+                    "options": ["2/9", "30/4", "10/3"],
+                    "answer": "2/9",
+                    "explanation": "Ngày 2/9/1945, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa."
+                },
+                {
+                    "question": "Ai là người sáng lập Đảng Cộng sản Việt Nam?",
+                    "options": ["Hồ Chí Minh", "Trần Phú", "Phan Bội Châu"],
+                    "answer": "Hồ Chí Minh",
+                    "explanation": "Hồ Chí Minh sáng lập Đảng Cộng sản Việt Nam ngày 3/2/1930."
+                },
+                {
+                    "question": "Chiến tranh thế giới thứ hai bắt đầu vào năm nào?",
+                    "options": ["1939", "1914", "1945"],
+                    "answer": "1939",
+                    "explanation": "Chiến tranh thế giới thứ hai bắt đầu ngày 1/9/1939 khi Đức tấn công Ba Lan."
+                },
+                {
+                    "question": "Nhà Lý được thành lập vào năm nào?",
+                    "options": ["1009", "968", "1225"],
+                    "answer": "1009",
+                    "explanation": "Nhà Lý được thành lập năm 1009 khi Lý Công Uẩn lên ngôi."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc kháng chiến chống quân Nguyên lần thứ ba?",
+                    "options": ["Trần Hưng Đạo", "Lê Lợi", "Nguyễn Trãi"],
+                    "answer": "Trần Hưng Đạo",
+                    "explanation": "Trần Hưng Đạo lãnh đạo cuộc kháng chiến chống quân Nguyên lần thứ ba (1288)."
+                },
+                {
+                    "question": "Hiệp định Paris về Việt Nam được ký vào năm nào?",
+                    "options": ["1973", "1954", "1968"],
+                    "answer": "1973",
+                    "explanation": "Hiệp định Paris được ký ngày 27/1/1973, chấm dứt sự can thiệp của Mỹ tại Việt Nam."
+                },
+                {
+                    "question": "Phong trào Duy Tân do ai khởi xướng?",
+                    "options": ["Phan Chu Trinh", "Phan Bội Châu", "Nguyễn Thái Học"],
+                    "answer": "Phan Chu Trinh",
+                    "explanation": "Phong trào Duy Tân do Phan Chu Trinh khởi xướng, kêu gọi cải cách xã hội."
+                },
+                {
+                    "question": "Nhà Hồ tồn tại trong bao nhiêu năm?",
+                    "options": ["7 năm", "10 năm", "15 năm"],
+                    "answer": "7 năm",
+                    "explanation": "Nhà Hồ tồn tại từ 1400 đến 1407, tổng cộng 7 năm."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa Lam Sơn?",
+                    "options": ["Lê Lợi", "Nguyễn Trãi", "Trần Hưng Đạo"],
+                    "answer": "Lê Lợi",
+                    "explanation": "Lê Lợi lãnh đạo cuộc khởi nghĩa Lam Sơn (1418-1427) chống quân Minh."
+                },
+                {
+                    "question": "Chiến dịch Biên giới diễn ra vào năm nào?",
+                    "options": ["1950", "1945", "1954"],
+                    "answer": "1950",
+                    "explanation": "Chiến dịch Biên giới diễn ra từ tháng 9 đến tháng 10 năm 1950."
+                },
+                {
+                    "question": "Nhà nước Đại Việt được thành lập dưới triều đại nào?",
+                    "options": ["Nhà Ngô", "Nhà Đinh", "Nhà Lý"],
+                    "answer": "Nhà Ngô",
+                    "explanation": "Nhà Ngô (Ngô Quyền) lập ra nhà nước Đại Việt sau chiến thắng Bạch Đằng năm 938."
+                },
+                {
+                    "question": "Ai là người viết 'Bình Ngô đại cáo'?",
+                    "options": ["Nguyễn Trãi", "Lê Lợi", "Trần Hưng Đạo"],
+                    "answer": "Nguyễn Trãi",
+                    "explanation": "Nguyễn Trãi viết 'Bình Ngô đại cáo' năm 1428, tuyên bố thắng lợi chống quân Minh."
+                },
+                {
+                    "question": "Phong trào Xô Viết Nghệ-Tĩnh diễn ra vào năm nào?",
+                    "options": ["1930-1931", "1945-1946", "1950-1951"],
+                    "answer": "1930-1931",
+                    "explanation": "Phong trào Xô Viết Nghệ-Tĩnh diễn ra từ 1930-1931 dưới sự lãnh đạo của Đảng Cộng sản."
+                },
+                {
+                    "question": "Ngày giải phóng miền Nam là ngày nào?",
+                    "options": ["30/4/1975", "2/9/1945", "7/5/1954"],
+                    "answer": "30/4/1975",
+                    "explanation": "Ngày 30/4/1975, miền Nam được giải phóng, thống nhất đất nước."
+                },
+                {
+                    "question": "Ai là vị vua đầu tiên của nhà Lê sơ?",
+                    "options": ["Lê Thái Tổ", "Lê Thái Tông", "Lê Nhân Tông"],
+                    "answer": "Lê Thái Tổ",
+                    "explanation": "Lê Thái Tổ (Lê Lợi) là vị vua đầu tiên của nhà Lê sơ, lên ngôi năm 1428."
+                },
+                {
+                    "question": "Chiến dịch Hồ Chí Minh kết thúc vào ngày nào?",
+                    "options": ["30/4/1975", "7/5/1954", "21/7/1954"],
+                    "answer": "30/4/1975",
+                    "explanation": "Chiến dịch Hồ Chí Minh kết thúc ngày 30/4/1975, giải phóng Sài Gòn."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc kháng chiến chống quân Tống lần thứ hai?",
+                    "options": ["Lý Thường Kiệt", "Trần Hưng Đạo", "Ngô Quyền"],
+                    "answer": "Lý Thường Kiệt",
+                    "explanation": "Lý Thường Kiệt lãnh đạo cuộc kháng chiến chống quân Tống năm 1075-1077."
+                }
+            ],
+            "medium": [
+                {
+                    "question": "Phong trào Cần Vương do ai lãnh đạo?",
+                    "options": ["Hàm Nghi", "Tôn Thất Thuyết", "Phan Đình Phùng"],
+                    "answer": "Hàm Nghi",
+                    "explanation": "Phong trào Cần Vương do vua Hàm Nghi lãnh đạo, kêu gọi chống Pháp từ 1885."
+                },
+                {
+                    "question": "Chiến thắng Bạch Đằng năm 938 do ai lãnh đạo?",
+                    "options": ["Ngô Quyền", "Đinh Bộ Lĩnh", "Lý Thường Kiệt"],
+                    "answer": "Ngô Quyền",
+                    "explanation": "Ngô Quyền lãnh đạo chiến thắng Bạch Đằng năm 938, đánh bại quân Nam Hán."
+                },
+                {
+                    "question": "Hội nghị thành lập Đảng Cộng sản Việt Nam diễn ra ở đâu?",
+                    "options": ["Quảng Châu", "Hà Nội", "Huế"],
+                    "answer": "Quảng Châu",
+                    "explanation": "Hội nghị thành lập Đảng Cộng sản Việt Nam diễn ra tại Quảng Châu, Trung Quốc, năm 1930."
+                },
+                {
+                    "question": "Ai là Tổng Bí thư đầu tiên của Đảng Cộng sản Đông Dương?",
+                    "options": ["Trần Phú", "Hồ Chí Minh", "Nguyễn Ái Quốc"],
+                    "answer": "Trần Phú",
+                    "explanation": "Trần Phú là Tổng Bí thư đầu tiên của Đảng Cộng sản Đông Dương (1930)."
+                },
+                {
+                    "question": "Chiến thắng Ngọc Hồi - Đống Đa diễn ra vào năm nào?",
+                    "options": ["1789", "1428", "1077"],
+                    "answer": "1789",
+                    "explanation": "Chiến thắng Ngọc Hồi - Đống Đa do Nguyễn Huệ lãnh đạo diễn ra năm 1789."
+                },
+                {
+                    "question": "Hiệp định sơ bộ Việt - Pháp được ký vào ngày nào?",
+                    "options": ["6/3/1946", "2/9/1945", "21/7/1954"],
+                    "answer": "6/3/1946",
+                    "explanation": "Hiệp định sơ bộ Việt - Pháp được ký ngày 6/3/1946 tại Hà Nội."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc kháng chiến chống quân Minh thế kỷ XV?",
+                    "options": ["Lê Lợi", "Nguyễn Huệ", "Trần Hưng Đạo"],
+                    "answer": "Lê Lợi",
+                    "explanation": "Lê Lợi lãnh đạo cuộc kháng chiến chống quân Minh từ 1418-1427."
+                },
+                {
+                    "question": "Phong trào Việt Nam Quang Phục Hội do ai thành lập?",
+                    "options": ["Phan Bội Châu", "Phan Chu Trinh", "Nguyễn Thái Học"],
+                    "answer": "Phan Bội Châu",
+                    "explanation": "Phan Bội Châu thành lập Việt Nam Quang Phục Hội năm 1912."
+                },
+                {
+                    "question": "Chiến dịch Việt Bắc diễn ra vào năm nào?",
+                    "options": ["1947", "1950", "1954"],
+                    "answer": "1947",
+                    "explanation": "Chiến dịch Việt Bắc diễn ra từ tháng 10 đến tháng 12 năm 1947."
+                },
+                {
+                    "question": "Ai là tác giả của bài thơ 'Nam quốc sơn hà'?",
+                    "options": ["Lý Thường Kiệt", "Nguyễn Trãi", "Trần Hưng Đạo"],
+                    "answer": "Lý Thường Kiệt",
+                    "explanation": "Lý Thường Kiệt là tác giả bài thơ 'Nam quốc sơn hà', tuyên bố độc lập năm 1077."
+                },
+                {
+                    "question": "Phong trào Đồng Khởi diễn ra ở đâu đầu tiên?",
+                    "options": ["Bến Tre", "Sài Gòn", "Huế"],
+                    "answer": "Bến Tre",
+                    "explanation": "Phong trào Đồng Khởi bắt đầu tại Bến Tre vào năm 1960."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa Hai Bà Trưng?",
+                    "options": ["Trưng Trắc và Trưng Nhị", "Bà Triệu", "Lý Bí"],
+                    "answer": "Trưng Trắc và Trưng Nhị",
+                    "explanation": "Trưng Trắc và Trưng Nhị lãnh đạo cuộc khởi nghĩa chống Đông Hán năm 40."
+                },
+                {
+                    "question": "Chiến thắng Điện Biên Phủ trên không diễn ra vào năm nào?",
+                    "options": ["1972", "1954", "1968"],
+                    "answer": "1972",
+                    "explanation": "Chiến thắng Điện Biên Phủ trên không diễn ra tháng 12/1972."
+                },
+                {
+                    "question": "Hội nghị Fontainebleau diễn ra vào năm nào?",
+                    "options": ["1946", "1954", "1930"],
+                    "answer": "1946",
+                    "explanation": "Hội nghị Fontainebleau diễn ra từ tháng 7 đến tháng 9 năm 1946 tại Pháp."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa Ba Đình?",
+                    "options": ["Phan Đình Phùng", "Hoàng Hoa Thám", "Nguyễn Thái Học"],
+                    "answer": "Phan Đình Phùng",
+                    "explanation": "Phan Đình Phùng lãnh đạo cuộc khởi nghĩa Ba Đình (1886-1892) chống Pháp."
+                },
+                {
+                    "question": "Chiến dịch Tây Nguyên mở đầu cuộc tổng tiến công mùa xuân 1975 diễn ra ở đâu?",
+                    "options": ["Buôn Ma Thuột", "Pleiku", "Kon Tum"],
+                    "answer": "Buôn Ma Thuột",
+                    "explanation": "Chiến dịch Tây Nguyên bắt đầu bằng trận đánh Buôn Ma Thuột ngày 10/3/1975."
+                },
+                {
+                    "question": "Phong trào Hội nghị Diên Hồng do ai triệu tập?",
+                    "options": ["Trần Hưng Đạo", "Trần Thủ Độ", "Trần Nhân Tông"],
+                    "answer": "Trần Hưng Đạo",
+                    "explanation": "Trần Hưng Đạo triệu tập Hội nghị Diên Hồng năm 1284 để bàn kế chống quân Nguyên."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa Hương Khê?",
+                    "options": ["Phan Đình Phùng", "Hoàng Hoa Thám", "Tôn Thất Thuyết"],
+                    "answer": "Phan Đình Phùng",
+                    "explanation": "Phan Đình Phùng lãnh đạo cuộc khởi nghĩa Hương Khê (1885-1896) chống Pháp."
+                },
+                {
+                    "question": "Chiến thắng Rạch Gầm - Xoài Mút do ai lãnh đạo?",
+                    "options": ["Nguyễn Huệ", "Nguyễn Ái Quốc", "Lê Lợi"],
+                    "answer": "Nguyễn Huệ",
+                    "explanation": "Nguyễn Huệ lãnh đạo chiến thắng Rạch Gầm - Xoài Mút năm 1785 chống quân Xiêm."
+                },
+                {
+                    "question": "Phong trào 'Pháp - Việt đề huề' do ai đề xướng?",
+                    "options": ["Phan Chu Trinh", "Phan Bội Châu", "Bùi Viện"],
+                    "answer": "Phan Chu Trinh",
+                    "explanation": "Phan Chu Trinh đề xướng phong trào 'Pháp - Việt đề huề', kêu gọi hợp tác cải cách."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc kháng chiến chống quân Nguyên lần thứ hai?",
+                    "options": ["Trần Hưng Đạo", "Trần Thủ Độ", "Lý Thường Kiệt"],
+                    "answer": "Trần Hưng Đạo",
+                    "explanation": "Trần Hưng Đạo lãnh đạo cuộc kháng chiến chống quân Nguyên lần thứ hai năm 1285."
+                },
+                {
+                    "question": "Chiến dịch Hồ Chí Minh được đặt theo tên ai?",
+                    "options": ["Hồ Chí Minh", "Võ Nguyên Giáp", "Phạm Văn Đồng"],
+                    "answer": "Hồ Chí Minh",
+                    "explanation": "Chiến dịch Hồ Chí Minh được đặt theo tên Chủ tịch Hồ Chí Minh, giải phóng miền Nam năm 1975."
+                },
+                {
+                    "question": "Phong trào Tự lực văn đoàn ra đời vào năm nào?",
+                    "options": ["1932", "1945", "1920"],
+                    "answer": "1932",
+                    "explanation": "Phong trào Tự lực văn đoàn ra đời năm 1932, do Nhất Linh lãnh đạo."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa Yên Thế?",
+                    "options": ["Hoàng Hoa Thám", "Phan Đình Phùng", "Nguyễn Thái Học"],
+                    "answer": "Hoàng Hoa Thám",
+                    "explanation": "Hoàng Hoa Thám lãnh đạo cuộc khởi nghĩa Yên Thế (1884-1913) chống Pháp."
+                },
+                {
+                    "question": "Chiến thắng Bạch Đằng năm 1288 diễn ra dưới triều đại nào?",
+                    "options": ["Nhà Trần", "Nhà Lý", "Nhà Lê"],
+                    "answer": "Nhà Trần",
+                    "explanation": "Chiến thắng Bạch Đằng năm 1288 diễn ra dưới triều nhà Trần, do Trần Hưng Đạo lãnh đạo."
+                },
+                {
+                    "question": "Phong trào Đông Kinh Nghĩa Thục do ai sáng lập?",
+                    "options": ["Lương Văn Can", "Phan Bội Châu", "Nguyễn Ái Quốc"],
+                    "answer": "Lương Văn Can",
+                    "explanation": "Phong trào Đông Kinh Nghĩa Thục được Lương Văn Can và Phan Chu Trinh sáng lập năm 1907."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa chống quân Đường năm 544?",
+                    "options": ["Lý Bí", "Triệu Quang Phục", "Mai Thúc Loan"],
+                    "answer": "Lý Bí",
+                    "explanation": "Lý Bí lãnh đạo cuộc khởi nghĩa chống quân Đường năm 544, lập nước Vạn Xuân."
+                },
+                {
+                    "question": "Chiến dịch Biên giới năm 1950 nhằm mục đích gì?",
+                    "options": ["Mở rộng căn cứ địa", "Giải phóng miền Nam", "Chống quân Pháp"],
+                    "answer": "Mở rộng căn cứ địa",
+                    "explanation": "Chiến dịch Biên giới năm 1950 nhằm mở rộng căn cứ địa và thông thương quốc tế."
+                },
+                {
+                    "question": "Ai là người soạn thảo Tuyên ngôn Độc lập năm 1945?",
+                    "options": ["Hồ Chí Minh", "Võ Nguyên Giáp", "Phạm Văn Đồng"],
+                    "answer": "Hồ Chí Minh",
+                    "explanation": "Hồ Chí Minh soạn thảo Tuyên ngôn Độc lập, đọc tại Quảng trường Ba Đình ngày 2/9/1945."
+                },
+                {
+                    "question": "Phong trào Văn hóa 1946-1954 có mục tiêu gì?",
+                    "options": ["Xóa nạn mù chữ", "Phát triển kinh tế", "Xây dựng quân đội"],
+                    "answer": "Xóa nạn mù chữ",
+                    "explanation": "Phong trào Văn hóa 1946-1954 nhằm xóa nạn mù chữ, nâng cao dân trí."
+                }
+            ],
+            "hard": [
+                {
+                    "question": "Hiệp định Genève năm 1954 quy định vĩ tuyến nào chia cắt Việt Nam?",
+                    "options": ["Vĩ tuyến 17", "Vĩ tuyến 16", "Vĩ tuyến 18"],
+                    "answer": "Vĩ tuyến 17",
+                    "explanation": "Hiệp định Genève quy định vĩ tuyến 17 chia cắt Việt Nam thành hai miền tạm thời."
+                },
+                {
+                    "question": "Ai là người đề xuất kế hoạch 'Đường chúng ta đi' năm 1930?",
+                    "options": ["Trần Phú", "Hồ Chí Minh", "Phan Bội Châu"],
+                    "answer": "Trần Phú",
+                    "explanation": "Trần Phú đề xuất 'Đường chúng ta đi' tại Hội nghị Trung ương Đảng năm 1930."
+                },
+                {
+                    "question": "Chiến thắng Điện Biên Phủ trên không có ý nghĩa gì?",
+                    "options": ["Buộc Mỹ đàm phán", "Giải phóng miền Bắc", "Thống nhất đất nước"],
+                    "answer": "Buộc Mỹ đàm phán",
+                    "explanation": "Chiến thắng Điện Biên Phủ trên không (1972) buộc Mỹ phải ký Hiệp định Paris."
+                },
+                {
+                    "question": "Phong trào Tây Sơn lật đổ chính quyền nào vào năm 1788?",
+                    "options": ["Chúa Nguyễn", "Chúa Trịnh", "Nhà Trần"],
+                    "answer": "Chúa Nguyễn",
+                    "explanation": "Phong trào Tây Sơn lật đổ chúa Nguyễn năm 1788, sau đó tiến ra Bắc diệt chúa Trịnh."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa chống Pháp tại Bắc Kỳ năm 1885?",
+                    "options": ["Tôn Thất Thuyết", "Phan Đình Phùng", "Hoàng Hoa Thám"],
+                    "answer": "Tôn Thất Thuyết",
+                    "explanation": "Tôn Thất Thuyết lãnh đạo cuộc khởi nghĩa chống Pháp tại Bắc Kỳ năm 1885, ủng hộ vua Hàm Nghi."
+                },
+                {
+                    "question": "Chiến dịch Việt Bắc năm 1947 nhằm chống lại chiến lược gì của Pháp?",
+                    "options": ["Đánh nhanh thắng nhanh", "Đánh lâu dài", "Phong tỏa kinh tế"],
+                    "answer": "Đánh nhanh thắng nhanh",
+                    "explanation": "Chiến dịch Việt Bắc chống lại chiến lược 'đánh nhanh thắng nhanh' của Pháp."
+                },
+                {
+                    "question": "Phong trào Đông Du có mục tiêu gì?",
+                    "options": ["Đưa thanh niên sang Nhật học", "Cải cách giáo dục", "Xây dựng quân đội"],
+                    "answer": "Đưa thanh niên sang Nhật học",
+                    "explanation": "Phong trào Đông Du nhằm đưa thanh niên sang Nhật học tập để cứu nước."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa chống quân Lương năm 602?",
+                    "options": ["Triệu Quang Phục", "Lý Bí", "Mai Thúc Loan"],
+                    "answer": "Triệu Quang Phục",
+                    "explanation": "Triệu Quang Phục lãnh đạo cuộc khởi nghĩa chống quân Lương năm 602, sau khi Lý Bí mất."
+                },
+                {
+                    "question": "Chiến dịch Tây Nguyên năm 1975 có ý nghĩa chiến lược gì?",
+                    "options": ["Tạo bước ngoặt cho tổng tiến công", "Giải phóng Tây Nguyên", "Cả hai đều đúng"],
+                    "answer": "Cả hai đều đúng",
+                    "explanation": "Chiến dịch Tây Nguyên vừa giải phóng Tây Nguyên vừa tạo bước ngoặt cho tổng tiến công mùa xuân 1975."
+                },
+                {
+                    "question": "Hiệp định Paris năm 1973 quy định thời gian rút quân của Mỹ là bao lâu?",
+                    "options": ["60 ngày", "30 ngày", "90 ngày"],
+                    "answer": "60 ngày",
+                    "explanation": "Hiệp định Paris quy định Mỹ rút quân trong 60 ngày kể từ ngày ký (27/1/1973)."
+                },
+                {
+                    "question": "Phong trào Xô Viết Nghệ-Tĩnh thể hiện tinh thần gì?",
+                    "options": ["Đoàn kết giai cấp", "Yêu nước", "Cả hai đều đúng"],
+                    "answer": "Cả hai đều đúng",
+                    "explanation": "Phong trào Xô Viết Nghệ-Tĩnh thể hiện tinh thần yêu nước và đoàn kết giai cấp công-nông."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa chống quân Ngô năm 722?",
+                    "options": ["Mai Thúc Loan", "Lý Bí", "Phùng Hưng"],
+                    "answer": "Mai Thúc Loan",
+                    "explanation": "Mai Thúc Loan (Mai Hắc Đế) lãnh đạo cuộc khởi nghĩa chống quân Ngô năm 722."
+                },
+                {
+                    "question": "Chiến thắng Điện Biên Phủ năm 1954 có ý nghĩa gì với phong trào giải phóng dân tộc?",
+                    "options": ["Khích lệ phong trào toàn cầu", "Chấm dứt chiến tranh Đông Dương", "Cả hai đều đúng"],
+                    "answer": "Cả hai đều đúng",
+                    "explanation": "Chiến thắng Điện Biên Phủ chấm dứt chiến tranh Đông Dương và khích lệ phong trào giải phóng dân tộc toàn cầu."
+                },
+                {
+                    "question": "Phong trào Duy Tân khác phong trào Đông Du ở điểm nào?",
+                    "options": ["Hòa bình thay vì bạo lực", "Bạo lực thay vì hòa bình", "Học tập ở Nhật Bản"],
+                    "answer": "Hòa bình thay vì bạo lực",
+                    "explanation": "Phong trào Duy Tân theo đường lối hòa bình, cải cách; Đông Du dùng bạo lực chống Pháp."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa chống quân Đường năm 781?",
+                    "options": ["Phùng Hưng", "Mai Thúc Loan", "Triệu Quang Phục"],
+                    "answer": "Phùng Hưng",
+                    "explanation": "Phùng Hưng (Bố Cái Đại Vương) lãnh đạo cuộc khởi nghĩa chống quân Đường năm 781."
+                },
+                {
+                    "question": "Chiến dịch Hồ Chí Minh năm 1975 dựa trên chiến lược gì?",
+                    "options": ["Tổng tiến công và nổi dậy", "Đánh nhanh thắng nhanh", "Phòng thủ lâu dài"],
+                    "answer": "Tổng tiến công và nổi dậy",
+                    "explanation": "Chiến dịch Hồ Chí Minh dựa trên chiến lược 'tổng tiến công và nổi dậy' để giải phóng miền Nam."
+                },
+                {
+                    "question": "Phong trào Hội nghị Diên Hồng năm 1284 nhằm mục đích gì?",
+                    "options": ["Động viên chống quân Nguyên", "Cải cách kinh tế", "Xây dựng quân đội"],
+                    "answer": "Động viên chống quân Nguyên",
+                    "explanation": "Hội nghị Diên Hồng nhằm động viên toàn dân chống quân Nguyên lần thứ hai."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa chống quân Tần năm 214 TCN?",
+                    "options": ["Thục Phán", "Hùng Vương", "Triệu Đà"],
+                    "answer": "Thục Phán",
+                    "explanation": "Thục Phán lãnh đạo cuộc khởi nghĩa chống quân Tần, lập nước Âu Lạc năm 214 TCN."
+                },
+                {
+                    "question": "Chiến thắng Rạch Gầm - Xoài Mút có ý nghĩa gì?",
+                    "options": ["Chặn đứng quân Xiêm", "Thống nhất đất nước", "Cả hai đều đúng"],
+                    "answer": "Chặn đứng quân Xiêm",
+                    "explanation": "Chiến thắng Rạch Gầm - Xoài Mút năm 1785 chặn đứng quân Xiêm xâm lược."
+                },
+                {
+                    "question": "Phong trào Đông Kinh Nghĩa Thục có đóng góp gì?",
+                    "options": ["Nâng cao dân trí", "Xây dựng kinh tế", "Phát triển quân sự"],
+                    "answer": "Nâng cao dân trí",
+                    "explanation": "Phong trào Đông Kinh Nghĩa Thục tập trung nâng cao dân trí qua giáo dục."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa chống quân Minh năm 1407?",
+                    "options": ["Trần Nguyên Hãn", "Lê Lợi", "Nguyễn Trãi"],
+                    "answer": "Trần Nguyên Hãn",
+                    "explanation": "Trần Nguyên Hãn lãnh đạo cuộc khởi nghĩa chống quân Minh trước khi tham gia khởi nghĩa Lam Sơn."
+                },
+                {
+                    "question": "Chiến dịch Biên giới năm 1950 do ai chỉ huy?",
+                    "options": ["Võ Nguyên Giáp", "Hồ Chí Minh", "Phạm Văn Đồng"],
+                    "answer": "Võ Nguyên Giáp",
+                    "explanation": "Võ Nguyên Giáp chỉ huy Chiến dịch Biên giới năm 1950."
+                },
+                {
+                    "question": "Phong trào Văn Thân do ai lãnh đạo?",
+                    "options": ["Các sĩ phu yêu nước", "Phan Bội Châu", "Nguyễn Thái Học"],
+                    "answer": "Các sĩ phu yêu nước",
+                    "explanation": "Phong trào Văn Thân do các sĩ phu yêu nước lãnh đạo, chống Pháp và Thiên Chúa giáo."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa chống quân Nguyên lần thứ nhất?",
+                    "options": ["Trần Thủ Độ", "Trần Hưng Đạo", "Trần Nhân Tông"],
+                    "answer": "Trần Thủ Độ",
+                    "explanation": "Trần Thủ Độ tổ chức cuộc kháng chiến chống quân Nguyên lần thứ nhất năm 1258."
+                },
+                {
+                    "question": "Chiến thắng Điện Biên Phủ trên không sử dụng vũ khí gì chủ lực?",
+                    "options": ["Tên lửa SAM-2", "Súng trường", "Pháo cao xạ"],
+                    "answer": "Tên lửa SAM-2",
+                    "explanation": "Tên lửa SAM-2 là vũ khí chủ lực trong chiến thắng Điện Biên Phủ trên không."
+                },
+                {
+                    "question": "Phong trào Việt Nam Quốc dân đảng thất bại trong sự kiện nào?",
+                    "options": ["Khởi nghĩa Yên Bái", "Đông Du", "Xô Viết Nghệ-Tĩnh"],
+                    "answer": "Khởi nghĩa Yên Bái",
+                    "explanation": "Phong trào Việt Nam Quốc dân đảng thất bại sau khởi nghĩa Yên Bái năm 1930."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa chống quân Ngô năm 939?",
+                    "options": ["Ngô Quyền", "Đinh Bộ Lĩnh", "Lý Công Uẩn"],
+                    "answer": "Ngô Quyền",
+                    "explanation": "Ngô Quyền lãnh đạo cuộc khởi nghĩa chống quân Ngô, chiến thắng Bạch Đằng năm 938."
+                },
+                {
+                    "question": "Chiến dịch Tây Nguyên năm 1975 mở đầu bằng trận đánh nào?",
+                    "options": ["Buôn Ma Thuột", "Pleiku", "Đắk Tô"],
+                    "answer": "Buôn Ma Thuột",
+                    "explanation": "Chiến dịch Tây Nguyên mở đầu bằng trận Buôn Ma Thuột ngày 10/3/1975."
+                },
+                {
+                    "question": "Phong trào Cần Vương thất bại vào năm nào?",
+                    "options": ["1896", "1885", "1900"],
+                    "answer": "1896",
+                    "explanation": "Phong trào Cần Vương thất bại hoàn toàn vào năm 1896 sau cái chết của Phan Đình Phùng."
+                },
+                {
+                    "question": "Ai là người lãnh đạo cuộc khởi nghĩa chống quân Tống năm 981?",
+                    "options": ["Lê Hoàn", "Đinh Bộ Lĩnh", "Ngô Quyền"],
+                    "answer": "Lê Hoàn",
+                    "explanation": "Lê Hoàn (Lê Đại Hành) lãnh đạo cuộc kháng chiến chống quân Tống năm 981."
+                }
+            ]
+        },
+        "geography": {
+            "easy": [
+                {
+                    "question": "Việt Nam nằm ở khu vực nào của châu Á?",
+                    "options": ["Đông Nam Á", "Đông Á", "Nam Á"],
+                    "answer": "Đông Nam Á",
+                    "explanation": "Việt Nam thuộc khu vực Đông Nam Á, nằm ở phía đông bán đảo Đông Dương."
+                },
+                {
+                    "question": "Thủ đô của Việt Nam là gì?",
+                    "options": ["Hà Nội", "TP. Hồ Chí Minh", "Đà Nẵng"],
+                    "answer": "Hà Nội",
+                    "explanation": "Hà Nội là thủ đô chính thức của Việt Nam."
+                },
+                {
+                    "question": "Biển nào bao bọc phía đông Việt Nam?",
+                    "options": ["Biển Đông", "Vịnh Thái Lan", "Biển Nhật Bản"],
+                    "answer": "Biển Đông",
+                    "explanation": "Biển Đông nằm ở phía đông và đông nam Việt Nam."
+                },
+                {
+                    "question": "Dãy núi nào cao nhất Việt Nam?",
+                    "options": ["Fansipan", "Trường Sơn", "Ngọc Linh"],
+                    "answer": "Fansipan",
+                    "explanation": "Fansipan (3.143m) thuộc dãy Hoàng Liên Sơn, là đỉnh núi cao nhất Việt Nam."
+                },
+                {
+                    "question": "Sông nào dài nhất Việt Nam?",
+                    "options": ["Sông Cửu Long", "Sông Hồng", "Sông Đồng Nai"],
+                    "answer": "Sông Cửu Long",
+                    "explanation": "Sông Cửu Long dài khoảng 4.350km, là sông dài nhất Việt Nam."
+                },
+                {
+                    "question": "Việt Nam có bao nhiêu tỉnh thành tính đến năm 2025?",
+                    "options": ["63", "58", "54"],
+                    "answer": "63",
+                    "explanation": "Tính đến năm 2025, Việt Nam có 63 tỉnh và thành phố trực thuộc trung ương."
+                },
+                {
+                    "question": "Vịnh nào ở Việt Nam được UNESCO công nhận là di sản thế giới?",
+                    "options": ["Vịnh Hạ Long", "Vịnh Nha Trang", "Vịnh Cam Ranh"],
+                    "answer": "Vịnh Hạ Long",
+                    "explanation": "Vịnh Hạ Long được UNESCO công nhận là di sản thiên nhiên thế giới năm 1994."
+                },
+                {
+                    "question": "Khu vực nào ở Việt Nam có khí hậu nhiệt đới gió mùa?",
+                    "options": ["Cả nước", "Miền Bắc", "Miền Nam"],
+                    "answer": "Cả nước",
+                    "explanation": "Toàn lãnh thổ Việt Nam có khí hậu nhiệt đới gió mùa."
+                },
+                {
+                    "question": "Tỉnh nào nằm ở cực nam Việt Nam?",
+                    "options": ["Cà Mau", "Kiên Giang", "Bạc Liêu"],
+                    "answer": "Cà Mau",
+                    "explanation": "Cà Mau là tỉnh cực nam của Việt Nam."
+                },
+                {
+                    "question": "Đồng bằng nào lớn nhất Việt Nam?",
+                    "options": ["Đồng bằng sông Cửu Long", "Đồng bằng sông Hồng", "Đồng bằng Duyên hải miền Trung"],
+                    "answer": "Đồng bằng sông Cửu Long",
+                    "explanation": "Đồng bằng sông Cửu Long có diện tích khoảng 40.000 km², lớn nhất Việt Nam."
+                },
+                {
+                    "question": "Việt Nam giáp với bao nhiêu quốc gia trên đất liền?",
+                    "options": ["3", "2", "4"],
+                    "answer": "3",
+                    "explanation": "Việt Nam giáp Lào, Campuchia và Trung Quốc trên đất liền."
+                },
+                {
+                    "question": "Thành phố nào lớn nhất Việt Nam về dân số?",
+                    "options": ["TP. Hồ Chí Minh", "Hà Nội", "Đà Nẵng"],
+                    "answer": "TP. Hồ Chí Minh",
+                    "explanation": "TP. Hồ Chí Minh có dân số lớn nhất Việt Nam, khoảng 9 triệu người (2025)."
+                },
+                {
+                    "question": "Dãy núi Trường Sơn nằm ở khu vực nào của Việt Nam?",
+                    "options": ["Miền Trung", "Miền Bắc", "Miền Nam"],
+                    "answer": "Miền Trung",
+                    "explanation": "Dãy Trường Sơn chạy dọc miền Trung Việt Nam."
+                },
+                {
+                    "question": "Sông Hồng chảy qua thành phố nào?",
+                    "options": ["Hà Nội", "Hải Phòng", "Đà Nẵng"],
+                    "answer": "Hà Nội",
+                    "explanation": "Sông Hồng chảy qua Hà Nội, là nguồn nước quan trọng của miền Bắc."
+                },
+                {
+                    "question": "Việt Nam có bao nhiêu mùa trong năm?",
+                    "options": ["2", "4", "3"],
+                    "answer": "2",
+                    "explanation": "Việt Nam có 2 mùa chính: mùa mưa và mùa khô, do khí hậu nhiệt đới gió mùa."
+                },
+                {
+                    "question": "Tỉnh nào nằm ở cực bắc Việt Nam?",
+                    "options": ["Hà Giang", "Lào Cai", "Cao Bằng"],
+                    "answer": "Hà Giang",
+                    "explanation": "Hà Giang là tỉnh cực bắc của Việt Nam."
+                },
+                {
+                    "question": "Đồng bằng sông Hồng nằm ở khu vực nào?",
+                    "options": ["Miền Bắc", "Miền Trung", "Miền Nam"],
+                    "answer": "Miền Bắc",
+                    "explanation": "Đồng bằng sông Hồng nằm ở miền Bắc Việt Nam."
+                },
+                {
+                    "question": "Biển Đông có ý nghĩa gì với Việt Nam?",
+                    "options": ["Giao thông và kinh tế", "Chỉ giao thông", "Chỉ du lịch"],
+                    "answer": "Giao thông và kinh tế",
+                    "explanation": "Biển Đông quan trọng với giao thông, kinh tế và quốc phòng của Việt Nam."
+                },
+                {
+                    "question": "Tỉnh nào có đường biên giới dài nhất với Lào?",
+                    "options": ["Quảng Nam", "Nghệ An", "Quảng Trị"],
+                    "answer": "Nghệ An",
+                    "explanation": "Nghệ An có đường biên giới dài nhất với Lào, khoảng 419km."
+                },
+                {
+                    "question": "Việt Nam nằm ở bán cầu nào?",
+                    "options": ["Bán cầu Bắc", "Bán cầu Nam", "Cả hai"],
+                    "answer": "Bán cầu Bắc",
+                    "explanation": "Việt Nam nằm hoàn toàn ở bán cầu Bắc."
+                },
+                {
+                    "question": "Thành phố nào được gọi là 'thành phố hoa'?",
+                    "options": ["Đà Lạt", "Hà Nội", "Huế"],
+                    "answer": "Đà Lạt",
+                    "explanation": "Đà Lạt được gọi là 'thành phố hoa' nhờ khí hậu mát mẻ và nhiều loài hoa."
+                },
+                {
+                    "question": "Sông Cửu Long bắt nguồn từ đâu?",
+                    "options": ["Tây Tạng", "Trung Quốc", "Lào"],
+                    "answer": "Tây Tạng",
+                    "explanation": "Sông Cửu Long bắt nguồn từ cao nguyên Tây Tạng."
+                },
+                {
+                    "question": "Việt Nam có bao nhiêu vùng địa lý?",
+                    "options": ["7", "6", "8"],
+                    "answer": "7",
+                    "explanation": "Việt Nam có 7 vùng địa lý: Tây Bắc, Đông Bắc, Đồng bằng sông Hồng, Bắc Trung Bộ, Nam Trung Bộ, Tây Nguyên, Đông Nam Bộ."
+                },
+                {
+                    "question": "Tỉnh nào có diện tích lớn nhất Việt Nam?",
+                    "options": ["Nghệ An", "Gia Lai", "Đắk Lắk"],
+                    "answer": "Nghệ An",
+                    "explanation": "Nghệ An có diện tích lớn nhất, khoảng 16.498 km²."
+                },
+                {
+                    "question": "Đảo lớn nhất Việt Nam là gì?",
+                    "options": ["Phú Quốc", "Cát Bà", "Côn Đảo"],
+                    "answer": "Phú Quốc",
+                    "explanation": "Phú Quốc là đảo lớn nhất Việt Nam, diện tích khoảng 589 km²."
+                },
+                {
+                    "question": "Việt Nam có bao nhiêu km đường bờ biển?",
+                    "options": ["3.260 km", "2.500 km", "4.000 km"],
+                    "answer": "3.260 km",
+                    "explanation": "Việt Nam có đường bờ biển dài khoảng 3.260 km."
+                },
+                {
+                    "question": "Tỉnh nào nằm ở cực đông Việt Nam?",
+                    "options": ["Quảng Ninh", "Hải Phòng", "Nghệ An"],
+                    "answer": "Quảng Ninh",
+                    "explanation": "Quảng Ninh là tỉnh cực đông của Việt Nam trên đất liền."
+                },
+                {
+                    "question": "Dãy Hoàng Liên Sơn nằm ở khu vực nào?",
+                    "options": ["Tây Bắc", "Đông Bắc", "Miền Trung"],
+                    "answer": "Tây Bắc",
+                    "explanation": "Dãy Hoàng Liên Sơn nằm ở vùng Tây Bắc Việt Nam."
+                },
+                {
+                    "question": "Thành phố nào là trung tâm kinh tế lớn nhất Việt Nam?",
+                    "options": ["TP. Hồ Chí Minh", "Hà Nội", "Đà Nẵng"],
+                    "answer": "TP. Hồ Chí Minh",
+                    "explanation": "TP. Hồ Chí Minh là trung tâm kinh tế lớn nhất Việt Nam."
+                },
+                {
+                    "question": "Việt Nam nằm ở múi giờ nào?",
+                    "options": ["UTC+7", "UTC+8", "UTC+6"],
+                    "answer": "UTC+7",
+                    "explanation": "Việt Nam nằm ở múi giờ UTC+7."
+                }
+            ],
+            "medium": [
+            {
+                "question": "Vùng nào ở Việt Nam có diện tích rừng lớn nhất?",
+                "options": ["Tây Nguyên", "Đồng bằng sông Cửu Long", "Đồng bằng sông Hồng"],
+                "answer": "Tây Nguyên",
+                "explanation": "Tây Nguyên có diện tích rừng lớn nhất nhờ địa hình đồi núi và khí hậu thích hợp."
+            },
+            {
+                "question": "Sông nào cung cấp nước chính cho đồng bằng sông Hồng?",
+                "options": ["Sông Hồng", "Sông Thái Bình", "Sông Đà"],
+                "answer": "Sông Hồng",
+                "explanation": "Sông Hồng là nguồn nước chính cho đồng bằng sông Hồng, mang phù sa bồi đắp đất."
+            },
+            {
+                "question": "Tỉnh nào có trữ lượng dầu mỏ lớn nhất Việt Nam?",
+                "options": ["Bà Rịa - Vũng Tàu", "Kiên Giang", "Quảng Ngãi"],
+                "answer": "Bà Rịa - Vũng Tàu",
+                "explanation": "Bà Rịa - Vũng Tàu là trung tâm khai thác dầu mỏ lớn nhất Việt Nam."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam sản xuất lúa gạo nhiều nhất?",
+                "options": ["Đồng bằng sông Cửu Long", "Đồng bằng sông Hồng", "Tây Nguyên"],
+                "answer": "Đồng bằng sông Cửu Long",
+                "explanation": "Đồng bằng sông Cửu Long là vựa lúa lớn nhất, chiếm hơn 50% sản lượng lúa gạo cả nước."
+            },
+            {
+                "question": "Thành phố nào ở Việt Nam có cảng biển lớn nhất?",
+                "options": ["Hải Phòng", "TP. Hồ Chí Minh", "Đà Nẵng"],
+                "answer": "Hải Phòng",
+                "explanation": "Hải Phòng có cảng biển lớn nhất miền Bắc, đóng vai trò quan trọng trong giao thương."
+            },
+            {
+                "question": "Dãy núi nào ngăn cách miền Bắc và miền Trung Việt Nam?",
+                "options": ["Dãy Trường Sơn", "Dãy Hoàng Liên Sơn", "Dãy Bạch Mã"],
+                "answer": "Dãy Bạch Mã",
+                "explanation": "Dãy Bạch Mã là ranh giới tự nhiên giữa miền Bắc và miền Trung Việt Nam."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có sản lượng cà phê lớn nhất?",
+                "options": ["Đắk Lắk", "Gia Lai", "Lâm Đồng"],
+                "answer": "Đắk Lắk",
+                "explanation": "Đắk Lắk là tỉnh sản xuất cà phê lớn nhất Việt Nam, thuộc vùng Tây Nguyên."
+            },
+            {
+                "question": "Việt Nam có bao nhiêu đảo và quần đảo?",
+                "options": ["Hơn 4.000", "Hơn 2.000", "Hơn 1.000"],
+                "answer": "Hơn 4.000",
+                "explanation": "Việt Nam có hơn 4.000 đảo và quần đảo lớn nhỏ trên Biển Đông."
+            },
+            {
+                "question": "Sông nào chảy qua Tây Nguyên?",
+                "options": ["Sông Sê San", "Sông Hồng", "Sông Cửu Long"],
+                "answer": "Sông Sê San",
+                "explanation": "Sông Sê San chảy qua Tây Nguyên, cung cấp nước và thủy điện."
+            },
+            {
+                "question": "Tỉnh nào có đường biên giới dài nhất với Trung Quốc?",
+                "options": ["Lạng Sơn", "Quảng Ninh", "Hà Giang"],
+                "answer": "Lạng Sơn",
+                "explanation": "Lạng Sơn có đường biên giới dài nhất với Trung Quốc, khoảng 253 km."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có khí hậu 4 mùa rõ rệt?",
+                "options": ["Miền Bắc", "Miền Trung", "Miền Nam"],
+                "answer": "Miền Bắc",
+                "explanation": "Miền Bắc có khí hậu 4 mùa: xuân, hạ, thu, đông rõ rệt."
+            },
+            {
+                "question": "Tỉnh nào sản xuất cao su lớn nhất Việt Nam?",
+                "options": ["Bình Phước", "Đắk Lắk", "Đồng Nai"],
+                "answer": "Bình Phước",
+                "explanation": "Bình Phước là tỉnh sản xuất cao su lớn nhất, thuộc vùng Đông Nam Bộ."
+            },
+            {
+                "question": "Sông Đồng Nai chảy qua khu vực nào?",
+                "options": ["Đông Nam Bộ", "Tây Nguyên", "Miền Trung"],
+                "answer": "Đông Nam Bộ",
+                "explanation": "Sông Đồng Nai chảy qua Đông Nam Bộ, cung cấp nước cho TP. Hồ Chí Minh và các tỉnh lân cận."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có nhiều bão nhất?",
+                "options": ["Miền Trung", "Miền Bắc", "Miền Nam"],
+                "answer": "Miền Trung",
+                "explanation": "Miền Trung chịu ảnh hưởng bão nhiều nhất do vị trí tiếp giáp Biển Đông."
+            },
+            {
+                "question": "Tỉnh nào có trữ lượng than đá lớn nhất Việt Nam?",
+                "options": ["Quảng Ninh", "Thái Nguyên", "Hà Tĩnh"],
+                "answer": "Quảng Ninh",
+                "explanation": "Quảng Ninh có trữ lượng than đá lớn nhất, là trung tâm khai thác than của cả nước."
+            },
+            {
+                "question": "Đồng bằng sông Cửu Long có bao nhiêu tỉnh?",
+                "options": ["13", "10", "15"],
+                "answer": "13",
+                "explanation": "Đồng bằng sông Cửu Long có 13 tỉnh, bao gồm cả TP. Cần Thơ."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có độ cao trung bình lớn nhất?",
+                "options": ["Tây Nguyên", "Tây Bắc", "Đông Bắc"],
+                "answer": "Tây Nguyên",
+                "explanation": "Tây Nguyên có độ cao trung bình lớn nhất, khoảng 500-1.500m so với mực nước biển."
+            },
+            {
+                "question": "Sông nào cung cấp thủy điện lớn nhất Việt Nam?",
+                "options": ["Sông Đà", "Sông Hồng", "Sông Sê San"],
+                "answer": "Sông Đà",
+                "explanation": "Sông Đà cung cấp thủy điện lớn nhất qua nhà máy Sơn La và Hòa Bình."
+            },
+            {
+                "question": "Tỉnh nào có sản lượng thủy sản lớn nhất Việt Nam?",
+                "options": ["Kiên Giang", "Cà Mau", "Bình Thuận"],
+                "answer": "Kiên Giang",
+                "explanation": "Kiên Giang có sản lượng thủy sản lớn nhất nhờ vị trí ven biển và đảo Phú Quốc."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có dân số đông nhất?",
+                "options": ["Đồng bằng sông Hồng", "Đông Nam Bộ", "Đồng bằng sông Cửu Long"],
+                "answer": "Đồng bằng sông Hồng",
+                "explanation": "Đồng bằng sông Hồng có mật độ dân số cao nhất, dân số đông nhất Việt Nam."
+            },
+            {
+                "question": "Tỉnh nào nằm ở vùng Tây Bắc có diện tích lớn nhất?",
+                "options": ["Sơn La", "Lào Cai", "Điện Biên"],
+                "answer": "Sơn La",
+                "explanation": "Sơn La có diện tích lớn nhất vùng Tây Bắc, khoảng 14.125 km²."
+            },
+            {
+                "question": "Sông Cửu Long chảy qua bao nhiêu quốc gia trước khi vào Việt Nam?",
+                "options": ["5", "3", "7"],
+                "answer": "5",
+                "explanation": "Sông Cửu Long chảy qua Trung Quốc, Myanmar, Lào, Thái Lan, Campuchia trước khi vào Việt Nam."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có khí hậu cận nhiệt đới?",
+                "options": ["Miền Bắc", "Miền Trung", "Miền Nam"],
+                "answer": "Miền Bắc",
+                "explanation": "Miền Bắc có khí hậu cận nhiệt đới ở các tỉnh phía bắc, đặc biệt vào mùa đông."
+            },
+            {
+                "question": "Tỉnh nào có cảng nước sâu lớn nhất Việt Nam?",
+                "options": ["Bà Rịa - Vũng Tàu", "Hải Phòng", "Quảng Ninh"],
+                "answer": "Bà Rịa - Vũng Tàu",
+                "explanation": "Bà Rịa - Vũng Tàu có cảng nước sâu Cái Mép - Thị Vải lớn nhất Việt Nam."
+            },
+            {
+                "question": "Đồng bằng sông Hồng có bao nhiêu tỉnh?",
+                "options": ["11", "9", "13"],
+                "answer": "11",
+                "explanation": "Đồng bằng sông Hồng có 11 tỉnh, bao gồm Hà Nội và Hải Phòng."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có sản lượng điều lớn nhất?",
+                "options": ["Đông Nam Bộ", "Tây Nguyên", "Đồng bằng sông Cửu Long"],
+                "answer": "Đông Nam Bộ",
+                "explanation": "Đông Nam Bộ, đặc biệt là Bình Phước, có sản lượng điều lớn nhất Việt Nam."
+            },
+            {
+                "question": "Sông nào chảy qua cả 3 miền Việt Nam?",
+                "options": ["Không có", "Sông Cửu Long", "Sông Hồng"],
+                "answer": "Không có",
+                "explanation": "Không có con sông nào chảy qua cả 3 miền Việt Nam."
+            },
+            {
+                "question": "Tỉnh nào có sản lượng tôm lớn nhất Việt Nam?",
+                "options": ["Cà Mau", "Kiên Giang", "Bạc Liêu"],
+                "answer": "Cà Mau",
+                "explanation": "Cà Mau là tỉnh có sản lượng tôm lớn nhất nhờ nuôi trồng thủy sản phát triển."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có nhiều khoáng sản nhất?",
+                "options": ["Đông Bắc", "Tây Nguyên", "Miền Trung"],
+                "answer": "Đông Bắc",
+                "explanation": "Đông Bắc có nhiều khoáng sản như than, sắt, kẽm, đặc biệt ở Quảng Ninh."
+            },
+            {
+                "question": "Tỉnh nào có đường bờ biển dài nhất Việt Nam?",
+                "options": ["Quảng Ninh", "Khánh Hòa", "Nghệ An"],
+                "answer": "Khánh Hòa",
+                "explanation": "Khánh Hòa có đường bờ biển dài nhất, khoảng 385 km."
+            }
+        ],
+        "hard": [
+            {
+                "question": "Vùng nào ở Việt Nam có tỷ lệ đô thị hóa cao nhất?",
+                "options": ["Đông Nam Bộ", "Đồng bằng sông Hồng", "Tây Nguyên"],
+                "answer": "Đông Nam Bộ",
+                "explanation": "Đông Nam Bộ có tỷ lệ đô thị hóa cao nhất nhờ TP. Hồ Chí Minh và các khu công nghiệp."
+            },
+            {
+                "question": "Sông nào ở Việt Nam có lưu vực lớn nhất?",
+                "options": ["Sông Cửu Long", "Sông Hồng", "Sông Đồng Nai"],
+                "answer": "Sông Cửu Long",
+                "explanation": "Sông Cửu Long có lưu vực lớn nhất, khoảng 795.000 km², trải dài qua nhiều quốc gia."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có mật độ dân số cao nhất?",
+                "options": ["Hà Nội", "TP. Hồ Chí Minh", "Bắc Ninh"],
+                "answer": "Bắc Ninh",
+                "explanation": "Bắc Ninh có mật độ dân số cao nhất, khoảng 1.400 người/km² nhờ diện tích nhỏ và dân số đông."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam chịu ảnh hưởng của gió phơn nhiều nhất?",
+                "options": ["Bắc Trung Bộ", "Nam Trung Bộ", "Tây Nguyên"],
+                "answer": "Bắc Trung Bộ",
+                "explanation": "Bắc Trung Bộ chịu ảnh hưởng gió phơn từ Lào qua dãy Trường Sơn, gây khô nóng."
+            },
+            {
+                "question": "Tỉnh nào có trữ lượng khí tự nhiên lớn nhất Việt Nam?",
+                "options": ["Bà Rịa - Vũng Tàu", "Quảng Ngãi", "Cà Mau"],
+                "answer": "Bà Rịa - Vũng Tàu",
+                "explanation": "Bà Rịa - Vũng Tàu có trữ lượng khí tự nhiên lớn nhất, tập trung ở thềm lục địa phía nam."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có độ che phủ rừng thấp nhất?",
+                "options": ["Đồng bằng sông Hồng", "Đông Nam Bộ", "Tây Nguyên"],
+                "answer": "Đồng bằng sông Hồng",
+                "explanation": "Đồng bằng sông Hồng có độ che phủ rừng thấp nhất do đất đai chủ yếu dùng cho nông nghiệp."
+            },
+            {
+                "question": "Sông nào ở Việt Nam có tiềm năng thủy điện lớn thứ hai sau sông Đà?",
+                "options": ["Sông Đồng Nai", "Sông Sê San", "Sông Hồng"],
+                "answer": "Sông Đồng Nai",
+                "explanation": "Sông Đồng Nai có tiềm năng thủy điện lớn thứ hai, với các nhà máy như Trị An."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có số lượng khu công nghiệp nhiều nhất?",
+                "options": ["Bình Dương", "Đồng Nai", "TP. Hồ Chí Minh"],
+                "answer": "Bình Dương",
+                "explanation": "Bình Dương có số lượng khu công nghiệp nhiều nhất, tập trung phát triển công nghiệp."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có lượng mưa trung bình năm cao nhất?",
+                "options": ["Nam Trung Bộ", "Bắc Trung Bộ", "Miền Bắc"],
+                "answer": "Bắc Trung Bộ",
+                "explanation": "Bắc Trung Bộ có lượng mưa trung bình năm cao nhất, đặc biệt vào mùa bão."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có diện tích đất đỏ bazan lớn nhất?",
+                "options": ["Đắk Lắk", "Gia Lai", "Lâm Đồng"],
+                "answer": "Đắk Lắk",
+                "explanation": "Đắk Lắk có diện tích đất đỏ bazan lớn nhất, thích hợp cho cây công nghiệp."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có tỷ lệ dân số thành thị cao nhất?",
+                "options": ["Đông Nam Bộ", "Đồng bằng sông Hồng", "Tây Nguyên"],
+                "answer": "Đông Nam Bộ",
+                "explanation": "Đông Nam Bộ có tỷ lệ dân số thành thị cao nhất nhờ đô thị hóa mạnh."
+            },
+            {
+                "question": "Sông nào ở Việt Nam có vai trò quan trọng trong giao thông đường thủy miền Nam?",
+                "options": ["Sông Tiền", "Sông Hậu", "Sông Đồng Nai"],
+                "answer": "Sông Tiền",
+                "explanation": "Sông Tiền (nhánh chính của sông Cửu Long) quan trọng trong giao thông đường thủy miền Nam."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có sản lượng muối lớn nhất?",
+                "options": ["Ninh Thuận", "Bình Thuận", "Khánh Hòa"],
+                "answer": "Ninh Thuận",
+                "explanation": "Ninh Thuận có sản lượng muối lớn nhất nhờ khí hậu khô nóng và bờ biển dài."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có nhiệt độ trung bình năm thấp nhất?",
+                "options": ["Tây Bắc", "Đông Bắc", "Tây Nguyên"],
+                "answer": "Tây Bắc",
+                "explanation": "Tây Bắc có nhiệt độ trung bình năm thấp nhất do độ cao và khí hậu lạnh vào mùa đông."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có trữ lượng apatit lớn nhất?",
+                "options": ["Lào Cai", "Hà Giang", "Yên Bái"],
+                "answer": "Lào Cai",
+                "explanation": "Lào Cai có trữ lượng apatit lớn nhất, tập trung ở mỏ Cam Đường."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có tỷ lệ tăng trưởng kinh tế cao nhất?",
+                "options": ["Đông Nam Bộ", "Đồng bằng sông Hồng", "Tây Nguyên"],
+                "answer": "Đông Nam Bộ",
+                "explanation": "Đông Nam Bộ có tỷ lệ tăng trưởng kinh tế cao nhất nhờ công nghiệp và dịch vụ."
+            },
+            {
+                "question": "Sông nào ở Việt Nam có độ dốc lớn nhất?",
+                "options": ["Sông Đà", "Sông Hồng", "Sông Cửu Long"],
+                "answer": "Sông Đà",
+                "explanation": "Sông Đà có độ dốc lớn nhất, tạo tiềm năng thủy điện lớn."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có sản lượng chè lớn nhất?",
+                "options": ["Thái Nguyên", "Lâm Đồng", "Yên Bái"],
+                "answer": "Thái Nguyên",
+                "explanation": "Thái Nguyên là tỉnh sản xuất chè lớn nhất, nổi tiếng với chè Tân Cương."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có tỷ lệ lao động trong nông nghiệp cao nhất?",
+                "options": ["Đồng bằng sông Cửu Long", "Tây Nguyên", "Đông Nam Bộ"],
+                "answer": "Đồng bằng sông Cửu Long",
+                "explanation": "Đồng bằng sông Cửu Long có tỷ lệ lao động nông nghiệp cao nhất do tập trung sản xuất lúa."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có diện tích đất ngập mặn lớn nhất?",
+                "options": ["Cà Mau", "Kiên Giang", "Bạc Liêu"],
+                "answer": "Cà Mau",
+                "explanation": "Cà Mau có diện tích đất ngập mặn lớn nhất do vị trí ở hạ lưu sông Cửu Long."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có số lượng dân tộc thiểu số nhiều nhất?",
+                "options": ["Tây Bắc", "Đông Bắc", "Tây Nguyên"],
+                "answer": "Tây Bắc",
+                "explanation": "Tây Bắc có số lượng dân tộc thiểu số nhiều nhất, như Thái, H’Mông, Dao."
+            },
+            {
+                "question": "Sông nào ở Việt Nam có vai trò quan trọng trong tưới tiêu miền Trung?",
+                "options": ["Sông Thu Bồn", "Sông Hồng", "Sông Đồng Nai"],
+                "answer": "Sông Thu Bồn",
+                "explanation": "Sông Thu Bồn cung cấp nước tưới tiêu quan trọng cho miền Trung, đặc biệt Quảng Nam."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có trữ lượng bôxit lớn nhất?",
+                "options": ["Đắk Nông", "Gia Lai", "Lâm Đồng"],
+                "answer": "Đắk Nông",
+                "explanation": "Đắk Nông có trữ lượng bôxit lớn nhất, tập trung ở Tây Nguyên."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có tỷ lệ thất nghiệp thấp nhất?",
+                "options": ["Đông Nam Bộ", "Đồng bằng sông Hồng", "Tây Nguyên"],
+                "answer": "Đông Nam Bộ",
+                "explanation": "Đông Nam Bộ có tỷ lệ thất nghiệp thấp nhất nhờ công nghiệp và dịch vụ phát triển."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có sản lượng tiêu lớn nhất?",
+                "options": ["Đắk Lắk", "Gia Lai", "Đồng Nai"],
+                "answer": "Gia Lai",
+                "explanation": "Gia Lai là tỉnh sản xuất tiêu lớn nhất, thuộc vùng Tây Nguyên."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có diện tích đất phù sa ngọt lớn nhất?",
+                "options": ["Đồng bằng sông Cửu Long", "Đồng bằng sông Hồng", "Tây Nguyên"],
+                "answer": "Đồng bằng sông Cửu Long",
+                "explanation": "Đồng bằng sông Cửu Long có diện tích đất phù sa ngọt lớn nhất, thích hợp trồng lúa."
+            },
+            {
+                "question": "Sông nào ở Việt Nam có lượng phù sa lớn nhất?",
+                "options": ["Sông Hồng", "Sông Cửu Long", "Sông Đà"],
+                "answer": "Sông Hồng",
+                "explanation": "Sông Hồng có lượng phù sa lớn nhất, bồi đắp đồng bằng sông Hồng."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có tỷ lệ dân số trẻ em cao nhất?",
+                "options": ["Hà Giang", "Lai Châu", "Gia Lai"],
+                "answer": "Lai Châu",
+                "explanation": "Lai Châu có tỷ lệ dân số trẻ em cao nhất do dân tộc thiểu số sinh đẻ nhiều."
+            },
+            {
+                "question": "Vùng nào ở Việt Nam có tiềm năng năng lượng tái tạo lớn nhất?",
+                "options": ["Nam Trung Bộ", "Tây Nguyên", "Miền Bắc"],
+                "answer": "Nam Trung Bộ",
+                "explanation": "Nam Trung Bộ có tiềm năng năng lượng tái tạo lớn nhất nhờ gió và mặt trời."
+            },
+            {
+                "question": "Tỉnh nào ở Việt Nam có diện tích đất đồi núi trọc lớn nhất?",
+                "options": ["Nghệ An", "Quảng Nam", "Hà Tĩnh"],
+                "answer": "Nghệ An",
+                "explanation": "Nghệ An có diện tích đất đồi núi trọc lớn nhất do khai thác rừng và xói mòn."
+            }
+        ]
+    }
+}
+    

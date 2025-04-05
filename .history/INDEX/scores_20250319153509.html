@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm Số - Tạo Lộ Trình Học Tập Cá Nhân Hóa</title>
+    <style>
+        /* CSS giữ nguyên như trước và điều chỉnh cho biểu tượng */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e9f1ff, #d9e8ff, #f0f7ff);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #e6e6e6;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            color: #e6e6e6;
+            box-shadow: 0 4px 15px rgba(42, 82, 152, 0.3);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        section {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #dfe6e9;
+        }
+
+        th {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #e6e6e6;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fbfd;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 25px 0;
+            background: linear-gradient(135deg, #1e3c72, #0a192f);
+            color: #e6e6e6;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* CSS cho nút biểu tượng */
+        button.edit-btn, button.delete-btn {
+            padding: 5px;
+            margin: 0 5px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        button.edit-btn {
+            color: #28a745; /* Màu xanh lá cho cây bút */
+        }
+
+        button.edit-btn:hover {
+            color: #218838; /* Màu xanh đậm hơn khi hover */
+        }
+
+        button.delete-btn {
+            color: #dc3545; /* Màu đỏ cho thùng rác */
+        }
+
+        button.delete-btn:hover {
+            color: #c82333; /* Màu đỏ đậm hơn khi hover */
+        }
+
+        .action-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px; /* Khoảng cách giữa các nút và dấu / */
+        }
+
+        .action-container span {
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Điểm Số Của Bạn</h1>
+        <p>Xem kết quả và tiến độ học tập của bạn</p>
+    </header>
+
+    <nav>
+        <a href="Home_Page.html">Trang Chủ</a>
+        <a href="input-test.html">Kiểm Tra Đầu Vào</a>
+        <a href="scores.html" class="active">Điểm Số</a>
+        <a href="lotrinhhoctap.html">Lộ Trình Học Tập</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Kết Quả Thi</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Họ Tên</th>
+                        <th>Môn Học</th>
+                        <th>Điểm Dễ</th>
+                        <th>Điểm Trung Bình</th>
+                        <th>Điểm Khó</th>
+                        <th>Tổng Điểm</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody id="scoresTableBody"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Tạo Lộ Trình Học Tập Cá Nhân Hóa | Mọi quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        const subjectMap = {
+            'math': 'Toán',
+            'literature': 'Ngữ Văn',
+            'physics': 'Vật Lý',
+            'english': 'Tiếng Anh',
+            'chemistry': 'Hóa Học'
+        };
+
+        function loadScores() {
+            const results = JSON.parse(localStorage.getItem('quizResults')) || [];
+            const tbody = document.getElementById('scoresTableBody');
+
+            console.log("Dữ liệu từ localStorage:", results);
+
+            if (results.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7">Chưa có kết quả nào.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = ''; // Xóa nội dung cũ
+            results.forEach((result, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${result.name}</td>
+                    <td>${subjectMap[result.subject] || result.subject}</td>
+                    <td>${result.scoreEasy}</td>
+                    <td>${result.scoreMedium}</td>
+                    <td>${result.scoreHard}</td>
+                    <td>${result.totalScore}</td>
+                    <td>
+                        <div class="action-container">
+                            <button class="edit-btn" onclick="editScore(${index})" title="Sửa">✏️</button>
+                            <span>/</span>
+                            <button class="delete-btn" onclick="deleteScore(${index})" title="Xóa">🗑️</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function saveScores(results) {
+            localStorage.setItem('quizResults', JSON.stringify(results));
+            loadScores(); // Tải lại bảng sau khi cập nhật
+        }
+
+        function editScore(index) {
+            const results = JSON.parse(localStorage.getItem('quizResults')) || [];
+            const result = results[index];
+
+            const newName = prompt("Nhập họ tên mới:", result.name);
+            const newScoreEasy = prompt("Nhập điểm dễ mới:", result.scoreEasy);
+            const newScoreMedium = prompt("Nhập điểm trung bình mới:", result.scoreMedium);
+            const newScoreHard = prompt("Nhập điểm khó mới:", result.scoreHard);
+            const newTotalScore = prompt("Nhập tổng điểm mới:", result.totalScore);
+
+            if (newName && newScoreEasy && newScoreMedium && newScoreHard && newTotalScore) {
+                results[index] = {
+                    name: newName,
+                    subject: result.subject, // Giữ nguyên môn học
+                    scoreEasy: parseInt(newScoreEasy) || 0,
+                    scoreMedium: parseInt(newScoreMedium) || 0,
+                    scoreHard: parseInt(newScoreHard) || 0,
+                    totalScore: parseInt(newTotalScore) || 0
+                };
+                saveScores(results);
+            } else {
+                alert("Vui lòng nhập đầy đủ thông tin!");
+            }
+        }
+
+        function deleteScore(index) {
+            if (confirm("Bạn có chắc chắn muốn xóa kết quả này?")) {
+                const results = JSON.parse(localStorage.getItem('quizResults')) || [];
+                results.splice(index, 1); // Xóa hàng tại index
+                saveScores(results);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadScores);
+    </script>
+</body>
+</html>

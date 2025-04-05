@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Thi Trắc Nghiệm</title>
+    <link rel="stylesheet" href="../CSS/quiz.css">
+</head>
+<body>
+    <header>
+        <h1>Bài Thi Trắc Nghiệm</h1>
+        <p>Chúc bạn thi tốt!</p>
+    </header>
+
+    <section id="quizQuestions"></section>
+
+    <footer>
+        <div>
+            <p id="countdown"></p>
+        </div>
+        <button onclick="submitQuiz()">Nộp Bài</button>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const subject = urlParams.get('subject');
+        const level = urlParams.get('level');
+        const timeParam = urlParams.get('time');
+        const timeLimit = timeParam ? parseInt(timeParam) * 60 : 600; // Mặc định 10 phút
+
+        if (!subject || !level) {
+            alert("Thiếu môn học hoặc cấp độ. Vui lòng kiểm tra lại URL!");
+            throw new Error("Thiếu subject hoặc level trong URL");
+        }
+
+        let remainingTime = timeLimit;
+        let questionsData = [];
+
+        // 🔹 Tải đề thi từ API backend
+        fetch(`http://localhost:3000/api/questions?subject=${subject}&level=${level}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.questions) {
+                    questionsData = data.questions;
+                    loadQuiz();
+                    startCountdown();
+                } else {
+                    throw new Error("Không tìm thấy dữ liệu phù hợp!");
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi khi tải dữ liệu:", error);
+                alert("Không thể tải dữ liệu bài thi. Vui lòng thử lại sau!");
+            });
+
+        // 🔹 Hiển thị câu hỏi
+        function loadQuiz() {
+            if (!questionsData.length) {
+                document.getElementById('quizQuestions').innerHTML = "<p>Không có câu hỏi nào.</p>";
+                return;
+            }
+
+            let quizHTML = "<h3>Câu Hỏi</h3>";
+            questionsData.forEach((q, index) => {
+                quizHTML += `
+                    <div>
+                        <p><strong>${index + 1}. ${q.question}</strong></p>
+                        ${q.options.map((option, i) => `
+                            <input type="radio" name="q${index}" value="${option}" id="q${index}_option${i}">
+                            <label for="q${index}_option${i}">${option}</label><br>
+                        `).join('')}
+                    </div>
+                `;
+            });
+
+            document.getElementById('quizQuestions').innerHTML = quizHTML;
+        }
+
+        // 🔹 Đếm ngược thời gian
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const interval = setInterval(() => {
+                if (remainingTime <= 0) {
+                    clearInterval(interval);
+                    alert('Hết giờ! Bài thi đã được nộp.');
+                    submitQuiz();
+                } else {
+                    const minutes = Math.floor(remainingTime / 60);
+                    const seconds = remainingTime % 60;
+                    countdownElement.textContent = `Thời gian còn lại: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    remainingTime--;
+                }
+            }, 1000);
+        }
+
+        // 🔹 Xử lý nộp bài
+        function submitQuiz() {
+            let score = 0;
+            let explanations = [];
+            let promises = [];
+
+            questionsData.forEach((q, index) => {
+                const selectedAnswer = document.querySelector(`input[name="q${index}"]:checked`);
+                const selectedValue = selectedAnswer ? selectedAnswer.value : "Chưa chọn";
+
+                if (selectedValue === "Chưa chọn") {
+                    explanations.push({
+                        question: q.question,
+                        selected: "Chưa chọn",
+                        correct: q.answer,
+                        explanation: "Không có giải thích vì bạn chưa chọn đáp án."
+                    });
+                    return;
+                }
+
+                const isCorrect = selectedValue.trim() === q.answer.trim();
+
+                if (isCorrect) {
+                    score++;
+                } else {
+                    const promise = getGeminiExplanation(`Câu hỏi: ${q.question}\nBạn chọn: ${selectedValue}\nĐáp án đúng: ${q.answer}`)
+                        .then(explanation => {
+                            explanations.push({
+                                question: q.question,
+                                selected: selectedValue,
+                                correct: q.answer,
+                                explanation: explanation
+                            });
+                        })
+                        .catch(error => {
+                            console.error("Lỗi AI:", error);
+                            explanations.push({
+                                question: q.question,
+                                selected: selectedValue,
+                                correct: q.answer,
+                                explanation: "Không thể lấy lời giải thích."
+                            });
+                        });
+                    promises.push(promise);
+                }
+            });
+
+            Promise.all(promises).then(() => {
+                const answerParams = questionsData.map((_, index) => `q${index}=${encodeURIComponent(explanations[index]?.selected || "Chưa chọn")}`).join('&');
+                window.location.href = `results.html?subject=${subject}&level=${level}&score=${score}&explanations=${encodeURIComponent(JSON.stringify(explanations))}&${answerParams}`;
+            });
+        }
+
+        // 🔹 Gọi API Gemini để giải thích đáp án
+        async function getGeminiExplanation(text) {
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Lỗi từ server AI");
+                }
+
+                const data = await response.json();
+                return data.reply || "Không có lời giải thích.";
+            } catch (error) {
+                console.error("Lỗi khi gọi AI Gemini:", error);
+                return "Không thể lấy lời giải thích.";
+            }
+        }
+    </script>
+</body>
+</html>

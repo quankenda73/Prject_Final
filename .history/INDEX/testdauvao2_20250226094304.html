@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Đầu Vào</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            color: #333;
+            font-weight: bold;
+        }
+        .timer {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+        .question {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #eef5ff;
+            border-left: 5px solid #007BFF;
+        }
+        .question p {
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="radio"] {
+            margin: 8px;
+            transform: scale(1.2);
+        }
+        .correct {
+            color: green !important;
+            font-weight: bold;
+        }
+        .wrong {
+            color: red !important;
+            font-weight: bold;
+        }
+        button {
+            padding: 12px 25px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body onload="startTimer()">
+    <div class="container">
+        <h2 id="quizTitle">Bài Kiểm Tra Đầu Vào</h2>
+        <p class="timer">Thời gian còn lại: <span id="timer">45:00</span></p>
+        <form id="quizForm"></form>
+        <div id="result" style="margin-top: 20px; font-size: 20px;"></div>
+        <div id="suggestion" style="margin-top: 20px; font-size: 18px;"></div>
+    </div>
+
+    <script>
+        async function loadQuestions() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subject = urlParams.get('subject') || 'math'; // Mặc định là Toán nếu không có
+            const quizForm = document.getElementById("quizForm");
+            const quizTitle = document.getElementById("quizTitle");
+            quizForm.innerHTML = "<p>Đang tải câu hỏi...</p>";
+
+            // Chuyển đổi subject từ tiếng Anh sang tiếng Việt để hiển thị
+            const subjectMap = {
+                'math': 'Toán',
+                'literature': 'Ngữ Văn',
+                'physics': 'Vật Lý',
+                'english': 'Tiếng Anh'
+            };
+            quizTitle.textContent = `Bài Kiểm Tra Đầu Vào - ${subjectMap[subject] || subject}`;
+
+            try {
+                const response = await fetch('test2.json');
+                if (!response.ok) {
+                    throw new Error(`Không thể tải test2.json: ${response.status}`);
+                }
+                const data = await response.json();
+                const questions = (data[subject]?.hard || []).slice(0, 50); // Lấy tối đa 50 câu từ level hard
+
+                if (!questions.length) {
+                    throw new Error(`Không tìm thấy câu hỏi cho môn ${subjectMap[subject] || subject} trong test2.json!`);
+                }
+
+                quizForm.innerHTML = "";
+
+                questions.forEach((q, index) => {
+                    const questionDiv = document.createElement("div");
+                    questionDiv.classList.add("question");
+
+                    let questionHTML = `<p>${index + 1}. ${q.question}</p>`;
+                    q.options.forEach((option, optIndex) => {
+                        questionHTML += `
+                            <label>
+                                <input type="radio" name="q${index}" value="${optIndex}"> ${option}
+                            </label><br>`;
+                    });
+
+                    questionDiv.innerHTML = questionHTML;
+                    quizForm.appendChild(questionDiv);
+                });
+
+                const submitButton = document.createElement("button");
+                submitButton.type = "submit";
+                submitButton.textContent = "Nộp Bài";
+                quizForm.appendChild(submitButton);
+
+                quizForm.addEventListener("submit", (e) => submitQuiz(e, questions));
+            } catch (error) {
+                quizForm.innerHTML = `<p style="color:red;">Lỗi: ${error.message}. Vui lòng kiểm tra tệp test2.json hoặc môn học!</p>`;
+                console.error("Lỗi khi tải câu hỏi:", error);
+            }
+        }
+
+        function submitQuiz(event, questions) {
+            event.preventDefault();
+
+            let score = 0;
+
+            questions.forEach((q, index) => {
+                const options = document.querySelectorAll(`input[name="q${index}"]`);
+                let userAnswer = null;
+
+                options.forEach(option => {
+                    if (option.checked) {
+                        userAnswer = parseInt(option.value);
+                    }
+                });
+
+                options.forEach(option => {
+                    const label = option.parentElement;
+                    if (parseInt(option.value) === q.correctAnswer) {
+                        label.classList.add("correct");
+                    }
+                    if (userAnswer !== q.correctAnswer && userAnswer === parseInt(option.value)) {
+                        label.classList.add("wrong");
+                    }
+                });
+
+                if (userAnswer === q.correctAnswer) {
+                    score++;
+                }
+            });
+
+            let level;
+            let suggestion;
+            if (score > 45) {
+                level = "Giỏi";
+                suggestion = "Bạn có thể tham gia các khóa học nâng cao.";
+            } else if (score >= 30) {
+                level = "Khá";
+                suggestion = "Bạn nên xem lại một số chủ đề và tham gia các khóa học bổ trợ.";
+            } else if (score >= 20) {
+                level = "Trung Bình";
+                suggestion = "Hãy xem lại các kiến thức cơ bản và thực hành thêm.";
+            } else {
+                level = "Yếu";
+                suggestion = "Bạn nên tham gia các khóa học căn bản để cải thiện.";
+            }
+
+            document.getElementById("result").innerHTML = `
+                <h3>Bạn đã hoàn thành bài kiểm tra!</h3>
+                <p>Điểm số của bạn: <strong>${score}/${questions.length}</strong></p>
+                <p>Mức độ: <strong>${level}</strong></p>
+            `;
+            document.getElementById("suggestion").innerHTML = suggestion;
+        }
+
+        function startTimer() {
+            let timeLeft = 45 * 60; // 45 phút
+            const timerElement = document.getElementById("timer");
+
+            function updateTimer() {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    setTimeout(updateTimer, 1000);
+                } else {
+                    document.getElementById("quizForm").submit();
+                }
+            }
+
+            updateTimer();
+        }
+
+        document.addEventListener("DOMContentLoaded", loadQuestions);
+    </script>
+</body>
+</html>

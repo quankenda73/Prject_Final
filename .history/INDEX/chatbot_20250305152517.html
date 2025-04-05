@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot Hỏi Đáp</title>
+    <style>
+        /* Reset và cài đặt cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        /* Tiêu đề cố định */
+        .header {
+            background: linear-gradient(90deg, #0072ff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        /* Khung chat */
+        .chat-container {
+            flex-grow: 1;
+            width: 90%;
+            max-width: 800px;
+            margin: 70px auto 60px; /* Giảm khoảng cách dưới để tránh che footer */
+            background: #2a2a2a;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        /* Vùng hiển thị tin nhắn */
+        .chat-box {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: calc(100vh - 140px);
+        }
+        /* Tin nhắn chung */
+        .chat-message {
+            margin: 8px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 80%;
+            word-wrap: break-word;
+            position: relative;
+        }
+        /* Tin nhắn của bot */
+        .bot-message {
+            align-self: flex-start;
+            background: #3a3a3a;
+            color: #e0e0e0;
+            border-left: 5px solid #0072ff;
+        }
+        /* Tin nhắn người dùng */
+        .user-message {
+            align-self: flex-end;
+            background: #4CAF50;
+            color: white;
+            border-right: 5px solid #388e3c;
+        }
+        /* Ô nhập tin nhắn */
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: #222;
+            border-top: 1px solid #444;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #555;
+            color: #e0e0e0;
+            font-size: 16px;
+            outline: none;
+            transition: background 0.3s;
+        }
+        .chat-input input:focus {
+            background: #666;
+        }
+        .chat-input button {
+            margin-left: 10px;
+            padding: 12px 20px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .chat-input button:hover {
+            background: #0056d2;
+        }
+        /* Footer cố định */
+        .footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Chat Bot Hỏi Đáp</div>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-body">
+            <div class="chat-message bot-message">
+                <h3>Chào bạn!</h3>
+                <p>Tôi là Grok, được tạo bởi xAI. Tôi có thể giúp gì cho bạn hôm nay?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Nhập câu hỏi..." onkeypress="if(event.key === 'Enter') sendMessage();" />
+            <button onclick="sendMessage()">Gửi</button>
+        </div>
+    </div>
+    <div class="footer">© 2025 Grok by xAI - All Rights Reserved.</div>
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+            appendMessage(userInput, 'user-message');
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: userInput })
+                });
+                if (!response.ok) throw new Error(`Lỗi HTTP: ${response.status}`);
+                const data = await response.json();
+                let botReply = extractBotReply(data);
+                appendMessage(botReply, 'bot-message');
+            } catch (error) {
+                console.error('Lỗi:', error);
+                appendMessage('<h3>Lỗi</h3><p>Lỗi kết nối server. Vui lòng thử lại sau.</p>', 'bot-message');
+            }
+            document.getElementById('user-input').value = '';
+        }
+        function extractBotReply(data) {
+            return data.reply || 'Xin lỗi, tôi không hiểu câu hỏi của bạn.';
+        }
+        function appendMessage(text, className) {
+            const chatBody = document.getElementById('chat-body');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${className}`;
+            messageDiv.innerHTML = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hệ Thống Học Tập Cá Nhân Hóa giúp học viên cải thiện kết quả học tập thông qua công nghệ AI.">
+    <meta name="keywords" content="học tập, cá nhân hóa, AI, giáo dục">
+    <title>Hệ Thống Học Tập Cá Nhân Hóa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/Home_Page.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Hệ Thống Học Tập Cá Nhân Hóa</h1>
+            <p>Công cụ học tập thông minh với trí tuệ nhân tạo</p>
+            <div class="login-container" id="loginContainer">
+                <!-- Được cập nhật động bằng JavaScript -->
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Tìm kiếm...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#personalized-learning" class="nav-link">Lộ Trình Cá Nhân</a>
+        <a href="#chatbot" class="nav-link">Chatbot</a>
+        <a href="#online-tests" class="nav-link">Thi Online</a>
+        <a href="#data-collection" class="nav-link">Thu Thập Dữ Liệu</a>
+        <a href="#system-architecture" class="nav-link">Kiến Trúc</a>
+        <a href="#news" class="nav-link">Tin Tức</a>
+    </nav>
+
+    <!-- Slider -->
+    <div class="slider">
+        <div class="slider-images">
+            <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2022/09/Banner_Tuyen_sinh_bo_sung_dot_2_2022.png" alt="Slide 1" loading="lazy">
+            <img src="http://admin.phuongdong.edu.vn/Upload/Khoa%20CNTT/banner%20cntt.jpg" alt="Slide 2" loading="lazy">
+            <img src="https://tuyensinh.ueh.edu.vn/wp-content/uploads/2024/09/ILACS_Banner-UEH-Web-Edited-1.png" alt="Slide 3" loading="lazy">
+            <img src="https://colour.vn/wp-content/uploads/mau-banner-quang-cao-khuyen-mai.jpg" alt="Slide 4" loading="lazy">
+            <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2022/09/Banner_Tuyen_sinh_bo_sung_dot_2_2022.png" alt="Slide 5" loading="lazy">
+        </div>
+        <div class="slider-caption">
+            <h2>Học Tập Thông Minh</h2>
+            <p>Cá nhân hóa trải nghiệm học tập của bạn với AI</p>
+        </div>
+        <div class="slider-nav">
+            <button class="prev" onclick="moveSlide(-1)">❮</button>
+            <button class="next" onclick="moveSlide(1)">❯</button>
+        </div>
+        <div class="slider-dots"></div>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="Home_Page.html" class="sidebar-link"><i class="fas fa-home"></i> Trang chủ</a></li>
+                <li><a href="https://tailieuonthi.edu.vn/" class="sidebar-link"><i class="fas fa-file-alt"></i> Tài liệu ôn thi</a></li>
+                <li><a href="https://hocbadientu.vnedu.vn/tracuu_v2/" class="sidebar-link"><i class="fas fa-chart-line"></i> Tra cứu điểm thi</a></li>
+                <li><a href="https://hoctap.coccoc.com/tim-truong-dh-cd" class="sidebar-link"><i class="fas fa-search"></i> Tìm trường DH-CD</a></li>
+                <li><a href="https://hoidap247.com/#google_vignette" class="sidebar-link"><i class="fas fa-book"></i> Giải bài tập</a></li>
+                <li><a href="https://bietmaytinh.com/casio-online/" class="sidebar-link"><i class="fas fa-calculator"></i> Máy tính</a></li>
+                <li><a href="progre" class="sidebar-link"><i class="fas fa-flask"></i> Hóa học</a></li>
+                <li><a href="#" class="sidebar-link"><i class="fas fa-video"></i> Video giáo sự</a></li>
+                <li><a href="#" class="sidebar-link"><i class="fas fa-language"></i> Dịch</a></li>
+                <li><a href="#" class="sidebar-link"><i class="fas fa-book-open"></i> Từ điển</a></li>
+                <li><a href="#" class="sidebar-link"><i class="fas fa-pen"></i> Chuẩn đoán đỗ vỡ</a></li>
+                <li><a href="#" class="sidebar-link"><i class="fas fa-check"></i> Kiểm tra chinh tả</a></li>
+                <li><a href="#" class="sidebar-link"><i class="fas fa-comments"></i> Gửi phản hồi</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+            <section id="personalized-learning">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>Tạo Lộ Trình Học Tập</h2>
+                <p>Phân tích điểm số, bài tập và bài thi để tư vấn lộ trình học tập dựa trên khung chương trình của Bộ Giáo Dục.</p>
+                <a href="input.html" class="btn">Tìm Hiểu Thêm</a>
+            </section>
+
+            <section id="chatbot">
+                <i class="fas fa-robot"></i>
+                <h2>Chatbot Hỗ Trợ Học Tập</h2>
+                <p>Hỗ trợ học viên giải đáp thắc mắc và cung cấp tài liệu học tập phù hợp.</p>
+                <a href="chatbot.html" class="btn">Tìm Hiểu Thêm</a>
+            </section>
+
+            <section id="online-tests">
+                <i class="fas fa-file-alt"></i>
+                <h2>Thi Trắc Nghiệm Online</h2>
+                <p>Tạo bài thi bằng AI với điểm số và giải thích chi tiết sau khi hoàn thành.</p>
+                <a href="tracnghiem.html" class="btn">Tìm Hiểu Thêm</a>
+            </section>
+
+            <section id="data-collection">
+                <i class="fas fa-database"></i>
+                <h2>Thu Thập Dữ Liệu</h2>
+                <p>Phân tích dữ liệu học tập để đề xuất bài học phù hợp nhất.</p>
+                <a href="data.html" class="btn">Khám Phá</a>
+            </section>
+
+            <section id="system-architecture">
+                <i class="fas fa-network-wired"></i>
+                <h2>Kiến Trúc Hệ Thống</h2>
+                <p>Công nghệ tiên tiến đảm bảo hiệu suất và bảo mật dữ liệu.</p>
+                <a href="architecture.html" class="btn">Tìm Hiểu Thêm</a>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-title">
+            <h2>TRẮC NGHIỆM</h2>
+            <p>Hệ thống học tập thông minh dành cho bạn</p>
+        </div>
+        <div class="footer-content">
+            <div class="test-categories">
+                <div class="test-category">
+                    <h3>THPT QG</h3>
+                    <p>Môn Tiếng Anh</p>
+                    <p>Môn Toán</p>
+                    <p>Môn Vật Lý</p>
+                </div>
+                <div class="test-category">
+                    <h3>KIỂM TRA</h3>
+                    <p>Môn Địa Lý</p>
+                    <p>Môn Hóa Học</p>
+                </div>
+                <div class="test-category">
+                    <h3>ENGLISH TEST</h3>
+                    <p>IELTS Kỹ Năng Nghe</p>
+                    <p>IELTS Kỹ Năng Đọc</p>
+                </div>
+                <div class="test-category">
+                    <h3>IT TEST</h3>
+                    <p>Kiểm tra lập trình</p>
+                    <p>Kiểm tra kiến thức CNTT</p>
+                </div>
+                <div class="test-category">
+                    <h3>HƯỚNG NGHIỆP</h3>
+                    <p>Khóa học kỹ năng mềm</p>
+                    <p>Định hướng nghề nghiệp</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-info">
+            <p>Chủ quản: Cao Đẳng Anh Quốc BTEC FPT</p>
+            <p>Liên hệ: <a href="mailto:support@taileuven.com">Quannhbd00216@fpt.edu.vn</a></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button onclick="scrollToTop()" id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Kiểm tra trạng thái đăng nhập
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const loginContainer = document.getElementById('loginContainer');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    const buttons = document.querySelectorAll('.btn');
+
+    if (!currentUser) {
+        loginContainer.innerHTML = `
+            <a href="login.html" class="login-link">Đăng Nhập</a>
+            <a href="login" class="signup-link">Đăng Ký</a>
+            <i class="fas fa-user-circle login-icon"></i>
+        `;
+        navLinks.forEach(link => link.classList.add('disabled'));
+        sidebarLinks.forEach(link => link.classList.add('disabled'));
+        buttons.forEach(btn => btn.classList.add('disabled'));
+        setTimeout(() => {
+            alert("Vui lòng đăng nhập để sử dụng chức năng của trang!");
+            window.location.href = 'login.html';
+        }, 1000);
+    } else {
+        loginContainer.innerHTML = `
+            <span class="user-info">Xin chào, ${currentUser.name}</span>
+            <a href="#" class="logout-link" onclick="logout()">Đăng Xuất</a>
+            <i class="fas fa-user-circle login-icon"></i>
+        `;
+        navLinks.forEach(link => link.classList.remove('disabled'));
+        sidebarLinks.forEach(link => link.classList.remove('disabled'));
+        buttons.forEach(btn => btn.classList.remove('disabled'));
+    }
+
+        // Slider logic
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slider-images img');
+        const totalSlides = slides.length;
+        const dotsContainer = document.querySelector('.slider-dots');
+        const slider = document.querySelector('.slider');
+
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dot.addEventListener('click', () => {
+                if (currentUser) {
+                    currentIndex = i;
+                    updateSlider();
+                }
+            });
+            dotsContainer.appendChild(dot);
+        }
+
+        function updateSlider() {
+            const sliderImages = document.querySelector('.slider-images');
+            sliderImages.style.transform = `translateX(${-currentIndex * 100 / totalSlides}%)`;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function moveSlide(direction) {
+            if (currentUser) {
+                currentIndex += direction;
+                if (currentIndex < 0) {
+                    currentIndex = totalSlides - 1;
+                } else if (currentIndex >= totalSlides) {
+                    currentIndex = 0;
+                }
+                updateSlider();
+            }
+        }
+
+        updateSlider();
+
+        if (currentUser) {
+            let slideInterval = setInterval(() => moveSlide(1), 6000);
+            slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            slider.addEventListener('mouseleave', () => slideInterval = setInterval(() => moveSlide(1), 6000));
+        }
+
+        function requireLogin(event) {
+            event.preventDefault();
+            if (!currentUser) {
+                alert("Vui lòng đăng nhập để sử dụng chức năng này!");
+                window.location.href = 'Login.html';
+            } else {
+                const targetId = event.target.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.location.href = targetId;
+                }
+            }
+        }
+
+        navLinks.forEach(link => link.addEventListener('click', requireLogin));
+        sidebarLinks.forEach(link => link.addEventListener('click', requireLogin));
+        buttons.forEach(btn => btn.addEventListener('click', requireLogin));
+
+        const backToTop = document.getElementById("backToTop");
+        window.onscroll = function () {
+            backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'Login.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Học Tập Thông Minh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            color: #333;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+
+        nav {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #2a5298;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #e67e22;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #e67e22;
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #e67e22;
+            transition: width 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: #e67e22;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #d35400;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hệ Thống Học Tập Thông Minh</h1>
+        <p>Đồng hành cùng bạn trên hành trình chinh phục tri thức với công nghệ AI tiên tiến</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#features">Tính năng</a></li>
+            <li><a href="#about">Về chúng tôi</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="section">
+            <h2>Khám phá nền tảng học tập tương lai</h2>
+            <p>Với sự kết hợp giữa công nghệ AI hiện đại và phương pháp học tập cá nhân hóa, chúng tôi mang đến cho bạn trải nghiệm học tập hiệu quả, linh hoạt và đầy cảm hứng.</p>
+            <button class="btn">Tham gia ngay</button>
+        </section>
+
+        <section id="features" class="section">
+            <h2>Tính năng nổi bật</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=500" alt="Lộ trình học tập">
+                    <h3>Lộ trình học tập cá nhân hóa</h3>
+                    <p>Đánh giá năng lực qua bài kiểm tra đầu vào, phân tích kết quả bằng AI và xây dựng lộ trình học tập tối ưu dựa trên:</p>
+                    <ul>
+                        <li>Môn học cần cải thiện</li>
+                        <li>Điểm số hiện tại và mục tiêu</li>
+                        <li>Thời gian học tập linh hoạt</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1531746790731-6c087f6947df?auto=format&fit=crop&w=500" alt="Chatbot AI">
+                    <h3>Chatbot hỗ trợ thông minh</h3>
+                    <p>Trợ thủ đắc lực trong học tập với khả năng:</p>
+                    <ul>
+                        <li>Giải đáp thắc mắc tức thì</li>
+                        <li>Cung cấp tài liệu phù hợp</li>
+                        <li>Gợi ý bài học tiếp theo</li>
+                        <li>Hỗ trợ 24/7</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500" alt="Thi trắc nghiệm">
+                    <h3>Thi trắc nghiệm Online</h3>
+                    <p>Hệ thống thi thông minh với:</p>
+                    <ul>
+                        <li>Chấm điểm tự động</li>
+                        <li>Giải thích chi tiết bằng AI</li>
+                        <li>Ngân hàng đề thi đa dạng</li>
+                        <li>Theo dõi tiến độ học tập</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2>Về chúng tôi</h2>
+            <p>Chúng tôi là đội ngũ đam mê giáo dục, ứng dụng trí tuệ nhân tạo để tạo ra một nền tảng học tập thông minh, giúp học viên tối ưu hóa tiềm năng và đạt được mục tiêu học tập một cách hiệu quả nhất.</p>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Liên hệ với chúng tôi</h2>
+            <div class="contact-info">
+                <div>
+                    <h3>Email</h3>
+                    <p>support@smartlearning.com</p>
+                </div>
+                <div>
+                    <h3>Hotline</h3>
+                    <p>0123-456-789</p>
+                </div>
+                <div>
+                    <h3>Địa chỉ</h3>
+                    <p>123 Đường Tri Thức, TP. Học Tập</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Hệ Thống Học Tập Thông Minh. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation khi scroll
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Hover effect cho button
+        const btns = document.querySelectorAll('.btn');
+        btns.forEach(btn => {
+            btn.addEventListener('mouseover', () => {
+                btn.style.boxShadow = '0 5px 15px rgba(230, 126, 34, 0.4)';
+            });
+            btn.addEventListener('mouseout', () => {
+                btn.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

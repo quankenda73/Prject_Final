@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm Đầu Vào</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { min-height: 100vh; background: linear-gradient(135deg, #e9f1ff, #d9e8ff); display: flex; flex-direction: column; padding: 20px; }
+        header { background: linear-gradient(135deg, #1e3c72, #2a5298); color: #e6e6e6; padding: 2rem 0; text-align: center; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
+        header h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        nav { background: rgba(255, 255, 255, 0.95); padding: 1rem 0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); text-align: center; }
+        .nav-list { list-style: none; display: flex; justify-content: center; gap: 30px; }
+        .nav-list li a { color: #2c3e50; text-decoration: none; font-weight: 600; font-size: 1.2rem; padding: 10px 20px; border-radius: 25px; transition: all 0.3s ease; background: linear-gradient(135deg, #f9fbfd, #ffffff); }
+        .nav-list li a:hover, .nav-list li a.active { background: linear-gradient(135deg, #2a5298, #1e3c72); color: #e6e6e6; }
+        main { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+        .scores-container { width: 100%; max-width: 800px; background: rgba(255, 255, 255, 0.98); padding: 40px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); }
+        h2 { color: #2c3e50; font-size: 2rem; text-align: center; margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #dfe6e9; }
+        th { background: #2a5298; color: white; font-weight: 600; }
+        td { color: #2c3e50; }
+        tr:nth-child(even) { background: #f8fafc; }
+        tr:hover { background: #e6f0fa; }
+        .delete-icon { color: #e74c3c; cursor: pointer; font-size: 1.2rem; transition: transform 0.3s ease, color 0.3s ease; }
+        .delete-icon:hover { color: #c0392b; transform: scale(1.2); }
+        footer { text-align: center; padding: 25px 0; background: linear-gradient(135deg, #1e3c72, #0a192f); color: #e6e6e6; }
+        @media (max-width: 768px) { .scores-container { padding: 25px; } h2 { font-size: 1.8rem; } th, td { padding: 10px; font-size: 0.9rem; } }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Điểm Đầu Vào</h1>
+</header>
+<nav>
+    <ul class="nav-list">
+        <li><a href="/home">Trang Chủ</a></li>
+        <li><a href="/input-test">Kiểm Tra Đầu Vào</a></li>
+        <li><a href="/diemdauvao" class="active">Điểm Số</a></li>
+        <li><a href="/student-info">Thông Tin Sinh Viên</a></li>
+    </ul>
+</nav>
+<main>
+    <div class="scores-container">
+        <h2>Bảng Điểm Kiểm Tra Đầu Vào</h2>
+        <table id="scoresTable">
+            <thead>
+                <tr>
+                    <th>Họ Tên</th>
+                    <th>Môn Học</th>
+                    <th>Điểm Số</th>
+                    <th>Ngày Thi</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="scoresBody"></tbody>
+        </table>
+    </div>
+</main>
+<footer>
+    <p>© 2025 Tạo Lộ Trình Học Tập Cá Nhân Hóa | Mọi quyền được bảo lưu.</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", async function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let studentId = urlParams.get('studentId');
+    const tbody = document.querySelector('#scoresBody');
+
+    const currentUser = JSON.parse(localStorage.getItem('currentUser')) || { id: "dummyUserId" };
+    const currentStudent = JSON.parse(localStorage.getItem('currentStudent'));
+    if (!studentId && currentStudent) {
+        studentId = currentStudent.studentId;
+    }
+
+    if (!studentId) {
+        tbody.innerHTML = '<tr><td colspan="5">Vui lòng chọn sinh viên hoặc hoàn thành bài kiểm tra!</td></tr>';
+        return;
+    }
+
+    // Lấy hoặc khởi tạo mảng điểm số từ localStorage
+    let allScores = JSON.parse(localStorage.getItem('allScores')) || [];
+
+    async function displayScores() {
+        tbody.innerHTML = '<tr><td colspan="5">Đang tải dữ liệu...</td></tr>';
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/scores?studentId=${studentId}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (!response.ok) throw new Error('Không thể lấy điểm từ server');
+
+            const data = await response.json();
+            const scores = data.scores;
+
+            // Đồng bộ dữ liệu từ server với localStorage
+            if (scores && scores.length > 0) {
+                scores.forEach(serverScore => {
+                    const existingScore = allScores.find(s => s._id === serverScore._id);
+                    if (!existingScore) {
+                        allScores.push({
+                            _id: serverScore._id,
+                            name: serverScore.name,
+                            subject: serverScore.subject,
+                            score: serverScore.score,
+                            total: serverScore.total,
+                            date: serverScore.date,
+                            studentId: serverScore.studentId
+                        });
+                    }
+                });
+                localStorage.setItem('allScores', JSON.stringify(allScores));
+            }
+        } catch (error) {
+            console.error('Lỗi khi lấy từ server:', error);
+            console.log('Sử dụng dữ liệu từ localStorage:', allScores);
+        }
+
+        // Hiển thị điểm số từ allScores
+        tbody.innerHTML = '';
+        const filteredScores = allScores.filter(score => score.studentId === studentId);
+        if (filteredScores.length > 0) {
+            const subjectMap = { 'math': 'Toán', 'literature': 'Ngữ Văn', 'physics': 'Vật Lý', 'english': 'Tiếng Anh', 'chemistry': 'Hóa Học' };
+            filteredScores.forEach(score => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${score.name}</td>
+                    <td>${subjectMap[score.subject] || score.subject}</td>
+                    <td>${score.score}/${score.total}</td>
+                    <td>${score.date}</td>
+                    <td>
+                        <i class="fas fa-trash-alt delete-icon" title="Xóa" data-id="${score._id}"></i>
+                    </td>
+                `;
+                tbody.appendChild(row);
+
+                row.querySelector('.delete-icon').addEventListener('click', () => deleteScore(score._id));
+            });
+        } else {
+            tbody.innerHTML = '<tr><td colspan="5">Chưa có điểm số nào được lưu cho sinh viên này.</td></tr>';
+        }
+    }
+
+    async function deleteScore(scoreId) {
+        if (confirm("Bạn có chắc chắn muốn xóa điểm số này không?")) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/scores/${scoreId}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (!response.ok) throw new Error('Không thể xóa điểm số từ server');
+
+                const result = await response.json();
+                alert(result.message);
+            } catch (error) {
+                console.error('Lỗi khi xóa từ server:', error);
+            } finally {
+                allScores = allScores.filter(score => score._id !== scoreId);
+                localStorage.setItem('allScores', JSON.stringify(allScores));
+                displayScores();
+            }
+        }
+    }
+
+    // Thêm điểm số mới từ localStorage nếu có
+    const latestScore = JSON.parse(localStorage.getItem('latestScore'));
+    if (latestScore && latestScore.studentId === studentId) {
+        const existingScore = allScores.find(score => score.date === latestScore.date && score.subject === latestScore.subject);
+        if (!existingScore) {
+            latestScore._id = 'local_' + Date.now();
+            allScores.push(latestScore);
+            localStorage.setItem('allScores', JSON.stringify(allScores));
+        }
+        localStorage.removeItem('latestScore');
+    }
+
+    displayScores();
+});
+</script>
+</body>
+</html>

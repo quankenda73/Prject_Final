@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/chatbot.css">
+    <title>Q&A Chat Bot</title>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">Q&A Chat Bot</div>
+
+    <!-- Chat container -->
+    <div class="chat-container">
+        <div class="chat-box" id="chat-body">
+            <div class="chat-message bot-message">
+                <h3>Hello!</h3>
+                <p>How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Enter your question..." onkeypress="if(event.key === 'Enter') sendMessage();" />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+    <!-- Footer -->
+    <div class="footer">© 2025 Grok by xAI - All Rights Reserved.</div>
+
+    <script>
+        let studentIdpip install python-dotenv
+        = localStorage.getItem('studentId');
+        let chatCount = 0;
+
+       
+
+        // Lấy số lần chat hôm nay
+        async function loadChatCount() {
+            const today = new Date().toISOString().split('T')[0];
+            const response = await fetch(`http://localhost:3000/api/progress?studentId=${studentId}`);
+            const data = await response.json();
+            const todayProgress = data.progress.find(p => new Date(p.date).toISOString().split('T')[0] === today);
+            chatCount = todayProgress ? todayProgress.chatCount : 0;
+        }
+
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+
+            appendMessage(userInput, 'user-message');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: userInput })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                let botReply = extractBotReply(data);
+
+                if (isStudyRelated(userInput)) {
+                    botReply = formatStudyResponse(botReply);
+                } else {
+                    botReply = formatGeneralResponse(botReply);
+                }
+
+                appendMessage(botReply, 'bot-message');
+
+                // Cập nhật số lần chat
+                chatCount++;
+                const today = new Date().toISOString().split('T')[0];
+                await fetch('http://localhost:3000/api/progress', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        studentId,
+                        date: today,
+                        chatCount,
+                        totalDays: localStorage.getItem('totalDays'),
+                        startDate: localStorage.getItem('startDate'),
+                    }),
+                });
+
+            } catch (error) {
+                console.error('Error:', error);
+                appendMessage('<h3>Error</h3><p>Server connection error. Please try again later.</p>', 'bot-message');
+            }
+
+            document.getElementById('user-input').value = '';
+            updateScrollTopButton();
+        }
+
+        function isStudyRelated(input) {
+            const studyKeywords = ['math', 'equation', 'function', 'solve', 'study', 'exercise', 'physics', 'chemistry', 'literature', 'history', 'geography', 'geometry', 'algebra', 'integral', 'derivative', 'english', 'history', 'geography', 'physics', 'chemistry'];
+            return studyKeywords.some(keyword => input.toLowerCase().includes(keyword));
+        }
+
+        function formatStudyResponse(reply) {
+            return `
+                <h3>Answer</h3>
+                <p>${reply}</p>
+                <h3>Reference Materials</h3>
+                <ul>
+                    <li>YouTube Video: <a href="https://www.youtube.com/watch?v=IWtkS9nBNkA" target="_blank">Related Topic Guide</a></li>
+                    <li>PDF: <a href="https://www.mathsisfun.com/algebra/quadratic-equation.html" target="_blank">Detailed Material</a></li>
+                </ul>
+                <p><strong>Follow-up Question:</strong> Would you like me to explain any other problems?</p>
+            `;
+        }
+
+        function formatGeneralResponse(reply) {
+            return `
+                <h3>Answer</h3>
+                <p>${reply}</p>
+            `;
+        }
+
+        function extractBotReply(data) {
+            return data.reply || 'Sorry, I don\'t understand your question.';
+        }
+
+        function appendMessage(text, className) {
+            const chatBody = document.getElementById('chat-body');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${className}`;
+            messageDiv.innerHTML = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function scrollToTop() {
+            document.getElementById('chat-body').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateScrollTopButton() {
+            const chatBox = document.getElementById('chat-body');
+            const scrollTopBtn = document.querySelector('.scroll-top');
+            if (chatBox.scrollTop > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        }
+
+        document.getElementById('chat-body').addEventListener('scroll', updateScrollTopButton);
+
+        // Load số lần chat khi vào trang
+        loadChatCount();
+    </script>
+</body>
+</html>

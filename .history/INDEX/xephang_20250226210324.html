@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Xếp Hạng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2.8em;
+            padding: 25px;
+            background: linear-gradient(45deg, #2ecc71, #3498db);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        th, td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr {
+            transition: all 0.3s ease;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(240, 248, 255, 0.7);
+        }
+
+        tr:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Làm nổi bật số 1, 2, 3 trong cột Hạng */
+        tr:nth-child(1) td:first-child {
+            color: #ffd700; /* Vàng cho hạng 1 */
+            font-weight: bold;
+            font-size: 1.4em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        tr:nth-child(2) td:first-child {
+            color: #b0c4de; /* Bạc cho hạng 2 */
+            font-weight: bold;
+            font-size: 1.4em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        tr:nth-child(3) td:first-child {
+            color: #cd7f32; /* Đồng cho hạng 3 */
+            font-weight: bold;
+            font-size: 1.4em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        td:first-child {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        td:nth-child(4) {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+                padding: 15px;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 12px;
+            }
+
+            tr:nth-child(1) td:first-child,
+            tr:nth-child(2) td:first-child,
+            tr:nth-child(3) td:first-child {
+                font-size: 1.2em; /* Giảm kích thước trên mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bảng Xếp Hạng</h1>
+    </header>
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hạng</th>
+                    <th>Họ và Tên</th>
+                    <th>Môn Học</th>
+                    <th>Điểm</th>
+                </tr>
+            </thead>
+            <tbody id="rankingTableBody"></tbody>
+        </table>
+    </main>
+
+    <script>
+        // Ánh xạ tên môn học
+        const subjectMap = {
+            'math': 'Toán',
+            'literature': 'Ngữ Văn',
+            'physics': 'Vật Lý',
+            'english': 'Tiếng Anh',
+            'chemistry': 'Hóa Học'
+        };
+
+        // Hàm tải và sắp xếp bảng xếp hạng
+        function loadRanking() {
+            const results = JSON.parse(localStorage.getItem('quizResults')) || [];
+            const tbody = document.getElementById('rankingTableBody');
+
+            if (results.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4">Chưa có dữ liệu xếp hạng.</td></tr>';
+                return;
+            }
+
+            results.sort((a, b) => b.totalScore - a.totalScore);
+            tbody.innerHTML = '';
+
+            results.forEach((result, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${result.name}</td>
+                    <td>${subjectMap[result.subject] || result.subject}</td>
+                    <td>${result.totalScore}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadRanking);
+    </script>
+</body>
+</html>

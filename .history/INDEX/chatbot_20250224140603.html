@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot Hỏi Đáp</title>
+    <style>
+        /* Đảm bảo body chiếm toàn bộ màn hình */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden; /* Ngăn chặn tràn màn hình */
+        }
+        /* Tiêu đề cố định */
+        .header {
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background: #0072ff;
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Đảm bảo hiển thị trên cùng */
+        }
+        /* Định dạng khung chat */
+        .chat-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 700px;
+            background: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            margin: auto;
+            margin-top: 60px; /* Tạo khoảng cách dưới tiêu đề */
+            margin-bottom: 40px; /* Tạo khoảng cách trên footer */
+        }
+        /* Vùng hiển thị tin nhắn */
+        .chat-box {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            scrollbar-width: thin;
+            max-height: calc(100vh - 120px); /* Để không bị header & footer che */
+        }
+        /* Từng tin nhắn */
+        .chat-message {
+            margin: 6px 0;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            max-width: 75%;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+        /* Tin nhắn bot */
+        .bot-message {
+            align-self: flex-start;
+            background: #444;
+            color: white;
+            text-align: left;
+            padding: 10px;
+            font-style: italic;
+            border-left: 4px solid #0072ff;
+        }
+        /* Tiêu đề từng mục trong câu trả lời */
+        .bot-message h3 {
+            font-size: 1em;
+            color: #ffcc00;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #555;
+            padding-bottom: 3px;
+        }
+        /* Khoảng cách giữa các đoạn */
+        .bot-message p {
+            margin: 5px 0;
+        }
+        /* Tin nhắn người dùng */
+        .user-message {
+            align-self: flex-end;
+            background: #4CAF50;
+            color: white;
+            text-align: right;
+        }
+        /* Ô nhập tin nhắn */
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background: #222;
+            border-top: 1px solid #444;
+        }
+        /* Ô nhập văn bản */
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: #555;
+            color: white;
+            outline: none;
+        }
+        /* Nút gửi */
+        .chat-input button {
+            margin-left: 10px;
+            padding: 10px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-input button:hover {
+            background: #0056d2;
+        }
+        /* Footer cố định */
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background: #111;
+            font-size: 14px;
+            color: #ccc;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000; /* Đảm bảo luôn hiển thị trên cùng */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tiêu đề -->
+    <div class="header">Chat Bot Hỏi Đáp</div>
+
+    <!-- Khung chat -->
+    <div class="chat-container">
+        <div class="chat-box" id="chat-body">
+            <div class="chat-message bot-message">
+                <h3>Chào bạn!</h3>
+                <p>Tôi có thể giúp gì cho bạn hôm nay?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Nhập câu hỏi..." />
+            <button onclick="sendMessage()">Gửi</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">© 2025 Chat Bot - All Rights Reserved.</div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (!userInput.trim()) return; // Không gửi tin nhắn rỗng
+        
+            // Hiển thị tin nhắn người dùng
+            appendMessage(userInput, 'user-message');
+        
+            // Gửi dữ liệu đến backend
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text: userInput })
+                });
+        
+                const data = await response.json();
+                const botReply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Xin lỗi, tôi không hiểu câu hỏi.';
+                appendMessage(botReply, 'bot-message');
+
+            } catch (error) {
+                console.error('Error:', error);
+                appendMessage('Lỗi kết nối server.', 'bot-message');
+            }
+        
+            // Xóa input sau khi gửi
+            document.getElementById('user-input').value = '';
+        }
+        
+        function appendMessage(text, className) {
+            const chatBody = document.getElementById('chat-body');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${className}`;
+            messageDiv.innerText = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight; // Cuộn xuống tin nhắn mới nhất
+        }
+        
+    </script>
+</body>
+</html>

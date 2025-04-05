@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Học Tập Thông Minh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f0f4f8;
+            color: #1a202c;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Header with Parallax */
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1920') no-repeat center/cover;
+            z-index: -1;
+            transform: scale(1.1);
+            animation: parallax 20s infinite linear;
+        }
+
+        @keyframes parallax {
+            0% { transform: scale(1.1) translateY(0); }
+            50% { transform: scale(1.2) translateY(-10%); }
+            100% { transform: scale(1.1) translateY(0); }
+        }
+
+        header .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #1a202c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #0984e3;
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: #0984e3;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 25px;
+            padding: 4rem;
+            margin-bottom: 5rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(70px);
+            transition: all 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: #1a202c;
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            font-weight: 600;
+        }
+
+        h2::after {
+            content: '';
+            width: 80px;
+            height: 5px;
+            background: #0984e3;
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+        }
+
+        /* Feature Slider */
+        .feature-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-grid {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card {
+            flex: 0 0 33.33%;
+            padding: 2.5rem;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            margin: 0 1rem;
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: #0984e3;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            background: #0984e3;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: #0765b6;
+        }
+
+        /* Button */
+        .btn {
+            background: #0984e3;
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn:hover {
+            background: #0765b6;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(9,132,227,0.3);
+        }
+
+        /* Contact Section */
+        #contact .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        #contact .footer-grid div {
+            flex: 1;
+            text-align: left;
+        }
+
+        #contact .footer-grid div i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            vertical-align: middle;
+        }
+
+        #contact .footer-grid div h3 {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        #contact .footer-grid div p {
+            font-size: 1rem;
+            color: #4a5568;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        footer a {
+            color: #0984e3;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #74b9ff;
+        }
+
+        @media (max-width: 768px) {
+            .feature-card {
+                flex: 0 0 100%;
+            }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            #contact .footer-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            #contact .footer-grid div i {
+                display: block;
+                margin: 0 auto 0.5rem;
+            }
+            #contact .footer-grid div h3 {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero-content">
+            <h1>Hệ Thống Học Tập Thông Minh</h1>
+            <p>Khám phá tiềm năng của bạn với công nghệ AI tiên tiến và lộ trình học tập cá nhân hóa</p>
+            <button class="btn" id="startBtn"><i class="fas fa-rocket"></i> Bắt đầu ngay</button>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#features">Tính năng</a></li>
+            <li><a href="#about">Về chúng tôi</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="section">
+            <h2>Chào mừng đến với tương lai của giáo dục</h2>
+            <p>Nền tảng học tập thông minh sử dụng AI để cá nhân hóa trải nghiệm học tập, giúp bạn đạt được mục tiêu nhanh chóng và hiệu quả hơn bao giờ hết.</p>
+            <button class="btn"><i class="fas fa-play"></i> Xem video giới thiệu</button>
+        </section>
+
+        <section id="features" class="section">
+            <h2>Tính năng vượt trội</h2>
+            <div class="feature-slider">
+                <div class="feature-grid" id="featureGrid">
+                    <div class="feature-card">
+                        <i class="fas fa-road"></i>
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600" alt="Lộ trình học tập">
+                        <h3>Lộ trình học tập cá nhân hóa</h3>
+                        <p>Được thiết kế riêng dựa trên:</p>
+                        <ul>
+                            <li><strong>Kiểm tra đầu vào:</strong> Đánh giá trình độ chính xác</li>
+                            <li><strong>Phân tích AI:</strong> Xác định điểm mạnh/yếu</li>
+                            <li><strong>Tùy chỉnh:</strong> Môn học, mục tiêu, thời gian</li>
+                            <li><strong>Theo dõi:</strong> Điều chỉnh theo tiến độ</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-robot"></i>
+                        <img src="https://images.unsplash.com/photo-1531746790731-6c087f6947df?auto=format&fit=crop&w=600" alt="Chatbot AI">
+                        <h3>Chatbot hỗ trợ thông minh</h3>
+                        <p>Trợ lý AI với các tính năng:</p>
+                        <ul>
+                            <li><strong>Hỏi đáp:</strong> Giải đáp tức thì</li>
+                            <li><strong>Tài liệu:</strong> Cung cấp tài liệu phù hợp</li>
+                            <li><strong>Gợi ý:</strong> Đề xuất bài học thông minh</li>
+                            <li><strong>Hỗ trợ:</strong> 24/7 mọi lúc mọi nơi</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-clipboard-check"></i>
+                        <img src="https://truyenhinhnghean.vn/file/4028eaa46735a26101673a4df345003c/4028eaa467639b470167787ae85a0a2d/012022/2022-01-07_212122_20220107212153.jpg" alt="Thi trắc nghiệm">
+                        <h3>Thi trắc nghiệm Online</h3>
+                        <p>Hệ thống thi với:</p>
+                        <ul>
+                            <li><strong>Chấm điểm:</strong> Tự động, chính xác</li>
+                            <li><strong>Giải thích:</strong> Phân tích chi tiết bằng AI</li>
+                            <li><strong>Luyện tập:</strong> Ngân hàng đề đa dạng</li>
+                            <li><strong>Kết quả:</strong> Báo cáo tiến độ chi tiết</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2>Về chúng tôi</h2>
+            <p>Chúng tôi là đội ngũ tiên phong ứng dụng AI vào giáo dục, mang đến giải pháp học tập cá nhân hóa giúp hàng triệu học viên chinh phục tri thức dễ dàng và hiệu quả.</p>
+            <p><strong>Tầm nhìn:</strong> Kiến tạo tương lai giáo dục thông minh.</p>
+            <p><strong>Sứ mệnh:</strong> Đổi mới cách học, tối ưu tiềm năng.</p>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Liên hệ với chúng tôi</h2>
+            <div class="footer-grid">
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>support@smartlearning.com</p>
+                </div>
+                <div>
+                    <i class="fas fa-phone"></i>
+                    <h3>Hotline</h3>
+                    <p>0123-456-789</p>
+                </div>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Địa chỉ</h3>
+                    <p>123 Đường Tri Thức, TP. Học Tập</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>Hệ Thống Học Tập Thông Minh</h3>
+                <p>© 2025 - Tất cả quyền được bảo lưu</p>
+            </div>
+            <div>
+                <h3>Liên kết nhanh</h3>
+                <p><a href="#home">Trang chủ</a></p>
+                <p><a href="#features">Tính năng</a></p>
+                <p><a href="#about">Về chúng tôi</a></p>
+            </div>
+            <div>
+                <h3>Theo dõi chúng tôi</h3>
+                <p>
+                    <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Section animation
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+        sections.forEach(section => observer.observe(section));
+
+        // Chuyển hướng đến Login.html
+        const startBtn = document.getElementById('startBtn');
+        startBtn.addEventListener('click', () => {
+            window.location.href = 'Login.html';
+        });
+
+        // Feature slider
+        const featureGrid = document.getElementById('featureGrid');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+        const cardWidth = featureGrid.children[0].offsetWidth + 32; // Including margin
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < featureGrid.children.length - 1) {
+                currentIndex++;
+                featureGrid.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                featureGrid.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+        });
+
+        // Auto adjust slider for responsive
+        window.addEventListener('resize', () => {
+            featureGrid.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        });
+    </script>
+</body>
+</html>

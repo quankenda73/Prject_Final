@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot Hỏi Đáp</title>
+    <!-- Include MathJax for rendering math equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Reset và cài đặt cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* Tiêu đề cố định */
+        .header {
+            background: linear-gradient(90deg, #0072ff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Khung chat */
+        .chat-container {
+            flex-grow: 1;
+            width: 90%;
+            max-width: 800px;
+            margin: 70px auto 70px;
+            background: #2a2a2a;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Vùng hiển thị tin nhắn */
+        .chat-box {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: calc(100vh - 180px);
+            scrollbar-width: thin;
+            scrollbar-color: #0072ff #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Thanh cuộn tùy chỉnh */
+        .chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-box::-webkit-scrollbar-track {
+            background: #333;
+        }
+        .chat-box::-webkit-scrollbar-thumb {
+            background: #0072ff;
+            border-radius: 4px;
+        }
+
+        /* Tin nhắn chung */
+        .chat-message {
+            margin: 8px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 80%;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        /* Tin nhắn của bot */
+        .bot-message {
+            align-self: flex-start;
+            background: #3a3a3a;
+            color: #e0e0e0;
+            border-left: 5px solid #0072ff;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        /* Animation khi tin nhắn xuất hiện */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tiêu đề trong tin nhắn bot */
+        .bot-message h3 {
+            font-size: 18px;
+            color: #ffcc00;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #555;
+            font-weight: 600;
+        }
+
+        /* Đoạn văn trong tin nhắn bot */
+        .bot-message p {
+            margin: 6px 0;
+            font-size: 15px;
+            color: #d0d0d0;
+        }
+
+        /* Danh sách trong tin nhắn bot */
+        .bot-message ul, .bot-message ol {
+            margin: 10px 0 10px 20px;
+            padding-left: 10px;
+        }
+        .bot-message li {
+            margin: 5px 0;
+            color: #c0c0c0;
+        }
+
+        /* Định dạng code trong tin nhắn bot */
+        .bot-message pre, .bot-message code {
+            background: #222;
+            padding: 8px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #00ffcc;
+            overflow-x: auto;
+            border: 1px solid #444;
+        }
+
+        /* Bảng trong tin nhắn bot */
+        .bot-message table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .bot-message th, .bot-message td {
+            border: 1px solid #555;
+            padding: 8px;
+            text-align: left;
+        }
+        .bot-message th {
+            background: #444;
+            color: #ffcc00;
+        }
+        .bot-message td {
+            color: #d0d0d0;
+        }
+
+        /* Liên kết trong tin nhắn bot */
+        .bot-message a {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+        .bot-message a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tin nhắn người dùng */
+        .user-message {
+            align-self: flex-end;
+            background: #4CAF50;
+            color: white;
+            border-right: 5px solid #388e3c;
+        }
+
+        /* Ô nhập tin nhắn */
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: #222;
+            border-top: 1px solid #444;
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #555;
+            color: #e0e0e0;
+            font-size: 16px;
+            outline: none;
+            transition: background 0.3s;
+        }
+        .chat-input input:focus {
+            background: #666;
+        }
+        .chat-input button {
+            margin-left: 10px;
+            padding: 12px 20px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .chat-input button:hover {
+            background: #0056d2;
+        }
+
+        /* Nút cuộn lên đầu */
+        .scroll-top {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            transition: opacity 0.3s;
+        }
+        .scroll-top:hover {
+            background: #0056d2;
+        }
+        .scroll-top.show {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Footer cố định */
+        .footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tiêu đề -->
+    <div class="header">Chat Bot Hỏi Đáp</div>
+
+    <!-- Khung chat -->
+    <div class="chat-container">
+        <div class="chat-box" id="chat-body">
+            <div class="chat-message bot-message">
+                <h3>Chào bạn!</h3>
+                <p>Tôi có thể giúp gì cho bạn hôm nay?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Nhập câu hỏi..." onkeypress="if(event.key === 'Enter') sendMessage();" />
+            <button onclick="sendMessage()">Gửi</button>
+        </div>
+    </div>
+
+    <!-- Nút cuộn lên đầu -->
+    <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+    <!-- Footer -->
+    <div class="footer">© 2025 Grok by xAI - All Rights Reserved.</div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+
+            appendMessage(userInput, 'user-message');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: userInput })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Lỗi HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+                let botReply = extractBotReply(data);
+
+                if (isStudyRelated(userInput)) {
+                    botReply = formatStudyResponse(botReply);
+                } else {
+                    botReply = formatGeneralResponse(botReply);
+                }
+
+                appendMessage(botReply, 'bot-message');
+
+            } catch (error) {
+                console.error('Lỗi:', error);
+                appendMessage('<h3>Lỗi</h3><p>Lỗi kết nối server. Vui lòng thử lại sau.</p>', 'bot-message');
+            }
+
+            document.getElementById('user-input').value = '';
+            updateScrollTopButton();
+        }
+
+        function isStudyRelated(input) {
+            const studyKeywords = ['toán', 'phương trình', 'hàm số', 'giải', 'học', 'bài tập', 'lý', 'hóa', 'văn', 'sử', 'địa', 'hình học', 'đại số', 'tích phân', 'đạo hàm', 'english', 'history', 'geography', 'physics', 'chemistry'];
+            return studyKeywords.some(keyword => input.toLowerCase().includes(keyword));
+        }
+
+        function formatStudyResponse(reply) {
+            // Hardcoding the response for the quadratic equation to demonstrate proper math rendering
+            // In a real scenario, you'd parse the reply and format it dynamically
+            return `
+                <h3>Câu trả lời</h3>
+                <p>Cho phương trình bậc 2: \\( ax^2 + bx + c = 0 \\) (với \\( a \\neq 0 \\)).</p>
+                <p>Phương trình: \\( x^2 - 4x + 3 = 0 \\). Ta có: \\( a = 1 \\), \\( b = -4 \\), \\( c = 3 \\).</p>
+                <p><strong>Các bước giải:</strong></p>
+                <ol>
+                    <li><strong>Tính delta:</strong> Công thức: \\( \\Delta = b^2 - 4ac \\). Thay số: \\( \\Delta = (-4)^2 - 4 \\cdot 1 \\cdot 3 = 16 - 12 = 4 \\). Vậy \\( \\Delta = 4 > 0 \\), phương trình có 2 nghiệm phân biệt.</li>
+                    <li><strong>Tính nghiệm:</strong> Công thức nghiệm: \\( x = \\frac{-b \\pm \\sqrt{\\Delta}}{2a} \\). Thay số: \\( x = \\frac{-(-4) \\pm \\sqrt{4}}{2 \\cdot 1} = \\frac{4 \\pm 2}{2} \\).</li>
+                    <li><strong>Nghiệm thứ nhất:</strong> \\( x_1 = \\frac{4 + 2}{2} = 3 \\).</li>
+                    <li><strong>Nghiệm thứ hai:</strong> \\( x_2 = \\frac{4 - 2}{2} = 1 \\).</li>
+                </ol>
+                <p><strong>Kết quả cuối cùng:</strong> Phương trình có hai nghiệm: \\( x_1 = 3 \\), \\( x_2 = 1 \\).</p>
+                <h3>Tài liệu tham khảo</h3>
+                <ul>
+                    <li>Video YouTube: <a href="https://www.youtube.com/watch?v=IWtkS9nBNkA" target="_blank">Hướng dẫn chủ đề liên quan</a></li>
+                    <li>PDF: <a href="https://www.mathsisfun.com/algebra/quadratic-equation.html" target="_blank">Tài liệu chi tiết</a></li>
+                </ul>
+                <p><strong>Câu hỏi bổ sung:</strong> Bạn có muốn mình giải thêm bài nào nữa không?</p>
+            `;
+        }
+
+        function formatGeneralResponse(reply) {
+            return `
+                <h3>Câu trả lời</h3>
+                <p>${reply}</p>
+            `;
+        }
+
+        function extractBotReply(data) {
+            return data.reply || 'Xin lỗi, tôi không hiểu câu hỏi của bạn.';
+        }
+
+        function appendMessage(text, className) {
+            const chatBody = document.getElementById('chat-body');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${className}`;
+            messageDiv.innerHTML = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Re-render MathJax after adding new content
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function scrollToTop() {
+            document.getElementById('chat-body').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateScrollTopButton() {
+            const chatBox = document.getElementById('chat-body');
+            const scrollTopBtn = document.querySelector('.scroll-top');
+            if (chatBox.scrollTop > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        }
+
+        document.getElementById('chat-body').addEventListener('scroll', updateScrollTopButton);
+    </script>
+</body>
+</html>

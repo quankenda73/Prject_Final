@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hỗ Trợ Học Tập</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #007BFF;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .form-container {
+            width: 50%; /* Mở rộng phần nhập liệu */
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .result-container {
+            width: 50%; /* Mở rộng phần hiển thị kết quả */
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2, h3 {
+            color: #007BFF;
+            text-align: center;
+        }
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 12px; /* Tăng padding cho input */
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        button {
+            padding: 12px; /* Tăng padding cho nút bấm */
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+        .response {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e9ecef;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+        }
+        .knowledge-checkboxes {
+            display: none;
+            margin-bottom: 15px;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px; /* Có thể bỏ hoặc điều chỉnh nếu cần */
+            font-size: 14px;
+            color: #777;
+            background-color: white; /* Thêm nền để nổi bật nếu cần */
+            padding: 10px 0; /* Thêm khoảng cách bên trong nếu cần */
+            box-shadow: 0 -1px 5px rgba(0,0,0,0.1); /* Thêm bóng cho footer */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AI Hỗ Trợ Học Tập</h1>
+</header>
+
+<div class="container">
+    <div class="form-container">
+        <h2>Chọn Thông Tin</h2>
+        <select id="class">
+            <option value="">Chọn lớp</option>
+            <option value="10">Lớp 10</option>
+            <option value="11">Lớp 11</option>
+            <option value="12">Lớp 12</option>
+        </select>
+
+        <select id="subject" onchange="updateKnowledgeCheckboxes()">
+            <option value="">Chọn môn học</option>
+            <option value="Toán">Toán</option>
+            <option value="Văn">Văn</option>
+            <option value="Anh">Tiếng Anh</option>
+            <option value="Lý">Vật Lý</option>
+            <option value="Hóa">Hóa Học</option>
+        </select>
+
+        <div id="mathCheckboxes" class="knowledge-checkboxes">
+            <label><strong>Kiến thức cần cải thiện (Toán):</strong></label><br>
+            <label><input type="checkbox" value="Đại số"> Đại số</label><br>
+            <label><input type="checkbox" value="Hình học"> Hình học</label><br>
+            <label><input type="checkbox" value="Giải tích"> Giải tích</label><br>
+            <label><input type="checkbox" value="Xác suất và thống kê"> Xác suất và thống kê</label><br>
+            <label><input type="checkbox" value="Hình học không gian"> Hình học không gian</label><br>
+            <label><input type="checkbox" value="Phương trình và bất phương trình"> Phương trình và bất phương trình</label><br>
+        </div>
+
+        <div id="literatureCheckboxes" class="knowledge-checkboxes">
+            <label><strong>Kiến thức cần cải thiện (Văn):</strong></label><br>
+            <label><input type="checkbox" value="Thơ"> Thơ</label><br>
+            <label><input type="checkbox" value="Nghị luận"> Nghị luận</label><br>
+            <label><input type="checkbox" value="Phân tích tác phẩm"> Phân tích tác phẩm</label><br>
+        </div>
+
+        <div id="englishCheckboxes" class="knowledge-checkboxes">
+            <label><strong>Kiến thức cần cải thiện (Tiếng Anh):</strong></label><br>
+            <label><input type="checkbox" value="Ngữ pháp"> Ngữ pháp</label><br>
+            <label><input type="checkbox" value="Từ vựng"> Từ vựng</label><br>
+            <label><input type="checkbox" value="Nghe"> Nghe</label><br>
+            <label><input type="checkbox" value="Nói"> Nói</label><br>
+        </div>
+
+        <div id="physicsCheckboxes" class="knowledge-checkboxes">
+            <label><strong>Kiến thức cần cải thiện (Vật Lý):</strong></label><br>
+            <label><input type="checkbox" value="Cơ học"> Cơ học</label><br>
+            <label><input type="checkbox" value="Điện từ"> Điện từ</label><br>
+            <label><input type="checkbox" value="Quang học"> Quang học</label><br>
+        </div>
+
+        <div id="chemistryCheckboxes" class="knowledge-checkboxes">
+            <label><strong>Kiến thức cần cải thiện (Hóa Học):</strong></label><br>
+            <label><input type="checkbox" value="Phản ứng hóa học"> Phản ứng hóa học</label><br>
+            <label><input type="checkbox" value="Phân tích hóa học"> Phân tích hóa học</label><br>
+            <label><input type="checkbox" value="Hóa hữu cơ"> Hóa hữu cơ</label><br>
+        </div>
+
+        <input type="text" id="currentScore" placeholder="Điểm số hiện tại" required>
+        <input type="text" id="desiredScore" placeholder="Điểm số mong muốn" required>
+        <input type="text" id="otherIssues" placeholder="Các vấn đề khác">
+
+        <button onclick="getStudyPlan()">Nhận lộ trình học tập</button>
+    </div>
+
+    <div class="result-container">
+        <h2>Kết Quả</h2>
+        <div class="response" id="response"></div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 AI Hỗ Trợ Học Tập. Tất cả quyền được bảo lưu.</p>
+</footer>
+
+<script>
+    function getSelectedKnowledgeNeeds() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
+        return selectedValues.join(', ');
+    }
+
+    function updateKnowledgeCheckboxes() {
+        const subject = document.getElementById("subject").value;
+
+        // Ẩn tất cả checkbox
+        document.querySelectorAll('.knowledge-checkboxes').forEach((element) => {
+            element.style.display = 'none';
+        });
+
+        // Hiển thị checkbox tương ứng với môn học đã chọn
+        if (subject === "Toán") {
+            document.getElementById("mathCheckboxes").style.display = 'block';
+        } else if (subject === "Văn") {
+            document.getElementById("literatureCheckboxes").style.display = 'block';
+        } else if (subject === "Anh") {
+            document.getElementById("englishCheckboxes").style.display = 'block';
+        } else if (subject === "Lý") {
+            document.getElementById("physicsCheckboxes").style.display = 'block';
+        } else if (subject === "Hóa") {
+            document.getElementById("chemistryCheckboxes").style.display = 'block';
+        }
+    }
+
+    async function getStudyPlan() {
+        const classLevel = document.getElementById("class").value;
+        const subject = document.getElementById("subject").value;
+        const currentScore = document.getElementById("currentScore").value;
+        const desiredScore = document.getElementById("desiredScore").value;
+        const knowledgeNeed = getSelectedKnowledgeNeeds();
+        const otherIssues = document.getElementById("otherIssues").value;
+
+        const responseDiv = document.getElementById("response");
+
+        if (classLevel && subject && currentScore && desiredScore) {
+            const userMessage = `Lớp ${classLevel}, Môn ${subject}, Điểm hiện tại ${currentScore}, Mong muốn ${desiredScore}, Kiến thức cần cải thiện: ${knowledgeNeed}, Các vấn đề khác: ${otherIssues}`;
+
+            try {
+                const response = await fetch('http://localhost:3000/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: userMessage })
+                });
+
+                const data = await response.json();
+                responseDiv.innerHTML = formatResponse(data.message);
+            } catch (error) {
+                console.error("Lỗi:", error);
+                responseDiv.innerHTML = "Đã xảy ra lỗi. Vui lòng thử lại sau.";
+            }
+        } else {
+            responseDiv.innerHTML = "Vui lòng điền đầy đủ thông tin!";
+        }
+    }
+
+    function formatResponse(rawContent) {
+        let formattedContent = `<h2>Lộ trình học tập đề xuất:</h2>`;
+        
+        const sections = rawContent.split("\n");
+        sections.forEach(section => {
+            if (section.trim()) {
+                if (section.startsWith("Mục tiêu:")) {
+                    formattedContent += `<h3>${section}</h3>`;
+                } else if (section.startsWith("Thời gian:")) {
+                    formattedContent += `<h3>${section}</h3>`;
+                } else {
+                    formattedContent += `<p>${section}</p>`;
+                }
+            }
+        });
+
+        return formattedContent;
+    }
+</script>
+
+</body>
+</html>

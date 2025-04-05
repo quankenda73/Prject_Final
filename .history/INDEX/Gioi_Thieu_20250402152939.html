@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Học Tập Thông Minh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #3498db;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hệ Thống Học Tập Thông Minh</h1>
+        <p>Nền tảng học tập cá nhân hóa sử dụng trí tuệ nhân tạo</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#features">Tính năng</a></li>
+            <li><a href="#about">Về chúng tôi</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="section">
+            <h2>Chào mừng đến với tương lai của học tập</h2>
+            <p>Hệ thống học tập thông minh của chúng tôi sử dụng AI để tạo ra trải nghiệm học tập cá nhân hóa, hiệu quả và thú vị cho từng học viên.</p>
+        </section>
+
+        <section id="features" class="section">
+            <h2>Các tính năng nổi bật</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Lộ trình học tập cá nhân hóa</h3>
+                    <ul>
+                        <li>Kiểm tra đầu vào đánh giá năng lực</li>
+                        <li>Phân tích kết quả bằng AI</li>
+                        <li>Tư vấn lộ trình học tập chi tiết</li>
+                        <li>Theo dõi tiến độ và điều chỉnh</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>Chatbot hỗ trợ thông minh</h3>
+                    <ul>
+                        <li>Trả lời câu hỏi 24/7</li>
+                        <li>Cung cấp tài liệu học tập</li>
+                        <li>Gợi ý bài học phù hợp</li>
+                        <li>Hỗ trợ giải đáp thắc mắc</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>Thi trắc nghiệm Online</h3>
+                    <ul>
+                        <li>Hệ thống chấm điểm tự động</li>
+                        <li>Giải thích chi tiết bằng AI</li>
+                        <li>Luyện tập đa dạng đề thi</li>
+                        <li>Theo dõi kết quả học tập</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="btn" onclick="alert('Đăng ký ngay để trải nghiệm!')">Bắt đầu ngay</button>
+        </section>
+
+        <section id="about" class="section">
+            <h2>Về chúng tôi</h2>
+            <p>Chúng tôi là đội ngũ phát triển hệ thống học tập thông minh, ứng dụng công nghệ AI tiên tiến để nâng cao chất lượng giáo dục và tạo điều kiện học tập tốt nhất cho học viên.</p>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Liên hệ</h2>
+            <p>Email: support@smartlearning.com</p>
+            <p>Hotline: 0123-456-789</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Hệ Thống Học Tập Thông Minh. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll cho navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation khi scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 100) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

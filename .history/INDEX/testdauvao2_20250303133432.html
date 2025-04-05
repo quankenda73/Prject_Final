@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Đầu Vào</title>
+    <style>
+       /* Reset mặc định */
+       * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1000px; /* Tăng chiều rộng tối đa lên 1000px */
+        background: rgba(255, 255, 255, 0.95);
+        padding: 50px; /* Tăng padding để bên trong thoáng hơn */
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+        transform: translateY(-5px);
+    }
+
+    h2 {
+        color: #2c3e50;
+        font-size: 36px; /* Tăng fontsize cho tiêu đề */
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        text-align: center;
+    }
+
+    .timer {
+        font-size: 28px; /* Tăng kích thước timer */
+        font-weight: 600;
+        color: #e74c3c;
+        background: #fceae9;
+        padding: 12px 25px;
+        border-radius: 50px;
+        display: inline-block;
+        margin: 0 auto 30px auto; /* Căn giữa timer */
+        box-shadow: 0 2px 10px rgba(231, 76, 60, 0.1);
+    }
+
+    .question {
+        text-align: left;
+        margin-bottom: 30px; /* Tăng khoảng cách giữa các câu hỏi */
+        padding: 25px; /* Tăng padding trong câu hỏi */
+        border-radius: 12px;
+        background: #f8fafc;
+        border-left: 8px solid #3498db; /* Tăng độ dày viền trái */
+        transition: all 0.3s ease;
+    }
+
+    .question:hover {
+        transform: translateX(5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .question p {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 20px; /* Tăng khoảng cách dưới câu hỏi */
+        font-size: 20px; /* Tăng kích thước chữ câu hỏi */
+    }
+
+    input[type="radio"] {
+        margin: 12px 15px 12px 0; /* Tăng khoảng cách cho radio */
+        transform: scale(1.5); /* Tăng kích thước radio button */
+        accent-color: #3498db;
+    }
+
+    label {
+        font-size: 18px; /* Tăng kích thước chữ đáp án */
+        color: #34495e;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s ease;
+        margin-bottom: 10px; /* Thêm khoảng cách giữa các đáp án */
+    }
+
+    label:hover {
+        color: #3498db;
+    }
+
+    .correct {
+        color: #27ae60 !important;
+        font-weight: 600;
+        background: #e8f5e9;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+    .wrong {
+        color: #c0392b !important;
+        font-weight: 600;
+        background: #fce4e4;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+    button {
+        padding: 15px 40px; /* Tăng chiều rộng nút */
+        background: linear-gradient(45deg, #2ecc71, #27ae60);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 20px; /* Tăng kích thước chữ nút */
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        display: block; /* Đảm bảo nút chiếm hàng riêng */
+        margin: 30px auto 0; /* Căn giữa nút và tăng khoảng cách trên */
+    }
+
+    button:hover {
+        background: linear-gradient(45deg, #27ae60, #2ecc71);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+    }
+
+    button:active {
+        transform: translateY(1px);
+    }
+
+    #result, #suggestion {
+        margin-top: 40px; /* Tăng khoảng cách trên */
+        padding: 25px;
+        background: #ecf0f1;
+        border-radius: 12px;
+        color: #2c3e50;
+        line-height: 1.8; /* Tăng khoảng cách dòng cho dễ đọc */
+        font-size: 20px; /* Tăng kích thước chữ */
+    }
+
+    #result h3 {
+        color: #2980b9;
+        margin-bottom: 15px;
+        font-size: 24px; /* Tăng kích thước tiêu đề kết quả */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .container {
+            width: 95%; /* Tăng chiều rộng trên mobile */
+            padding: 30px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        .timer {
+            font-size: 22px;
+        }
+
+        .question {
+            padding: 20px;
+        }
+
+        .question p {
+            font-size: 18px;
+        }
+
+        label {
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 18px;
+        }
+
+        #result, #suggestion {
+            font-size: 18px;
+        }
+    }
+    </style>
+</head>
+<body onload="startTimer()">
+    <div class="container">
+        <h2 id="quizTitle">Bài Kiểm Tra Đầu Vào</h2>
+        <p class="timer">Thời gian còn lại: <span id="timer">45:00</span></p>
+        <form id="quizForm"></form>
+        <div id="result" style="margin-top: 20px; font-size: 20px;"></div>
+        <div id="suggestion" style="margin-top: 20px; font-size: 18px;"></div>
+    </div>
+
+    <script>
+        async function loadQuestions() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subject = urlParams.get('subject') || 'math'; // Mặc định là math
+            const quizForm = document.getElementById("quizForm");
+            const quizTitle = document.getElementById("quizTitle");
+            quizForm.innerHTML = "<p>Đang tải câu hỏi...</p>";
+
+            const subjectMap = {
+                'math': 'Toán',
+                'literature': 'Ngữ Văn',
+                'physics': 'Vật Lý',
+                'english': 'Tiếng Anh',
+                'chemistry': 'Hóa Học' // Thêm Hóa Học vào map
+            };
+            quizTitle.textContent = `Bài Kiểm Tra Đầu Vào - ${subjectMap[subject] || subject}`;
+
+            try {
+                const response = await fetch('test2.json');
+                if (!response.ok) {
+                    throw new Error(`Không thể tải test2.json: ${response.status}`);
+                }
+                const data = await response.json();
+                // Lọc câu hỏi theo subject và lấy tối đa 50 câu, bỏ điều kiện "khó"
+                const questions = data.questions
+                    .filter(q => q.subject === subject) // Chỉ lọc theo môn học
+                    .slice(0, 50); // Lấy tối đa 50 câu
+
+                if (!questions.length) {
+                    throw new Error(`Không tìm thấy câu hỏi cho môn ${subjectMap[subject] || subject} trong test2.json!`);
+                }
+
+                quizForm.innerHTML = "";
+
+                questions.forEach((q, index) => {
+                    const questionDiv = document.createElement("div");
+                    questionDiv.classList.add("question");
+
+                    let questionHTML = `<p>${index + 1}. ${q.question}</p>`;
+                    q.options.forEach((option, optIndex) => {
+                        questionHTML += `
+                            <label>
+                                <input type="radio" name="q${index}" value="${optIndex}"> ${option}
+                            </label><br>`;
+                    });
+
+                    questionDiv.innerHTML = questionHTML;
+                    quizForm.appendChild(questionDiv);
+                });
+
+                const submitButton = document.createElement("button");
+                submitButton.type = "submit";
+                submitButton.textContent = "Nộp Bài";
+                quizForm.appendChild(submitButton);
+
+                quizForm.addEventListener("submit", (e) => submitQuiz(e, questions));
+            } catch (error) {
+                quizForm.innerHTML = `<p style="color:red;">Lỗi: ${error.message}. Vui lòng kiểm tra tệp test2.json!</p>`;
+                console.error("Lỗi khi tải câu hỏi:", error);
+            }
+        }
+
+        function submitQuiz(event, questions) {
+            event.preventDefault();
+
+            let score = 0;
+
+            questions.forEach((q, index) => {
+                const options = document.querySelectorAll(`input[name="q${index}"]`);
+                let userAnswer = null;
+
+                options.forEach(option => {
+                    if (option.checked) {
+                        userAnswer = parseInt(option.value);
+                    }
+                });
+
+                options.forEach(option => {
+                    const label = option.parentElement;
+                    if (parseInt(option.value) === q.correctAnswer) {
+                        label.classList.add("correct");
+                    }
+                    if (userAnswer !== q.correctAnswer && userAnswer === parseInt(option.value)) {
+                        label.classList.add("wrong");
+                    }
+                });
+
+                if (userAnswer === q.correctAnswer) {
+                    score++;
+                }
+            });
+
+            let level;
+            let suggestion;
+            if (score > 45) {
+                level = "Giỏi";
+                suggestion = "Bạn có thể tham gia các khóa học nâng cao.";
+            } else if (score >= 30) {
+                level = "Khá";
+                suggestion = "Bạn nên xem lại một số chủ đề và tham gia các khóa học bổ trợ.";
+            } else if (score >= 20) {
+                level = "Trung Bình";
+                suggestion = "Hãy xem lại các kiến thức cơ bản và thực hành thêm.";
+            } else {
+                level = "Yếu";
+                suggestion = "Bạn nên tham gia các khóa học căn bản để cải thiện.";
+            }
+
+            document.getElementById("result").innerHTML = `
+                <h3>Bạn đã hoàn thành bài kiểm tra!</h3>
+                <p>Điểm số của bạn: <strong>${score}/${questions.length}</strong></p>
+                <p>Mức độ: <strong>${level}</strong></p>
+            `;
+            document.getElementById("suggestion").innerHTML = suggestion;
+        }
+
+        function startTimer() {
+            let timeLeft = 45 * 60; // 45 phút
+            const timerElement = document.getElementById("timer");
+
+            function updateTimer() {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    setTimeout(updateTimer, 1000);
+                } else {
+                    document.getElementById("quizForm").submit();
+                }
+            }
+
+            updateTimer();
+        }
+
+        document.addEventListener("DOMContentLoaded", loadQuestions);
+    </script>
+</body>
+</html>

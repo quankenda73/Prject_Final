@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Đầu Vào</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; min-height: 100vh; background: linear-gradient(135deg, #74ebd5, #acb6e5); display: flex; justify-content: center; align-items: center; padding: 30px; }
+        .container { width: 100%; max-width: 1000px; background: rgba(255, 255, 255, 0.95); padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }
+        .container:hover { transform: translateY(-5px); }
+        h2 { color: #2c3e50; font-size: 36px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; }
+        .timer { font-size: 28px; font-weight: 600; color: #e74c3c; background: #fceae9; padding: 12px 25px; border-radius: 50px; display: inline-block; margin: 0 auto 30px auto; box-shadow: 0 2px 10px rgba(231, 76, 60, 0.1); }
+        .question { text-align: left; margin-bottom: 30px; padding: 25px; border-radius: 12px; background: #f8fafc; border-left: 8px solid #3498db; transition: all 0.3s ease; }
+        .question:hover { transform: translateX(5px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .question p { font-weight: 600; color: #2c3e50; margin-bottom: 20px; font-size: 20px; }
+        input[type="radio"] { margin: 12px 15px 12px 0; transform: scale(1.5); accent-color: #3498db; }
+        label { font-size: 18px; color: #34495e; cursor: pointer; display: flex; align-items: center; transition: color 0.3s ease; margin-bottom: 10px; }
+        label:hover { color: #3498db; }
+        .correct { color: #27ae60 !important; font-weight: 600; background: #e8f5e9; padding: 6px 12px; border-radius: 6px; }
+        .wrong { color: #c0392b !important; font-weight: 600; background: #fce4e4; padding: 6px 12px; border-radius: 6px; }
+        button { padding: 15px 40px; background: linear-gradient(45deg, #2ecc71, #27ae60); color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); display: block; margin: 30px auto 0; }
+        button:hover { background: linear-gradient(45deg, #27ae60, #2ecc71); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4); }
+        button:active { transform: translateY(1px); }
+        @media (max-width: 768px) { .container { width: 95%; padding: 30px; } h2 { font-size: 28px; } .timer { font-size: 22px; } .question { padding: 20px; } .question p { font-size: 18px; } label { font-size: 16px; } button { padding: 12px 30px; font-size: 18px; } }
+    </style>
+</head>
+<body onload="startTimer()">
+    <div class="container">
+        <h2 id="quizTitle">Bài Kiểm Tra Đầu Vào</h2>
+        <p class="timer">Thời gian còn lại: <span id="timer">45:00</span></p>
+        <form id="quizForm"></form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            await loadQuestions();
+        });
+
+        async function loadQuestions() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subject = urlParams.get('subject') || 'math';
+            const name = urlParams.get('name');
+            const studentId = urlParams.get('studentId');
+            if (!studentId || !name) {
+                alert('Thiếu thông tin sinh viên. Vui lòng quay lại trang Kiểm Tra Đầu Vào!');
+                window.location.href = 'input-test.html';
+                return;
+            }
+
+            const quizForm = document.getElementById("quizForm");
+            const quizTitle = document.getElementById("quizTitle");
+            quizForm.innerHTML = "<p>Đang tải câu hỏi...</p>";
+
+            const subjectMap = {
+                'math': 'Toán',
+                'literature': 'Ngữ Văn',
+                'physics': 'Vật Lý',
+                'english': 'Tiếng Anh',
+                'chemistry': 'Hóa Học'
+            };
+            quizTitle.textContent = `Bài Kiểm Tra Đầu Vào - ${subjectMap[subject] || subject}`;
+
+            try {
+                const response = await fetch('test2.json');
+                if (!response.ok) throw new Error(`Không thể tải test2.json: ${response.status}`);
+                const data = await response.json();
+                const questions = data.questions.filter(q => q.subject === subject).slice(0, 50);
+
+                if (!questions.length) {
+                    throw new Error(`Không tìm thấy câu hỏi cho môn ${subjectMap[subject] || subject}!`);
+                }
+
+                quizForm.innerHTML = "";
+                questions.forEach((q, index) => {
+                    const questionDiv = document.createElement("div");
+                    questionDiv.classList.add("question");
+                    let questionHTML = `<p>${index + 1}. ${q.question}</p>`;
+                    q.options.forEach((option, optIndex) => {
+                        questionHTML += `<label><input type="radio" name="q${index}" value="${optIndex}"> ${option}</label><br>`;
+                    });
+                    questionDiv.innerHTML = questionHTML;
+                    quizForm.appendChild(questionDiv);
+                });
+
+                const submitButton = document.createElement("button");
+                submitButton.type = "submit";
+                submitButton.textContent = "Nộp Bài";
+                quizForm.appendChild(submitButton);
+                quizForm.addEventListener("submit", (e) => submitQuiz(e, questions, name, studentId));
+            } catch (error) {
+                console.error("Lỗi khi tải câu hỏi:", error);
+                quizForm.innerHTML = `<p style="color:red;">Lỗi: ${error.message}</p>`;
+            }
+        }
+
+        async function submitQuiz(event, questions, name, studentId) {
+            event.preventDefault();
+            let score = 0;
+
+            questions.forEach((q, index) => {
+                const options = document.querySelectorAll(`input[name="q${index}"]`);
+                let userAnswer = null;
+                options.forEach(option => {
+                    if (option.checked) userAnswer = parseInt(option.value);
+                });
+                options.forEach(option => {
+                    const label = option.parentElement;
+                    if (parseInt(option.value) === q.correctAnswer) label.classList.add("correct");
+                    if (userAnswer !== q.correctAnswer && userAnswer === parseInt(option.value)) label.classList.add("wrong");
+                });
+                if (userAnswer === q.correctAnswer) score++;
+            });
+
+            const scoreData = {
+                studentId,
+                name,
+                score,
+                total: questions.length,
+                subject: new URLSearchParams(window.location.search).get('subject'),
+                date: new Date().toLocaleString()
+            };
+
+            try {
+                const response = await fetch('http://localhost:3000/api/scores', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(scoreData)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Không thể lưu điểm số');
+                }
+
+                const result = await response.json();
+                alert('Điểm số đã được lưu thành công!');
+                window.location.href = `diemdauvao.html?studentId=${studentId}&score=${score}&total=${questions.length}&name=${encodeURIComponent(name)}&subject=${encodeURIComponent(scoreData.subject)}`;
+            } catch (error) {
+                console.error('Lỗi khi lưu điểm:', error);
+                alert('Lỗi: ' + error.message);
+            }
+        }
+
+        function startTimer() {
+            let timeLeft = 45 * 60;
+            const timerElement = document.getElementById("timer");
+            function updateTimer() {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    setTimeout(updateTimer, 1000);
+                } else {
+                    document.getElementById("quizForm").submit();
+                }
+            }
+            updateTimer();
+        }
+    </script>
+</body>
+</html>

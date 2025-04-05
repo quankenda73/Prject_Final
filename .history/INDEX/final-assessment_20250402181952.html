@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh Giá Năng Lực - Hệ Thống Học Tập Thông Minh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f0f4f8;
+            color: #1a202c;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #0984e3;
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+        }
+
+        .question p {
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            background: #0984e3;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #0765b6;
+            box-shadow: 0 10px 20px rgba(9,132,227,0.3);
+        }
+
+        #assessmentResult {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: #e6f0fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="section">
+            <h2>Đánh giá năng lực cuối kỳ</h2>
+            <form id="assessmentForm">
+                <div id="questionsContainer"></div>
+                <button type="submit" class="btn">Nộp bài</button>
+            </form>
+            <div id="assessmentResult"></div>
+        </section>
+    </div>
+
+    <script>
+        let studentId = localStorage.getItem('studentId');
+        let questions = [];
+        const subject = 'Toán'; // Mặc định môn Toán, có thể thay đổi
+        const level = 'Nâng cao'; // Cấp độ nâng cao cho bài đánh giá cuối kỳ
+
+        // Kiểm tra studentId
+        if (!studentId) {
+            alert('Vui lòng đăng nhập và chọn học sinh trước!');
+            window.location.href = 'login.html';
+        }
+
+        // Lấy câu hỏi từ server
+        async function loadQuestions() {
+            const response = await fetch(`http://localhost:3000/api/questions?subject=${subject}&level=${level}`);
+            const data = await response.json();
+            questions = data.questions.slice(0, 5); // Lấy 5 câu hỏi cho bài đánh giá
+            const container = document.getElementById('questionsContainer');
+            questions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <p>Câu ${index + 1}: ${q.question}</p>
+                    ${q.options.map((option, i) => `
+                        <label><input type="radio" name="q${index}" value="${option}"> ${option}</label>
+                    `).join('')}
+                `;
+                container.appendChild(questionDiv);
+            });
+        }
+
+        // Xử lý nộp bài
+        document.getElementById('assessmentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            let score = 0;
+            let explanation = '';
+
+            questions.forEach((q, index) => {
+                const answer = formData.get(`q${index}`);
+                if (answer === q.correctAnswer) {
+                    score += 2; // Mỗi câu 2 điểm, tổng 10 điểm
+                    explanation += `<p><strong>Câu ${index + 1}:</strong> Đúng! Đáp án đúng là ${q.correctAnswer}.</p>`;
+                } else {
+                    explanation += `<p><strong>Câu ${index + 1}:</strong> Sai. Đáp án đúng là ${q.correctAnswer}. ${q.explanation}</p>`;
+                }
+            });
+
+            // So sánh với điểm đầu vào (giả sử lấy từ API scores)
+            const scoresResponse = await fetch(`http://localhost:3000/api/scores?studentId=${studentId}`);
+            const scoresData = await scoresResponse.json();
+            const initialScore = scoresData.scores.length > 0 ? scoresData.scores[0].score : 0;
+            const improvement = score > initialScore ? `Bạn đã cải thiện ${score - initialScore} điểm so với đầu vào!` : 'Bạn cần cố gắng hơn để cải thiện điểm số.';
+
+            // Lưu kết quả đánh giá
+            await fetch('http://localhost:3000/api/final-assessment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    studentId,
+                    score,
+                    total: 10,
+                    subject,
+                    improvement,
+                }),
+            });
+
+            document.getElementById('assessmentResult').innerHTML = `
+                <h3>Kết quả đánh giá</h3>
+                <p><strong>Điểm số:</strong> ${score}/10</p>
+                <p><strong>Giải thích:</strong></p>
+                ${explanation}
+                <p><strong>Nhận xét:</strong> ${improvement}</p>
+            `;
+        });
+
+        // Load câu hỏi khi vào trang
+        loadQuestions();
+    </script>
+</body>
+</html>

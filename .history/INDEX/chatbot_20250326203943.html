@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot Hỏi Đáp</title>
+    <!-- Include MathJax for rendering math equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Reset và cài đặt cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* Tiêu đề cố định */
+        .header {
+            background: linear-gradient(90deg, #0072ff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Khung chat */
+        .chat-container {
+            flex-grow: 1;
+            width: 90%;
+            max-width: 800px;
+            margin: 70px auto 70px;
+            background: #2a2a2a;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Vùng hiển thị tin nhắn */
+        .chat-box {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: calc(100vh - 180px);
+            scrollbar-width: thin;
+            scrollbar-color: #0072ff #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Thanh cuộn tùy chỉnh */
+        .chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-box::-webkit-scrollbar-track {
+            background: #333;
+        }
+        .chat-box::-webkit-scrollbar-thumb {
+            background: #0072ff;
+            border-radius: 4px;
+        }
+
+        /* Tin nhắn chung */
+        .chat-message {
+            margin: 8px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 80%;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        /* Tin nhắn của bot */
+        .bot-message {
+            align-self: flex-start;
+            background: #3a3a3a;
+            color: #e0e0e0;
+            border-left: 5px solid #0072ff;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        /* Animation khi tin nhắn xuất hiện */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tiêu đề trong tin nhắn bot */
+        .bot-message h3 {
+            font-size: 18px;
+            color: #ffcc00;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #555;
+            font-weight: 600;
+        }
+
+        /* Đoạn văn trong tin nhắn bot */
+        .bot-message p {
+            margin: 6px 0;
+            font-size: 15px;
+            color: #d0d0d0;
+        }
+
+        /* Danh sách trong tin nhắn bot */
+        .bot-message ul, .bot-message ol {
+            margin: 10px 0 10px 20px;
+            padding-left: 10px;
+        }
+        .bot-message li {
+            margin: 5px 0;
+            color: #c0c0c0;
+        }
+
+        /* Định dạng code trong tin nhắn bot */
+        .bot-message pre, .bot-message code {
+            background: #222;
+            padding: 8px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #00ffcc;
+            overflow-x: auto;
+            border: 1px solid #444;
+        }
+
+        /* Bảng trong tin nhắn bot */
+        .bot-message table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .bot-message th, .bot-message td {
+            border: 1px solid #555;
+            padding: 8px;
+            text-align: left;
+        }
+        .bot-message th {
+            background: #444;
+            color: #ffcc00;
+        }
+        .bot-message td {
+            color: #d0d0d0;
+        }
+
+        /* Liên kết trong tin nhắn bot */
+        .bot-message a {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+        .bot-message a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tin nhắn người dùng */
+        .user-message {
+            align-self: flex-end;
+            background: #4CAF50;
+            color: white;
+            border-right: 5px solid #388e3c;
+        }
+
+        /* Ô nhập tin nhắn */
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: #222;
+            border-top: 1px solid #444;
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #555;
+            color: #e0e0e0;
+            font-size: 16px;
+            outline: none;
+            transition: background 0.3s;
+        }
+        .chat-input input:focus {
+            background: #666;
+        }
+        .chat-input button {
+            margin-left: 10px;
+            padding: 12px 20px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .chat-input button:hover {
+            background: #0056d2;
+        }
+
+        /* Nút cuộn lên đầu */
+        .scroll-top {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            transition: opacity 0.3s;
+        }
+        .scroll-top:hover {
+            background: #0056d2;
+        }
+        .scroll-top.show {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Footer cố định */
+        .footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tiêu đề -->
+    <div class="header">Chat Bot Hỏi Đáp</div>
+
+    <!-- Khung chat -->
+    <div class="chat-container">
+        <div class="chat-box" id="chat-body">
+            <div class="chat-message bot-message">
+                <h3>Chào bạn!</h3>
+                <p>Tôi có thể giúp gì cho bạn hôm nay?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Nhập câu hỏi..." onkeypress="if(event.key === 'Enter') sendMessage();" />
+            <button onclick="sendMessage()">Gửi</button>
+        </div>
+    </div>
+
+    <!-- Nút cuộn lên đầu -->
+    <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+    <!-- Footer -->
+    <div class="footer">© 2025 Grok by xAI - All Rights Reserved.</div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+
+            appendMessage(userInput, 'user-message');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: userInput })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Lỗi HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+                let botReply = extractBotReply(data);
+
+                if (isStudyRelated(userInput)) {
+                    const subject = categorizeStudyQuestion(userInput);
+                    botReply = formatStudyResponse(botReply, subject, userInput);
+                } else {
+                    botReply = formatGeneralResponse(botReply);
+                }
+
+                appendMessage(botReply, 'bot-message');
+
+            } catch (error) {
+                console.error('Lỗi:', error);
+                appendMessage('<h3>Lỗi</h3><p>Lỗi kết nối server. Vui lòng thử lại sau.</p>', 'bot-message');
+            }
+
+            document.getElementById('user-input').value = '';
+            updateScrollTopButton();
+        }
+
+        function isStudyRelated(input) {
+            const studyKeywords = ['toán', 'phương trình', 'hàm số', 'giải', 'học', 'bài tập', 'lý', 'hóa', 'văn', 'sử', 'địa', 'hình học', 'đại số', 'tích phân', 'đạo hàm', 'english', 'history', 'geography', 'physics', 'chemistry', 'cân bằng', 'bậc nhất', 'bậc 2', 'hệ phương trình', 'sin', 'cos', 'tan', 'đạo hàm', 'tích phân'];
+            return studyKeywords.some(keyword => input.toLowerCase().includes(keyword));
+        }
+
+        function categorizeStudyQuestion(input) {
+            input = input.toLowerCase();
+            if (['toán', 'phương trình', 'hàm số', 'hình học', 'đại số', 'tích phân', 'đạo hàm', 'bậc nhất', 'bậc 2', 'hệ phương trình', 'sin', 'cos', 'tan'].some(keyword => input.includes(keyword))) {
+                return 'math';
+            } else if (['hóa', 'cân bằng', 'phản ứng', 'hóa học', 'chemistry'].some(keyword => input.includes(keyword))) {
+                return 'chemistry';
+            } else if (['lý', 'vật lý', 'physics'].some(keyword => input.includes(keyword))) {
+                return 'physics';
+            } else if (['văn', 'sử', 'địa', 'english', 'history', 'geography'].some(keyword => input.includes(keyword))) {
+                return 'other';
+            }
+            return 'unknown';
+        }
+
+        function formatStudyResponse(reply, subject, userInput) {
+            // Function to format math expressions in the reply
+            function formatMathExpressions(text) {
+                // Replace common math patterns with LaTeX
+                text = text.replace(/sqrt\((.*?)\)/g, '\\sqrt{$1}');
+                text = text.replace(/(\d+)\^(\d+)/g, '$1^{$2}');
+                text = text.replace(/pm/g, '\\pm');
+                text = text.replace(/Delta/g, '\\Delta');
+                // Wrap equations in \( ... \)
+                text = text.replace(/\$\$([^$]+)\$\$/g, '\\($1\\)');
+                return text;
+            }
+
+            // Function to structure the response into steps (simulated parsing)
+            function structureMathResponse(userInput) {
+                userInput = userInput.toLowerCase();
+                let problemType = 'unknown';
+                let response = {
+                    problemStatement: '',
+                    example: '',
+                    steps: [],
+                    finalAnswer: '',
+                    references: [
+                        '<li>Video YouTube: <a href="https://www.youtube.com/watch?v=IWtkS9nBNkA" target="_blank">Hướng dẫn chủ đề liên quan</a></li>',
+                        '<li>PDF: <a href="https://www.mathsisfun.com" target="_blank">Tài liệu chi tiết</a></li>'
+                    ]
+                };
+
+                // Detect the type of math problem based on keywords
+                if (userInput.includes('phương trình') && userInput.includes('bậc nhất')) {
+                    problemType = 'linear';
+                    response.problemStatement = 'Phương trình bậc nhất có dạng: \\( ax + b = 0 \\) (với \\( a \\neq 0 \\)).';
+                    response.example = 'Ví dụ: Giải phương trình: \\( 2x - 4 = 0 \\). Ta có: \\( a = 2 \\), \\( b = -4 \\).';
+                    response.steps = [
+                        '<strong>Chuyển vế:</strong> \\( 2x = 4 \\).',
+                        '<strong>Chia cho hệ số của \\( x \\):</strong> \\( x = \\frac{4}{2} = 2 \\).'
+                    ];
+                    response.finalAnswer = 'Phương trình có nghiệm: \\( x = 2 \\).';
+                    response.references[1] = '<li>PDF: <a href="https://www.mathsisfun.com/algebra/linear-equations.html" target="_blank">Tài liệu chi tiết</a></li>';
+                } else if (userInput.includes('phương trình') && userInput.includes('bậc 2')) {
+                    problemType = 'quadratic';
+                    response.problemStatement = 'Cho phương trình bậc 2: \\( ax^2 + bx + c = 0 \\) (với \\( a \\neq 0 \\)).';
+                    response.example = 'Phương trình: \\( x^2 - 4x + 3 = 0 \\). Ta có: \\( a = 1 \\), \\( b = -4 \\), \\( c = 3 \\).';
+                    response.steps = [
+                        '<strong>Tính delta:</strong> Công thức: \\( \\Delta = b^2 - 4ac \\). Thay số: \\( \\Delta = (-4)^2 - 4 \\cdot 1 \\cdot 3 = 16 - 12 = 4 \\). Vậy \\( \\Delta = 4 > 0 \\), phương trình có 2 nghiệm phân biệt.',
+                        '<strong>Tính nghiệm:</strong> Công thức nghiệm: \\( x = \\frac{-b \\pm \\sqrt{\\Delta}}{2a} \\). Thay số: \\( x = \\frac{-(-4) \\pm \\sqrt{4}}{2 \\cdot 1} = \\frac{4 \\pm 2}{2} \\).',
+                        '<strong>Nghiệm thứ nhất:</strong> \\( x_1 = \\frac{4 + 2}{2} = 3 \\).',
+                        '<strong>Nghiệm thứ hai:</strong> \\( x_2 = \\frac{4 - 2}{2} = 1 \\).'
+                    ];
+                    response.finalAnswer = 'Phương trình có hai nghiệm: \\( x_1 = 3 \\), \\( x_2 = 1 \\).';
+                    response.references[1] = '<li>PDF: <a href="https://www.mathsisfun.com/algebra/quadratic-equation.html" target="_blank">Tài liệu chi tiết</a></li>';
+                } else if (userInput.includes('hệ phương trình')) {
+                    problemType = 'system';
+                    response.problemStatement = 'Hệ phương trình tuyến tính có dạng: \\( \\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases} \\).';
+                    response.example = 'Ví dụ: Giải hệ phương trình: \\( \\begin{cases} 2x + y = 5 \\\\ x - y = 1 \\end{cases} \\).';
+                    response.steps = [
+                        '<strong>Cộng hai phương trình:</strong> \\( (2x + y) + (x - y) = 5 + 1 \\), ta được: \\( 3x = 6 \\), suy ra \\( x = 2 \\).',
+                        '<strong>Thay \\( x = 2 \\) vào phương trình thứ hai:</strong> \\( 2 - y = 1 \\), suy ra \\( y = 1 \\).',
+                        '<strong>Kiểm tra:</strong> Thay \\( x = 2 \\), \\( y = 1 \\) vào phương trình đầu: \\( 2(2) + 1 = 5 \\), đúng.'
+                    ];
+                    response.finalAnswer = 'Hệ phương trình có nghiệm: \\( x = 2 \\), \\( y = 1 \\).';
+                } else if (userInput.includes('đạo hàm')) {
+                    problemType = 'derivative';
+                    response.problemStatement = 'Đạo hàm của một hàm số \\( f(x) \\) biểu thị tốc độ thay đổi của hàm tại một điểm.';
+                    response.example = 'Ví dụ: Tính đạo hàm của hàm số: \\( f(x) = x^2 + 3x + 2 \\).';
+                    response.steps = [
+                        '<strong>Áp dụng quy tắc đạo hàm:</strong> Đạo hàm của \\( x^n \\) là \\( n x^{n-1} \\), đạo hàm của hằng số là 0.',
+                        '<strong>Tính từng phần:</strong> Đạo hàm của \\( x^2 \\) là \\( 2x \\), của \\( 3x \\) là \\( 3 \\), của \\( 2 \\) là \\( 0 \\).',
+                        '<strong>Kết hợp:</strong> \\( f\'(x) = 2x + 3 \\).'
+                    ];
+                    response.finalAnswer = 'Đạo hàm của hàm số là: \\( f\'(x) = 2x + 3 \\).';
+                } else if (userInput.includes('tích phân')) {
+                    problemType = 'integral';
+                    response.problemStatement = 'Tích phân của một hàm số \\( f(x) \\) là tìm hàm số \\( F(x) \\) sao cho \\( F\'(x) = f(x) \\).';
+                    response.example = 'Ví dụ: Tính tích phân: \\( \\int (2x + 3) \\, dx \\).';
+                    response.steps = [
+                        '<strong>Áp dụng quy tắc tích phân:</strong> Tích phân của \\( x^n \\) là \\( \\frac{x^{n+1}}{n+1} \\), của hằng số \\( a \\) là \\( ax \\).',
+                        '<strong>Tính từng phần:</strong> Tích phân của \\( 2x \\) là \\( x^2 \\), của \\( 3 \\) là \\( 3x \\).',
+                        '<strong>Kết hợp và thêm hằng số:</strong> \\( \\int (2x + 3) \\, dx = x^2 + 3x + C \\).'
+                    ];
+                    response.finalAnswer = 'Tích phân của hàm số là: \\( x^2 + 3x + C \\).';
+                } else if (userInput.includes('sin') || userInput.includes('cos') || userInput.includes('tan')) {
+                    problemType = 'trigonometry';
+                    response.problemStatement = 'Giải phương trình lượng giác thường yêu cầu tìm nghiệm trong một khoảng nhất định.';
+                    response.example = 'Ví dụ: Giải phương trình: \\( \\sin(x) = \\frac{1}{2} \\) trong khoảng \\( [0, 2\\pi] \\).';
+                    response.steps = [
+                        '<strong>Tìm nghiệm cơ bản:</strong> \\( \\sin(x) = \\frac{1}{2} \\) tại \\( x = \\frac{\\pi}{6} \\).',
+                        '<strong>Tìm nghiệm tổng quát:</strong> Công thức: \\( x = \\frac{\\pi}{6} + 2k\\pi \\) hoặc \\( x = \\pi - \\frac{\\pi}{6} + 2k\\pi \\).',
+                        '<strong>Trong khoảng \\( [0, 2\\pi] \\):</strong> \\( x = \\frac{\\pi}{6} \\), \\( x = \\frac{5\\pi}{6} \\).'
+                    ];
+                    response.finalAnswer = 'Phương trình có nghiệm: \\( x = \\frac{\\pi}{6} \\), \\( x = \\frac{5\\pi}{6} \\).';
+                } else {
+                    // Fallback for other math problems
+                    problemType = 'general';
+                    reply = formatMathExpressions(reply);
+                    response.problemStatement = 'Dưới đây là lời giải cho bài toán của bạn:';
+                    response.example = '';
+                    response.steps = reply.split('. ').map(step => step.trim()).filter(step => step).map(step => step + '.');
+                    response.finalAnswer = response.steps.length > 0 ? response.steps.pop() : 'Không có kết quả cụ thể.';
+                }
+
+                // Build the formatted response
+                let formattedSteps = response.steps.length > 0 ? `
+                    <p><strong>Các bước giải:</strong></p>
+                    <ol>
+                        ${response.steps.map(step => `<li>${step}</li>`).join('')}
+                    </ol>
+                ` : '';
+
+                return `
+                    <h3>Câu trả lời</h3>
+                    <p>${response.problemStatement}</p>
+                    ${response.example ? `<p>${response.example}</p>` : ''}
+                    ${formattedSteps}
+                    <p><strong>Kết quả cuối cùng:</strong> ${response.finalAnswer}</p>
+                    <h3>Tài liệu tham khảo</h3>
+                    <ul>
+                        ${response.references.join('')}
+                    </ul>
+                    <p><strong>Câu hỏi bổ sung:</strong> Bạn có muốn mình giải thêm bài nào nữa không?</p>
+                `;
+            }
+
+            if (subject === 'math') {
+                return structureMathResponse(userInput);
+            } else if (subject === 'chemistry') {
+                // For chemistry questions, provide a structured response
+                return `
+                    <h3>Câu trả lời</h3>
+                    <p>Để cân bằng phương trình hóa học, ta cần đảm bảo số nguyên tử của mỗi nguyên tố ở vế trái bằng vế phải.</p>
+                    <p>Ví dụ: Cân bằng phương trình: \\( H_2 + O_2 \\rightarrow H_2O \\).</p>
+                    <p><strong>Các bước cân bằng:</strong></p>
+                    <ol>
+                        <li><strong>Đếm số nguyên tử:</strong> Vế trái: 2 H, 2 O. Vế phải: 2 H, 1 O.</li>
+                        <li><strong>Cân bằng O:</strong> Đặt hệ số 2 trước \\( H_2O \\): \\( H_2 + O_2 \\rightarrow 2H_2O \\). Bây giờ vế phải có 4 H, 2 O.</li>
+                        <li><strong>Cân bằng H:</strong> Đặt hệ số 2 trước \\( H_2 \\): \\( 2H_2 + O_2 \\rightarrow 2H_2O \\). Bây giờ vế trái có 4 H, 2 O, vế phải cũng có 4 H, 2 O.</li>
+                    </ol>
+                    <p><strong>Phương trình đã cân bằng:</strong> \\( 2H_2 + O_2 \\rightarrow 2H_2O \\).</p>
+                    <h3>Tài liệu tham khảo</h3>
+                    <ul>
+                        <li>Video YouTube: <a href="https://www.youtube.com/watch?v=IWtkS9nBNkA" target="_blank">Hướng dẫn chủ đề liên quan</a></li>
+                        <li>PDF: <a href="https://www.chemguide.co.uk/atoms/equations.html" target="_blank">Tài liệu chi tiết</a></li>
+                    </ul>
+                    <p><strong>Câu hỏi bổ sung:</strong> Bạn có muốn mình giải thêm bài nào nữa không?</p>
+                `;
+            } else {
+                // For other study-related questions, display the reply as-is
+                return `
+                    <h3>Câu trả lời</h3>
+                    <p>${reply}</p>
+                    <h3>Tài liệu tham khảo</h3>
+                    <ul>
+                        <li>Video YouTube: <a href="https://www.youtube.com/watch?v=IWtkS9nBNkA" target="_blank">Hướng dẫn chủ đề liên quan</a></li>
+                        <li>PDF: <a href="https://www.example.com" target="_blank">Tài liệu chi tiết</a></li>
+                    </ul>
+                    <p><strong>Câu hỏi bổ sung:</strong> Bạn có muốn mình giải thêm bài nào nữa không?</p>
+                `;
+            }
+        }
+
+        function formatGeneralResponse(reply) {
+            return `
+                <h3>Câu trả lời</h3>
+                <p>${reply}</p>
+            `;
+        }
+
+        function extractBotReply(data) {
+            return data.reply || 'Xin lỗi, tôi không hiểu câu hỏi của bạn.';
+        }
+
+        function appendMessage(text, className) {
+            const chatBody = document.getElementById('chat-body');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${className}`;
+            messageDiv.innerHTML = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Re-render MathJax after adding new content
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function scrollToTop() {
+            document.getElementById('chat-body').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateScrollTopButton() {
+            const chatBox = document.getElementById('chat-body');
+            const scrollTopBtn = document.querySelector('.scroll-top');
+            if (chatBox.scrollTop > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        }
+
+        document.getElementById('chat-body').addEventListener('scroll', updateScrollTopButton);
+    </script>
+</body>
+</html>

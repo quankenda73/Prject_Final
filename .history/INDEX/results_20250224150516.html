@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả Thi Trắc Nghiệm</title>
+    <link rel="stylesheet" href="../CSS/ketqua.css">
+</head>
+<body>
+    <header>
+        <h1>Kết Quả Bài Thi</h1>
+    </header>
+
+    <section id="resultsSection">
+        <h2>Điểm của bạn: <span id="score">0</span></h2>
+        <div id="answerDetails"></div>
+    </section>
+
+    <footer>
+        <button onclick="goBack()">Quay lại trang thi</button>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const subject = urlParams.get('subject');
+        const level = urlParams.get('level');
+        const score = parseInt(urlParams.get('score')) || 0;
+
+        if (!subject || !level) {
+            document.getElementById('resultsSection').innerHTML = "<p>Lỗi: Không tìm thấy môn học hoặc cấp độ.</p>";
+            console.error("Lỗi: Thiếu 'subject' hoặc 'level' trong URL.");
+        } else {
+            showResults();
+        }
+
+        async function showResults() {
+            try {
+                const response = await fetch(`http://localhost:3000/api/questions?subject=${subject}&level=${level}`);
+                if (!response.ok) throw new Error(`Lỗi HTTP: ${response.status}`);
+                
+                const questionsData = await response.json();
+                const questions = questionsData.questions;
+
+                let answerDetails = "";
+
+                for (let index = 0; index < questions.length; index++) {
+                    const q = questions[index];
+                    const selectedAnswer = (urlParams.get(`q${index}`) || "Chưa chọn").trim(); 
+                    const isCorrect = selectedAnswer === q.answer.trim();
+
+                    // Gọi API Gemini để giải thích
+                    const explanation = await getGeminiExplanation(q.question, selectedAnswer, q.answer);
+
+                    answerDetails += isCorrect 
+                        ? `<p class="correct-answer"><strong>Câu ${index + 1}: Đúng ✅</strong><br>
+                           Câu trả lời: ${q.answer}<br>
+                           Giải thích: ${explanation}</p>`
+                        : `<p class="wrong-answer"><strong>Câu ${index + 1}: Sai ❌</strong><br>
+                           Câu trả lời của bạn: ${selectedAnswer}<br>
+                           Câu trả lời đúng: ${q.answer}<br>
+                           Giải thích: ${explanation}</p>`;
+                }
+
+                document.getElementById('score').textContent = score;
+                document.getElementById('answerDetails').innerHTML = answerDetails;
+            } catch (error) {
+                console.error('Lỗi khi tải dữ liệu hoặc hiển thị kết quả:', error);
+                document.getElementById('resultsSection').innerHTML = "<p>Không thể tải dữ liệu hoặc hiển thị kết quả.</p>";
+            }
+        }
+
+        // Gọi API Gemini (sửa theo server.js)
+        async function getGeminiExplanation(question, selectedAnswer, correctAnswer) {
+            console.log("Gửi dữ liệu:", { question, selectedAnswer, correctAnswer });
+
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: `Câu hỏi: ${question}\nCâu trả lời của bạn: ${selectedAnswer}\nĐáp án đúng: ${correctAnswer}\nVui lòng giải thích.` })
+                });
+
+                if (!response.ok) {
+                    const errorResponse = await response.json();
+                    console.warn(`API lỗi ${response.status}: ${errorResponse.reply}`);
+                    return `Lỗi khi gọi API: ${response.status}`;
+                }
+
+                const data = await response.json();
+                return data.reply || "Không có giải thích từ AI.";
+            } catch (error) {
+                console.error('Lỗi khi gọi API Gemini:', error);
+                return "Không thể kết nối đến AI, vui lòng thử lại sau.";
+            }
+        }
+
+        function goBack() {
+            window.location.href = `quiz.html?subject=${subject}&level=${level}`;
+        }
+    </script>
+</body>
+</html>

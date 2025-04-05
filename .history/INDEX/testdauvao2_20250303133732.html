@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Đầu Vào</title>
+    <style>
+        /* Reset mặc định */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 36px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+        }
+
+        .timer {
+            font-size: 28px;
+            font-weight: 600;
+            color: #e74c3c;
+            background: #fceae9;
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 0 auto 30px auto;
+            box-shadow: 0 2px 10px rgba(231, 76, 60, 0.1);
+        }
+
+        .question {
+            text-align: left;
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            background: #f8fafc;
+            border-left: 8px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .question:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .question p {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        input[type="radio"] {
+            margin: 12px 15px 12px 0;
+            transform: scale(1.5);
+            accent-color: #3498db;
+        }
+
+        label {
+            font-size: 18px;
+            color: #34495e;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        label:hover {
+            color: #3498db;
+        }
+
+        .correct {
+            color: #27ae60 !important;
+            font-weight: 600;
+            background: #e8f5e9;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .wrong {
+            color: #c0392b !important;
+            font-weight: 600;
+            background: #fce4e4;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            display: block;
+            margin: 30px auto 0;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        #result, #suggestion {
+            margin-top: 40px;
+            padding: 25px;
+            background: #ecf0f1;
+            border-radius: 12px;
+            color: #2c3e50;
+            line-height: 1.8;
+            font-size: 20px;
+        }
+
+        #result h3 {
+            color: #2980b9;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        #suggestion ul {
+            list-style-type: disc;
+            margin-top: 10px;
+        }
+
+        #suggestion h4 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 30px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .timer {
+                font-size: 22px;
+            }
+
+            .question {
+                padding: 20px;
+            }
+
+            .question p {
+                font-size: 18px;
+            }
+
+            label {
+                font-size: 16px;
+            }
+
+            button {
+                padding: 12px 30px;
+                font-size: 18px;
+            }
+
+            #result, #suggestion {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body onload="startTimer()">
+    <div class="container">
+        <h2 id="quizTitle">Bài Kiểm Tra Đầu Vào</h2>
+        <p class="timer">Thời gian còn lại: <span id="timer">45:00</span></p>
+        <form id="quizForm"></form>
+        <div id="result" style="margin-top: 20px; font-size: 20px;"></div>
+        <div id="suggestion" style="margin-top: 20px; font-size: 18px;"></div>
+    </div>
+
+    <script>
+        async function loadQuestions() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subject = urlParams.get('subject') || 'math';
+            const quizForm = document.getElementById("quizForm");
+            const quizTitle = document.getElementById("quizTitle");
+            quizForm.innerHTML = "<p>Đang tải câu hỏi...</p>";
+
+            const subjectMap = {
+                'math': 'Toán',
+                'literature': 'Ngữ Văn',
+                'physics': 'Vật Lý',
+                'english': 'Tiếng Anh',
+                'chemistry': 'Hóa Học'
+            };
+            quizTitle.textContent = `Bài Kiểm Tra Đầu Vào - ${subjectMap[subject] || subject}`;
+
+            try {
+                const response = await fetch('test2.json');
+                if (!response.ok) {
+                    throw new Error(`Không thể tải test2.json: ${response.status}`);
+                }
+                const data = await response.json();
+                const questions = data.questions
+                    .filter(q => q.subject === subject)
+                    .slice(0, 50);
+
+                if (!questions.length) {
+                    throw new Error(`Không tìm thấy câu hỏi cho môn ${subjectMap[subject] || subject} trong test2.json!`);
+                }
+
+                quizForm.innerHTML = "";
+
+                questions.forEach((q, index) => {
+                    const questionDiv = document.createElement("div");
+                    questionDiv.classList.add("question");
+
+                    let questionHTML = `<p>${index + 1}. ${q.question}</p>`;
+                    q.options.forEach((option, optIndex) => {
+                        questionHTML += `
+                            <label>
+                                <input type="radio" name="q${index}" value="${optIndex}"> ${option}
+                            </label><br>`;
+                    });
+
+                    questionDiv.innerHTML = questionHTML;
+                    quizForm.appendChild(questionDiv);
+                });
+
+                const submitButton = document.createElement("button");
+                submitButton.type = "submit";
+                submitButton.textContent = "Nộp Bài";
+                quizForm.appendChild(submitButton);
+
+                quizForm.addEventListener("submit", (e) => submitQuiz(e, questions));
+            } catch (error) {
+                quizForm.innerHTML = `<p style="color:red;">Lỗi: ${error.message}. Vui lòng kiểm tra tệp test2.json!</p>`;
+                console.error("Lỗi khi tải câu hỏi:", error);
+            }
+        }
+
+        function submitQuiz(event, questions) {
+            event.preventDefault();
+
+            let score = 0;
+
+            questions.forEach((q, index) => {
+                const options = document.querySelectorAll(`input[name="q${index}"]`);
+                let userAnswer = null;
+
+                options.forEach(option => {
+                    if (option.checked) {
+                        userAnswer = parseInt(option.value);
+                    }
+                });
+
+                options.forEach(option => {
+                    const label = option.parentElement;
+                    if (parseInt(option.value) === q.correctAnswer) {
+                        label.classList.add("correct");
+                    }
+                    if (userAnswer !== q.correctAnswer && userAnswer === parseInt(option.value)) {
+                        label.classList.add("wrong");
+                    }
+                });
+
+                if (userAnswer === q.correctAnswer) {
+                    score++;
+                }
+            });
+
+            let level, suggestion, learningPath;
+            const subject = new URLSearchParams(window.location.search).get('subject') || 'math';
+            const subjectMap = {
+                'math': 'Toán',
+                'literature': 'Ngữ Văn',
+                'physics': 'Vật Lý',
+                'english': 'Tiếng Anh',
+                'chemistry': 'Hóa Học'
+            };
+            const subjectName = subjectMap[subject] || subject;
+
+            if (score > 45) {
+                level = "Giỏi";
+                suggestion = "Bạn đã nắm vững kiến thức cơ bản và có thể học các chủ đề nâng cao.";
+                learningPath = `
+                    <h4>Lộ trình học tập đề xuất:</h4>
+                    <ul style="text-align: left; padding-left: 20px;">
+                        <li><strong>Tuần 1-2:</strong> Ôn tập các chủ đề chuyên sâu trong ${subjectName} (VD: ${subject === 'math' ? 'Đại số nâng cao, Hình học không gian' : subject === 'english' ? 'Ngữ pháp nâng cao, Từ vựng học thuật' : 'Kiến thức chuyên ngành'}).</li>
+                        <li><strong>Tuần 3-4:</strong> Tham gia khóa học nâng cao hoặc giải đề thi thử cấp cao.</li>
+                        <li><strong>Sau 1 tháng:</strong> Thử sức với các kỳ thi hoặc chứng chỉ liên quan đến ${subjectName}.</li>
+                    </ul>
+                `;
+            } else if (score >= 30) {
+                level = "Khá";
+                suggestion = "Bạn có nền tảng tốt nhưng cần củng cố thêm một số phần kiến thức.";
+                learningPath = `
+                    <h4>Lộ trình học tập đề xuất:</h4>
+                    <ul style="text-align: left; padding-left: 20px;">
+                        <li><strong>Tuần 1:</strong> Xem lại các chủ đề cơ bản trong ${subjectName} mà bạn chưa chắc (VD: ${subject === 'math' ? 'Phương trình, Hình học phẳng' : subject === 'english' ? 'Thì động từ, Câu điều kiện' : 'Công thức cơ bản'}).</li>
+                        <li><strong>Tuần 2-3:</strong> Làm bài tập thực hành để cải thiện kỹ năng.</li>
+                        <li><strong>Tuần 4:</strong> Tham gia khóa học bổ trợ trung cấp về ${subjectName}.</li>
+                    </ul>
+                `;
+            } else if (score >= 20) {
+                level = "Trung Bình";
+                suggestion = "Bạn cần ôn lại kiến thức cơ bản và thực hành nhiều hơn.";
+                learningPath = `
+                    <h4>Lộ trình học tập đề xuất:</h4>
+                    <ul style="text-align: left; padding-left: 20px;">
+                        <li><strong>Tuần 1:</strong> Học lại các khái niệm nền tảng của ${subjectName} (VD: ${subject === 'math' ? 'Số học, Đại số cơ bản' : subject === 'english' ? 'Từ vựng cơ bản, Ngữ pháp nhập môn' : 'Định luật cơ bản'}).</li>
+                        <li><strong>Tuần 2-3:</strong> Làm bài tập đơn giản để ghi nhớ kiến thức.</li>
+                        <li><strong>Tuần 4:</strong> Tham gia khóa học cơ bản hoặc học nhóm để cải thiện.</li>
+                    </ul>
+                `;
+            } else {
+                level = "Yếu";
+                suggestion = "Bạn cần bắt đầu lại từ những kiến thức căn bản nhất.";
+                learningPath = `
+                    <h4>Lộ trình học tập đề xuất:</h4>
+                    <ul style="text-align: left; padding-left: 20px;">
+                        <li><strong>Tuần 1-2:</strong> Ôn tập kiến thức cơ bản nhất của ${subjectName} (VD: ${subject === 'math' ? 'Cộng trừ nhân chia, Số thập phân' : subject === 'english' ? 'Bảng chữ cái, Phát âm cơ bản' : 'Khái niệm nhập môn'}).</li>
+                        <li><strong>Tuần 3-4:</strong> Làm bài tập dễ và xem video hướng dẫn cơ bản.</li>
+                        <li><strong>Tháng tiếp theo:</strong> Tham gia khóa học nhập môn ${subjectName} để xây dựng nền tảng.</li>
+                    </ul>
+                `;
+            }
+
+            document.getElementById("result").innerHTML = `
+                <h3>Bạn đã hoàn thành bài kiểm tra!</h3>
+                <p>Điểm số của bạn: <strong>${score}/${questions.length}</strong></p>
+                <p>Mức độ: <strong>${level}</strong></p>
+            `;
+            document.getElementById("suggestion").innerHTML = `
+                <p><strong>Gợi ý:</strong> ${suggestion}</p>
+                ${learningPath}
+            `;
+        }
+
+        function startTimer() {
+            let timeLeft = 45 * 60;
+            const timerElement = document.getElementById("timer");
+
+            function updateTimer() {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    setTimeout(updateTimer, 1000);
+                } else {
+                    document.getElementById("quizForm").submit();
+                }
+            }
+
+            updateTimer();
+        }
+
+        document.addEventListener("DOMContentLoaded", loadQuestions);
+    </script>
+</body>
+</html>

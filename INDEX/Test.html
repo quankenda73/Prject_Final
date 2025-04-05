@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{csrf_token}}">
+    <title>Làm Bài Kiểm Tra</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/css/styles.css" as="style">
+    <link rel="preload" href="/js/test.js" as="script">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Timer -->
+    <div class="timer" id="timer">00:00</div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="test-container">
+            <div class="test-header">
+                <h1 id="testTitle">Đang tải...</h1>
+                <p id="testDescription"></p>
+            </div>
+
+            <div class="questions-container" id="questionsContainer">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+
+            <div class="test-footer">
+                <button class="btn" id="prevBtn" disabled>Trước</button>
+                <button class="btn" id="nextBtn">Tiếp</button>
+                <button class="btn btn-primary" id="submitBtn" style="display: none;">Nộp bài</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <h2>Xác nhận nộp bài</h2>
+            <p>Bạn có chắc chắn muốn nộp bài kiểm tra?</p>
+            <div class="modal-buttons">
+                <button class="btn" id="cancelBtn">Hủy</button>
+                <button class="btn btn-primary" id="confirmBtn">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/js/security.js"></script>
+    <script type="module" src="/js/performance.js"></script>
+    <script type="module" src="/js/test.js"></script>
+</body>
+</html> 

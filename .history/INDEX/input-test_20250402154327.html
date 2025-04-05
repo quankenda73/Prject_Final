@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Đầu Vào - Tạo Lộ Trình Học Tập Cá Nhân Hóa</title>
+    <link rel="stylesheet" href="../CSS/input_test.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Kiểm Tra Đầu Vào</h1>
+            <p>Hoàn thành thông tin dưới đây để bắt đầu bài kiểm tra và cá nhân hóa lộ trình học tập của bạn.</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul class="nav-list">
+            <li><a href="Home_Page.html">Trang Chủ</a></li>
+            <li><a href="/input-test" class="active">Kiểm Tra Đầu Vào</a></li>
+            <li><a href="/diemdauvao">Điểm Số</a></li>
+            <li><a href="/student-info">Thông Tin Sinh Viên</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section>
+            <h2>Thông Tin Cá Nhân</h2>
+            <form id="input-test-form">
+                <div class="form-group">
+                    <label for="student-id">Mã Sinh Viên (ID):</label>
+                    <input type="text" id="student-id" name="student-id" required placeholder="VD: SV001">
+                </div>
+                <div class="form-group">
+                    <label for="name">Họ Tên:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                </div>
+                <div class="form-group">
+                    <label for="class">Lớp:</label>
+                    <input type="text" id="class" name="class" required>
+                </div>
+                <div class="form-group">
+                    <label for="avg-score">Điểm Trung Bình Môn (Thang điểm 10):</label>
+                    <input type="number" id="avg-score" name="avg-score" min="0" max="10" step="0.1" required placeholder="VD: 8.5">
+                </div>
+                <div class="form-group">
+                    <label for="target-score">Điểm Số Hướng Đến (Thang điểm 10):</label>
+                    <input type="number" id="target-score" name="target-score" min="0" max="10" step="0.1" required placeholder="VD: 9.0">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Môn Học:</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Chọn môn học</option>
+                        <option value="math">Toán</option>
+                        <option value="literature">Ngữ Văn</option>
+                        <option value="physics">Vật Lý</option>
+                        <option value="english">Tiếng Anh</option>
+                        <option value="chemistry">Hóa Học</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Lưu Thông Tin và Bắt Đầu Bài Thi</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 Tạo Lộ Trình Học Tập Cá Nhân Hóa | Mọi quyền được bảo lưu.</p>
+    </footer>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('input-test-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+    
+            const studentId = document.getElementById('student-id').value;
+            const avgScore = parseFloat(document.getElementById('avg-score').value);
+            const targetScore = parseFloat(document.getElementById('target-score').value);
+    
+            if (avgScore < 0 || avgScore > 10 || targetScore < 0 || targetScore > 10) {
+                alert('Điểm trung bình và điểm hướng đến phải nằm trong khoảng từ 0 đến 10!');
+                return;
+            }
+    
+            const studentInfo = {
+                studentId: studentId,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                class: document.getElementById('class').value,
+                avgScore: avgScore,
+                targetScore: targetScore,
+                subject: document.getElementById('subject').value
+            };
+    
+            if (!studentInfo.subject) {
+                alert('Vui lòng chọn môn học!');
+                return;
+            }
+    
+            try {
+                const response = await fetch('http://localhost:3000/api/students', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(studentInfo)
+                });
+    
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.message || 'Lỗi khi lưu thông tin');
+    
+                localStorage.setItem('currentStudent', JSON.stringify({
+                    studentId: studentInfo.studentId,
+                    name: studentInfo.name,
+                    subject: studentInfo.subject
+                }));
+    
+                alert('Thông tin đã được lưu thành công!');
+                window.location.href = `Test_Dau_Vao2.html?subject=${encodeURIComponent(studentInfo.subject)}&name=${encodeURIComponent(studentInfo.name)}&studentId=${encodeURIComponent(studentInfo.studentId)}`;
+            } catch (error) {
+                console.error('Error:', error);
+                localStorage.setItem('currentStudent', JSON.stringify({
+                    studentId: studentInfo.studentId,
+                    name: studentInfo.name,
+                    subject: studentInfo.subject
+                }));
+                alert('Thông tin đã được lưu (giả lập). Bạn muốn kiểm tra đầu vào với môn học nào?');
+                window.location.href = `testdauvao2.html?subject=${encodeURIComponent(studentInfo.subject)}&name=${encodeURIComponent(studentInfo.name)}&studentId=${encodeURIComponent(studentInfo.studentId)}`;
+            }
+        });
+    });
+    </script>
+    </body>
+</html>

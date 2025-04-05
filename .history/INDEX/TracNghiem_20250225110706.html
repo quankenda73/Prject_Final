@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Thi Trắc Nghiệm Online</title>
+    <link rel="stylesheet" href="../CSS/tracnghiem.css">
+</head>
+<body>
+    <header>
+        <h1>Hệ Thống Thi Trắc Nghiệm Online</h1>
+        <p>Hệ thống sử dụng công nghệ AI để tạo ra bài thi trắc nghiệm dành cho học sinh lớp 12, với các bài thi và giải thích chi tiết.</p>
+    </header>
+
+    <nav>
+        <a href="#home">Trang Chủ</a>
+        <a href="#quiz">Chọn Bài Thi</a>
+        <a href="#results">Xem Kết Quả</a>
+        <a href="#about">Giới Thiệu</a>
+    </nav>
+
+    <section id="home">
+        <h2>Chào Mừng Đến Với Hệ Thống Thi Trắc Nghiệm Lớp 12</h2>
+        <p>Chúng tôi sử dụng AI để tạo ra các bài thi trắc nghiệm phù hợp với học sinh lớp 12, giúp các em luyện tập và chuẩn bị tốt cho kỳ thi.</p>
+    </section>
+
+    <section id="quiz">
+        <h2>Chọn Bài Thi Trắc Nghiệm</h2>
+        <form id="quizForm">
+            <label for="subject">Chọn Môn Học:</label>
+            <select id="subject" name="subject">
+                <option value="math">Toán Học</option>
+                <option value="physics">Vật Lý</option>
+                <option value="chemistry">Hóa Học</option>
+                <option value="literature">Văn Học</option>
+                <option value="history">Lịch Sử</option>
+                <option value="geography">Địa Lý</option>
+                <option value="foreign_language">Ngoại Ngữ</option>
+            </select>
+
+            <label for="level">Chọn Cấp Độ:</label>
+            <select id="level" name="level">
+                <option value="easy">Dễ</option>
+                <option value="medium">Trung Bình</option>
+                <option value="hard">Khó</option>
+            </select>
+
+            <label for="time_limit">Chọn Thời Gian Làm Bài (Phút):</label>
+            <select id="time_limit" name="time_limit">
+                <option value="30">30 Phút</option>
+                <option value="60">60 Phút</option>
+                <option value="90">90 Phút</option>
+            </select>
+
+            <button type="button" onclick="startQuiz()">Bắt Đầu Thi</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Hệ Thống Thi Trắc Nghiệm Online | Mọi quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        function startQuiz() {
+            const subject = document.getElementById('subject').value;
+            const level = document.getElementById('level').value;
+            const timeLimit = document.getElementById('time_limit').value;
+
+            // Chuyển hướng sang trang thi với thông tin đã chọn
+            window.location.href = "quiz.html?subject=" + subject + "&level=" + level + "&time=" + timeLimit;
+        }
+    </script>
+
+</body>
+</html>

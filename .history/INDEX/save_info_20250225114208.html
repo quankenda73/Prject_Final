@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Sinh Viên</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS cho trang */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e9f1ff, #d6e5ff, #f2f7ff);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+            color: #2c3e50;
+            align-items: center; /* Căn giữa toàn bộ nội dung */
+        }
+
+        /* Hiệu ứng nền động */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header */
+        header {
+            width: 100%;
+            max-width: 1400px; /* Giới hạn chiều rộng tối đa */
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #e6e6e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            gap: 20px;
+        }
+
+        /* Dashboard Items */
+        .dashboard-item {
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            flex: 0 1 auto;
+        }
+
+        .dashboard-item:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        /* Main */
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 1400px; /* Giới hạn chiều rộng tối đa */
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Căn giữa nội dung trong main */
+        }
+
+        section {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        th, td {
+            border: 1px solid #e0e6ed;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            color: #e6e6e6;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            color: #2c3e50;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+
+        tr:hover {
+            background-color: #e6f0fa;
+        }
+
+        .no-data {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+            padding: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Action Icons */
+        .action-icon {
+            font-size: 1.2rem;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .edit-icon {
+            color: #ffd700;
+        }
+
+        .edit-icon:hover {
+            color: #f7b733;
+            transform: scale(1.2);
+        }
+
+        .delete-icon {
+            color: #e74c3c;
+        }
+
+        .delete-icon:hover {
+            color: #c0392b;
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            max-width: 1400px; /* Giới hạn chiều rộng tối đa */
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #1e3c72, #0a192f);
+            color: #e6e6e6;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 15px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .dashboard-item {
+                font-size: 1rem;
+                padding: 8px 12px;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            section {
+                padding: 25px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            table {
+                font-size: 1rem;
+            }
+
+            th, td {
+                padding: 15px;
+                min-width: 100px;
+            }
+
+            .action-icon {
+                font-size: 1rem;
+                margin: 0 5px;
+            }
+
+            footer {
+                padding: 15px 0;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="dashboard-item">Trang Chủ</div>
+    <div class="dashboard-item">Danh Sách Sinh Viên</div>
+    <div class="dashboard-item">Thông Tin Khác</div>
+</header>
+
+<main>
+    <section>
+        <h2>Danh Sách Sinh Viên</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Họ Tên</th>
+                    <th>Email</th>
+                    <th>Lớp</th>
+                    <th>Điểm Trung Bình</th>
+                    <th>Điểm Số Hướng Đến</th>
+                    <th>Môn Học Chọn</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="student-list"></tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Tạo Lộ Trình Học Tập Cá Nhân Hóa | Mọi quyền được bảo lưu.</p>
+</footer>
+
+<script>
+    function displayStudents() {
+        const students = JSON.parse(localStorage.getItem('students')) || [];
+        const studentList = document.getElementById('student-list');
+
+        if (students.length > 0) {
+            students.forEach((student, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.email}</td>
+                    <td>${student.class}</td>
+                    <td>${student.avgScore}</td>
+                    <td>${student.targetScore}</td>
+                    <td>${student.subject}</td>
+                    <td>
+                        <i class="fas fa-edit action-icon edit-icon" onclick="editStudent(${index})" title="Chỉnh sửa"></i>
+                        <i class="fas fa-trash-alt action-icon delete-icon" onclick="deleteStudent(${index})" title="Xóa"></i>
+                    </td>
+                `;
+                studentList.appendChild(row);
+            });
+        } else {
+            studentList.innerHTML = '<tr><td colspan="7" class="no-data">Không có thông tin nào đã lưu.</td></tr>';
+        }
+    }
+
+    function deleteStudent(index) {
+        let students = JSON.parse(localStorage.getItem('students')) || [];
+        students.splice(index, 1);
+        localStorage.setItem('students', JSON.stringify(students));
+        displayStudents();
+    }
+
+    function editStudent(index) {
+        let students = JSON.parse(localStorage.getItem('students')) || [];
+        const student = students[index];
+        const newName = prompt("Nhập họ tên mới:", student.name);
+        if (newName !== null) {
+            student.name = newName;
+            student.email = prompt("Nhập email mới:", student.email) || student.email;
+            student.class = prompt("Nhập lớp mới:", student.class) || student.class;
+            student.avgScore = prompt("Nhập điểm trung bình mới:", student.avgScore) || student.avgScore;
+            student.targetScore = prompt("Nhập điểm hướng đến mới:", student.targetScore) || student.targetScore;
+            student.subject = prompt("Nhập môn học mới:", student.subject) || student.subject;
+            students[index] = student;
+            localStorage.setItem('students', JSON.stringify(students));
+            displayStudents();
+        }
+    }
+
+    displayStudents();
+</script>
+</body>
+</html>

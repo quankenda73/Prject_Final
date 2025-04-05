@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Sinh Viên</title>
+    <link rel="stylesheet" href="../CSS/input_test.css"> <!-- Thêm CSS nếu cần -->
+    <style>
+   /* CSS cho trang */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e6f0fa, #d1e8ff, #f0f7ff);
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
+    color: #2c3e50;
+}
+
+/* Hiệu ứng nền động */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header */
+header {
+    width: 100%;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #e6e6e6;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Căn giữa toàn bộ nội dung */
+    padding: 1.5rem 20px; /* Giảm padding hai bên */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    gap: 15px; /* Khoảng cách cố định giữa các phần tử */
+}
+
+.logo {
+    width: 60px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.dashboard-item {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 10px 15px; /* Giảm padding để gần nhau hơn */
+    transition: color 0.3s ease, transform 0.3s ease;
+    flex: 0 1 auto; /* Không chiếm hết không gian thừa */
+}
+
+.dashboard-item:hover {
+    color: #ffd700;
+    transform: translateY(-2px);
+}
+
+.login-icon {
+    width: 35px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.login-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Main */
+main {
+    flex: 1;
+    padding: 40px 20px;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+}
+
+section {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    color: #1e3c72;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+th, td {
+    border: 1px solid #e0e6ed;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+th {
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+    color: #e6e6e6;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    color: #2c3e50;
+}
+
+tr:nth-child(even) {
+    background-color: #f9fbfd;
+}
+
+tr:hover {
+    background-color: #e6f0fa;
+}
+
+.no-data {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    padding: 20px;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background: linear-gradient(135deg, #1e3c72, #0a192f);
+    color: #e6e6e6;
+    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 50px;
+    }
+
+    .dashboard-item {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+
+    .login-icon {
+        width: 30px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    section {
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    table {
+        font-size: 1rem;
+    }
+
+    th, td {
+        padding: 15px;
+        min-width: 100px;
+    }
+
+    footer {
+        padding: 15px 0;
+        font-size: 0.9rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Đường dẫn tới logo -->
+    <div class="dashboard-item">Trang Chủ</div>
+    <div class="dashboard-item">Danh Sách Sinh Viên</div>
+    <div class="dashboard-item">Thông Tin Khác</div>
+    <img src="path_to_login_icon.png" alt="Login" class="login-icon"> <!-- Đường dẫn tới biểu tượng đăng nhập -->
+</header>
+
+<main>
+    <section>
+        <h2>Danh Sách Sinh Viên</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Họ Tên</th>
+                    <th>Email</th>
+                    <th>Lớp</th>
+                    <th>Điểm Trung Bình</th>
+                    <th>Điểm Số Hướng Đến</th>
+                    <th>Môn Học Chọn</th>
+                </tr>
+            </thead>
+            <tbody id="student-list"></tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Tạo Lộ Trình Học Tập Cá Nhân Hóa | Mọi quyền được bảo lưu.</p>
+</footer>
+
+<script>
+    function displayStudents() {
+        const students = JSON.parse(localStorage.getItem('students')) || [];
+        const studentList = document.getElementById('student-list');
+
+        if (students.length > 0) {
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.email}</td>
+                    <td>${student.class}</td>
+                    <td>${student.avgScore}</td>
+                    <td>${student.targetScore}</td>
+                    <td>${student.subject}</td>
+                `;
+                studentList.appendChild(row);
+            });
+        } else {
+            studentList.innerHTML = '<tr><td colspan="6" class="no-data">Không có thông tin nào đã lưu.</td></tr>';
+        }
+    }
+
+    // Gọi hàm để hiển thị thông tin khi trang được tải
+    displayStudents();   
+</script>
+</body>
+</html>

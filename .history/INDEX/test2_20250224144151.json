@@ -1,0 +1,279 @@
+{
+    "questions": [
+        {
+            "question": "Giới hạn lim(x→∞) (3x² + 5x - 2)/(2x² - x + 1) bằng bao nhiêu?",
+            "options": ["1.5", "3", "0", "2"],
+            "correctAnswer": 1,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Giới hạn khi x tiến đến vô cùng là 3/2.",
+            "difficulty": "khó"
+        },
+        {
+            "question": "Đạo hàm của hàm số f(x) = x³ - 3x² + 2x là?",
+            "options": ["3x² - 6x + 2", "x² - 3x", "3x² - 6x", "2x - 3"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Đạo hàm f'(x) = 3x² - 6x + 2.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Nguyên hàm của f(x) = 3x² là?",
+            "options": ["x³ + C", "x³", "3x + C", "x²"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Nguyên hàm ∫3x² dx = x³ + C.",
+            "difficulty": "dễ"
+        },
+        {
+            "question": "Số phức liên hợp của z = 3 - 4i là?",
+            "options": ["3 + 4i", "-3 - 4i", "3 - 4i", "-3 + 4i"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Số phức liên hợp của z = a + bi là a - bi, do đó là 3 + 4i.",
+            "difficulty": "dễ"
+        },
+        {
+            "question": "Hàm số y = x³ - 3x + 2 có cực trị tại điểm nào?",
+            "options": ["x = -1 và x = 1", "x = 2 và x = -2", "x = 0", "x = 1"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Cực trị của hàm số này tại x = -1 và x = 1.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Thể tích khối chóp tứ giác đều có cạnh đáy a và chiều cao h là?",
+            "options": ["(1/3) * a² * h", "(1/2) * a² * h", "a² * h", "(1/3) * a³ * h"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Thể tích V = (1/3) * diện tích đáy * chiều cao = (1/3) * a² * h.",
+            "difficulty": "khó"
+        },
+        {
+            "question": "Công thức tính diện tích mặt cầu có bán kính R là?",
+            "options": ["4πR²", "2πR", "πR²", "3πR²"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Diện tích mặt cầu = 4πR².",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Có bao nhiêu cách chọn 2 học sinh từ nhóm 5 học sinh?",
+            "options": ["10", "20", "5", "15"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Số cách chọn 2 học sinh từ 5 là C(5,2) = 10.",
+            "difficulty": "dễ"
+        },
+        {
+            "question": "Một lớp có 30 học sinh. Chọn ngẫu nhiên 5 học sinh. Có bao nhiêu cách chọn?",
+            "options": ["142506", "100000", "30000", "200000"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "C(30,5) = 142506.",
+            "difficulty": "khó"
+        },
+        {
+            "question": "Xác suất để gieo một con xúc xắc và được số chẵn là?",
+            "options": ["1/2", "1/3", "2/3", "1/6"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Có 3 số chẵn (2, 4, 6) trong 6 số, nên xác suất là 3/6 = 1/2.",
+            "difficulty": "dễ"
+        },
+        {
+            "question": "Đồ thị hàm số y = x² - 4 có dạng gì?",
+            "options": ["Parabol", "Đường thẳng", "Hyperbol", "Elip"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Đồ thị của hàm bậc hai là parabol.",
+            "difficulty": "dễ"
+        },
+        {
+            "question": "Giá trị lớn nhất của hàm số y = -x² + 4x - 3 trên đoạn [0,3] là?",
+            "options": ["1", "3", "5", "4"],
+            "correctAnswer": 2,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Giá trị lớn nhất là 5 tại x = 2.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Điểm nào nằm trên đường tròn (x - 2)² + (y + 3)² = 9?",
+            "options": ["(2, 0)", "(3, 3)", "(1, -3)", "(2, -3)"],
+            "correctAnswer": 3,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Điểm (2, -3) nằm trên đường tròn với bán kính 3.",
+            "difficulty": "dễ"
+        },
+        {
+            "question": "Tích phân ∫(x dx) từ 0 đến 2 bằng bao nhiêu?",
+            "options": ["2", "4", "1", "3"],
+            "correctAnswer": 1,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "∫(x dx) từ 0 đến 2 = [1/2 * x²] từ 0 đến 2 = 2.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Hệ phương trình x + y = 3, x - y = 1 có nghiệm là?",
+            "options": ["x = 2, y = 1", "x = 1, y = 2", "x = 3, y = 0", "x = 0, y = 3"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Giải hệ phương trình, ta có nghiệm x = 2, y = 1.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Nếu f(x) liên tục trên [a, b] và f(a)f(b) < 0 thì phương trình f(x) = 0 có ít nhất một nghiệm trên khoảng nào?",
+            "options": ["(a, b)", "[a, b]", "(a, b]", "[a, b)"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Theo định lý Bolzano, có ít nhất một nghiệm trong (a, b).",
+            "difficulty": "khó"
+        },
+        {
+            "question": "Gieo hai con xúc xắc. Xác suất tổng hai số là 7 là?",
+            "options": ["1/6", "1/12", "1/8", "1/3"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Có 6 cách để tổng là 7, do đó xác suất là 6/36 = 1/6.",
+            "difficulty": "khó"
+        },
+        {
+            "question": "Tích của hai số phức (2 + 3i) và (1 - 2i) là?",
+            "options": ["8 - i", "7 + 4i", "2 + 5i", "3 - 7i"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "(2 + 3i)(1 - 2i) = 2 - 4i + 3i + 6 = 8 - i.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Phương trình lượng giác cos(x) = 1/2 có nghiệm là?",
+            "options": ["x = ±π/3 + k2π", "x = ±π/6 + k2π", "x = π/4 + kπ", "x = ±π/2 + kπ"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Nghiệm của cos(x) = 1/2 là x = ±π/3 + k2π.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Tập xác định của hàm số y = ln(2x - 1) là?",
+            "options": ["(1/2, +∞)", "(-∞, 1/2)", "(0, +∞)", "(-∞, +∞)"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Hàm số ln(x) xác định khi x > 0, nên 2x - 1 > 0 => x > 1/2.",
+            "difficulty": "khó"
+        },
+        {
+            "question": "Điểm cực đại của hàm số y = x³ - 3x² + 2x là?",
+            "options": ["x = 1", "x = 2", "x = -1", "x = 0"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Hàm số có cực đại tại x = 1.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Điểm nào là trung điểm của đoạn thẳng AB với A(1,2) và B(3,4)?",
+            "options": ["(2,3)", "(1,3)", "(2,2)", "(3,3)"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Trung điểm M = ((x1+x2)/2, (y1+y2)/2) = (2,3).",
+            "difficulty": "dễ"
+        },
+        {
+            "question": "Giá trị của sin²x + cos²x là?",
+            "options": ["1", "0", "2", "-1"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "sin²x + cos²x = 1 theo định lý Pytago.",
+            "difficulty": "dễ"
+        },
+        {
+            "question": "Giá trị lớn nhất của sin(x) là?",
+            "options": ["1", "0", "-1", "2"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Giá trị lớn nhất của sin(x) là 1.",
+            "difficulty": "dễ"
+        },
+        {
+            "question": "Hàm số y = 3x² - 2x + 1 có đạo hàm tại x = 1 là?",
+            "options": ["4", "3", "2", "1"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Đạo hàm y' = 6x - 2, tại x = 1: y' = 4.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Nếu log₃(x) = 2 thì giá trị của x là?",
+            "options": ["9", "3", "6", "12"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "log₃(x) = 2 => x = 3² = 9.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Diện tích tam giác có ba đỉnh A(0,0), B(2,0), C(0,3) là?",
+            "options": ["3", "6", "2", "4"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Diện tích = (1/2) * đáy * chiều cao = (1/2) * 2 * 3 = 3.",
+            "difficulty": "dễ"
+        },
+        {
+            "question": "Nếu đường thẳng y = 2x + b tiếp xúc với parabol y = x² thì b bằng?",
+            "options": ["-1", "1", "2", "0"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Tại điểm tiếp xúc, độ dốc bằng nhau, b = -1.",
+            "difficulty": "khó"
+        },
+        {
+            "question": "Hệ số góc của tiếp tuyến đồ thị y = x² - 3x + 2 tại x = 2 là?",
+            "options": ["1", "2", "3", "4"],
+            "correctAnswer": 0,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Hệ số góc là đạo hàm tại x = 2, y' = 2.",
+            "difficulty": "trung bình"
+        },
+        {
+            "question": "Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a. Tất cả các cạnh bên bằng nhau và bằng 2a. Tính thể tích của khối chóp S.ABCD?",
+            "options": [
+                "(1/3) * a² * h",
+                "2a³",
+                "a³√2",
+                "a³√3"
+            ],
+            "correctAnswer": 3,
+            "user_answer": null,
+            "is_correct": false,
+            "explanation": "Thể tích V = (1/3) * diện tích đáy * chiều cao = a² * (2√2/3).",
+            "difficulty": "khó"
+        }
+    ]
+}

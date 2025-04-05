@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot Hỏi Đáp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            display: flex;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar button {
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            text-align: left;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .sidebar button:hover {
+            background-color: #333;
+        }
+
+        .sidebar .section-title {
+            color: #888;
+            font-size: 14px;
+            margin: 10px 0 5px;
+            text-transform: uppercase;
+        }
+
+        .sidebar .new-chat {
+            background: #333;
+            color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 250px;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+
+        .header .version {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .header .user-options {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .header .user-options button {
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Main chat area */
+        .chat-container {
+            margin-left: 250px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 60px 20px 80px;
+            overflow-y: auto;
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #333 #0d0d0d;
+        }
+
+        .chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-box::-webkit-scrollbar-track {
+            background: #0d0d0d;
+        }
+
+        .chat-box::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        .chat-message {
+            margin: 10px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            color: #e0e0e0;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .bot-message h3 {
+            font-size: 18px;
+            color: #ffcc00;
+            margin-bottom: 8px;
+        }
+
+        .bot-message p {
+            margin: 6px 0;
+            font-size: 15px;
+            color: #d0d0d0;
+        }
+
+        .bot-message ul, .bot-message ol {
+            margin: 10px 0 10px 20px;
+            padding-left: 10px;
+        }
+
+        .bot-message li {
+            margin: 5px 0;
+            color: #c0c0c0;
+        }
+
+        .bot-message pre, .bot-message code {
+            background: #222;
+            padding: 8px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #00ffcc;
+            overflow-x: auto;
+            border: 1px solid #444;
+        }
+
+        /* New styling for *** text */
+        .bot-message .highlight-asterisks {
+            display: block;
+            background: #222;
+            padding: 8px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #ff6f61;
+            border: 1px solid #444;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .bot-message table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        .bot-message th, .bot-message td {
+            border: 1px solid #555;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .bot-message th {
+            background: #444;
+            color: #ffcc00;
+        }
+
+        .bot-message td {
+            color: #d0d0d0;
+        }
+
+        .bot-message a {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+
+        .bot-message a:hover {
+            text-decoration: underline;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            color: #e0e0e0;
+        }
+
+        .greeting-message {
+            font-size: 24px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #ff6f61, #6b5b95, #88b04b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Input bar */
+        .chat-input {
+            position: fixed;
+            bottom: 20px;
+            left: 270px;
+            right: 20px;
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #333;
+        }
+
+        .chat-input input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 16px;
+            padding: 10px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .chat-input button:hover {
+            background: #333;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #333;
+            color: #e0e0e0;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-top:hover {
+            background: #444;
+        }
+
+        .scroll-top.show {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button class="new-chat">+ Cuộc trò chuyện mới</button>
+        <div class="section-title">Gần đây</div>
+        <button>Code trang web bằng điện thoại...</button>
+        <button>Cuộc trò chuyện bắt đầu</button>
+        <button>Tạo Chatbot với GEMINI API</button>
+        <button>Hướng dẫn nghiên cứu của AI</button>
+        <button>Khám phá Quả Khứ</button>
+        <div class="section-title">Gem</div>
+        <button>Trình duyệt IV_Gem</button>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div>
+            <span class="logo">Gemini</span>
+            <span class="version">2.0 Flash</span>
+        </div>
+        <div class="user-options">
+            <button>Dùng thử GEMINI ADVANCED</button>
+            <button>Menu</button>
+        </div>
+    </div>
+
+    <!-- Chat area -->
+    <div class="chat-container">
+        <div class="chat-box" id="chat-body">
+            <div class="chat-message greeting-message">Xin chào Nguyệt!</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Hỏi Gemini" onkeypress="if(event.key === 'Enter') sendMessage();" />
+            <button onclick="sendMessage()">Gửi</button>
+            <button>Deep Research</button>
+            <button>Canvas</button>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+
+            appendMessage(userInput, 'user-message');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: userInput })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Lỗi HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+                let botReply = extractBotReply(data);
+
+                if (isStudyRelated(userInput)) {
+                    botReply = formatStudyResponse(botReply);
+                } else {
+                    botReply = formatGeneralResponse(botReply);
+                }
+
+                // Process *** in the bot reply
+                botReply = botReply.replace(/\*\*\*/g, '<span class="highlight-asterisks">***</span>');
+
+                appendMessage(botReply, 'bot-message');
+
+            } catch (error) {
+                console.error('Lỗi:', error);
+                appendMessage('<h3>Lỗi</h3><p>Lỗi kết nối server. Vui lòng thử lại sau.</p>', 'bot-message');
+            }
+
+            document.getElementById('user-input').value = '';
+            updateScrollTopButton();
+        }
+
+        function isStudyRelated(input) {
+            const studyKeywords = ['toán', 'phương trình', 'hàm số', 'giải', 'học', 'bài tập', 'lý', 'hóa', 'văn', 'sử', 'địa', 'hình học', 'đại số', 'tích phân', 'đạo hàm', 'english', 'history', 'geography', 'physics', 'chemistry'];
+            return studyKeywords.some(keyword => input.toLowerCase().includes(keyword));
+        }
+
+        function formatStudyResponse(reply) {
+            return `
+                <h3>Câu trả lời</h3>
+                <p>${reply}</p>
+                <h3>Tài liệu tham khảo</h3>
+                <ul>
+                    <li>Video YouTube: <a href="https://www.youtube.com/watch?v=IWtkS9nBNkA" target="_blank">Hướng dẫn chủ đề liên quan</a></li>
+                    <li>PDF: <a href="https://www.mathsisfun.com/algebra/quadratic-equation.html" target="_blank">Tài liệu chi tiết</a></li>
+                </ul>
+                <p><strong>Câu hỏi bổ sung:</strong> Bạn có muốn mình giải thêm bài nào nữa không?</p>
+            `;
+        }
+
+        function formatGeneralResponse(reply) {
+            return `
+                <h3>Câu trả lời</h3>
+                <p>${reply}</p>
+            `;
+        }
+
+        function extractBotReply(data) {
+            return data.reply || 'Xin lỗi, tôi không hiểu câu hỏi của bạn.';
+        }
+
+        function appendMessage(text, className) {
+            const chatBody = document.getElementById('chat-body');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${className}`;
+            messageDiv.innerHTML = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function scrollToTop() {
+            document.getElementById('chat-body').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateScrollTopButton() {
+            const chatBox = document.getElementById('chat-body');
+            const scrollTopBtn = document.querySelector('.scroll-top');
+            if (chatBox.scrollTop > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        }
+
+        document.getElementById('chat-body').addEventListener('scroll', updateScrollTopButton);
+    </script>
+</body>
+</html>

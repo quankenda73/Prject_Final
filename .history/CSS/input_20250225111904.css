@@ -1,0 +1,311 @@
+/* input.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+/* Body */
+body {
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    background-size: 200% 200%;
+    animation: gradientFlow 20s ease infinite;
+    color: #e6e6e6;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Hiệu ứng nền động */
+@keyframes gradientFlow {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #4facfe, #00f2fe); /* Gradient xanh dương nhạt và xanh ngọc sáng */
+    color: #0a192f; /* Đổi màu chữ sang tối để nổi trên nền sáng */
+    padding: 4.5rem 0;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.header-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: 0;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.header-container h1 {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    animation: fadeInDown 1s ease;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.header-container p {
+    font-size: 1.4rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem 0;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+nav a {
+    color: #0a192f;
+    text-decoration: none;
+    padding: 14px 35px;
+    margin: 0 15px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.4s ease;
+    background: linear-gradient(135deg, #ffffff, #f7f9fc);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+nav a:hover {
+    background: linear-gradient(135deg, #ffd700, #f7b733);
+    color: #0a192f;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+section {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+section h2 {
+    color: #1c3d5a;
+    font-size: 2.4rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+section p {
+    font-size: 1.3rem;
+    color: #4a5a6b;
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* Features Section */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.feature {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.feature h3 {
+    color: #1c3d5a;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.feature p {
+    font-size: 1.1rem;
+    color: #4a5a6b;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: linear-gradient(135deg, #ffd700, #f7b733);
+    color: #0a192f;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #f7b733, #ffd700);
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+}
+
+/* Footer */
+.footer-container {
+    background: linear-gradient(135deg, #0a192f, #1c3d5a);
+    color: #e6e6e6;
+    text-align: center;
+    padding: 50px 0;
+    margin-top: 80px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.footer-container p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-icons a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 3rem 0;
+    }
+
+    .header-container h1 {
+        font-size: 2.4rem;
+    }
+
+    .header-container p {
+        font-size: 1.2rem;
+        padding: 0 20px;
+    }
+
+    nav {
+        padding: 1rem 0;
+    }
+
+    nav a {
+        display: block;
+        margin: 12px 0;
+        padding: 12px 25px;
+        font-size: 1.1rem;
+    }
+
+    section {
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .feature {
+        padding: 25px;
+    }
+
+    .feature h3 {
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+    }
+
+    .social-icons img {
+        width: 40px;
+        height: 40px;
+    }
+}

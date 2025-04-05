@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot Hỏi Đáp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            display: flex;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar button {
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            text-align: left;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .sidebar button:hover {
+            background-color: #333;
+        }
+
+        .sidebar .section-title {
+            color: #888;
+            font-size: 14px;
+            margin: 10px 0 5px;
+            text-transform: uppercase;
+        }
+
+        .sidebar .new-chat {
+            background: #333;
+            color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 250px;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+
+        .header .version {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .header .user-options {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .header .user-options button {
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Main chat area */
+        .chat-container {
+            margin-left: 250px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px 80px;
+        }
+
+        .chat-message {
+            font-size: 24px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #ff6f61, #6b5b95, #88b04b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Input bar */
+        .chat-input {
+            position: fixed;
+            bottom: 20px;
+            left: 270px;
+            right: 20px;
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #333;
+        }
+
+        .chat-input input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 16px;
+            padding: 10px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .chat-input button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button class="new-chat">+ Cuộc trò chuyện mới</button>
+        <div class="section-title">Gần đây</div>
+        <button>Code trang web bằng điện thoại...</button>
+        <button>Cuộc trò chuyện bắt đầu</button>
+        <button>Tạo Chatbot với GEMINI API</button>
+        <button>Hướng dẫn nghiên cứu của AI</button>
+        <button>Khám phá Quả Khứ</button>
+        <div class="section-title">Gem</div>
+        <button>Trình duyệt IV_Gem</button>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div>
+            <span class="logo">Gemini</span>
+            <span class="version">2.0 Flash</span>
+        </div>
+        <div class="user-options">
+            <button>Dùng thử GEMINI ADVANCED</button>
+            <button>Menu</button>
+        </div>
+    </div>
+
+    <!-- Chat area -->
+    <div class="chat-container">
+        <div class="chat-message">Xin chào Nguyệt!</div>
+    </div>
+
+    <!-- Input bar -->
+    <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Hỏi Gemini" onkeypress="if(event.key === 'Enter') sendMessage();" />
+        <button>Deep Research</button>
+        <button>Canvas</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+            alert('Tính năng gửi tin nhắn chưa được triển khai.');
+            document.getElementById('user-input').value = '';
+        }
+    </script>
+</body>
+</html>

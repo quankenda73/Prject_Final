@@ -1,0 +1,255 @@
+.score-box {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: #f8f9fa;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.score-box.pass {
+    background: #d4edda;
+    border: 2px solid #28a745;
+}
+
+.score-box.fail {
+    background: #f8d7da;
+    border: 2px solid #dc3545;
+}
+
+.score-number {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.score-label {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+.total-questions {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #495057;
+}
+
+.grade {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.grade.xuất-sắc {
+    background: #28a745;
+    color: white;
+}
+
+.grade.giỏi {
+    background: #20c997;
+    color: white;
+}
+
+.grade.khá {
+    background: #17a2b8;
+    color: white;
+}
+
+.grade.trung-bình {
+    background: #ffc107;
+    color: #212529;
+}
+
+.grade.yếu {
+    background: #dc3545;
+    color: white;
+}
+
+.grade.đạt {
+    background: #28a745;
+    color: white;
+}
+
+.grade.không-đạt {
+    background: #dc3545;
+    color: white;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.summary-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.summary-item .label {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.summary-item .value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 0.5rem;
+}
+
+.questions-grid {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.question-result {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.question-result.correct {
+    border-left: 4px solid #28a745;
+}
+
+.question-result.incorrect {
+    border-left: 4px solid #dc3545;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.question-number {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.result-badge {
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+.question-result.correct .result-badge {
+    background: #d4edda;
+    color: #28a745;
+}
+
+.question-result.incorrect .result-badge {
+    background: #f8d7da;
+    color: #dc3545;
+}
+
+.options-list {
+    margin: 1rem 0;
+}
+
+.option {
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0.25rem;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.option.correct-answer {
+    background: #d4edda;
+    color: #155724;
+}
+
+.option.user-answer:not(.correct-answer) {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon.correct {
+    color: #28a745;
+}
+
+.icon.incorrect {
+    color: #dc3545;
+}
+
+.explanation {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.explanation.correct {
+    background: #d4edda;
+    color: #155724;
+}
+
+.explanation.incorrect {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.recommendations-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.recommendation-item {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background: #e9ecef;
+    border-radius: 0.25rem;
+    color: #495057;
+}
+
+.error-message {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem 2rem;
+    background: #f8d7da;
+    color: #721c24;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .score-number {
+        font-size: 3rem;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .question-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .result-badge {
+        align-self: flex-start;
+    }
+} 

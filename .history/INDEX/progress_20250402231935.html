@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theo Dõi Lộ Trình Học - Hệ Thống Học Tập Thông Minh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2 i {
+            color: #0984e3;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            display: block;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #fff;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .task-card {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .task-card p {
+            margin: 0.3rem 0;
+            color: #4a5568;
+        }
+
+        .task-card strong {
+            color: #2d3748;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: #e6f0fa;
+            border-radius: 10px;
+            height: 20px;
+            margin: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: #0984e3;
+            transition: width 0.5s ease;
+        }
+
+        .progress-bar-fill::after {
+            content: attr(data-progress)'%';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .task-status {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            margin: 1rem 0;
+        }
+
+        .task-status p {
+            margin: 0.5rem 0;
+            color: #4a5568;
+        }
+
+        .task-status .completed {
+            color: #48bb78;
+            font-weight: 600;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            background: #0984e3;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover:not(:disabled) {
+            background: #0765b6;
+            box-shadow: 0 5px 15px rgba(9,132,227,0.3);
+        }
+
+        .btn:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            color: white;
+            font-weight: 500;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .notification.success {
+            background: #48bb78;
+        }
+
+        .notification.error {
+            background: #f56565;
+        }
+
+        @media (max-width: 768px) {
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="section">
+            <h2><i class="fas fa-road"></i> Tiến độ học tập</h2>
+            <div class="form-group">
+                <label>Chọn thời gian lộ trình:</label>
+                <select id="durationSelect">
+                    <option value="">Chọn thời gian</option>
+                    <option value="1">1 tháng (30 ngày)</option>
+                    <option value="3">3 tháng (90 ngày)</option>
+                    <option value="6">6 tháng (180 ngày)</option>
+                    <option value="9">9 tháng (270 ngày)</option>
+                </select>
+            </div>
+            <div class="button-group">
+                <button class="btn" id="startBtn" onclick="startProgress()">
+                    <i class="fas fa-play"></i> Bắt đầu lộ trình
+                </button>
+            </div>
+
+            <div id="progressStatus" class="progress-container">
+                <div class="status-grid">
+                    <div class="task-card">
+                        <p><strong>Thời gian còn lại:</strong></p>
+                        <p><span id="remainingDays">Chưa bắt đầu</span></p>
+                    </div>
+                    <div class="task-card">
+                        <p><strong>Phần trăm hoàn thành:</strong></p>
+                        <p><span id="progressPercentage">0%</span></p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" id="progressBarFill" style="width: 0%" data-progress="0"></div>
+                </div>
+                <div class="task-status">
+                    <p><strong>Điểm danh hôm nay:</strong> <span id="checkInStatus">Chưa hoàn thành</span></p>
+                    <p><strong>Hỏi chatbot:</strong> <span id="chatCount">0/15</span></p>
+                    <p><strong>Làm bài thi:</strong> <span id="examStatus">Chưa hoàn thành</span></p>
+                </div>
+                <div class="button-group">
+                    <button class="btn" id="checkInBtn" onclick="checkIn()">
+                        <i class="fas fa-check"></i> Điểm danh
+                    </button>
+                    <button class="btn" onclick="chatWithBot()">
+                        <i class="fas fa-comment"></i> Hỏi chatbot
+                    </button>
+                    <button class="btn" onclick="takeExam()">
+                        <i class="fas fa-pen"></i> Làm bài thi
+                    </button>
+                    <button class="btn" id="finalAssessmentBtn" onclick="finalAssessment()" style="display: none;">
+                        <i class="fas fa-graduation-cap"></i> Đánh giá năng lực
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        let studentId = localStorage.getItem('studentId') || 'student_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('studentId', studentId);
+        let totalDays = 0;
+        let startDate = null;
+        let progressData = JSON.parse(localStorage.getItem(`progress_${studentId}`)) || [];
+        let chatCount = 0;
+
+        const notification = document.getElementById('notification');
+
+        function showNotification(message, type) {
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        function saveProgress() {
+            localStorage.setItem(`progress_${studentId}`, JSON.stringify(progressData));
+        }
+
+        function loadProgress() {
+            if (progressData.length > 0) {
+                const latestProgress = progressData[progressData.length - 1];
+                totalDays = latestProgress.totalDays;
+                startDate = new Date(latestProgress.startDate);
+                chatCount = latestProgress.chatCount || 0;
+                document.getElementById('durationSelect').value = totalDays / 30;
+                document.getElementById('durationSelect').disabled = true;
+                document.getElementById('startBtn').disabled = true;
+                updateProgressUI(latestProgress);
+            }
+        }
+
+        function startProgress() {
+            const duration = document.getElementById('durationSelect').value;
+            if (!duration) {
+                showNotification('Vui lòng chọn thời gian lộ trình!', 'error');
+                return;
+            }
+            totalDays = duration * 30;
+            startDate = new Date();
+            const today = new Date().toISOString().split('T')[0];
+            const newProgress = {
+                studentId,
+                date: today,
+                totalDays,
+                startDate: startDate.toISOString(),
+                checkIn: false,
+                chatCount: 0,
+                examCompleted: false,
+                progressPercentage: 0
+            };
+            progressData.push(newProgress);
+            saveProgress();
+            updateProgressUI(newProgress);
+            document.getElementById('durationSelect').disabled = true;
+            document.getElementById('startBtn').disabled = true;
+            showNotification('Lộ trình đã bắt đầu thành công!', 'success');
+        }
+
+        function checkIn() {
+            if (!startDate) {
+                showNotification('Vui lòng bắt đầu lộ trình trước!', 'error');
+                return;
+            }
+            const today = new Date().toISOString().split('T')[0];
+            const todayProgress = getTodayProgress();
+            if (todayProgress.checkIn) {
+                showNotification('Bạn đã điểm danh hôm nay rồi!', 'error');
+                return;
+            }
+            const newProgress = {
+                studentId,
+                date: today,
+                totalDays,
+                startDate: startDate.toISOString(),
+                checkIn: true,
+                chatCount,
+                examCompleted: todayProgress.examCompleted || false,
+                progressPercentage: calculateProgress()
+            };
+            progressData.push(newProgress);
+            saveProgress();
+            updateProgressUI(newProgress);
+            showNotification('Điểm danh thành công!', 'success');
+        }
+
+        function chatWithBot() {
+            if (!startDate) {
+                showNotification('Vui lòng bắt đầu lộ trình trước!', 'error');
+                return;
+            }
+            if (chatCount >= 15) {
+                showNotification('Bạn đã hoàn thành số lần hỏi chatbot hôm nay!', 'error');
+                return;
+            }
+            localStorage.setItem('chatCount', chatCount);
+            window.location.href = 'chatbot.html';
+        }
+
+        function takeExam() {
+            if (!startDate) {
+                showNotification('Vui lòng bắt đầu lộ trình trước!', 'error');
+                return;
+            }
+            window.location.href = 'exam.html';
+        }
+
+        function finalAssessment() {
+            if (calculateProgress() < 100) {
+                showNotification('Vui lòng hoàn thành lộ trình trước!', 'error');
+                return;
+            }
+            showNotification('Chuyển đến đánh giá năng lực!', 'success');
+            console.log('Chuyển hướng đến final-assessment.html');
+        }
+
+        function calculateProgress() {
+            if (!startDate) return 0;
+            const today = new Date();
+            const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
+            const completedDays = progressData.filter(p => p.checkIn).length;
+            const chatProgress = (chatCount / 15) * 100;
+            const examProgress = progressData.filter(p => p.examCompleted).length > 0 ? 100 : 0;
+            const rawProgress = ((completedDays / totalDays) * 50 + (chatProgress / 2) + (examProgress / 4));
+            // Điều chỉnh: 90% thực tế = 100% tiến độ
+            return Math.min((rawProgress / 90) * 100, 100);
+        }
+
+        function getTodayProgress() {
+            const today = new Date().toISOString().split('T')[0];
+            return progressData.find(p => p.date === today) || {};
+        }
+
+        function updateProgressUI(progress) {
+            if (!startDate) return;
+            const today = new Date();
+            const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
+            const remainingDays = totalDays - daysPassed;
+            const progressPercentage = calculateProgress().toFixed(2);
+
+            document.getElementById('remainingDays').textContent = remainingDays >= 0 ? `${remainingDays} ngày` : 'Đã hoàn thành';
+            document.getElementById('progressPercentage').textContent = `${progressPercentage}%`;
+            const progressBarFill = document.getElementById('progressBarFill');
+            progressBarFill.style.width = `${progressPercentage}%`;
+            progressBarFill.setAttribute('data-progress', progressPercentage);
+
+            const todayProgress = getTodayProgress();
+            const checkInStatus = document.getElementById('checkInStatus');
+            checkInStatus.textContent = todayProgress.checkIn ? 'Đã điểm danh' : 'Chưa hoàn thành';
+            if (todayProgress.checkIn) {
+                checkInStatus.classList.add('completed');
+            }
+            document.getElementById('checkInBtn').disabled = todayProgress.checkIn || false;
+            document.getElementById('chatCount').textContent = `${chatCount}/15`;
+            document.getElementById('examStatus').textContent = todayProgress.examCompleted ? 'Đã hoàn thành' : 'Chưa hoàn thành';
+
+            if (remainingDays <= 0 && progressPercentage >= 100) {
+                document.getElementById('finalAssessmentBtn').style.display = 'inline-flex';
+            }
+        }
+
+        // Load chat count from localStorage if redirected back from chatbot
+        const storedChatCount = localStorage.getItem('chatCount');
+        if (storedChatCount) {
+            chatCount = parseInt(storedChatCount);
+            const today = new Date().toISOString().split('T')[0];
+            const todayProgress = getTodayProgress();
+            const newProgress = {
+                studentId,
+                date: today,
+                totalDays,
+                startDate: startDate.toISOString(),
+                checkIn: todayProgress.checkIn || false,
+                chatCount,
+                examCompleted: todayProgress.examCompleted || false,
+                progressPercentage: calculateProgress()
+            };
+            progressData.push(newProgress);
+            saveProgress();
+            localStorage.removeItem('chatCount');
+        }
+
+        loadProgress();
+    </script>
+</body>
+</html>

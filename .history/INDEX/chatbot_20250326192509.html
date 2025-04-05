@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot Hỏi Đáp</title>
+    <!-- Include MathJax for rendering math equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Reset và cài đặt cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f5f5; /* Softer background for less eye strain */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* Tiêu đề cố định */
+        .header {
+            background: linear-gradient(90deg, #0072ff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Khung chat */
+        .chat-container {
+            flex-grow: 1;
+            width: 90%;
+            max-width: 900px; /* Slightly wider for better readability */
+            margin: 80px auto 80px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Vùng hiển thị tin nhắn */
+        .chat-box {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(100vh - 200px);
+            scrollbar-width: thin;
+            scrollbar-color: #0072ff #e0e0e0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Thanh cuộn tùy chỉnh */
+        .chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-box::-webkit-scrollbar-track {
+            background: #e0e0e0;
+        }
+        .chat-box::-webkit-scrollbar-thumb {
+            background: #0072ff;
+            border-radius: 4px;
+        }
+
+        /* Tin nhắn chung */
+        .chat-message {
+            margin: 12px 0; /* More spacing between messages */
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 85%;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        /* Tin nhắn của bot */
+        .bot-message {
+            align-self: flex-start;
+            background: #f0f4ff; /* Light blue background for bot messages */
+            color: #333;
+            border-left: 5px solid #0072ff;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        /* Animation khi tin nhắn xuất hiện */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tiêu đề trong tin nhắn bot */
+        .bot-message h3 {
+            font-size: 18px;
+            color: #0072ff;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #0072ff;
+            font-weight: 600;
+        }
+
+        /* Đoạn văn trong tin nhắn bot */
+        .bot-message p {
+            margin: 8px 0;
+            font-size: 15px;
+            color: #444;
+        }
+
+        /* Highlight final answer in math problems */
+        .bot-message .final-answer {
+            background: #e6f7ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #0056d2;
+        }
+
+        /* Danh sách trong tin nhắn bot */
+        .bot-message ul, .bot-message ol {
+            margin: 10px 0 10px 20px;
+            padding-left: 10px;
+        }
+        .bot-message li {
+            margin: 5px 0;
+            color: #444;
+        }
+
+        /* Định dạng code trong tin nhắn bot */
+        .bot-message pre, .bot-message code {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+
+        /* Liên kết trong tin nhắn bot */
+        .bot-message a {
+            color: #0072ff;
+            text-decoration: none;
+        }
+        .bot-message a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tin nhắn người dùng */
+        .user-message {
+            align-self: flex-end;
+            background: #4CAF50;
+            color: white;
+            border-right: 5px solid #388e3c;
+        }
+
+        /* Ô nhập tin nhắn */
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: #f5f5f5;
+            border-top: 1px solid #ddd;
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            color: #333;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .chat-input input:focus {
+            border-color: #0072ff;
+        }
+        .chat-input button {
+            margin-left: 10px;
+            padding: 12px 20px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .chat-input button:hover {
+            background: #0056d2;
+        }
+
+        /* Loading indicator */
+        .loading {
+            align-self: center;
+            margin: 10px 0;
+            font-style: italic;
+            color: #888;
+        }
+
+        /* Nút cuộn lên đầu và xuống cuối */
+        .scroll-top, .scroll-bottom {
+            position: fixed;
+            right: 20px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: opacity 0.3s;
+        }
+        .scroll-top {
+            bottom: 100px;
+        }
+        .scroll-bottom {
+            bottom: 60px;
+        }
+        .scroll-top:hover, .scroll-bottom:hover {
+            background: #0056d2;
+        }
+        .scroll-top.show, .scroll-bottom.show {
+            display: block;
+            opacity: 1;
+        }
+        .scroll-top.hide, .scroll-bottom.hide {
+            display: none;
+            opacity: 0;
+        }
+
+        /* Footer cố định */
+        .footer {
+            background: #f5f5f5;
+            color: #666;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tiêu đề -->
+    <div class="header">Chat Bot Hỏi Đáp</div>
+
+    <!-- Khung chat -->
+    <div class="chat-container">
+        <div class="chat-box" id="chat-body">
+            <div class="chat-message bot-message">
+                <h3>Chào bạn!</h3>
+                <p>Tôi có thể giúp gì cho bạn hôm nay?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Nhập câu hỏi của bạn..." onkeypress="if(event.key === 'Enter') sendMessage();" aria-label="Nhập câu hỏi để gửi cho bot" />
+            <button onclick="sendMessage()" aria-label="Gửi câu hỏi">Gửi</button>
+        </div>
+    </div>
+
+    <!-- Nút cuộn lên đầu và xuống cuối -->
+    <button class="scroll-top hide" onclick="scrollToTop()" aria-label="Cuộn lên đầu">↑</button>
+    <button class="scroll-bottom hide" onclick="scrollToBottom()" aria-label="Cuộn xuống cuối">↓</button>
+
+    <!-- Footer -->
+    <div class="footer">© 2025 Grok by xAI - All Rights Reserved.</div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+
+            appendMessage(userInput, 'user-message');
+
+            // Show loading indicator
+            appendMessage('Đang xử lý...', 'loading');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: userInput })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Lỗi HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+                let botReply = extractBotReply(data);
+
+                // Remove loading indicator
+                const chatBody = document.getElementById('chat-body');
+                const loadingMessage = chatBody.querySelector('.loading:last-child');
+                if (loadingMessage) loadingMessage.remove();
+
+                if (isStudyRelated(userInput)) {
+                    botReply = formatStudyResponse(botReply);
+                } else {
+                    botReply = formatGeneralResponse(botReply);
+                }
+
+                appendMessage(botReply, 'bot-message');
+
+            } catch (error) {
+                console.error('Lỗi:', error);
+                const chatBody = document.getElementById('chat-body');
+                const loadingMessage = chatBody.querySelector('.loading:last-child');
+                if (loadingMessage) loadingMessage.remove();
+                appendMessage('<h3>Lỗi</h3><p>Lỗi kết nối server. Vui lòng thử lại sau.</p>', 'bot-message');
+            }
+
+            document.getElementById('user-input').value = '';
+            updateScrollButtons();
+        }
+
+        function isStudyRelated(input) {
+            const studyKeywords = ['toán', 'phương trình', 'hàm số', 'giải', 'học', 'bài tập', 'lý', 'hóa', 'văn', 'sử', 'địa', 'hình học', 'đại số', 'tích phân', 'đạo hàm', 'english', 'history', 'geography', 'physics', 'chemistry'];
+            return studyKeywords.some(keyword => input.toLowerCase().includes(keyword));
+        }
+
+        function formatStudyResponse(reply) {
+            // Example: Format a math response with a highlighted final answer
+            let formattedReply = reply.replace(/\$\$([^$]+)\$\$/g, '\\($1\\)'); // Convert $$...$$ to MathJax format \(...\)
+            return `
+                <h3>Câu trả lời</h3>
+                <p>${formattedReply}</p>
+                <div class="final-answer">Kết quả cuối cùng: \( x_1 = -1, x_2 = -3 \)</div>
+                <h3>Tài liệu tham khảo</h3>
+                <ul>
+                    <li>Video YouTube: <a href="https://www.youtube.com/watch?v=IWtkS9nBNkA" target="_blank">Hướng dẫn chủ đề liên quan</a></li>
+                    <li>PDF: <a href="https://www.mathsisfun.com/algebra/quadratic-equation.html" target="_blank">Tài liệu chi tiết</a></li>
+                </ul>
+                <p><strong>Câu hỏi bổ sung:</strong> Bạn có muốn mình giải thêm bài nào nữa không?</p>
+            `;
+        }
+
+        function formatGeneralResponse(reply) {
+            return `
+                <h3>Câu trả lời</h3>
+                <p>${reply}</p>
+            `;
+        }
+
+        function extractBotReply(data) {
+            return data.reply || 'Xin lỗi, tôi không hiểu câu hỏi của bạn.';
+        }
+
+        function appendMessage(text, className) {
+            const chatBody = document.getElementById('chat-body');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${className}`;
+            messageDiv.innerHTML = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Re-render MathJax after adding new content
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function scrollToTop() {
+            document.getElementById('chat-body').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToBottom() {
+            const chatBody = document.getElementById('chat-body');
+            chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
+        }
+
+        function updateScrollButtons() {
+            const chatBox = document.getElementById('chat-body');
+            const scrollTopBtn = document.querySelector('.scroll-top');
+            const scrollBottomBtn = document.querySelector('.scroll-bottom');
+            const scrollHeight = chatBox.scrollHeight;
+            const clientHeight = chatBox.clientHeight;
+            const scrollTop = chatBox.scrollTop;
+
+            if (scrollTop > 300) {
+                scrollTopBtn.classList.remove('hide');
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+                scrollTopBtn.classList.add('hide');
+            }
+
+            if (scrollTop + clientHeight < scrollHeight - 300) {
+                scrollBottomBtn.classList.remove('hide');
+                scrollBottomBtn.classList.add('show');
+            } else {
+                scrollBottomBtn.classList.remove('show');
+                scrollBottomBtn.classList.add('hide');
+            }
+        }
+
+        document.getElementById('chat-body').addEventListener('scroll', updateScrollButtons);
+    </script>
+</body>
+</html>

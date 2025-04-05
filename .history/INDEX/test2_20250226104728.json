@@ -1,0 +1,184 @@
+{
+    "questions": [
+        // Môn Toán (Math) - 50 câu
+        {
+            "question": "Giới hạn lim(x→∞) (3x² + 5x - 2)/(2x² - x + 1) bằng bao nhiêu?",
+            "options": ["1.5", "3", "0", "2"],
+            "correctAnswer": 0,
+            "explanation": "Khi x → ∞, lấy hệ số cao nhất: 3x²/2x² = 3/2 = 1.5.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Đạo hàm của hàm số f(x) = x³ - 3x² + 2x là?",
+            "options": ["3x² - 6x + 2", "x² - 3x", "3x² - 6x", "2x - 3"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = 3x² - 6x + 2 theo quy tắc đạo hàm.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Nguyên hàm của f(x) = 3x² là?",
+            "options": ["x³ + C", "x³", "3x + C", "x²"],
+            "correctAnswer": 0,
+            "explanation": "∫3x² dx = x³ + C.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Số phức liên hợp của z = 3 - 4i là?",
+            "options": ["3 + 4i", "-3 - 4i", "3 - 4i", "-3 + 4i"],
+            "correctAnswer": 0,
+            "explanation": "Số phức liên hợp của z = a + bi là a - bi, do đó là 3 + 4i.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Hàm số y = x³ - 3x + 2 có cực trị tại điểm nào?",
+            "options": ["x = -1 và x = 1", "x = 2 và x = -2", "x = 0", "x = 1"],
+            "correctAnswer": 0,
+            "explanation": "f'(x) = 3x² - 3 = 0 => x = ±1, cực trị tại x = -1 và x = 1.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Thể tích khối chóp tứ giác đều có cạnh đáy a và chiều cao h là?",
+            "options": ["(1/3) * a² * h", "(1/2) * a² * h", "a² * h", "(1/3) * a³ * h"],
+            "correctAnswer": 0,
+            "explanation": "V = (1/3) * diện tích đáy * chiều cao = (1/3) * a² * h.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Công thức tính diện tích mặt cầu có bán kính R là?",
+            "options": ["4πR²", "2πR", "πR²", "3πR²"],
+            "correctAnswer": 0,
+            "explanation": "Diện tích mặt cầu = 4πR².",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        {
+            "question": "Có bao nhiêu cách chọn 2 học sinh từ nhóm 5 học sinh?",
+            "options": ["10", "20", "5", "15"],
+            "correctAnswer": 0,
+            "explanation": "C(5,2) = 10.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Một lớp có 30 học sinh. Chọn ngẫu nhiên 5 học sinh. Có bao nhiêu cách chọn?",
+            "options": ["142506", "100000", "30000", "200000"],
+            "correctAnswer": 0,
+            "explanation": "C(30,5) = 142506.",
+            "difficulty": "khó",
+            "subject": "math"
+        },
+        {
+            "question": "Xác suất để gieo một con xúc xắc và được số chẵn là?",
+            "options": ["1/2", "1/3", "2/3", "1/6"],
+            "correctAnswer": 0,
+            "explanation": "Có 3 số chẵn (2, 4, 6), xác suất = 3/6 = 1/2.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        // Thêm 40 câu nữa cho môn Toán (tổng 50 câu)
+        {
+            "question": "Giá trị của sin(π/6) là bao nhiêu?",
+            "options": ["0.5", "√3/2", "1", "0"],
+            "correctAnswer": 0,
+            "explanation": "sin(π/6) = sin(30°) = 0.5.",
+            "difficulty": "dễ",
+            "subject": "math"
+        },
+        {
+            "question": "Tích phân ∫(2x + 1)dx bằng bao nhiêu?",
+            "options": ["x² + x + C", "2x² + C", "x² + C", "2x + x² + C"],
+            "correctAnswer": 0,
+            "explanation": "∫(2x + 1)dx = x² + x + C.",
+            "difficulty": "trung bình",
+            "subject": "math"
+        },
+        // ... (Thêm đủ 50 câu, tôi sẽ để bạn bổ sung thêm nếu cần)
+
+        // Môn Ngữ Văn (Literature) - 50 câu
+        {
+            "question": "Tác phẩm nào của Nguyễn Du?",
+            "options": ["Truyện Kiều", "Chinh Phụ Ngâm", "Cung Oán Ngâm Khúc", "Nam Quốc Sơn Hà"],
+            "correctAnswer": 0,
+            "explanation": "Nguyễn Du là tác giả của Truyện Kiều.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Nhân vật chính trong Truyện Kiều là ai?",
+            "options": ["Thúy Kiều", "Thúy Vân", "Kim Trọng", "Từ Hải"],
+            "correctAnswer": 0,
+            "explanation": "Thúy Kiều là nhân vật chính trong Truyện Kiều.",
+            "difficulty": "dễ",
+            "subject": "literature"
+        },
+        {
+            "question": "Tác phẩm nào thuộc văn học trung đại Việt Nam?",
+            "options": ["Bình Ngô Đại Cáo", "Lão Hạc", "Số Đỏ", "Chí Phèo"],
+            "correctAnswer": 0,
+            "explanation": "Bình Ngô Đại Cáo là tác phẩm trung đại của Nguyễn Trãi.",
+            "difficulty": "trung bình",
+            "subject": "literature"
+        },
+        // Thêm 47 câu nữa cho Ngữ Văn (tổng 50 câu)
+
+        // Môn Vật Lý (Physics) - 50 câu
+        {
+            "question": "Công thức tính vận tốc trong chuyển động thẳng đều?",
+            "options": ["v = s/t", "v = a*t", "v = F/m", "v = √(2gh)"],
+            "correctAnswer": 0,
+            "explanation": "Trong chuyển động thẳng đều, v = s/t.",
+            "difficulty": "dễ",
+            "subject": "physics"
+        },
+        {
+            "question": "Định luật II Newton có công thức nào?",
+            "options": ["F = m*a", "F = m*v", "F = m/g", "F = m*t"],
+            "correctAnswer": 0,
+            "explanation": "F = m*a là công thức của định luật II Newton.",
+            "difficulty": "dễ",
+            "subject": "physics"
+        },
+        {
+            "question": "Công thức tính công suất là?",
+            "options": ["P = W/t", "P = F*s", "P = m*v", "P = F/t"],
+            "correctAnswer": 0,
+            "explanation": "Công suất P = công/thời gian = W/t.",
+            "difficulty": "trung bình",
+            "subject": "physics"
+        },
+        // Thêm 47 câu nữa cho Vật Lý (tổng 50 câu)
+
+        // Môn Tiếng Anh (English) - 50 câu
+        {
+            "question": "Choose the correct word: She ___ to school every day.",
+            "options": ["goes", "go", "going", "gone"],
+            "correctAnswer": 0,
+            "explanation": "Động từ 'go' chia ở thì hiện tại đơn với chủ ngữ 'she' là 'goes'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "What is the past tense of 'run'?",
+            "options": ["ran", "run", "running", "runned"],
+            "correctAnswer": 0,
+            "explanation": "Quá khứ của 'run' là 'ran'.",
+            "difficulty": "dễ",
+            "subject": "english"
+        },
+        {
+            "question": "Choose the correct sentence: ___ you ever been to London?",
+            "options": ["Have", "Has", "Do", "Did"],
+            "correctAnswer": 0,
+            "explanation": "Câu hỏi hiện tại hoàn thành dùng 'Have'.",
+            "difficulty": "trung bình",
+            "subject": "english"
+        }
+        // Thêm 47 câu nữa cho Tiếng Anh (tổng 50 câu)
+    ]
+}

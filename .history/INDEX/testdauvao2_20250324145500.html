@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Đầu Vào</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; min-height: 100vh; background: linear-gradient(135deg, #74ebd5, #acb6e5); display: flex; justify-content: center; align-items: center; padding: 30px; }
+        .container { width: 100%; max-width: 1000px; background: rgba(255, 255, 255, 0.95); padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }
+        .container:hover { transform: translateY(-5px); }
+        h2 { color: #2c3e50; font-size: 36px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; }
+        .timer { font-size: 28px; font-weight: 600; color: #e74c3c; background: #fceae9; padding: 12px 25px; border-radius: 50px; display: inline-block; margin: 0 auto 30px auto; box-shadow: 0 2px 10px rgba(231, 76, 60, 0.1); }
+        .question { text-align: left; margin-bottom: 30px; padding: 25px; border-radius: 12px; background: #f8fafc; border-left: 8px solid #3498db; transition: all 0.3s ease; }
+        .question:hover { transform: translateX(5px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .question p { font-weight: 600; color: #2c3e50; margin-bottom: 20px; font-size: 20px; }
+        input[type="radio"] { margin: 12px 15px 12px 0; transform: scale(1.5); accent-color: #3498db; }
+        label { font-size: 18px; color: #34495e; cursor: pointer; display: flex; align-items: center; transition: color 0.3s ease; margin-bottom: 10px; }
+        label:hover { color: #3498db; }
+        .correct { color: #27ae60 !important; font-weight: 600; background: #e8f5e9; padding: 6px 12px; border-radius: 6px; }
+        .wrong { color: #c0392b !important; font-weight: 600; background: #fce4e4; padding: 6px 12px; border-radius: 6px; }
+        button { padding: 15px 40px; background: linear-gradient(45deg, #2ecc71, #27ae60); color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); display: block; margin: 30px auto 0; }
+        button:hover { background: linear-gradient(45deg, #27ae60, #2ecc71); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4); }
+        button:active { transform: translateY(1px); }
+        #loadingMessage { display: none; text-align: center; color: #3498db; font-size: 18px; margin-top: 20px; }
+        @media (max-width: 768px) { .container { width: 95%; padding: 30px; } h2 { font-size: 28px; } .timer { font-size: 22px; } .question { padding: 20px; } .question p { font-size: 18px; } label { font-size: 16px; } button { padding: 12px 30px; font-size: 18px; } }
+    </style>
+</head>
+<body onload="startTimer()">
+    <div class="container">
+        <h2 id="quizTitle">Bài Kiểm Tra Đầu Vào</h2>
+        <p class="timer">Thời gian còn lại: <span id="timer">45:00</span></p>
+        <form id="quizForm">
+            <!-- Đặt loadingMessage trong form -->
+            <div id="loadingMessage">AI đang đánh giá kết quả bài thi, vui lòng đợi giây lát!</div>
+        </form>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", async function() {
+        await loadQuestions();
+    });
+
+    async function loadQuestions() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const subject = urlParams.get('subject') || 'math';
+        const name = urlParams.get('name');
+        const studentId = urlParams.get('studentId');
+
+        const storedStudent = JSON.parse(localStorage.getItem('currentStudent'));
+        if (!studentId || !name || !storedStudent || storedStudent.studentId !== studentId || storedStudent.subject !== subject) {
+            alert('Thông tin không hợp lệ hoặc môn học không khớp. Vui lòng quay lại!');
+            window.location.href = '/input-test';
+            return;
+        }
+
+        const quizForm = document.getElementById("quizForm");
+        const quizTitle = document.getElementById("quizTitle");
+        quizForm.innerHTML = "<p>Đang tải câu hỏi...</p>";
+
+        const subjectMap = {
+            'math': 'Toán',
+            'literature': 'Ngữ Văn',
+            'physics': 'Vật Lý',
+            'english': 'Tiếng Anh',
+            'chemistry': 'Hóa Học'
+        };
+        quizTitle.textContent = `Bài Kiểm Tra Đầu Vào - ${subjectMap[subject] || subject}`;
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/test-questions?subject=${subject}`);
+            if (!response.ok) throw new Error(`Không thể tải câu hỏi: ${response.statusText}`);
+            const data = await response.json();
+            const questions = data.questions;
+
+            if (!questions || questions.length === 0) {
+                throw new Error(`Không tìm thấy câu hỏi cho môn ${subjectMap[subject] || subject}!`);
+            }
+
+            // Tạo lại nội dung của quizForm, nhưng giữ lại loadingMessage
+            const loadingMessage = document.getElementById("loadingMessage");
+            quizForm.innerHTML = ""; // Xóa nội dung cũ
+            quizForm.appendChild(loadingMessage); // Thêm lại loadingMessage
+
+            questions.forEach((q, index) => {
+                const questionDiv = document.createElement("div");
+                questionDiv.classList.add("question");
+                let questionHTML = `<p>${index + 1}. ${q.question}</p>`;
+                q.options.forEach((opt, optIndex) => {
+                    questionHTML += `<label><input type="radio" name="q${index}" value="${optIndex}"> ${opt}</label><br>`;
+                });
+                questionDiv.innerHTML = questionHTML;
+                quizForm.appendChild(questionDiv);
+            });
+
+            const submitButton = document.createElement("button");
+            submitButton.type = "submit";
+            submitButton.textContent = "Nộp Bài";
+            quizForm.appendChild(submitButton);
+            quizForm.addEventListener("submit", (e) => submitQuiz(e, questions, name, studentId));
+        } catch (error) {
+            console.error('Lỗi khi tải câu hỏi:', error);
+            quizForm.innerHTML = `<p style="color:red;">Lỗi: ${error.message}</p>`;
+        }
+    }
+
+    async function submitQuiz(event, questions, name, studentId) {
+        event.preventDefault();
+        let correctAnswers = 0;
+        const userAnswers = [];
+
+        // Tính điểm và thu thập câu trả lời của người dùng
+        questions.forEach((q, index) => {
+            const options = document.querySelectorAll(`input[name="q${index}"]`);
+            let userAnswer = null;
+            options.forEach(option => {
+                if (option.checked) userAnswer = parseInt(option.value);
+                const label = option.parentElement;
+                if (parseInt(option.value) === q.correctAnswer) label.classList.add("correct");
+                else if (option.checked) label.classList.add("wrong");
+            });
+            if (userAnswer === q.correctAnswer) correctAnswers++;
+            userAnswers.push({
+                question: q.question,
+                selected: userAnswer !== null ? q.options[userAnswer] : "Không chọn",
+                correct: q.options[q.correctAnswer]
+            });
+        });
+
+        const totalQuestions = questions.length;
+        const scoreOn10 = (correctAnswers / totalQuestions) * 10;
+        const roundedScore = Math.round(scoreOn10 * 10) / 10;
+
+        // Hiển thị thông báo AI đang đánh giá
+        const loadingMessage = document.getElementById("loadingMessage");
+        loadingMessage.style.display = "block";
+
+        // Gọi AI để đánh giá
+        let aiFeedback = "";
+        try {
+            aiFeedback = await getAIFeedback(roundedScore, totalQuestions, correctAnswers, userAnswers);
+        } catch (error) {
+            console.error("Lỗi khi gọi AI:", error);
+            aiFeedback = "Không thể lấy phản hồi từ AI.";
+        }
+
+        // Ẩn thông báo loading
+        loadingMessage.style.display = "none";
+
+        // Lưu điểm số
+        const scoreData = {
+            studentId,
+            name,
+            score: roundedScore,
+            total: totalQuestions,
+            subject: new URLSearchParams(window.location.search).get('subject'),
+            date: new Date().toLocaleString('vi-VN'),
+            aiFeedback
+        };
+
+        try {
+            const response = await fetch('http://localhost:3000/api/scores', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(scoreData)
+            });
+
+            if (!response.ok) throw new Error('Không thể lưu điểm số');
+            const result = await response.json();
+            scoreData._id = result.score._id;
+            alert(`Điểm số: ${roundedScore}\nNhận xét từ AI: ${aiFeedback}`);
+        } catch (error) {
+            console.error('Lỗi khi lưu điểm:', error);
+            scoreData._id = 'local_' + Date.now();
+            alert(`Điểm số (giả lập): ${roundedScore}\nNhận xét từ AI: ${aiFeedback}`);
+        } finally {
+            let allScores = JSON.parse(localStorage.getItem('allScores')) || {};
+            if (!Array.isArray(allScores[studentId])) {
+                allScores[studentId] = [];
+            }
+            const existingScore = allScores[studentId].find(s => s.date === scoreData.date && s.subject === scoreData.subject);
+            if (!existingScore) {
+                allScores[studentId].push(scoreData);
+                localStorage.setItem('allScores', JSON.stringify(allScores));
+            }
+            localStorage.setItem('latestScore', JSON.stringify(scoreData));
+            window.location.href = `diemdauvao.html?studentId=${studentId}`;
+        }
+    }
+
+    async function getAIFeedback(score, totalQuestions, correctAnswers, userAnswers) {
+        try {
+            const prompt = `
+                Đánh giá bài kiểm tra đầu vào:
+                - Điểm số: ${score}/10
+                - Tổng số câu hỏi: ${totalQuestions}
+                - Số câu đúng: ${correctAnswers}
+                - Chi tiết câu trả lời: ${JSON.stringify(userAnswers, null, 2)}
+                Vui lòng đưa ra nhận xét ngắn gọn về kết quả và gợi ý cải thiện (bằng tiếng Việt).
+            `;
+            const response = await fetch('http://localhost:3000/api/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: prompt })
+            });
+
+            if (!response.ok) {
+                const errorResponse = await response.json();
+                console.warn(`API lỗi ${response.status}: ${errorResponse.reply}`);
+                return `Lỗi khi gọi AI: ${response.status}`;
+            }
+
+            const data = await response.json();
+            return data.reply || "Không có nhận xét từ AI.";
+        } catch (error) {
+            console.error('Lỗi khi gọi API AI:', error);
+            return "Không thể kết nối đến AI, vui lòng thử lại sau.";
+        }
+    }
+
+    function startTimer() {
+        let timeLeft = 45 * 60;
+        const timerElement = document.getElementById("timer");
+        function updateTimer() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeLeft > 0) {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                alert('Hết thời gian! Bài thi sẽ được nộp tự động.');
+                document.getElementById("quizForm").submit();
+            }
+        }
+        updateTimer();
+    }
+    </script>
+</body>
+</html>

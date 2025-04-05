@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Sinh Viên</title>
+    <link rel="stylesheet" href="../CSS/input_test.css"> <!-- Thêm CSS nếu cần -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif; /* Đặt font cho toàn bộ trang */
+            background-color: #f8f9fa; /* Màu nền nhẹ cho trang */
+            align-items: center; /* Căn giữa nội dung trong body */
+        }
+
+        header {
+            width: 100%;
+            background-color: #0056b3; /* Màu nền cho dashboard */
+            color: white;
+            display: flex;
+            align-items: center; /* Căn giữa dọc cho các mục */
+            justify-content: space-between; /* Căn giữa các mục */
+            padding: 10px 20px; /* Thêm padding cho dashboard */
+        }
+
+        .logo {
+            width: 50px; /* Chiều rộng của logo */
+            height: auto; /* Tự động điều chỉnh chiều cao */
+        }
+
+        .dashboard-item {
+            flex: 1; /* Mỗi mục chiếm đều không gian */
+            text-align: center; /* Căn giữa nội dung bên trong */
+            font-weight: bold; /* Làm đậm chữ */
+            color: white; /* Màu chữ cho các mục */
+        }
+
+        .login-icon {
+            width: 30px; /* Chiều rộng biểu tượng đăng nhập */
+            height: auto; /* Tự động điều chỉnh chiều cao */
+            cursor: pointer; /* Thay đổi con trỏ khi hover */
+        }
+
+        main {
+            flex: 1;
+            padding: 20px; /* Thêm padding cho main */
+            width: 100%; /* Đảm bảo width 100% để căn giữa bảng */
+            max-width: 1200px; /* Đặt chiều rộng tối đa cho main */
+        }
+
+        h2 {
+            color: #333; /* Màu chữ cho tiêu đề */
+            margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+            text-align: center; /* Căn giữa tiêu đề */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Đổ bóng cho bảng */
+            border-radius: 8px; /* Bo góc cho bảng */
+            overflow: hidden; /* Đảm bảo các góc bo không bị cắt */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 20px; /* Tăng padding để bảng dễ đọc hơn */
+            text-align: center; /* Căn giữa nội dung bên trong các ô */
+            min-width: 150px; /* Đặt chiều rộng tối thiểu cho các ô */
+        }
+
+        th {
+            background-color: #004494; /* Màu nền cho tiêu đề */
+            color: white;
+            font-weight: bold; /* Làm đậm chữ tiêu đề */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Màu nền cho hàng chẵn */
+        }
+
+        tr:hover {
+            background-color: #e0e0e0; /* Màu nền khi hover */
+        }
+
+        footer {
+            text-align: center; /* Căn giữa nội dung footer */
+            padding: 10px 0; /* Khoảng cách trên và dưới cho footer */
+            background-color: #f1f1f1; /* Màu nền cho footer */
+            margin-top: 20px; /* Khoảng cách trên footer */
+        }
+
+        /* Thêm kiểu cho thông báo không có dữ liệu */
+        .no-data {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="path_to_your_logo.png" alt="Logo" class="logo"> <!-- Đường dẫn tới logo -->
+    <div class="dashboard-item">Trang Chủ</div>
+    <div class="dashboard-item">Danh Sách Sinh Viên</div>
+    <div class="dashboard-item">Thông Tin Khác</div>
+    <img src="path_to_login_icon.png" alt="Login" class="login-icon"> <!-- Đường dẫn tới biểu tượng đăng nhập -->
+</header>
+
+<main>
+    <section>
+        <h2>Danh Sách Sinh Viên</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Họ Tên</th>
+                    <th>Email</th>
+                    <th>Lớp</th>
+                    <th>Điểm Trung Bình</th>
+                    <th>Điểm Số Hướng Đến</th>
+                    <th>Môn Học Chọn</th>
+                </tr>
+            </thead>
+            <tbody id="student-list"></tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Tạo Lộ Trình Học Tập Cá Nhân Hóa | Mọi quyền được bảo lưu.</p>
+</footer>
+
+<script>
+    function displayStudents() {
+        const students = JSON.parse(localStorage.getItem('students')) || [];
+        const studentList = document.getElementById('student-list');
+
+        if (students.length > 0) {
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.email}</td>
+                    <td>${student.class}</td>
+                    <td>${student.avgScore}</td>
+                    <td>${student.targetScore}</td>
+                    <td>${student.subject}</td>
+                `;
+                studentList.appendChild(row);
+            });
+        } else {
+            studentList.innerHTML = '<tr><td colspan="6" class="no-data">Không có thông tin nào đã lưu.</td></tr>';
+        }
+    }
+
+    // Gọi hàm để hiển thị thông tin khi trang được tải
+    displayStudents();   
+</script>
+</body>
+</html>

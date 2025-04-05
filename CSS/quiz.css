@@ -1,0 +1,123 @@
+/* Đặt font chữ chung cho toàn bộ trang */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Chiếm hết chiều cao của trang */
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.1em;
+    margin: 5px 0 0;
+}
+
+/* Phần câu hỏi */
+#quizQuestions {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; /* Cho phép phần câu hỏi chiếm không gian còn lại */
+}
+
+#quizQuestions h3 {
+    font-size: 2em;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+/* Câu hỏi và lựa chọn */
+#quizQuestions div {
+    margin-bottom: 20px;
+}
+
+#quizQuestions p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Các lựa chọn câu hỏi */
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+label {
+    font-size: 1.1em;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+label:hover {
+    color: #4CAF50;
+}
+
+/* Thời gian đếm ngược */
+#countdown {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #d9534f;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Đảm bảo luôn hiển thị trên các phần khác */
+}
+
+/* Nút nộp bài */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+footer button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+footer button:hover {
+    background-color: #45a049;
+}
+
+/* Nút nộp bài luôn nằm dưới cùng của trang */
+footer {
+    margin-top: auto; /* Đẩy footer xuống dưới cùng */
+}
+
+/* Responsive cho các màn hình nhỏ */
+@media (max-width: 768px) {
+    #quizQuestions {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    footer button {
+        width: 100%;
+        font-size: 1.1em;
+    }
+}

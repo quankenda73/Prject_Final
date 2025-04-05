@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hệ Thống Học Tập Cá Nhân Hóa giúp học viên cải thiện kết quả học tập thông qua công nghệ AI.">
+    <meta name="keywords" content="học tập, cá nhân hóa, AI, giáo dục">
+    <title>Hệ Thống Học Tập Cá Nhân Hóa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Giữ nguyên toàn bộ CSS hiện tại của bạn */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f6fa;
+            margin-left: 200px; /* Giảm từ 250px xuống 200px */
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            margin-left: 200px; /* Giảm từ 250px xuống 200px */
+            transition: margin-left 0.3s ease;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .login-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .login-link,
+        .signup-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s, background 0.3s;
+        }
+
+        .signup-link {
+            padding: 8px 15px;
+            background: #0056b3;
+            border-radius: 20px;
+        }
+
+        .login-link:hover,
+        .signup-link:hover {
+            opacity: 0.8;
+        }
+
+        .signup-link:hover {
+            background: #003d5b;
+        }
+
+        .search-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .search-container input {
+            padding: 10px 15px;
+            width: 300px;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #ffffff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-left: 200px; /* Giảm từ 250px xuống 200px */
+            transition: margin-left 0.3s ease;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            padding: 12px 25px;
+            margin: 0 10px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: #007bff;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Slider */
+        .slider {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+            margin-left: 200px; /* Giảm từ 250px xuống 200px */
+            transition: margin-left 0.3s ease;
+        }
+
+        .slider-images {
+            display: flex;
+            height: 100%;
+            width: 500%; /* 100% * 5 slide */
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-images img {
+            width: 20%; /* 100% / 5 slide */
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            opacity: 0.85;
+            transition: opacity 0.3s;
+        }
+
+        .slider-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px 30px;
+            border-radius: 25px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+
+        .slider-nav button {
+            background-color: rgba(255,255,255,0.9);
+            color: #007bff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-nav button:hover {
+            background-color: #007bff;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dots .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dots .dot.active {
+            background: #007bff;
+            transform: scale(1.2);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-left: 200px; /* Giảm từ 250px xuống 200px */
+            transition: margin-left 0.3s ease;
+        }
+
+        section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #007bff;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        section i {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-left: 200px; /* Giảm từ 250px xuống 200px */
+            transition: margin-left 0.3s ease;
+        }
+
+        .news-section h2 {
+            color: #1e3c72;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .news-card h3 {
+            font-size: 1rem;
+            color: #2c3e50;
+            padding: 10px;
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .news-card p {
+            font-size: 0.9rem;
+            color: #4a5a6b;
+            padding: 5px 10px;
+            margin: 0;
+        }
+
+        .news-card .source {
+            font-size: 0.8rem;
+            color: #28a745;
+            padding-bottom: 10px;
+        }
+
+        .news-card .time {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            padding-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .news-card img {
+                height: 120px;
+            }
+
+            .news-card h3 {
+                font-size: 0.9rem;
+            }
+
+            .news-section h2 {
+                font-size: 1.5rem;
+            }
+            body {
+                margin-left: 200px;
+            }
+            header, nav, .slider, main, .news-section, footer {
+                margin-left: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                width: 0;
+                padding: 0;
+                transform: translateX(-100%);
+            }
+            body {
+                margin-left: 0;
+            }
+            header, nav, .slider, main, .news-section, footer {
+                margin-left: 0;
+            }
+            .sidebar.active {
+                width: 200px;
+                transform: translateX(0);
+                padding: 20px 0;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #003d5b;
+            color: white;
+            padding: 50px 20px;
+            border-top: 4px solid #007bff;
+            margin-left: 200px; /* Giảm từ 250px xuống 200px */
+            transition: margin-left 0.3s ease;
+        }
+
+        .footer-title {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .footer-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .test-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .test-category {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .test-category:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .test-category h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .test-category p {
+            color: #e9ecef;
+            font-size: 0.95rem;
+            margin: 5px 0;
+        }
+
+        .footer-info {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer-info p {
+            margin: 5px 0;
+            color: #e9ecef;
+        }
+
+        .footer-info a {
+            color: #4dabf7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-info a:hover {
+            color: #fff;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            background: #007bff;
+            padding: 12px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .back-to-top:hover {
+            background: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 200px; /* Giảm từ 250px xuống 200px */
+            height: 100vh;
+            background-color: #f8f9fa;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sidebar-logo {
+            width: 40px; /* Giảm kích thước logo để phù hợp với sidebar hẹp */
+            height: 40px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.3rem; /* Giảm kích thước chữ để phù hợp */
+            color: #28a745;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            padding: 10px 15px; /* Giảm padding để vừa với chiều rộng mới */
+        }
+
+        .sidebar-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.95rem; /* Giảm kích thước chữ để vừa với chiều rộng mới */
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Giảm khoảng cách giữa icon và text */
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .sidebar-menu a i {
+            font-size: 1.1rem; /* Giảm kích thước icon */
+            color: #28a745;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: #28a745;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .sidebar-menu a:hover i,
+        .sidebar-menu a.active i {
+            color: white;
+        }
+
+        /* Menu Toggle Button */
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 1002;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+       
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active"><i class="fas fa-home"></i> Trang chủ</a></li>
+            <li><a href="#"><i class="fas fa-file-alt"></i> Tài liệu ôn thi</a></li>
+            <li><a href="#"><i class="fas fa-chart-line"></i> Tra cứu điểm thi</a></li>
+            <li><a href="#"><i class="fas fa-search"></i> Tìm trường DH-CD</a></li>
+            <li><a href="#"><i class="fas fa-book"></i> Giải bài tập</a></li>
+            <li><a href="#"><i class="fas fa-calculator"></i> Máy tính</a></li>
+            <li><a href="#"><i class="fas fa-flask"></i> Hóa học</a></li>
+            <li><a href="#"><i class="fas fa-video"></i> Video giáo sự</a></li>
+            <li><a href="#"><i class="fas fa-language"></i> Dịch</a></li>
+            <li><a href="#"><i class="fas fa-book-open"></i> Từ điển</a></li>
+            <li><a href="#"><i class="fas fa-pen"></i> Chuẩn đoán đỗ vỡ</a></li>
+            <li><a href="#"><i class="fas fa-check"></i> Kiểm tra chinh tả</a></li>
+            <li><a href="#"><i class="fas fa-comments"></i> Gửi phản hồi</a></li>
+        </ul>
+    </aside>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Hệ Thống Học Tập Cá Nhân Hóa</h1>
+            <p>Công cụ học tập thông minh với trí tuệ nhân tạo</p>
+            <div class="login-container">
+                <a href="#" class="login-link">Đăng Nhập</a>
+                <a href="#" class="signup-link">Đăng Ký</a>
+                <i class="fas fa-user-circle login-icon"></i>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Tìm kiếm...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#personalized-learning" class="nav-link">Lộ Trình Cá Nhân</a>
+        <a href="#chatbot" class="nav-link">Chatbot</a>
+        <a href="#online-tests" class="nav-link">Thi Online</a>
+        <a href="#data-collection" class="nav-link">Thu Thập Dữ Liệu</a>
+        <a href="#system-architecture" class="nav-link">Kiến Trúc</a>
+        <a href="#news" class="nav-link">Tin Tức</a>
+    </nav>
+
+    <!-- Slider -->
+    <div class="slider">
+        <div class="slider-images">
+            <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2022/09/Banner_Tuyen_sinh_bo_sung_dot_2_2022.png" alt="Slide 1" loading="lazy">
+            <img src="http://admin.phuongdong.edu.vn/Upload/Khoa%20CNTT/banner%20cntt.jpg" alt="Slide 2" loading="lazy">
+            <img src="https://tuyensinh.ueh.edu.vn/wp-content/uploads/2024/09/ILACS_Banner-UEH-Web-Edited-1.png" alt="Slide 3" loading="lazy">
+            <img src="https://colour.vn/wp-content/uploads/mau-banner-quang-cao-khuyen-mai.jpg" alt="Slide 4" loading="lazy">
+            <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2022/09/Banner_Tuyen_sinh_bo_sung_dot_2_2022.png" alt="Slide 5" loading="lazy">
+        </div>
+        <div class="slider-caption">
+            <h2>Học Tập Thông Minh</h2>
+            <p>Cá nhân hóa trải nghiệm học tập của bạn với AI</p>
+        </div>
+        <div class="slider-nav">
+            <button class="prev" onclick="moveSlide(-1)">❮</button>
+            <button class="next" onclick="moveSlide(1)">❯</button>
+        </div>
+        <div class="slider-dots"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section id="personalized-learning">
+            <i class="fas fa-graduation-cap"></i>
+            <h2>Tạo Lộ Trình Học Tập</h2>
+            <p>Phân tích điểm số, bài tập và bài thi để tư vấn lộ trình học tập dựa trên khung chương trình của Bộ Giáo Dục.</p>
+            <a href="input.html" class="btn">Tìm Hiểu Thêm</a>
+        </section>
+
+        <section id="chatbot">
+            <i class="fas fa-robot"></i>
+            <h2>Chatbot Hỗ Trợ Học Tập</h2>
+            <p>Hỗ trợ học viên giải đáp thắc mắc và cung cấp tài liệu học tập phù hợp.</p>
+            <a href="chatbot.html" class="btn">Tìm Hiểu Thêm</a>
+        </section>
+
+        <section id="online-tests">
+            <i class="fas fa-file-alt"></i>
+            <h2>Thi Trắc Nghiệm Online</h2>
+            <p>Tạo bài thi bằng AI với điểm số và giải thích chi tiết sau khi hoàn thành.</p>
+            <a href="tracnghiem.html" class="btn">Tìm Hiểu Thêm</a>
+        </section>
+
+        <section id="data-collection">
+            <i class="fas fa-database"></i>
+            <h2>Thu Thập Dữ Liệu</h2>
+            <p>Phân tích dữ liệu học tập để đề xuất bài học phù hợp nhất.</p>
+            <a href="data.html" class="btn">Khám Phá</a>
+        </section>
+
+        <section id="system-architecture">
+            <i class="fas fa-network-wired"></i>
+            <h2>Kiến Trúc Hệ Thống</h2>
+            <p>Công nghệ tiên tiến đảm bảo hiệu suất và bảo mật dữ liệu.</p>
+            <a href="architecture.html" class="btn">Tìm Hiểu Thêm</a>
+        </section>
+    </main>
+
+    <!-- Phần tin tức giáo dục với NewsAPI -->
+    <section class="news-section">
+        <h2>Cập nhật tin tức giáo dục</h2>
+        <div class="news-grid" id="newsGrid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-title">
+            <h2>TRẮC NGHIỆM</h2>
+            <p>Hệ thống học tập thông minh dành cho bạn</p>
+        </div>
+        <div class="footer-content">
+            <div class="test-categories">
+                <div class="test-category">
+                    <h3>THPT QG</h3>
+                    <p>Môn Tiếng Anh</p>
+                    <p>Môn Toán</p>
+                    <p>Môn Vật Lý</p>
+                </div>
+                <div class="test-category">
+                    <h3>KIỂM TRA</h3>
+                    <p>Môn Địa Lý</p>
+                    <p>Môn Hóa Học</p>
+                </div>
+                <div class="test-category">
+                    <h3>ENGLISH TEST</h3>
+                    <p>IELTS Kỹ Năng Nghe</p>
+                    <p>IELTS Kỹ Năng Đọc</p>
+                </div>
+                <div class="test-category">
+                    <h3>IT TEST</h3>
+                    <p>Kiểm tra lập trình</p>
+                    <p>Kiểm tra kiến thức CNTT</p>
+                </div>
+                <div class="test-category">
+                    <h3>HƯỚNG NGHIỆP</h3>
+                    <p>Khóa học kỹ năng mềm</p>
+                    <p>Định hướng nghề nghiệp</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-info">
+            <p>Chủ quản: Cao Đẳng Anh Quốc BTEC FPT</p>
+            <p>Liên hệ: <a href="mailto:support@taileuven.com">Quannhbd00216@fpt.edu.vn</a></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button onclick="scrollToTop()" id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slider-images img');
+        const totalSlides = slides.length;
+        const dotsContainer = document.querySelector('.slider-dots');
+        const slider = document.querySelector('.slider');
+
+        // Tạo dots cho slider
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dot.addEventListener('click', () => {
+                currentIndex = i;
+                updateSlider();
+            });
+            dotsContainer.appendChild(dot);
+        }
+
+        function updateSlider() {
+            const sliderImages = document.querySelector('.slider-images');
+            sliderImages.style.transform = `translateX(${-currentIndex * 100 / totalSlides}%)`;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function moveSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = totalSlides - 1; // Quay về slide cuối nếu đi ngược từ slide 1
+            } else if (currentIndex >= totalSlides) {
+                currentIndex = 0; // Quay về slide 1 khi đến slide cuối
+            }
+            updateSlider();
+        }
+
+        // Khởi tạo slider
+        updateSlider();
+
+        // Tự động chuyển slide sau 6 giây và tạm dừng khi hover
+        let slideInterval = setInterval(() => moveSlide(1), 6000);
+        slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        slider.addEventListener('mouseleave', () => slideInterval = setInterval(() => moveSlide(1), 6000));
+
+        let isLoggedIn = false;
+        function requireLogin(event) {
+            event.preventDefault();
+            if (!isLoggedIn) {
+                alert("Vui lòng đăng nhập để sử dụng chức năng này!");
+            } else {
+                const targetId = event.target.getAttribute("href");
+                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', requireLogin);
+        });
+
+        document.querySelector('.login-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            isLoggedIn = true;
+            alert("Đăng nhập thành công!");
+        });
+
+        const backToTop = document.getElementById("backToTop");
+        window.onscroll = function () {
+            backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // Toggle sidebar on mobile
+        const sidebar = document.querySelector('.sidebar');
+        const menuToggle = document.createElement('button');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        menuToggle.classList.add('menu-toggle');
+        document.body.appendChild(menuToggle);
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 480) {
+                menuToggle.style.display = 'block';
+                sidebar.classList.remove('active');
+            } else {
+                menuToggle.style.display = 'none';
+                sidebar.classList.add('active');
+            }
+        });
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

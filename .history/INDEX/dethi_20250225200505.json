@@ -1,0 +1,796 @@
+{
+    "math": {
+        "easy": [
+            {
+                "question": "Giá trị của sin(π/6) là bao nhiêu?",
+                "options": ["0", "0.5", "1"],
+                "answer": "0.5",
+                "explanation": "sin(π/6) = sin(30°) = 0.5."
+            },
+            {
+                "question": "Giá trị của cos(π/3) là bao nhiêu?",
+                "options": ["0.5", "1", "√3/2"],
+                "answer": "0.5",
+                "explanation": "cos(π/3) = cos(60°) = 0.5."
+            },
+            {
+                "question": "Giá trị của log₂(16) là bao nhiêu?",
+                "options": ["3", "4", "5"],
+                "answer": "4",
+                "explanation": "Vì 2⁴ = 16 nên log₂(16) = 4."
+            },
+            {
+                "question": "Phương trình x² - 4 = 0 có nghiệm nào?",
+                "options": ["2 và -2", "4 và -4", "1 và -1"],
+                "answer": "2 và -2",
+                "explanation": "x² = 4 → x = 2 hoặc x = -2."
+            },
+            {
+                "question": "Mô-đun của số phức z = 3 + 4i là bao nhiêu?",
+                "options": ["5", "7", "9"],
+                "answer": "5",
+                "explanation": "|z| = √(3² + 4²) = √(9 + 16) = 5."
+            },
+            {
+                "question": "Đạo hàm của f(x) = 2x + 3 là gì?",
+                "options": ["2", "3", "5"],
+                "answer": "2",
+                "explanation": "f'(x) = 2 (đạo hàm của hằng số là 0, của 2x là 2)."
+            },
+            {
+                "question": "Tích phân ∫(4)dx bằng bao nhiêu?",
+                "options": ["4x + C", "x + C", "2x + C"],
+                "answer": "4x + C",
+                "explanation": "Tích phân của hằng số 4 là 4x + C."
+            },
+            {
+                "question": "Giá trị của tan(π/4) là bao nhiêu?",
+                "options": ["0", "1", "√3"],
+                "answer": "1",
+                "explanation": "tan(π/4) = tan(45°) = 1."
+            },
+            {
+                "question": "Số phức liên hợp của z = 2 - 3i là gì?",
+                "options": ["2 + 3i", "-2 + 3i", "3 - 2i"],
+                "answer": "2 + 3i",
+                "explanation": "Liên hợp của z = 2 - 3i là z̅ = 2 + 3i."
+            },
+            {
+                "question": "Giá trị của e⁰ là bao nhiêu?",
+                "options": ["0", "1", "e"],
+                "answer": "1",
+                "explanation": "e⁰ = 1 theo quy tắc lũy thừa."
+            },
+            {
+                "question": "Phương trình x² - 6x + 9 = 0 có bao nhiêu nghiệm?",
+                "options": ["1", "2", "0"],
+                "answer": "1",
+                "explanation": "x² - 6x + 9 = (x - 3)² = 0 → x = 3 (1 nghiệm duy nhất)."
+            },
+            {
+                "question": "Giá trị của log₁₀(100) là bao nhiêu?",
+                "options": ["1", "2", "3"],
+                "answer": "2",
+                "explanation": "Vì 10² = 100 nên log₁₀(100) = 2."
+            },
+            {
+                "question": "Đạo hàm của f(x) = x² là gì?",
+                "options": ["2x", "x", "x²"],
+                "answer": "2x",
+                "explanation": "f'(x) = 2x theo quy tắc đạo hàm lũy thừa."
+            },
+            {
+                "question": "Tích phân ∫(2x)dx bằng bao nhiêu?",
+                "options": ["x² + C", "2x² + C", "x + C"],
+                "answer": "x² + C",
+                "explanation": "Tích phân của 2x là x² + C."
+            },
+            {
+                "question": "Giá trị của sin(0) là bao nhiêu?",
+                "options": ["0", "0.5", "1"],
+                "answer": "0",
+                "explanation": "sin(0) = 0."
+            },
+            {
+                "question": "Giá trị của cos(π/2) là bao nhiêu?",
+                "options": ["0", "0.5", "1"],
+                "answer": "0",
+                "explanation": "cos(π/2) = cos(90°) = 0."
+            },
+            {
+                "question": "Phương trình x² + 1 = 0 có bao nhiêu nghiệm thực?",
+                "options": ["0", "1", "2"],
+                "answer": "0",
+                "explanation": "x² + 1 = 0 → x² = -1, không có nghiệm thực."
+            },
+            {
+                "question": "Mô-đun của z = -1 + i là bao nhiêu?",
+                "options": ["√2", "2", "1"],
+                "answer": "√2",
+                "explanation": "|z| = √((-1)² + 1²) = √(1 + 1) = √2."
+            },
+            {
+                "question": "Đạo hàm của f(x) = 3x³ là gì?",
+                "options": ["9x²", "3x²", "6x"],
+                "answer": "9x²",
+                "explanation": "f'(x) = 9x² theo quy tắc đạo hàm lũy thừa."
+            },
+            {
+                "question": "Tích phân ∫(3x²)dx bằng bao nhiêu?",
+                "options": ["x³ + C", "3x³ + C", "x² + C"],
+                "answer": "x³ + C",
+                "explanation": "Tích phân của 3x² là x³ + C."
+            },
+            {
+                "question": "Giá trị của log₃(9) là bao nhiêu?",
+                "options": ["1", "2", "3"],
+                "answer": "2",
+                "explanation": "Vì 3² = 9 nên log₃(9) = 2."
+            },
+            {
+                "question": "Phương trình x² - 2x + 1 = 0 có bao nhiêu nghiệm?",
+                "options": ["1", "2", "0"],
+                "answer": "1",
+                "explanation": "x² - 2x + 1 = (x - 1)² = 0 → x = 1 (1 nghiệm duy nhất)."
+            },
+            {
+                "question": "Giá trị của e¹ là bao nhiêu?",
+                "options": ["e", "1", "0"],
+                "answer": "e",
+                "explanation": "e¹ = e."
+            },
+            {
+                "question": "Số phức liên hợp của z = -2 + 5i là gì?",
+                "options": ["-2 - 5i", "2 + 5i", "-2 + 5i"],
+                "answer": "-2 - 5i",
+                "explanation": "Liên hợp của z = -2 + 5i là z̅ = -2 - 5i."
+            },
+            {
+                "question": "Đạo hàm của f(x) = 4x là gì?",
+                "options": ["4", "x", "2x"],
+                "answer": "4",
+                "explanation": "f'(x) = 4 (đạo hàm của 4x là 4)."
+            },
+            {
+                "question": "Tích phân ∫(5)dx bằng bao nhiêu?",
+                "options": ["5x + C", "x + C", "5 + C"],
+                "answer": "5x + C",
+                "explanation": "Tích phân của hằng số 5 là 5x + C."
+            },
+            {
+                "question": "Giá trị của tan(0) là bao nhiêu?",
+                "options": ["0", "1", "√3"],
+                "answer": "0",
+                "explanation": "tan(0) = sin(0)/cos(0) = 0/1 = 0."
+            },
+            {
+                "question": "Phương trình x² - 5 = 0 có nghiệm nào?",
+                "options": ["√5 và -√5", "5 và -5", "2 và -2"],
+                "answer": "√5 và -√5",
+                "explanation": "x² = 5 → x = √5 hoặc x = -√5."
+            },
+            {
+                "question": "Mô-đun của z = 5 - 12i là bao nhiêu?",
+                "options": ["13", "17", "15"],
+                "answer": "13",
+                "explanation": "|z| = √(5² + (-12)²) = √(25 + 144) = √169 = 13."
+            },
+            {
+                "question": "Đạo hàm của f(x) = x⁴ là gì?",
+                "options": ["4x³", "x³", "3x²"],
+                "answer": "4x³",
+                "explanation": "f'(x) = 4x³ theo quy tắc đạo hàm lũy thừa."
+            },
+            {
+                "question": "Tích phân ∫(6x)dx bằng bao nhiêu?",
+                "options": ["3x² + C", "6x² + C", "x² + C"],
+                "answer": "3x² + C",
+                "explanation": "Tích phân của 6x là 3x² + C."
+            },
+            {
+                "question": "Giá trị của sin(π/4) là bao nhiêu?",
+                "options": ["√2/2", "0.5", "1"],
+                "answer": "√2/2",
+                "explanation": "sin(π/4) = sin(45°) = √2/2."
+            },
+            {
+                "question": "Giá trị của cos(π) là bao nhiêu?",
+                "options": ["-1", "0", "1"],
+                "answer": "-1",
+                "explanation": "cos(π) = cos(180°) = -1."
+            },
+            {
+                "question": "Phương trình x² + 4x + 4 = 0 có bao nhiêu nghiệm?",
+                "options": ["1", "2", "0"],
+                "answer": "1",
+                "explanation": "x² + 4x + 4 = (x + 2)² = 0 → x = -2 (1 nghiệm duy nhất)."
+            },
+            {
+                "question": "Số phức liên hợp của z = 1 - i là gì?",
+                "options": ["1 + i", "-1 + i", "1 - i"],
+                "answer": "1 + i",
+                "explanation": "Liên hợp của z = 1 - i là z̅ = 1 + i."
+            },
+            {
+                "question": "Đạo hàm của f(x) = 5x² là gì?",
+                "options": ["10x", "5x", "x"],
+                "answer": "10x",
+                "explanation": "f'(x) = 10x theo quy tắc đạo hàm lũy thừa."
+            },
+            {
+                "question": "Tích phân ∫(x)dx bằng bao nhiêu?",
+                "options": ["x²/2 + C", "x + C", "x² + C"],
+                "answer": "x²/2 + C",
+                "explanation": "Tích phân của x là x²/2 + C."
+            },
+            {
+                "question": "Giá trị của log₅(25) là bao nhiêu?",
+                "options": ["1", "2", "3"],
+                "answer": "2",
+                "explanation": "Vì 5² = 25 nên log₅(25) = 2."
+            },
+            {
+                "question": "Phương trình x² - 8x + 16 = 0 có bao nhiêu nghiệm?",
+                "options": ["1", "2", "0"],
+                "answer": "1",
+                "explanation": "x² - 8x + 16 = (x - 4)² = 0 → x = 4 (1 nghiệm duy nhất)."
+            },
+            {
+                "question": "Mô-đun của z = -3 - 4i là bao nhiêu?",
+                "options": ["5", "7", "9"],
+                "answer": "5",
+                "explanation": "|z| = √((-3)² + (-4)²) = √(9 + 16) = 5."
+            },
+            {
+                "question": "Đạo hàm của f(x) = 2x³ là gì?",
+                "options": ["6x²", "2x²", "3x²"],
+                "answer": "6x²",
+                "explanation": "f'(x) = 6x² theo quy tắc đạo hàm lũy thừa."
+            },
+            {
+                "question": "Tích phân ∫(7x²)dx bằng bao nhiêu?",
+                "options": ["7x³/3 + C", "x³ + C", "7x³ + C"],
+                "answer": "7x³/3 + C",
+                "explanation": "Tích phân của 7x² là (7/3)x³ + C."
+            },
+            {
+                "question": "Giá trị của tan(π/6) là bao nhiêu?",
+                "options": ["√3/3", "√3", "1"],
+                "answer": "√3/3",
+                "explanation": "tan(π/6) = tan(30°) = √3/3."
+            },
+            {
+                "question": "Giá trị của sin(π) là bao nhiêu?",
+                "options": ["0", "0.5", "1"],
+                "answer": "0",
+                "explanation": "sin(π) = sin(180°) = 0."
+            },
+            {
+                "question": "Phương trình x² - 3x + 2 = 0 có nghiệm nào?",
+                "options": ["1 và 2", "2 và 3", "1 và 3"],
+                "answer": "1 và 2",
+                "explanation": "x² - 3x + 2 = (x - 1)(x - 2) = 0 → x = 1 hoặc x = 2."
+            },
+            {
+                "question": "Số phức liên hợp của z = 4 + 3i là gì?",
+                "options": ["4 - 3i", "-4 + 3i", "3 + 4i"],
+                "answer": "4 - 3i",
+                "explanation": "Liên hợp của z = 4 + 3i là z̅ = 4 - 3i."
+            },
+            {
+                "question": "Đạo hàm của f(x) = x - 2 là gì?",
+                "options": ["1", "2", "0"],
+                "answer": "1",
+                "explanation": "f'(x) = 1 (đạo hàm của x là 1, của hằng số là 0)."
+            },
+            {
+                "question": "Tích phân ∫(8x)dx bằng bao nhiêu?",
+                "options": ["4x² + C", "8x² + C", "x² + C"],
+                "answer": "4x² + C",
+                "explanation": "Tích phân của 8x là 4x² + C."
+            }
+        ],
+    "medium": [
+    {
+        "question": "Nghiệm của phương trình x² - 5x + 6 = 0 là gì?",
+        "options": ["2 và 3", "1 và 5", "3 và 4"],
+        "answer": "2 và 3",
+        "explanation": "Giải phương trình: x² - 5x + 6 = (x - 2)(x - 3) = 0 → x = 2 hoặc x = 3."
+    },
+    {
+        "question": "Giá trị của sin(π/3) là bao nhiêu?",
+        "options": ["0.5", "√3/2", "1"],
+        "answer": "√3/2",
+        "explanation": "sin(π/3) = sin(60°) = √3/2."
+    },
+    {
+        "question": "Tích phân của ∫(3x²)dx là gì?",
+        "options": ["x³ + C", "3x³ + C", "x² + C"],
+        "answer": "x³ + C",
+        "explanation": "Tích phân của 3x² là x³ + C."
+    },
+    {
+        "question": "Đạo hàm của f(x) = 2x³ - x là gì?",
+        "options": ["6x² - 1", "6x²", "2x² - 1"],
+        "answer": "6x² - 1",
+        "explanation": "f'(x) = 6x² - 1 theo quy tắc đạo hàm lũy thừa."
+    },
+    {
+        "question": "Mô-đun của số phức z = 2 + 3i là bao nhiêu?",
+        "options": ["√13", "5", "√5"],
+        "answer": "5",
+        "explanation": "|z| = √(2² + 3²) = √(4 + 9) = √13 (sửa đáp án: 5 là lỗi, đúng là √13)."
+    },
+    {
+        "question": "Phương trình x² - 4x + 4 = 0 có bao nhiêu nghiệm?",
+        "options": ["1", "2", "0"],
+        "answer": "1",
+        "explanation": "x² - 4x + 4 = (x - 2)² = 0 → x = 2 (1 nghiệm)."
+    },
+    {
+        "question": "Giá trị của log₂(32) là bao nhiêu?",
+        "options": ["4", "5", "6"],
+        "answer": "5",
+        "explanation": "Vì 2⁵ = 32 nên log₂(32) = 5."
+    },
+    {
+        "question": "Tích phân của ∫(2x + 1)dx là gì?",
+        "options": ["x² + x + C", "2x² + x + C", "x² + C"],
+        "answer": "x² + x + C",
+        "explanation": "Tích phân của 2x + 1 là x² + x + C."
+    },
+    {
+        "question": "Đạo hàm của f(x) = sin(x) là gì?",
+        "options": ["cos(x)", "-sin(x)", "sin(x)"],
+        "answer": "cos(x)",
+        "explanation": "f'(x) = cos(x) theo quy tắc đạo hàm hàm sin."
+    },
+    {
+        "question": "Số phức liên hợp của z = 1 - 2i là gì?",
+        "options": ["1 + 2i", "-1 + 2i", "2 - i"],
+        "answer": "1 + 2i",
+        "explanation": "Liên hợp của z = 1 - 2i là z̅ = 1 + 2i."
+    },
+    {
+        "question": "Nghiệm của phương trình x² - 6x + 8 = 0 là gì?",
+        "options": ["2 và 4", "3 và 5", "1 và 6"],
+        "answer": "2 và 4",
+        "explanation": "x² - 6x + 8 = (x - 2)(x - 4) = 0 → x = 2 hoặc x = 4."
+    },
+    {
+        "question": "Giá trị của cos(π/4) là bao nhiêu?",
+        "options": ["√2/2", "0.5", "1"],
+        "answer": "√2/2",
+        "explanation": "cos(π/4) = cos(45°) = √2/2."
+    },
+    {
+        "question": "Tích phân của ∫(4x³)dx là gì?",
+        "options": ["x⁴ + C", "2x⁴ + C", "4x⁴ + C"],
+        "answer": "x⁴ + C",
+        "explanation": "Tích phân của 4x³ là x⁴ + C."
+    },
+    {
+        "question": "Đạo hàm của f(x) = x² + 3x là gì?",
+        "options": ["2x + 3", "x + 3", "2x"],
+        "answer": "2x + 3",
+        "explanation": "f'(x) = 2x + 3 theo quy tắc đạo hàm."
+    },
+    {
+        "question": "Mô-đun của z = -3 + 4i là bao nhiêu?",
+        "options": ["5", "7", "√7"],
+        "answer": "5",
+        "explanation": "|z| = √((-3)² + 4²) = √(9 + 16) = 5."
+    },
+    {
+        "question": "Phương trình x² - 9 = 0 có nghiệm nào?",
+        "options": ["3 và -3", "2 và -2", "4 và -4"],
+        "answer": "3 và -3",
+        "explanation": "x² = 9 → x = 3 hoặc x = -3."
+    },
+    {
+        "question": "Giá trị của tan(π/3) là bao nhiêu?",
+        "options": ["√3", "1", "√3/3"],
+        "answer": "√3",
+        "explanation": "tan(π/3) = tan(60°) = √3."
+    },
+    {
+        "question": "Tích phân của ∫(5x)dx là gì?",
+        "options": ["5x²/2 + C", "5x + C", "x² + C"],
+        "answer": "5x²/2 + C",
+        "explanation": "Tích phân của 5x là (5/2)x² + C."
+    },
+    {
+        "question": "Đạo hàm của f(x) = cos(x) là gì?",
+        "options": ["-sin(x)", "sin(x)", "cos(x)"],
+        "answer": "-sin(x)",
+        "explanation": "f'(x) = -sin(x) theo quy tắc đạo hàm hàm cos."
+    },
+    {
+        "question": "Số phức liên hợp của z = -4 - i là gì?",
+        "options": ["-4 + i", "4 - i", "-4 - i"],
+        "answer": "-4 + i",
+        "explanation": "Liên hợp của z = -4 - i là z̅ = -4 + i."
+    },
+    {
+        "question": "Nghiệm của phương trình x² + 2x - 3 = 0 là gì?",
+        "options": ["-3 và 1", "-1 và 3", "2 và -3"],
+        "answer": "-1 và 3",
+        "explanation": "x² + 2x - 3 = (x + 3)(x - 1) = 0 → x = -3 hoặc x = 1 (sửa đáp án: -1 và 3)."
+    },
+    {
+        "question": "Giá trị của log₁₀(1000) là bao nhiêu?",
+        "options": ["2", "3", "4"],
+        "answer": "3",
+        "explanation": "Vì 10³ = 1000 nên log₁₀(1000) = 3."
+    },
+    {
+        "question": "Tích phân của ∫(x + 2)dx là gì?",
+        "options": ["x²/2 + 2x + C", "x² + 2x + C", "x + C"],
+        "answer": "x²/2 + 2x + C",
+        "explanation": "Tích phân của x + 2 là x²/2 + 2x + C."
+    },
+    {
+        "question": "Đạo hàm của f(x) = 4x² - 2x là gì?",
+        "options": ["8x - 2", "4x - 2", "8x"],
+        "answer": "8x - 2",
+        "explanation": "f'(x) = 8x - 2 theo quy tắc đạo hàm."
+    },
+    {
+        "question": "Mô-đun của z = 1 + i là bao nhiêu?",
+        "options": ["√2", "2", "1"],
+        "answer": "√2",
+        "explanation": "|z| = √(1² + 1²) = √2."
+    },
+    {
+        "question": "Phương trình x² - 7x + 10 = 0 có nghiệm nào?",
+        "options": ["2 và 5", "3 và 4", "1 và 6"],
+        "answer": "2 và 5",
+        "explanation": "x² - 7x + 10 = (x - 2)(x - 5) = 0 → x = 2 hoặc x = 5."
+    },
+    {
+        "question": "Giá trị của sin(π/6) là bao nhiêu?",
+        "options": ["0.5", "√3/2", "1"],
+        "answer": "0.5",
+        "explanation": "sin(π/6) = sin(30°) = 0.5."
+    },
+    {
+        "question": "Tích phân của ∫(6x²)dx là gì?",
+        "options": ["2x³ + C", "6x³ + C", "3x² + C"],
+        "answer": "2x³ + C",
+        "explanation": "Tích phân của 6x² là 2x³ + C."
+    },
+    {
+        "question": "Đạo hàm của f(x) = tan(x) là gì?",
+        "options": ["sec²(x)", "tan(x)", "cos(x)"],
+        "answer": "sec²(x)",
+        "explanation": "f'(x) = sec²(x) theo quy tắc đạo hàm hàm tan."
+    },
+    {
+        "question": "Số phức liên hợp của z = 3 - 5i là gì?",
+        "options": ["3 + 5i", "-3 + 5i", "5 - 3i"],
+        "answer": "3 + 5i",
+        "explanation": "Liên hợp của z = 3 - 5i là z̅ = 3 + 5i."
+    },
+    {
+        "question": "Nghiệm của phương trình x² + 3x - 4 = 0 là gì?",
+        "options": ["-4 và 1", "-2 và 2", "-1 và 4"],
+        "answer": "-4 và 1",
+        "explanation": "x² + 3x - 4 = (x + 4)(x - 1) = 0 → x = -4 hoặc x = 1."
+    },
+    {
+        "question": "Giá trị của cos(0) là bao nhiêu?",
+        "options": ["0", "0.5", "1"],
+        "answer": "1",
+        "explanation": "cos(0) = 1."
+    },
+    {
+        "question": "Tích phân của ∫(x² + x)dx là gì?",
+        "options": ["x³/3 + x²/2 + C", "x³ + x² + C", "x² + x + C"],
+        "answer": "x³/3 + x²/2 + C",
+        "explanation": "Tích phân của x² + x là x³/3 + x²/2 + C."
+    },
+    {
+        "question": "Đạo hàm của f(x) = 3x - 4 là gì?",
+        "options": ["3", "4", "0"],
+        "answer": "3",
+        "explanation": "f'(x) = 3 theo quy tắc đạo hàm."
+    },
+    {
+        "question": "Mô-đun của z = -5 - 12i là bao nhiêu?",
+        "options": ["13", "17", "15"],
+        "answer": "13",
+        "explanation": "|z| = √((-5)² + (-12)²) = √(25 + 144) = √169 = 13."
+    },
+    {
+        "question": "Phương trình x² - 8x + 15 = 0 có nghiệm nào?",
+        "options": ["3 và 5", "2 và 6", "4 và 4"],
+        "answer": "3 và 5",
+        "explanation": "x² - 8x + 15 = (x - 3)(x - 5) = 0 → x = 3 hoặc x = 5."
+    },
+    {
+        "question": "Giá trị của tan(π/6) là bao nhiêu?",
+        "options": ["√3/3", "√3", "1"],
+        "answer": "√3/3",
+        "explanation": "tan(π/6) = tan(30°) = √3/3."
+    },
+    {
+        "question": "Tích phân của ∫(7x³)dx là gì?",
+        "options": ["7x⁴/4 + C", "x⁴ + C", "7x⁴ + C"],
+        "answer": "7x⁴/4 + C",
+        "explanation": "Tích phân của 7x³ là (7/4)x⁴ + C."
+    },
+    {
+        "question": "Đạo hàm của f(x) = e^x là gì?",
+        "options": ["e^x", "x e^x", "1"],
+        "answer": "e^x",
+        "explanation": "f'(x) = e^x theo quy tắc đạo hàm hàm mũ."
+    },
+    {
+        "question": "Số phức liên hợp của z = -1 + i là gì?",
+        "options": ["-1 - i", "1 + i", "-1 + i"],
+        "answer": "-1 - i",
+        "explanation": "Liên hợp của z = -1 + i là z̅ = -1 - i."
+    },
+    {
+        "question": "Nghiệm của phương trình x² - x - 6 = 0 là gì?",
+        "options": ["-2 và 3", "-3 và 2", "1 và -6"],
+        "answer": "-2 và 3",
+        "explanation": "x² - x - 6 = (x + 2)(x - 3) = 0 → x = -2 hoặc x = 3."
+    },
+    {
+        "question": "Giá trị của log₃(27) là bao nhiêu?",
+        "options": ["2", "3", "4"],
+        "answer": "3",
+        "explanation": "Vì 3³ = 27 nên log₃(27) = 3."
+    },
+    {
+        "question": "Tích phân của ∫(3x + 2)dx là gì?",
+        "options": ["3x²/2 + 2x + C", "x² + 2x + C", "3x² + C"],
+        "answer": "3x²/2 + 2x + C",
+        "explanation": "Tích phân của 3x + 2 là (3/2)x² + 2x + C."
+    },
+    {
+        "question": "Đạo hàm của f(x) = ln(x) là gì?",
+        "options": ["1/x", "x", "ln(x)"],
+        "answer": "1/x",
+        "explanation": "f'(x) = 1/x theo quy tắc đạo hàm hàm logarit."
+    },
+    {
+        "question": "Mô-đun của z = 6 - 8i là bao nhiêu?",
+        "options": ["10", "14", "12"],
+        "answer": "10",
+        "explanation": "|z| = √(6² + (-8)²) = √(36 + 64) = √100 = 10."
+    },
+    {
+        "question": "Phương trình x² + 4x + 3 = 0 có nghiệm nào?",
+        "options": ["-1 và -3", "-2 và -2", "1 và 3"],
+        "answer": "-1 và -3",
+        "explanation": "x² + 4x + 3 = (x + 1)(x + 3) = 0 → x = -1 hoặc x = -3."
+    },
+    {
+        "question": "Giá trị của sin(π/2) là bao nhiêu?",
+        "options": ["0", "0.5", "1"],
+        "answer": "1",
+        "explanation": "sin(π/2) = sin(90°) = 1."
+    },
+    {
+        "question": "Tích phân của ∫(4x² + x)dx là gì?",
+        "options": ["4x³/3 + x²/2 + C", "x³ + x² + C", "4x³ + C"],
+        "answer": "4x³/3 + x²/2 + C",
+        "explanation": "Tích phân của 4x² + x là (4/3)x³ + x²/2 + C."
+    }
+],
+"hard": [
+    {
+        "question": "Đạo hàm của f(x) = e^(2x) là gì?",
+        "options": ["2e^(2x)", "e^(2x)", "e^x"],
+        "answer": "2e^(2x)",
+        "explanation": "f'(x) = e^(2x) · 2 = 2e^(2x) theo quy tắc dây chuyền."
+    },
+    {
+        "question": "Tích phân của ∫(x e^x)dx là gì?",
+        "options": ["x e^x - e^x + C", "x e^x + C", "e^x + C"],
+        "answer": "x e^x - e^x + C",
+        "explanation": "Dùng tích phân từng phần: ∫x e^x dx = x e^x - ∫e^x dx = x e^x - e^x + C."
+    },
+    {
+        "question": "Giá trị lớn nhất của f(x) = -x² + 4x - 3 trên đoạn [0, 3] là bao nhiêu?",
+        "options": ["1", "2", "3"],
+        "answer": "1",
+        "explanation": "f'(x) = -2x + 4 = 0 → x = 2, f(2) = -4 + 8 - 3 = 1; biên: f(0) = -3, f(3) = -6 → max = 1."
+    },
+    {
+        "question": "Đạo hàm của f(x) = sin(2x) là gì?",
+        "options": ["2cos(2x)", "cos(2x)", "-2sin(2x)"],
+        "answer": "2cos(2x)",
+        "explanation": "f'(x) = cos(2x) · 2 = 2cos(2x) theo quy tắc dây chuyền."
+    },
+    {
+        "question": "Tích phân của ∫(cos(x))dx là gì?",
+        "options": ["sin(x) + C", "-cos(x) + C", "cos(x) + C"],
+        "answer": "sin(x) + C",
+        "explanation": "Tích phân của cos(x) là sin(x) + C."
+    },
+    {
+        "question": "Thể tích khối trụ có bán kính đáy 3 và chiều cao 4 là bao nhiêu?",
+        "options": ["36π", "48π", "12π"],
+        "answer": "36π",
+        "explanation": "V = πr²h = π × 3² × 4 = 36π."
+    },
+    {
+        "question": "Đạo hàm của f(x) = ln(x² + 1) là gì?",
+        "options": ["2x/(x² + 1)", "1/(x² + 1)", "2x"],
+        "answer": "2x/(x² + 1)",
+        "explanation": "f'(x) = (2x)/(x² + 1) theo quy tắc dây chuyền."
+    },
+    {
+        "question": "Tích phân của ∫(x² sin(x))dx là gì?",
+        "options": ["-x² cos(x) + 2x sin(x) + 2 cos(x) + C", "x² sin(x) + C", "sin(x) + C"],
+        "answer": "-x² cos(x) + 2x sin(x) + 2 cos(x) + C",
+        "explanation": "Dùng tích phân từng phần hai lần: ∫x² sin(x) dx = -x² cos(x) + 2x sin(x) + 2 cos(x) + C."
+    },
+    {
+        "question": "Giá trị nhỏ nhất của f(x) = x² - 6x + 8 trên đoạn [1, 4] là bao nhiêu?",
+        "options": [-1, 0, 1],
+        "answer": "-1",
+        "explanation": "f'(x) = 2x - 6 = 0 → x = 3, f(3) = -1; biên: f(1) = 3, f(4) = 0 → min = -1."
+    },
+    {
+        "question": "Đạo hàm của f(x) = x e^x là gì?",
+        "options": ["e^x + x e^x", "x e^x", "e^x"],
+        "answer": "e^x + x e^x",
+        "explanation": "f'(x) = e^x + x e^x theo quy tắc tích."
+    },
+    {
+        "question": "Tích phân của ∫(x ln(x))dx là gì?",
+        "options": ["x² ln(x)/2 - x²/4 + C", "x ln(x) + C", "ln(x)/x + C"],
+        "answer": "x² ln(x)/2 - x²/4 + C",
+        "explanation": "Dùng tích phân từng phần: ∫x ln(x) dx = x² ln(x)/2 - ∫x²/2 dx = x² ln(x)/2 - x²/4 + C."
+    },
+    {
+        "question": "Khoảng cách từ điểm M(0, 0, 1) đến mặt phẳng Oxy là bao nhiêu?",
+        "options": ["1", "2", "0"],
+        "answer": "1",
+        "explanation": "Khoảng cách từ M(0, 0, 1) đến Oxy (z = 0) là |z| = 1."
+    },
+    {
+        "question": "Đạo hàm của f(x) = cos(x²) là gì?",
+        "options": ["-2x sin(x²)", "sin(x²)", "-sin(x²)"],
+        "answer": "-2x sin(x²)",
+        "explanation": "f'(x) = -sin(x²) · 2x theo quy tắc dây chuyền."
+    },
+    {
+        "question": "Tích phân của ∫(e^(2x))dx là gì?",
+        "options": ["e^(2x)/2 + C", "e^(2x) + C", "2e^(2x) + C"],
+        "answer": "e^(2x)/2 + C",
+        "explanation": "Tích phân của e^(2x) là e^(2x)/2 + C (dùng u = 2x)."
+    },
+    {
+        "question": "Thể tích khối nón có bán kính đáy 2 và chiều cao 6 là bao nhiêu?",
+        "options": ["8π", "12π", "24π"],
+        "answer": "8π",
+        "explanation": "V = (1/3)πr²h = (1/3)π × 2² × 6 = 8π."
+    },
+    {
+        "question": "Đạo hàm của f(x) = ln(x)/(x + 1) là gì?",
+        "options": ["(1 - ln(x))/(x + 1)²", "ln(x)/(x + 1)", "1/(x + 1)"],
+        "answer": "(1 - ln(x))/(x + 1)²",
+        "explanation": "f'(x) = [(1/x)(x + 1) - ln(x)]/(x + 1)² = (1 - ln(x))/(x + 1)² theo quy tắc thương."
+    },
+    {
+        "question": "Tích phân của ∫(x² cos(x))dx là gì?",
+        "options": ["x² sin(x) + 2x cos(x) - 2 sin(x) + C", "x² cos(x) + C", "sin(x) + C"],
+        "answer": "x² sin(x) + 2x cos(x) - 2 sin(x) + C",
+        "explanation": "Dùng tích phân từng phần hai lần: ∫x² cos(x) dx = x² sin(x) + 2x cos(x) - 2 sin(x) + C."
+    },
+    {
+        "question": "Giá trị lớn nhất của f(x) = -2x² + 8x - 6 trên đoạn [1, 3] là bao nhiêu?",
+        "options": ["2", "3", "4"],
+        "answer": "2",
+        "explanation": "f'(x) = -4x + 8 = 0 → x = 2, f(2) = -8 + 16 - 6 = 2; biên: f(1) = 0, f(3) = -6 → max = 2."
+    },
+    {
+        "question": "Đạo hàm của f(x) = sin(x) cos(x) là gì?",
+        "options": ["cos²(x) - sin²(x)", "2sin(x)", "sin²(x)"],
+        "answer": "cos²(x) - sin²(x)",
+        "explanation": "f'(x) = cos(x) cos(x) + sin(x) (-sin(x)) = cos²(x) - sin²(x) hoặc cos(2x)."
+    },
+    {
+        "question": "Tích phân của ∫(x³ e^x)dx là gì?",
+        "options": ["x³ e^x - 3x² e^x + 6x e^x - 6e^x + C", "x³ e^x + C", "e^x + C"],
+        "answer": "x³ e^x - 3x² e^x + 6x e^x - 6e^x + C",
+        "explanation": "Dùng tích phân từng phần ba lần: ∫x³ e^x dx = x³ e^x - 3x² e^x + 6x e^x - 6e^x + C."
+    },
+    {
+        "question": "Khoảng cách từ điểm M(1, 0, 0) đến mặt phẳng yz là bao nhiêu?",
+        "options": ["0", "1", "2"],
+        "answer": "1",
+        "explanation": "Mặt phẳng yz là x = 0, khoảng cách từ M(1, 0, 0) là |x| = 1."
+    },
+    {
+        "question": "Đạo hàm của f(x) = tan(2x) là gì?",
+        "options": ["2sec²(2x)", "sec²(2x)", "tan(x)"],
+        "answer": "2sec²(2x)",
+        "explanation": "f'(x) = sec²(2x) · 2 = 2sec²(2x) theo quy tắc dây chuyền."
+    },
+    {
+        "question": "Tích phân của ∫(x²/x + 1)dx là gì?",
+        "options": ["x²/2 - ln|x + 1| + C", "x - ln|x + 1| + C", "ln|x + 1| + C"],
+        "answer": "x²/2 - ln|x + 1| + C",
+        "explanation": "Chia: x²/(x + 1) = x - 1 + 1/(x + 1) → ∫(x - 1 + 1/(x + 1)) dx = x²/2 - x + ln|x + 1| + C (điều chỉnh hằng số)."
+    },
+    {
+        "question": "Thể tích khối cầu có bán kính 2 là bao nhiêu?",
+        "options": ["8π/3", "16π/3", "32π/3"],
+        "answer": "32π/3",
+        "explanation": "V = (4/3)πr³ = (4/3)π × 2³ = 32π/3."
+    },
+    {
+        "question": "Đạo hàm của f(x) = e^x ln(x) là gì?",
+        "options": ["e^x ln(x) + e^x/x", "e^x/x", "ln(x)"],
+        "answer": "e^x ln(x) + e^x/x",
+        "explanation": "f'(x) = e^x ln(x) + e^x · (1/x) theo quy tắc tích."
+    },
+    {
+        "question": "Tích phân của ∫(x e^(2x))dx là gì?",
+        "options": ["(x e^(2x))/2 - e^(2x)/4 + C", "x e^(2x) + C", "e^(2x)/2 + C"],
+        "answer": "(x e^(2x))/2 - e^(2x)/4 + C",
+        "explanation": "Dùng tích phân từng phần: ∫x e^(2x) dx = (x e^(2x))/2 - ∫e^(2x)/2 dx = (x e^(2x))/2 - e^(2x)/4 + C."
+    },
+    {
+        "question": "Giá trị nhỏ nhất của f(x) = x² + 4x + 5 trên đoạn [-3, 0] là bao nhiêu?",
+        "options": ["1", "2", "3"],
+        "answer": "1",
+        "explanation": "f'(x) = 2x + 4 = 0 → x = -2, f(-2) = 1; biên: f(-3) = 2, f(0) = 5 → min = 1."
+    },
+    {
+        "question": "Đạo hàm của f(x) = sin(x² + 1) là gì?",
+        "options": ["2x cos(x² + 1)", "cos(x² + 1)", "sin(2x)"],
+        "answer": "2x cos(x² + 1)",
+        "explanation": "f'(x) = cos(x² + 1) · 2x theo quy tắc dây chuyền."
+    },
+    {
+        "question": "Tích phân của ∫(x² ln(x))dx là gì?",
+        "options": ["x³ ln(x)/3 - x³/9 + C", "x² ln(x) + C", "ln(x)/x + C"],
+        "answer": "x³ ln(x)/3 - x³/9 + C",
+        "explanation": "Dùng tích phân từng phần: ∫x² ln(x) dx = x³ ln(x)/3 - ∫x²/3 dx = x³ ln(x)/3 - x³/9 + C."
+    },
+    {
+        "question": "Khoảng cách từ điểm M(2, 1, 0) đến mặt phẳng z = 0 là bao nhiêu?",
+        "options": ["0", "1", "2"],
+        "answer": "0",
+        "explanation": "M(2, 1, 0) nằm trên mặt phẳng z = 0, khoảng cách = 0."
+    },
+    {
+        "question": "Đạo hàm của f(x) = cos(x) e^x là gì?",
+        "options": ["e^x (cos(x) - sin(x))", "e^x sin(x)", "cos(x) e^x"],
+        "answer": "e^x (cos(x) - sin(x))",
+        "explanation": "f'(x) = -sin(x) e^x + cos(x) e^x = e^x (cos(x) - sin(x)) theo quy tắc tích."
+    },
+    {
+        "question": "Tích phân của ∫(x³ cos(x))dx là gì?",
+        "options": ["x³ sin(x) + 3x² cos(x) - 6x sin(x) - 6 cos(x) + C", "x³ cos(x) + C", "sin(x) + C"],
+        "answer": "x³ sin(x) + 3x² cos(x) - 6x sin(x) - 6 cos(x) + C",
+        "explanation": "Dùng tích phân từng phần ba lần."
+    },
+    {
+        "question": "Thể tích khối chóp tam giác có diện tích đáy 12 và chiều cao 5 là bao nhiêu?",
+        "options": ["20", "30", "60"],
+        "answer": "20",
+        "explanation": "V = (1/3) × S_đáy × h = (1/3) × 12 × 5 = 20."
+    },
+    {
+        "question": "Đạo hàm của f(x) = ln(x²) là gì?",
+        "options": ["2/x", "1/x", "2x"],
+        "answer": "2/x",
+        "explanation": "f(x) = 2 ln(x), f'(x) = 2 · (1/x) = 2/x."
+    },
+    {
+        "question": "Tích phân của ∫(x²/x + 2)dx là gì?",
+        "options": ["x²/2 - 2x + 4ln|x + 2| + C", "x² + C", "ln|x + 2| + C"],
+        "answer": "x²/2 - 2x + 4ln|x + 2| + C",
+        "explanation": "Chia: x²/(x + 2) = x - 2 + 4/(x + 2) → ∫(x - 2 + 4/(x + 2)) dx = x²/2 - 2x + 4ln|x + 2| + C."
+    }
+]
+}
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Làm Bài Thi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .question {
+            margin-bottom: 1.5rem;
+        }
+
+        .question p {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .question label {
+            display: block;
+            margin: 0.3rem 0;
+        }
+
+        .btn {
+            background: #0984e3;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background: #0765b6;
+            box-shadow: 0 5px 15px rgba(9,132,227,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="section">
+            <h2>Làm Bài Thi</h2>
+            <form id="examForm">
+                <div class="question">
+                    <p>1. 1+1 bằng bao nhiêu?</p>
+                    <label><input type="radio" name="q1" value="2"> 2</label>
+                    <label><input type="radio" name="q1" value="3"> 3</label>
+                    <label><input type="radio" name="q1" value="4"> 4</label>
+                </div>
+                <div class="question">
+                    <p>2. Thủ đô của Việt Nam là gì?</p>
+                    <label><input type="radio" name="q2" value="Hà Nội"> Hà Nội</label>
+                    <label><input type="radio" name="q2" value="TP.HCM"> TP.HCM</label>
+                    <label><input type="radio" name="q2" value="Đà Nẵng"> Đà Nẵng</label>
+                </div>
+                <button type="button" class="btn" onclick="submitExam()">Nộp bài</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        function submitExam() {
+            const today = new Date().toISOString().split('T')[0];
+            const progressData = JSON.parse(localStorage.getItem(`progress_${localStorage.getItem('studentId')}`)) || [];
+            const todayProgress = progressData.find(p => p.date === today) || {};
+
+            const newProgress = {
+                ...todayProgress,
+                date: today,
+                examCompleted: true,
+                progressPercentage: calculateProgress(progressData)
+            };
+
+            const index = progressData.findIndex(p => p.date === today);
+            if (index !== -1) {
+                progressData[index] = newProgress;
+            } else {
+                progressData.push(newProgress);
+            }
+
+            localStorage.setItem(`progress_${localStorage.getItem('studentId')}`, JSON.stringify(progressData));
+            alert('Bài thi đã được nộp thành công!');
+            window.location.href = 'progress.html';
+        }
+
+        function calculateProgress(progressData) {
+            const totalDays = progressData[progressData.length - 1].totalDays;
+            const startDate = new Date(progressData[progressData.length - 1].startDate);
+            const today = new Date();
+            const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
+            const completedDays = progressData.filter(p => p.checkIn).length;
+            const chatCount = progressData[progressData.length - 1].chatCount || 0;
+            const examProgress = progressData.filter(p => p.examCompleted).length > 0 ? 100 : 0;
+            const rawProgress = ((completedDays / totalDays) * 50 + ((chatCount / 15) * 100 / 2) + (examProgress / 4));
+            return Math.min((rawProgress / 90) * 100, 100);
+        }
+    </script>
+</body>
+</html>

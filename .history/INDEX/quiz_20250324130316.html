@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #e9f1ff, #d9e8ff, #f0f7ff);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #e6e6e6;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        section {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        #quizQuestions {
+            margin-top: 20px;
+        }
+        h3 {
+            color: #1e3c72;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        div {
+            margin-bottom: 30px;
+        }
+        p strong {
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #ffd700;
+        }
+        label {
+            font-size: 1.1rem;
+            color: #4a5a6b;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        label:hover {
+            color: #1e3c72;
+        }
+        footer {
+            width: 100%;
+            padding: 25px 0;
+            background: linear-gradient(135deg, #1e3c72, #0a192f);
+            color: #e6e6e6;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #countdown {
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+        button {
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #ffd700, #f7b733);
+            color: #0a192f;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+        button:hover {
+            background: linear-gradient(135deg, #f7b733, #ffd700);
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+        #name-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #name-input, #id-input {
+            padding: 10px;
+            font-size: 1.1rem;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            width: 60%;
+            max-width: 300px;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 768px) {
+            header { padding: 1.5rem 15px; }
+            header h1 { font-size: 2.2rem; }
+            header p { font-size: 1.1rem; }
+            section { margin: 20px auto; padding: 25px; }
+            h3 { font-size: 1.6rem; }
+            p strong { font-size: 1.1rem; }
+            label { font-size: 1rem; }
+            footer { flex-direction: column; gap: 15px; padding: 15px 0; }
+            #countdown { font-size: 1rem; }
+            button { padding: 12px 25px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Quiz Test</h1>
+        <p>Good luck with your test!</p>
+    </header>
+
+    <section id="quizQuestions">
+        <div id="name-form">
+            <h3>Please enter your information before starting</h3>
+            <input type="text" id="name-input" placeholder="Enter your full name" required>
+            <br>
+            <input type="text" id="id-input" placeholder="Enter your ID" required>
+            <br>
+            <button onclick="startQuiz()">Start Quiz</button>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <p id="countdown"></p>
+        </div>
+        <button id="submitButton" onclick="submitQuiz()" disabled>Submit</button>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const subject = urlParams.get('subject');
+        const level = urlParams.get('level');
+        const timeParam = urlParams.get('time');
+        const timeValue = timeParam ? parseInt(timeParam.split(':')[0]) : 10; // Get the part before ':'
+        const timeLimit = timeValue ? timeValue * 60 : 600; // Default to 10 minutes if invalid
+
+        if (!subject || !level) {
+            alert("Missing subject or level. Please check the URL!");
+            throw new Error("Missing subject or level in URL");
+        }
+
+        let remainingTime = timeLimit;
+        let questionsData = [];
+        let quizStarted = false;
+        let userName = "";
+        let userId = "";
+
+        async function startQuiz() {
+            const nameInput = document.getElementById('name-input');
+            const idInput = document.getElementById('id-input');
+            userName = nameInput.value.trim();
+            userId = idInput.value.trim();
+
+            if (!userName || !userId) {
+                alert("Please enter both your name and ID before starting!");
+                return;
+            }
+
+            // Check for unique ID
+            const results = JSON.parse(localStorage.getItem('quizResults')) || [];
+            const existingUser = results.find(r => r.id === userId);
+            if (existingUser && existingUser.name !== userName) {
+                alert(`ID ${userId} has already been used by "${existingUser.name}". Please enter a different ID!`);
+                return;
+            }
+
+            quizStarted = true;
+            document.getElementById('name-form').style.display = 'none';
+            document.getElementById('submitButton').disabled = false;
+
+            try {
+                console.log('Fetching from:', `http://localhost:3000/api/questions?subject=${subject}&level=${level}`);
+                const response = await fetch(`http://localhost:3000/api/questions?subject=${subject}&level=${level}`);
+                if (!response.ok) {
+                    throw new Error(`Unable to fetch data from server. Error code: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log("Question data from server:", data.questions);
+
+                if (data.questions && data.questions.length > 0) {
+                    questionsData = data.questions;
+                    console.log("Questions being used:", questionsData);
+                    loadQuiz();
+                    startCountdown();
+                } else {
+                    throw new Error("No suitable questions found!");
+                }
+            } catch (error) {
+                console.error("Error loading data:", error);
+                document.getElementById('quizQuestions').innerHTML = `
+                    <p style="color: #e74c3c; text-align: center;">
+                        Unable to load quiz data!<br>
+                        Reason: ${error.message}<br>
+                        Please check the server or dethi.json file.
+                    </p>`;
+                document.getElementById('submitButton').disabled = false;
+            }
+        }
+
+        function loadQuiz() {
+            if (!questionsData.length) {
+                document.getElementById('quizQuestions').innerHTML = "<p>No questions available.</p>";
+                return;
+            }
+
+            let quizHTML = "<h3>Câu Hỏi</h3>";
+            questionsData.forEach((q, index) => {
+                if (!q || !q.question || !Array.isArray(q.options) || q.options.length === 0) {
+                    console.warn(`Câu hỏi ${index} không hợp lệ, bỏ qua:`, q);
+                    return;
+                }
+
+                quizHTML += `
+                    <div>
+                        <p><strong>${index + 1}. ${q.question}</strong></p>
+                        ${q.options.map((option, i) => `
+                            <input type="radio" name="q${index}" value="${option}" id="q${index}_option${i}">
+                            <label for="q${index}_option${i}">${option}</label><br>
+                        `).join('')}
+                    </div>
+                `;
+            });
+
+            document.getElementById('quizQuestions').innerHTML = quizHTML;
+        }
+
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const interval = setInterval(() => {
+                if (remainingTime <= 0) {
+                    clearInterval(interval);
+                    alert('Hết giờ! Bài thi đã được nộp.');
+                    submitQuiz();
+                } else if (quizStarted) {
+                    const minutes = Math.floor(remainingTime / 60);
+                    const seconds = remainingTime % 60;
+                    countdownElement.textContent = `Thời gian còn lại: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    remainingTime--;
+                }
+            }, 1000);
+        }
+
+        function submitQuiz() {
+            if (!quizStarted) {
+                alert("Bài thi chưa bắt đầu!");
+                return;
+            }
+
+            let correct = 0;
+            let total = 0;
+            const answers = [];
+
+            if (questionsData.length > 0) {
+                questionsData.forEach((q, index) => {
+                    if (!q || typeof q !== 'object' || !q.question || !Array.isArray(q.options) || q.options.length === 0 || !q.answer) {
+                        console.warn(`Câu ${index + 1} không hợp lệ, bỏ qua:`, q);
+                        return;
+                    }
+
+                    const selectedAnswer = document.querySelector(`input[name="q${index}"]:checked`);
+                    const selectedValue = selectedAnswer ? selectedAnswer.value.trim() : "Chưa chọn";
+                    answers[index] = selectedValue;
+
+                    const normalizedSelectedValue = selectedValue.toLowerCase().replace(/\s+/g, ' ').trim();
+                    const normalizedCorrectAnswer = (typeof q.answer === 'string') 
+                        ? q.answer.toLowerCase().replace(/\s+/g, ' ').trim() 
+                        : '';
+
+                    total++;
+                    if (normalizedSelectedValue === normalizedCorrectAnswer) {
+                        correct++;
+                    }
+                });
+
+                // Tính điểm cho cấp độ hiện tại (tối đa 10 điểm)
+                const score = total > 0 ? Number(((correct / total) * 10).toFixed(1)) : 0;
+
+                console.log(`Điểm ${level}: ${score}`);
+
+                const answerParams = answers.map((answer, index) => `q${index}=${encodeURIComponent(answer)}`).join('&');
+                // Truyền điểm của cấp độ hiện tại
+                if (level === "easy") {
+                    window.location.href = `results.html?subject=${subject}&level=${level}&scoreEasy=${score}&scoreMedium=0&scoreHard=0&name=${encodeURIComponent(userName)}&id=${encodeURIComponent(userId)}&${answerParams}`;
+                } else if (level === "medium") {
+                    window.location.href = `results.html?subject=${subject}&level=${level}&scoreEasy=0&scoreMedium=${score}&scoreHard=0&name=${encodeURIComponent(userName)}&id=${encodeURIComponent(userId)}&${answerParams}`;
+                } else if (level === "hard") {
+                    window.location.href = `results.html?subject=${subject}&level=${level}&scoreEasy=0&scoreMedium=0&scoreHard=${score}&name=${encodeURIComponent(userName)}&id=${encodeURIComponent(userId)}&${answerParams}`;
+                }
+            } else {
+                console.warn("Không có câu hỏi nào để tính điểm!");
+                alert("Không có câu hỏi để chấm điểm!");
+            }
+        }
+    </script>
+</body>
+</html>

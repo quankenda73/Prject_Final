@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrance Exam</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; min-height: 100vh; background: linear-gradient(135deg, #74ebd5, #acb6e5); display: flex; justify-content: center; align-items: center; padding: 30px; }
+        .container { width: 100%; max-width: 1000px; background: rgba(255, 255, 255, 0.95); padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }
+        .container:hover { transform: translateY(-5px); }
+        h2 { color: #2c3e50; font-size: 36px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; }
+        .timer { font-size: 28px; font-weight: 600; color: #e74c3c; background: #fceae9; padding: 12px 25px; border-radius: 50px; display: inline-block; margin: 0 auto 30px auto; box-shadow: 0 2px 10px rgba(231, 76, 60, 0.1); }
+        .question { text-align: left; margin-bottom: 30px; padding: 25px; border-radius: 12px; background: #f8fafc; border-left: 8px solid #3498db; transition: all 0.3s ease; }
+        .question:hover { transform: translateX(5px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .question p { font-weight: 600; color: #2c3e50; margin-bottom: 20px; font-size: 20px; }
+        input[type="radio"] { margin: 12px 15px 12px 0; transform: scale(1.5); accent-color: #3498db; }
+        label { font-size: 18px; color: #34495e; cursor: pointer; display: flex; align-items: center; transition: color 0.3s ease; margin-bottom: 10px; }
+        label:hover { color: #3498db; }
+        .correct { color: #27ae60 !important; font-weight: 600; background: #e8f5e9; padding: 6px 12px; border-radius: 6px; }
+        .wrong { color: #c0392b !important; font-weight: 600; background: #fce4e4; padding: 6px 12px; border-radius: 6px; }
+        button { padding: 15px 40px; background: linear-gradient(45deg, #2ecc71, #27ae60); color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); display: block; margin: 30px auto 0; }
+        button:hover { background: linear-gradient(45deg, #27ae60, #2ecc71); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4); }
+        button:active { transform: translateY(1px); }
+        #assessment { 
+            margin-top: 20px; 
+            padding: 25px; 
+            background: #fff; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+            text-align: left; 
+            border: 1px solid #e0e0e0; 
+        }
+        #assessment h3 { 
+            font-size: 24px; 
+            color: #2c3e50; 
+            margin-bottom: 15px; 
+            text-align: center; 
+            border-bottom: 2px solid #3498db; 
+            padding-bottom: 10px; 
+        }
+        #assessment .score { 
+            font-size: 22px; 
+            font-weight: 600; 
+            text-align: center; 
+            margin-bottom: 20px; 
+            padding: 10px; 
+            border-radius: 8px; 
+        }
+        #assessment .score.weak { background: #fce4e4; color: #c0392b; }
+        #assessment .score.average { background: #fff3cd; color: #856404; }
+        #assessment .score.good { background: #d4edda; color: #155724; }
+        #assessment .score.excellent { background: #e8f5e9; color: #27ae60; }
+        #assessment .assessment-content { 
+            font-size: 16px; 
+            color: #34495e; 
+            line-height: 1.6; 
+        }
+        #assessment ul { 
+            list-style-type: none; 
+            padding: 0; 
+            margin: 15px 0; 
+        }
+        #assessment ul li { 
+            margin-bottom: 10px; 
+            padding-left: 30px; 
+            position: relative; 
+            font-size: 16px; 
+            color: #34495e; 
+        }
+        #assessment ul li::before { 
+            content: "✔"; 
+            position: absolute; 
+            left: 0; 
+            color: #27ae60; 
+            font-size: 20px; 
+        }
+        #assessment .highlight { 
+            font-weight: 600; 
+            color: #e74c3c; 
+        }
+        #assessment .suggestion { 
+            background: #f8fafc; 
+            padding: 15px; 
+            border-left: 5px solid #3498db; 
+            border-radius: 5px; 
+            margin-top: 15px; 
+            font-style: italic; 
+            color: #2c3e50; 
+        }
+        @media (max-width: 768px) { 
+            .container { width: 95%; padding: 30px; } 
+            h2 { font-size: 28px; } 
+            .timer { font-size: 22px; } 
+            .question { padding: 20px; } 
+            .question p { font-size: 18px; } 
+            label { font-size: 16px; } 
+            button { padding: 12px 30px; font-size: 18px; } 
+            #assessment h3 { font-size: 20px; } 
+            #assessment .score { font-size: 18px; } 
+            #assessment ul li { font-size: 14px; } 
+        }
+    </style>
+</head>
+<body onload="startTimer()">
+    <div class="container">
+        <h2 id="quizTitle">Entrance Exam</h2>
+        <p class="timer">Time remaining: <span id="timer">45:00</span></p>
+        <form id="quizForm"></form>
+        <div id="assessment" style="display: none;"></div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", async function() {
+        await loadQuestions();
+    });
+
+    async function loadQuestions() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const subject = urlParams.get('subject') || 'math';
+        const name = urlParams.get('name');
+        const studentId = urlParams.get('studentId');
+
+        const storedStudent = JSON.parse(localStorage.getItem('currentStudent'));
+        if (!studentId || !name || !storedStudent || storedStudent.studentId !== studentId || storedStudent.subject !== subject) {
+            alert('Invalid information or subject mismatch. Please go back!');
+            window.location.href = '/input-test';
+            return;
+        }
+
+        const quizForm = document.getElementById("quizForm");
+        const quizTitle = document.getElementById("quizTitle");
+        quizForm.innerHTML = "<p>Loading questions...</p>";
+
+        const subjectMap = {
+            'math': 'Math',
+            'literature': 'Literature',
+            'physics': 'Physics',
+            'english': 'English',
+            'chemistry': 'Chemistry'
+        };
+        quizTitle.textContent = `Entrance Exam - ${subjectMap[subject] || subject}`;
+
+        try {
+            // Gửi yêu cầu lấy tất cả câu hỏi
+            const response = await fetch(`http://localhost:3000/api/test-questions?subject=${subject}`);
+            if (!response.ok) throw new Error(`Unable to load questions: ${response.statusText}`);
+            const data = await response.json();
+            const questions = data.questions;
+
+            console.log("Số lượng câu hỏi nhận được:", questions.length); // Kiểm tra số lượng câu hỏi
+
+            if (!questions || questions.length === 0) {
+                throw new Error(`No questions found for ${subjectMap[subject] || subject}!`);
+            }
+
+            quizForm.innerHTML = "";
+            questions.forEach((q, index) => {
+                const questionDiv = document.createElement("div");
+                questionDiv.classList.add("question");
+                let questionHTML = `<p>${index + 1}. ${q.question}</p>`;
+                q.options.forEach((option, optIndex) => {
+                    questionHTML += `<label><input type="radio" name="q${index}" value="${optIndex}"> ${option}</label><br>`;
+                });
+                questionDiv.innerHTML = questionHTML;
+                quizForm.appendChild(questionDiv);
+            });
+
+            const submitButton = document.createElement("button");
+            submitButton.type = "submit";
+            submitButton.textContent = "Submit Exam";
+            quizForm.appendChild(submitButton);
+            quizForm.addEventListener("submit", (e) => submitQuiz(e, questions, name, studentId));
+        } catch (error) {
+            console.error('Error loading questions:', error);
+            quizForm.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+        }
+    }
+
+    async function submitQuiz(event, questions, name, studentId) {
+        event.preventDefault();
+        let correctAnswers = 0;
+        const answers = [];
+
+        questions.forEach((q, index) => {
+            const options = document.querySelectorAll(`input[name="q${index}"]`);
+            let userAnswer = null;
+            options.forEach(option => {
+                if (option.checked) userAnswer = parseInt(option.value);
+            });
+            options.forEach(option => {
+                const label = option.parentElement;
+                if (parseInt(option.value) === q.correctAnswer) label.classList.add("correct");
+                else if (option.checked) label.classList.add("wrong");
+            });
+            if (userAnswer === q.correctAnswer) correctAnswers++;
+            answers.push(userAnswer);
+        });
+
+        const totalQuestions = questions.length;
+        const scoreOn10 = (correctAnswers / totalQuestions) * 10;
+        const roundedScore = Math.round(scoreOn10 * 10) / 10;
+
+        let level = '';
+        let recommendation = '';
+        if (roundedScore < 5) {
+            level = 'Weak';
+            recommendation = questions[0].subject === 'math' ? 'Review basic exercises on equations and inequalities.' : 'Review basic English vocabulary and grammar.';
+        } else if (roundedScore < 7) {
+            level = 'Average';
+            recommendation = questions[0].subject === 'math' ? 'Practice more with quadratic equations and geometry problems.' : 'Practice reading comprehension and writing short English paragraphs.';
+        } else if (roundedScore < 9) {
+            level = 'Good';
+            recommendation = questions[0].subject === 'math' ? 'Practice advanced exercises on trigonometric equations and derivatives.' : 'Practice advanced reading comprehension and English essay writing.';
+        } else {
+            level = 'Excellent';
+            recommendation = questions[0].subject === 'math' ? 'Challenge yourself with advanced combinatorics and probability problems.' : 'Try IELTS or TOEFL tests to improve your English skills.';
+        }
+
+        const quizData = questions.map((q, index) => ({
+            question: q.question,
+            options: q.options,
+            userAnswer: answers[index] !== null ? q.options[answers[index]] : "Not selected",
+            correctAnswer: q.options[q.correctAnswer]
+        }));
+
+        const prompt = `
+            Evaluate the entrance exam with the following information:
+            - Score: ${roundedScore}/10
+            - Total questions: ${totalQuestions}
+            - Subject: ${questions[0].subject === 'math' ? 'Math' : 'English'}
+            - Question and answer details:
+            ${quizData.map((q, i) => `Question ${i + 1}: ${q.question}\nStudent's answer: ${q.userAnswer}\nCorrect answer: ${q.correctAnswer}`).join('\n')}
+            Please provide a detailed assessment of the student's performance and suggestions for improvement in the form of a bullet-point list. Ensure the evaluation accuracy is at least 90%. Classify the student into a proficiency group: Weak (<5), Average (5-6.9), Good (7-8.9), Excellent (≥9).
+        `;
+
+        let geminiAssessment = `The student is classified into the "${level}" group with a score of ${roundedScore}/10.`;
+        try {
+            const response = await fetch('http://localhost:3000/api/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: prompt })
+            });
+
+            if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+            const data = await response.json();
+            geminiAssessment = data.reply || geminiAssessment;
+        } catch (error) {
+            console.error('Error calling Gemini API:', error.message);
+            geminiAssessment += `\nUnable to retrieve AI assessment: ${error.message}.`;
+        }
+
+        let assessmentHTML = `
+            <h3>Exam Results</h3>
+            <p class="score ${level.toLowerCase()}">Your score: ${roundedScore}/10 (Level: ${level})</p>
+            <div class="assessment-content">
+                <h4>AI Assessment:</h4>
+                <ul>
+        `;
+
+        const assessmentLines = geminiAssessment.split('\n').filter(line => line.trim());
+        assessmentLines.forEach(line => {
+            if (line.startsWith('- ') || line.startsWith('* ')) {
+                assessmentHTML += `<li>${line.substring(2)}</li>`;
+            } else {
+                assessmentHTML += `<li>${line}</li>`;
+            }
+        });
+
+        assessmentHTML += `
+                </ul>
+                <div class="suggestion">Suggestion for improvement: ${recommendation}</div>
+            </div>
+            <button onclick="window.location.href='diemdauvao.html?studentId=${studentId}'">View details</button>
+        `;
+
+        const assessmentDiv = document.getElementById("assessment");
+        assessmentDiv.style.display = "block";
+        assessmentDiv.innerHTML = assessmentHTML;
+
+        const scoreData = {
+            studentId: studentId,
+            name: name,
+            score: roundedScore,
+            total: totalQuestions,
+            subject: new URLSearchParams(window.location.search).get('subject'),
+            date: new Date().toLocaleString('en-US'),
+            answers: answers,
+            level: level,
+            recommendation: recommendation,
+            assessment: geminiAssessment
+        };
+
+        try {
+            const response = await fetch('http://localhost:3000/api/scores', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(scoreData)
+            });
+
+            if (!response.ok) throw new Error('Unable to save score');
+            const result = await response.json();
+            scoreData._id = result.score._id;
+            console.log('Score saved successfully!');
+        } catch (error) {
+            console.error('Error saving score:', error);
+            scoreData._id = 'local_' + Date.now();
+        } finally {
+            let allScores = JSON.parse(localStorage.getItem('allScores')) || {};
+            if (!Array.isArray(allScores[studentId])) {
+                allScores[studentId] = [];
+            }
+            const existingScore = allScores[studentId].find(s => s.date === scoreData.date && s.subject === scoreData.subject);
+            if (!existingScore) {
+                allScores[studentId].push(scoreData);
+                localStorage.setItem('allScores', JSON.stringify(allScores));
+            }
+            localStorage.setItem('latestScore', JSON.stringify(scoreData));
+        }
+    }
+
+    function startTimer() {
+        let timeLeft = 45 * 60;
+        const timerElement = document.getElementById("timer");
+        function updateTimer() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeLeft > 0) {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                alert('Time’s up! The exam will be submitted automatically.');
+                document.getElementById("quizForm").submit();
+            }
+        }
+        updateTimer();
+    }
+    </script>
+</body>
+</html>

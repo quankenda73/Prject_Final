@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Đầu Vào</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; min-height: 100vh; background: linear-gradient(135deg, #74ebd5, #acb6e5); display: flex; justify-content: center; align-items: center; padding: 30px; }
+        .container { width: 100%; max-width: 1000px; background: rgba(255, 255, 255, 0.95); padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }
+        .container:hover { transform: translateY(-5px); }
+        h2 { color: #2c3e50; font-size: 36px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; }
+        .timer { font-size: 28px; font-weight: 600; color: #e74c3c; background: #fceae9; padding: 12px 25px; border-radius: 50px; display: inline-block; margin: 0 auto 30px auto; box-shadow: 0 2px 10px rgba(231, 76, 60, 0.1); }
+        .question { text-align: left; margin-bottom: 30px; padding: 25px; border-radius: 12px; background: #f8fafc; border-left: 8px solid #3498db; transition: all 0.3s ease; }
+        .question:hover { transform: translateX(5px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .question p { font-weight: 600; color: #2c3e50; margin-bottom: 20px; font-size: 20px; }
+        input[type="radio"] { margin: 12px 15px 12px 0; transform: scale(1.5); accent-color: #3498db; }
+        label { font-size: 18px; color: #34495e; cursor: pointer; display: flex; align-items: center; transition: color 0.3s ease; margin-bottom: 10px; }
+        label:hover { color: #3498db; }
+        .correct { color: #27ae60 !important; font-weight: 600; background: #e8f5e9; padding: 6px 12px; border-radius: 6px; }
+        .wrong { color: #c0392b !important; font-weight: 600; background: #fce4e4; padding: 6px 12px; border-radius: 6px; }
+        button { padding: 15px 40px; background: linear-gradient(45deg, #2ecc71, #27ae60); color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); display: block; margin: 30px auto 0; }
+        button:hover { background: linear-gradient(45deg, #27ae60, #2ecc71); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4); }
+        button:active { transform: translateY(1px); }
+        #assessment { margin-top: 20px; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; }
+        #assessment p { font-size: 18px; color: #34495e; }
+        @media (max-width: 768px) { .container { width: 95%; padding: 30px; } h2 { font-size: 28px; } .timer { font-size: 22px; } .question { padding: 20px; } .question p { font-size: 18px; } label { font-size: 16px; } button { padding: 12px 30px; font-size: 18px; } }
+    </style>
+</head>
+<body onload="startTimer()">
+    <div class="container">
+        <h2 id="quizTitle">Bài Kiểm Tra Đầu Vào</h2>
+        <p class="timer">Thời gian còn lại: <span id="timer">45:00</span></p>
+        <form id="quizForm"></form>
+        <div id="assessment" style="display: none;"></div>
+    </div>
+
+    <script>
+    const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+    const API_KEY = 'YOUR_GEMINI_API_KEY'; // Thay bằng API key thực tế từ .env của bạn
+
+    document.addEventListener("DOMContentLoaded", async function() {
+        await loadQuestions();
+    });
+
+    async function loadQuestions() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const subject = urlParams.get('subject') || 'math';
+        const name = urlParams.get('name');
+        const studentId = urlParams.get('studentId');
+
+        const storedStudent = JSON.parse(localStorage.getItem('currentStudent'));
+        if (!studentId || !name || !storedStudent || storedStudent.studentId !== studentId || storedStudent.subject !== subject) {
+            alert('Thông tin không hợp lệ hoặc môn học không khớp. Vui lòng quay lại!');
+            window.location.href = '/input-test';
+            return;
+        }
+
+        const quizForm = document.getElementById("quizForm");
+        const quizTitle = document.getElementById("quizTitle");
+        quizForm.innerHTML = "<p>Đang tải câu hỏi...</p>";
+
+        const subjectMap = {
+            'math': 'Toán',
+            'literature': 'Ngữ Văn',
+            'physics': 'Vật Lý',
+            'english': 'Tiếng Anh',
+            'chemistry': 'Hóa Học'
+        };
+        quizTitle.textContent = `Bài Kiểm Tra Đầu Vào - ${subjectMap[subject] || subject}`;
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/test-questions?subject=${subject}`);
+            if (!response.ok) throw new Error(`Không thể tải câu hỏi: ${response.statusText}`);
+            const data = await response.json();
+            const questions = data.questions;
+
+            if (!questions || questions.length === 0) {
+                throw new Error(`Không tìm thấy câu hỏi cho môn ${subjectMap[subject] || subject}!`);
+            }
+
+            quizForm.innerHTML = "";
+            questions.forEach((q, index) => {
+                const questionDiv = document.createElement("div");
+                questionDiv.classList.add("question");
+                let questionHTML = `<p>${index + 1}. ${q.question}</p>`;
+                q.options.forEach((option, optIndex) => {
+                    questionHTML += `<label><input type="radio" name="q${index}" value="${optIndex}"> ${option}</label><br>`;
+                });
+                questionDiv.innerHTML = questionHTML;
+                quizForm.appendChild(questionDiv);
+            });
+
+            const submitButton = document.createElement("button");
+            submitButton.type = "submit";
+            submitButton.textContent = "Nộp Bài";
+            quizForm.appendChild(submitButton);
+            quizForm.addEventListener("submit", (e) => submitQuiz(e, questions, name, studentId));
+        } catch (error) {
+            console.error('Lỗi khi tải câu hỏi:', error);
+            quizForm.innerHTML = `<p style="color:red;">Lỗi: ${error.message}</p>`;
+        }
+    }
+
+    async function submitQuiz(event, questions, name, studentId) {
+        event.preventDefault();
+        let correctAnswers = 0;
+        const answers = []; // Lưu đáp án của học sinh
+
+        questions.forEach((q, index) => {
+            const options = document.querySelectorAll(`input[name="q${index}"]`);
+            let userAnswer = null;
+            options.forEach(option => {
+                if (option.checked) userAnswer = parseInt(option.value);
+            });
+            options.forEach(option => {
+                const label = option.parentElement;
+                if (parseInt(option.value) === q.correctAnswer) label.classList.add("correct");
+                else if (option.checked) label.classList.add("wrong");
+            });
+            if (userAnswer === q.correctAnswer) correctAnswers++;
+            answers.push(userAnswer);
+        });
+
+        const totalQuestions = questions.length;
+        const scoreOn10 = (correctAnswers / totalQuestions) * 10;
+        const roundedScore = Math.round(scoreOn10 * 10) / 10;
+
+        // Gửi dữ liệu tới Gemini để đánh giá
+        const quizData = questions.map((q, index) => ({
+            question: q.question,
+            options: q.options,
+            userAnswer: answers[index] !== null ? q.options[answers[index]] : "Chưa chọn",
+            correctAnswer: q.options[q.correctAnswer]
+        }));
+
+        const prompt = `Đánh giá bài kiểm tra đầu vào với các thông tin sau:\n- Điểm số: ${roundedScore}/10\n- Tổng số câu hỏi: ${totalQuestions _
+
+}\n- Chi tiết câu hỏi và đáp án:\n${quizData.map((q, i) => `Câu ${i + 1}: ${q.question}\nĐáp án của học sinh: ${q.userAnswer}\nĐáp án đúng: ${q.correctAnswer}`).join('\n')}\nVui lòng cung cấp nhận xét chi tiết về hiệu suất của học sinh và gợi ý cải thiện. Đảm bảo độ chính xác đánh giá ít nhất 90%.`;
+        const geminiAssessment = await generateContent(prompt);
+
+        // Hiển thị đánh giá từ Gemini
+        const assessmentDiv = document.getElementById("assessment");
+        assessmentDiv.style.display = "block";
+        assessmentDiv.innerHTML = `
+            <p><strong>Điểm số của bạn: ${roundedScore}/10</strong></p>
+            <p><strong>Đánh giá từ AI:</strong> ${geminiAssessment}</p>
+            <button onclick="window.location.href='diemdauvao.html?studentId=${studentId}'">Xem chi tiết</button>
+        `;
+
+        const scoreData = {
+            studentId,
+            name,
+            score: roundedScore,
+            total: totalQuestions,
+            subject: new URLSearchParams(window.location.search).get('subject'),
+            date: new Date().toLocaleString('vi-VN'),
+            answers: answers,
+            assessment: geminiAssessment // Lưu đánh giá từ Gemini
+        };
+
+        try {
+            const response = await fetch('http://localhost:3000/api/scores', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(scoreData)
+            });
+
+            if (!response.ok) throw new Error('Không thể lưu điểm số');
+            const result = await response.json();
+            scoreData._id = result.score._id;
+            console.log('Điểm số đã được lưu thành công!');
+        } catch (error) {
+            console.error('Lỗi khi lưu điểm:', error);
+            scoreData._id = 'local_' + Date.now();
+        } finally {
+            let allScores = JSON.parse(localStorage.getItem('allScores')) || {};
+            if (!Array.isArray(allScores[studentId])) {
+                allScores[studentId] = [];
+            }
+            const existingScore = allScores[studentId].find(s => s.date === scoreData.date && s.subject === scoreData.subject);
+            if (!existingScore) {
+                allScores[studentId].push(scoreData);
+                localStorage.setItem('allScores', JSON.stringify(allScores));
+            }
+            localStorage.setItem('latestScore', JSON.stringify(scoreData));
+        }
+    }
+
+    async function generateContent(text) {
+        try {
+            console.log("🔍 Gửi yêu cầu đến Gemini API với nội dung:", text);
+
+            const response = await fetch(`${GEMINI_API_URL}?key=${API_KEY}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents: [{ parts: [{ text }] }] })
+            });
+
+            if (!response.ok) throw new Error(`Lỗi HTTP: ${response.status}`);
+
+            const data = await response.json();
+            console.log("✅ Phản hồi từ Gemini API:", JSON.stringify(data, null, 2));
+
+            if (data && data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+                return data.candidates[0].content.parts[0].text;
+            } else {
+                return "Lỗi: Không có dữ liệu hợp lệ từ Gemini.";
+            }
+        } catch (error) {
+            console.error('❌ Lỗi khi gọi API Gemini:', error.message);
+            return `Lỗi API: ${error.message}`;
+        }
+    }
+
+    function startTimer() {
+        let timeLeft = 45 * 60;
+        const timerElement = document.getElementById("timer");
+        function updateTimer() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeLeft > 0) {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                alert('Hết thời gian! Bài thi sẽ được nộp tự động.');
+                document.getElementById("quizForm").submit();
+            }
+        }
+        updateTimer();
+    }
+    </script>
+</body>
+</html>

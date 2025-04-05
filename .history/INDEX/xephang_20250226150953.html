@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Xếp Hạng</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <style>
+        /* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+    min-height: 100vh;
+    padding: 40px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 2.8em;
+    padding: 25px;
+    background: linear-gradient(45deg, #2ecc71, #3498db);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease-in;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    overflow: hidden;
+    animation: slideUp 0.8s ease-out;
+}
+
+th, td {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+th {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tr {
+    transition: all 0.3s ease;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(240, 248, 255, 0.7);
+}
+
+tr:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+td:first-child {
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 1.2em;
+}
+
+td:nth-child(4) {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    body {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2em;
+        padding: 15px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 12px;
+    }
+}
+    </style>
+    <header>
+        <h1>Bảng Xếp Hạng</h1>
+    </header>
+
+    <main>
+        <table border="1">
+            <tr>
+                <th>Hạng</th>
+                <th>Họ và Tên</th>
+                <th>Môn Học</th>
+                <th>Điểm</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Nguyễn Văn A</td>
+                <td>Toán</td>
+                <td>9.8</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Trần Thị B</td>
+                <td>Vật Lý</td>
+                <td>9.5</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Phạm Văn C</td>
+                <td>Hóa Học</td>
+                <td>9.0</td>
+            </tr>
+        </table>
+    </main>
+</body>
+</html>

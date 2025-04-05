@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Xếp Hạng Theo Môn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2.8em;
+            padding: 25px;
+            background: linear-gradient(45deg, #2ecc71, #3498db);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .reset-button {
+            padding: 10px 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background 0.3s ease;
+        }
+
+        .reset-button:hover {
+            background: #c0392b;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background: white;
+            cursor: pointer;
+            min-width: 200px;
+        }
+
+        .subject-section {
+            margin-bottom: 40px;
+        }
+
+        .subject-title {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        th, td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr {
+            transition: all 0.3s ease;
+            background-color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f5f6fa;
+        }
+
+        tr:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        tr:nth-child(1) td:first-child {
+            color: #ffa500;
+            font-weight: 900;
+            font-size: 1.6em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        tr:nth-child(2) td:first-child {
+            color: #808080;
+            font-weight: 900;
+            font-size: 1.6em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        tr:nth-child(3) td:first-child {
+            color: #b87333;
+            font-weight: 900;
+            font-size: 1.6em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        td:first-child {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        td:nth-child(3) {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 20px; }
+            h1 { font-size: 2em; padding: 15px; }
+            table { font-size: 14px; }
+            th, td { padding: 12px; }
+            tr:nth-child(1) td:first-child,
+            tr:nth-child(2) td:first-child,
+            tr:nth-child(3) td:first-child { font-size: 1.4em; }
+            .controls { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bảng Xếp Hạng Theo Môn</h1>
+    </header>
+
+    <main>
+        <div class="controls">
+            <button class="reset-button" onclick="resetRanking()">Reset Bảng Xếp Hạng</button>
+            <select id="subjectSelect" onchange="loadRanking()">
+                <option value="all">Tất cả môn học</option>
+                <option value="math">Toán</option>
+                <option value="literature">Ngữ Văn</option>
+                <option value="physics">Vật Lý</option>
+                <option value="english">Tiếng Anh</option>
+                <option value="chemistry">Hóa Học</option>
+            </select>
+        </div>
+        <div id="rankingContainer"></div>
+    </main>
+
+    <script>
+        // Ánh xạ tên môn học
+        const subjectMap = {
+            'math': 'Toán',
+            'literature': 'Ngữ Văn',
+            'physics': 'Vật Lý',
+            'english': 'Tiếng Anh',
+            'chemistry': 'Hóa Học'
+        };
+
+        const subjects = Object.keys(subjectMap);
+
+        // Hàm reset bảng xếp hạng
+        function resetRanking() {
+            if (confirm('Bạn có chắc muốn reset bảng xếp hạng? Tất cả dữ liệu sẽ bị xóa!')) {
+                localStorage.removeItem('quizResults');
+                loadRanking();
+            }
+        }
+
+        // Hàm tải và hiển thị bảng xếp hạng
+        function loadRanking() {
+            const results = JSON.parse(localStorage.getItem('quizResults')) || [];
+            const container = document.getElementById('rankingContainer');
+            const selectedSubject = document.getElementById('subjectSelect').value;
+            container.innerHTML = '';
+
+            if (results.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: white;">Chưa có dữ liệu xếp hạng.</p>';
+                return;
+            }
+
+            if (selectedSubject === 'all') {
+                // Hiển thị tất cả môn học
+                subjects.forEach(subject => {
+                    const subjectResults = results.filter(r => r.subject === subject);
+                    if (subjectResults.length > 0) {
+                        renderSubjectTable(subject, subjectResults, container);
+                    }
+                });
+            } else {
+                // Hiển thị chỉ môn học được chọn
+                const subjectResults = results.filter(r => r.subject === selectedSubject);
+                if (subjectResults.length > 0) {
+                    renderSubjectTable(selectedSubject, subjectResults, container);
+                } else {
+                    container.innerHTML = '<p style="text-align: center; color: white;">Chưa có dữ liệu cho môn này.</p>';
+                }
+            }
+        }
+
+        // Hàm render bảng cho một môn học
+        function renderSubjectTable(subject, subjectResults, container) {
+            subjectResults.sort((a, b) => b.totalScore - a.totalScore);
+
+            const section = document.createElement('div');
+            section.className = 'subject-section';
+            section.innerHTML = `<h2 class="subject-title">${subjectMap[subject]}</h2>`;
+
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Hạng</th>
+                        <th>Họ và Tên</th>
+                        <th>Điểm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${subjectResults.map((result, index) => `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${result.name}</td>
+                            <td>${result.totalScore}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            `;
+
+            section.appendChild(table);
+            container.appendChild(section);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadRanking);
+
+        // Hàm mẫu để thêm dữ liệu (dùng để test)
+        function addSampleData() {
+            const sampleData = [
+                { name: "Nguyễn Văn A", subject: "math", totalScore: 95 },
+                { name: "Trần Thị B", subject: "math", totalScore: 88 },
+                { name: "Lê Văn C", subject: "english", totalScore: 92 },
+                { name: "Phạm Thị D", subject: "english", totalScore: 85 },
+                { name: "Hoàng Văn E", subject: "physics", totalScore: 90 },
+                { name: "Nguyễn Thị F", subject: "literature", totalScore: 87 },
+                { name: "Trần Văn G", subject: "chemistry", totalScore: 93 }
+            ];
+            localStorage.setItem('quizResults', JSON.stringify(sampleData));
+            loadRanking();
+        }
+
+        // Uncomment dòng dưới để test với dữ liệu mẫu
+        // addSampleData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Chat Bot</title>
+    <style>
+        /* Reset and basic settings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* Fixed header */
+        .header {
+            background: linear-gradient(90deg, #0072ff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Chat container */
+        .chat-container {
+            flex-grow: 1;
+            width: 90%;
+            max-width: 800px;
+            margin: 70px auto 70px;
+            background: #2a2a2a;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Message display area */
+        .chat-box {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: calc(100vh - 180px);
+            scrollbar-width: thin;
+            scrollbar-color: #0072ff #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Custom scrollbar */
+        .chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-box::-webkit-scrollbar-track {
+            background: #333;
+        }
+        .chat-box::-webkit-scrollbar-thumb {
+            background: #0072ff;
+            border-radius: 4px;
+        }
+
+        /* Common message styles */
+        .chat-message {
+            margin: 8px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 80%;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        /* Bot message */
+        .bot-message {
+            align-self: flex-start;
+            background: #3a3a3a;
+            color: #e0e0e0;
+            border-left: 5px solid #0072ff;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        /* Message appearance animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Bot message title */
+        .bot-message h3 {
+            font-size: 18px;
+            color: #ffcc00;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #555;
+            font-weight: 600;
+        }
+
+        /* Bot message paragraphs */
+        .bot-message p {
+            margin: 6px 0;
+            font-size: 15px;
+            color: #d0d0d0;
+        }
+
+        /* Bot message lists */
+        .bot-message ul, .bot-message ol {
+            margin: 10px 0 10px 20px;
+            padding-left: 10px;
+        }
+        .bot-message li {
+            margin: 5px 0;
+            color: #c0c0c0;
+        }
+
+        /* Code formatting in bot message */
+        .bot-message pre, .bot-message code {
+            background: #222;
+            padding: 8px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #00ffcc;
+            overflow-x: auto;
+            border: 1px solid #444;
+        }
+
+        /* Tables in bot message */
+        .bot-message table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .bot-message th, .bot-message td {
+            border: 1px solid #555;
+            padding: 8px;
+            text-align: left;
+        }
+        .bot-message th {
+            background: #444;
+            color: #ffcc00;
+        }
+        .bot-message td {
+            color: #d0d0d0;
+        }
+
+        /* Links in bot message */
+        .bot-message a {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+        .bot-message a:hover {
+            text-decoration: underline;
+        }
+
+        /* User message */
+        .user-message {
+            align-self: flex-end;
+            background: #4CAF50;
+            color: white;
+            border-right: 5px solid #388e3c;
+        }
+
+        /* Message input box */
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: #222;
+            border-top: 1px solid #444;
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #555;
+            color: #e0e0e0;
+            font-size: 16px;
+            outline: none;
+            transition: background 0.3s;
+        }
+        .chat-input input:focus {
+            background: #666;
+        }
+        .chat-input button {
+            margin-left: 10px;
+            padding: 12px 20px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .chat-input button:hover {
+            background: #0056d2;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            transition: opacity 0.3s;
+        }
+        .scroll-top:hover {
+            background: #0056d2;
+        }
+        .scroll-top.show {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Fixed footer */
+        .footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">Q&A Chat Bot</div>
+
+    <!-- Chat container -->
+    <div class="chat-container">
+        <div class="chat-box" id="chat-body">
+            <div class="chat-message bot-message">
+                <h3>Hello!</h3>
+                <p>How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Enter your question..." onkeypress="if(event.key === 'Enter') sendMessage();" />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+    <!-- Footer -->
+    <div class="footer">© 2025 Grok by xAI - All Rights Reserved.</div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+
+            appendMessage(userInput, 'user-message');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: userInput })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                let botReply = extractBotReply(data);
+
+                if (isStudyRelated(userInput)) {
+                    botReply = formatStudyResponse(botReply);
+                } else {
+                    botReply = formatGeneralResponse(botReply);
+                }
+
+                appendMessage(botReply, 'bot-message');
+
+            } catch (error) {
+                console.error('Error:', error);
+                appendMessage('<h3>Error</h3><p>Server connection error. Please try again later.</p>', 'bot-message');
+            }
+
+            document.getElementById('user-input').value = '';
+            updateScrollTopButton();
+        }
+
+        function isStudyRelated(input) {
+            const studyKeywords = ['math', 'equation', 'function', 'solve', 'study', 'exercise', 'physics', 'chemistry', 'literature', 'history', 'geography', 'geometry', 'algebra', 'integral', 'derivative', 'english', 'history', 'geography', 'physics', 'chemistry'];
+            return studyKeywords.some(keyword => input.toLowerCase().includes(keyword));
+        }
+
+        function formatStudyResponse(reply) {
+            return `
+                <h3>Answer</h3>
+                <p>${reply}</p>
+                <h3>Reference Materials</h3>
+                <ul>
+                    <li>YouTube Video: <a href="https://www.youtube.com/watch?v=IWtkS9nBNkA" target="_blank">Related Topic Guide</a></li>
+                    <li>PDF: <a href="https://www.mathsisfun.com/algebra/quadratic-equation.html" target="_blank">Detailed Material</a></li>
+                </ul>
+                <p><strong>Follow-up Question:</strong> Would you like me to explain any other problems?</p>
+            `;
+        }
+
+        function formatGeneralResponse(reply) {
+            return `
+                <h3>Answer</h3>
+                <p>${reply}</p>
+            `;
+        }
+
+        function extractBotReply(data) {
+            return data.reply || 'Sorry, I don\'t understand your question.';
+        }
+
+        function appendMessage(text, className) {
+            const chatBody = document.getElementById('chat-body');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${className}`;
+            messageDiv.innerHTML = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function scrollToTop() {
+            document.getElementById('chat-body').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateScrollTopButton() {
+            const chatBox = document.getElementById('chat-body');
+            const scrollTopBtn = document.querySelector('.scroll-top');
+            if (chatBox.scrollTop > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        }
+
+        document.getElementById('chat-body').addEventListener('scroll', updateScrollTopButton);
+    </script>
+</body>
+</html>

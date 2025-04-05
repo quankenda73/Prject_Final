@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Học Tập Thông Minh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f4f7fa;
+            color: #2d3436;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1920') no-repeat center/cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #2d3436;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: #00b894;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: #2d3436;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #00b894;
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+        }
+
+        /* Features */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #00b894;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Button */
+        .btn {
+            background: #00b894;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            background: #00a383;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,184,148,0.3);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3436;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero-content">
+            <h1>Hệ Thống Học Tập Thông Minh</h1>
+            <p>Khám phá tiềm năng của bạn với công nghệ AI tiên tiến và lộ trình học tập cá nhân hóa</p>
+            <button class="Login.html" id="startBtn"><i class="fas fa-rocket"></i> Bắt đầu ngay</button>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#features">Tính năng</a></li>
+            <li><a href="#about">Về chúng tôi</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="section">
+            <h2>Chào mừng đến với tương lai của giáo dục</h2>
+            <p>Nền tảng của chúng tôi sử dụng trí tuệ nhân tạo để tạo ra trải nghiệm học tập độc đáo, giúp bạn đạt được mục tiêu nhanh chóng và hiệu quả.</p>
+            <button class="btn"><i class="fas fa-play"></i> Xem video giới thiệu</button>
+        </section>
+
+        <section id="features" class="section">
+            <h2>Tính năng vượt trội</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-road"></i>
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600" alt="Lộ trình học tập">
+                    <h3>Lộ trình học tập cá nhân hóa</h3>
+                    <p>Được thiết kế riêng cho từng học viên dựa trên:</p>
+                    <ul>
+                        <li><strong>Kiểm tra đầu vào:</strong> Đánh giá chính xác trình độ hiện tại</li>
+                        <li><strong>Phân tích AI:</strong> Xác định điểm mạnh, điểm yếu</li>
+                        <li><strong>Tùy chỉnh:</strong> Môn học, mục tiêu điểm số, thời gian</li>
+                        <li><strong>Theo dõi:</strong> Điều chỉnh lộ trình theo tiến độ</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <img src="https://images.unsplash.com/photo-1531746790731-6c087f6947df?auto=format&fit=crop&w=600" alt="Chatbot AI">
+                    <h3>Chatbot hỗ trợ thông minh</h3>
+                    <p>Trợ lý AI luôn sẵn sàng với các tính năng:</p>
+                    <ul>
+                        <li><strong>Hỏi đáp:</strong> Giải đáp mọi thắc mắc tức thì</li>
+                        <li><strong>Tài liệu:</strong> Cung cấp tài liệu học tập phù hợp</li>
+                        <li><strong>Gợi ý:</strong> Đề xuất bài học dựa trên lịch sử</li>
+                        <li><strong>Hỗ trợ:</strong> Có mặt 24/7, mọi lúc mọi nơi</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clipboard-check"></i>
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600" alt="Thi trắc nghiệm">
+                    <h3>Thi trắc nghiệm Online</h3>
+                    <p>Hệ thống thi thông minh với:</p>
+                    <ul>
+                        <li><strong>Chấm điểm:</strong> Tự động, chính xác</li>
+                        <li><strong>Giải thích:</strong> Phân tích chi tiết bằng AI</li>
+                        <li><strong>Luyện tập:</strong> Ngân hàng đề đa dạng</li>
+                        <li><strong>Kết quả:</strong> Báo cáo tiến độ chi tiết</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2>Về chúng tôi</h2>
+            <p>Chúng tôi là đội ngũ tiên phong trong việc ứng dụng AI vào giáo dục, với sứ mệnh mang đến giải pháp học tập cá nhân hóa, giúp hàng triệu học viên trên toàn thế giới chinh phục tri thức một cách dễ dàng và hiệu quả.</p>
+            <p><strong>Tầm nhìn:</strong> Tương lai giáo dục thông minh cho mọi người.</p>
+            <p><strong>Sứ mệnh:</strong> Đổi mới cách học, tối ưu tiềm năng.</p>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Liên hệ với chúng tôi</h2>
+            <div class="footer-grid">
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>support@smartlearning.com</p>
+                </div>
+                <div>
+                    <i class="fas fa-phone"></i>
+                    <h3>Hotline</h3>
+                    <p>0123-456-789</p>
+                </div>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Địa chỉ</h3>
+                    <p>123 Đường Tri Thức, TP. Học Tập</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Hệ Thống Học Tập Thông Minh. Tất cả quyền được bảo lưu.</p>
+        <p>Theo dõi chúng tôi: 
+            <a href="#" style="color: #00b894;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color: #00b894;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="color: #00b894;"><i class="fab fa-linkedin"></i></a>
+        </p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Đăng ký trải nghiệm</h2>
+            <form>
+                <input type="text" placeholder="Họ và tên" required style="width: 100%; padding: 1rem; margin: 1rem 0; border: 1px solid #ddd; border-radius: 5px;">
+                <input type="email" placeholder="Email" required style="width: 100%; padding: 1rem; margin: 1rem 0; border: 1px solid #ddd; border-radius: 5px;">
+                <button type="submit" class="btn"><i class="fas fa-user-plus"></i> Đăng ký</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Section animation
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+        sections.forEach(section => observer.observe(section));
+
+        // Modal functionality
+        const modal = document.getElementById('signupModal');
+        const startBtn = document.getElementById('startBtn');
+        const closeBtn = document.querySelector('.close-btn');
+
+        startBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Form submission (demo)
+        document.querySelector('.modal-content form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm.');
+            modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

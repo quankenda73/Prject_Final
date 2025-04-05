@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm Đầu Vào</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { min-height: 100vh; background: linear-gradient(135deg, #e9f1ff, #d9e8ff); display: flex; flex-direction: column; padding: 20px; }
+        header { background: linear-gradient(135deg, #1e3c72, #2a5298); color: #e6e6e6; padding: 2rem 0; text-align: center; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
+        header h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        nav { background: rgba(255, 255, 255, 0.95); padding: 1rem 0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); text-align: center; }
+        .nav-list { list-style: none; display: flex; justify-content: center; gap: 30px; }
+        .nav-list li a { color: #2c3e50; text-decoration: none; font-weight: 600; font-size: 1.2rem; padding: 10px 20px; border-radius: 25px; transition: all 0.3s ease; background: linear-gradient(135deg, #f9fbfd, #ffffff); }
+        .nav-list li a:hover, .nav-list li a.active { background: linear-gradient(135deg, #2a5298, #1e3c72); color: #e6e6e6; }
+        main { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+        .scores-container { width: 100%; max-width: 800px; background: rgba(255, 255, 255, 0.98); padding: 40px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); }
+        h2 { color: #2c3e50; font-size: 2rem; text-align: center; margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #dfe6e9; }
+        th { background: #2a5298; color: white; font-weight: 600; }
+        td { color: #2c3e50; }
+        tr:nth-child(even) { background: #f8fafc; }
+        footer { text-align: center; padding: 25px 0; background: linear-gradient(135deg, #1e3c72, #0a192f); color: #e6e6e6; }
+        @media (max-width: 768px) { .scores-container { padding: 25px; } h2 { font-size: 1.8rem; } th, td { padding: 10px; font-size: 0.9rem; } }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Điểm Đầu Vào</h1>
+</header>
+<nav>
+    <ul class="nav-list">
+        <li><a href="/home">Trang Chủ</a></li>
+        <li><a href="/input-test">Kiểm Tra Đầu Vào</a></li>
+        <li><a href="/diemdauvao.html" class="active">Điểm Số</a></li>
+        <li><a href="/student-info.html">Thông Tin Sinh Viên</a></li>
+    </ul>
+</nav>
+<main>
+    <div class="scores-container">
+        <h2>Bảng Điểm Kiểm Tra Đầu Vào</h2>
+        <table id="scoresTable">
+            <thead>
+                <tr>
+                    <th>Họ Tên</th>
+                    <th>Môn Học</th>
+                    <th>Điểm Số</th>
+                    <th>Ngày Thi</th>
+                </tr>
+            </thead>
+            <tbody id="scoresBody"></tbody>
+        </table>
+    </div>
+</main>
+<footer>
+    <p>© 2025 Tạo Lộ Trình Học Tập Cá Nhân Hóa | Mọi quyền được bảo lưu.</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const studentId = urlParams.get('studentId');
+        const name = urlParams.get('name');
+        const score = urlParams.get('score');
+        const total = urlParams.get('total');
+
+        const tbody = document.querySelector('#scoresBody');
+        const subjectMap = { 'math': 'Toán', 'literature': 'Ngữ Văn', 'physics': 'Vật Lý', 'english': 'Tiếng Anh', 'chemistry': 'Hóa Học' };
+
+        if (studentId) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/scores?studentId=${studentId}`);
+                if (!response.ok) throw new Error('Không thể tải điểm số');
+                const data = await response.json();
+                const scores = data.scores;
+
+                tbody.innerHTML = '';
+                if (scores.length > 0) {
+                    scores.forEach(score => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${score.name}</td>
+                            <td>${subjectMap[score.subject] || score.subject}</td>
+                            <td>${score.score}/${score.total}</td>
+                            <td>${score.date}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                } else if (score && total && name) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${decodeURIComponent(name)}</td>
+                        <td>${subjectMap[urlParams.get('subject')] || urlParams.get('subject')}</td>
+                        <td>${score}/${total}</td>
+                        <td>${new Date().toLocaleString()}</td>
+                    `;
+                    tbody.appendChild(row);
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="4">Chưa có điểm số nào được lưu.</td></tr>';
+                }
+            } catch (error) {
+                console.error('Lỗi:', error);
+                tbody.innerHTML = `<tr><td colspan="4" style="color:red;">Lỗi: ${error.message}</td></tr>`;
+            }
+        } else {
+            tbody.innerHTML = '<tr><td colspan="4">Vui lòng hoàn thành bài kiểm tra để xem điểm.</td></tr>';
+        }
+    });
+</script>
+</body>
+</html>

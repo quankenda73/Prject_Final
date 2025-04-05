@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot Hỏi Đáp</title>
+    <style>
+        /* Reset và cài đặt cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            display: flex;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: #2a2a2a;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #444;
+        }
+
+        .sidebar h2 {
+            font-size: 20px;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .sidebar button {
+            background: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .sidebar button:hover {
+            background: #0056d2;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .sidebar ul li {
+            padding: 10px 0;
+            color: #e0e0e0;
+            cursor: pointer;
+        }
+
+        .sidebar ul li:hover {
+            color: #00c6ff;
+        }
+
+        /* Main content */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Tiêu đề cố định */
+        .header {
+            background: #2a2a2a;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            border-bottom: 1px solid #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .upgrade {
+            background: #ff4d4d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        /* Khung chat */
+        .chat-container {
+            flex-grow: 1;
+            padding: 20px;
+            background: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Vùng hiển thị tin nhắn */
+        .chat-box {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #0072ff #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-box::-webkit-scrollbar-track {
+            background: #333;
+        }
+        .chat-box::-webkit-scrollbar-thumb {
+            background: #0072ff;
+            border-radius: 4px;
+        }
+
+        /* Tin nhắn chung */
+        .chat-message {
+            margin: 8px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 80%;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        /* Tin nhắn của bot */
+        .bot-message {
+            align-self: flex-start;
+            background: #3a3a3a;
+            color: #e0e0e0;
+            border-left: 5px solid #0072ff;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bot-message h3 {
+            font-size: 18px;
+            color: #ffcc00;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #555;
+            font-weight: 600;
+        }
+
+        .bot-message p {
+            margin: 6px 0;
+            font-size: 15px;
+            color: #d0d0d0;
+        }
+
+        .bot-message ul {
+            margin: 10px 0 10px 20px;
+            padding-left: 10px;
+        }
+        .bot-message li {
+            margin: 5px 0;
+            color: #c0c0c0;
+        }
+
+        /* Tin nhắn người dùng */
+        .user-message {
+            align-self: flex-end;
+            background: #4CAF50;
+            color: white;
+            border-right: 5px solid #388e3c;
+        }
+
+        /* Ô nhập tin nhắn */
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: #222;
+            border-top: 1px solid #444;
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+            border-radius: 10px;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #555;
+            color: #e0e0e0;
+            font-size: 16px;
+            outline: none;
+            transition: background 0.3s;
+        }
+        .chat-input input:focus {
+            background: #666;
+        }
+        .chat-input button {
+            margin-left: 10px;
+            padding: 12px 20px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .chat-input button:hover {
+            background: #0056d2;
+        }
+
+        /* Footer */
+        .footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Gem</h2>
+        <button>Cược trò chuyện mới</button>
+        <ul>
+            <li>Gần đây</li>
+            <li>Code trang web bằng diễn th...</li>
+            <li>Cược trò chuyện bất đầu</li>
+            <li>Tạo Chatbot với GEMINI API</li>
+            <li>Hướng dẫn nghiên cứu về AI</li>
+            <li>Khám phá Quả Khí</li>
+            <li>Liên quan</li>
+        </ul>
+        <ul>
+            <li>Trợ giúp</li>
+            <li>Hoạt động</li>
+            <li>Cài đặt</li>
+        </ul>
+        <div class="footer">Dự án triển khai điểm của bạn (Hiện hành)</div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Tiêu đề -->
+        <div class="header">
+            <span>Gemini 2.0 Flash</span>
+            <a href="#" class="upgrade">Đừng thử Gemini Advanced</a>
+        </div>
+
+        <!-- Khung chat -->
+        <div class="chat-container">
+            <div class="chat-box" id="chat-body">
+                <div class="chat-message bot-message">
+                    <ul>
+                        <li>Chức năng giọng hát và thanh toán.</li>
+                        <li>Trang chi tiết sản phẩm.</li>
+                        <li>Hệ thống quản lý nguồn dùng.</li>
+                        <li>Thêm nhiều các sản phẩm khác.</li>
+                        <li>Bạn có thể sử dụng các framework CSS như Bootstrap hoặc Tailwind CSS để tạo giao diện đẹp mắt và đang hơn.</li>
+                        <li>Để lưu trữ dữ liệu phía máy chủ (ví dụ như dữ liệu sản phẩm, thông tin người dùng, đơn hàng), bạn cần sử dụng thêm các ngôn ngữ lập trình phía máy chủ như PHP, Python, Node.js, v.v. và các hệ quản trị cơ sở dữ liệu như MySQL, PostgreSQL, MongoDB, v.v.</li>
+                        <li>Bạn có thể tìm kiếm các mã nguồn mở hoặc các tutorial trực tuyến để học hỏi và xây dựng trang web bán điện thoại của riêng mình.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Hỏi Gemini..." onkeypress="if(event.key === 'Enter') sendMessage();" />
+                <button onclick="sendMessage()">Gửi</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">© 2025 Grok by xAI - All Rights Reserved.</div>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+
+            appendMessage(userInput, 'user-message');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: userInput })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Lỗi HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+                let botReply = extractBotReply(data);
+                appendMessage(`<h3>Câu trả lời</h3><p>${botReply}</p>`, 'bot-message');
+
+            } catch (error) {
+                console.error('Lỗi:', error);
+                appendMessage('<h3>Lỗi</h3><p>Lỗi kết nối server. Vui lòng thử lại sau.</p>', 'bot-message');
+            }
+
+            document.getElementById('user-input').value = '';
+        }
+
+        function extractBotReply(data) {
+            return data.reply || 'Xin lỗi, tôi không hiểu câu hỏi của bạn.';
+        }
+
+        function appendMessage(text, className) {
+            const chatBody = document.getElementById('chat-body');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${className}`;
+            messageDiv.innerHTML = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    </script>
+</body>
+</html>

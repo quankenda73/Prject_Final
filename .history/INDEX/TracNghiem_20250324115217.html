@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Multiple Choice Test System</title>
+    <link rel="stylesheet" href="../CSS/tracnghiem.css">
+</head>
+<body>
+    <header>
+        <h1>Online Multiple Choice Test System</h1>
+        <p>The system uses AI technology to create multiple choice tests for 12th grade students, with detailed explanations.</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#quiz">Select Test</a>
+        <a href="#results">View Results</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <section id="home">
+        <h2>Welcome to the 12th Grade Multiple Choice Test System</h2>
+        <p>We use AI to create multiple choice tests suitable for 12th grade students, helping them practice and prepare well for exams.</p>
+    </section>
+
+    <section id="quiz">
+        <h2>Select Multiple Choice Test</h2>
+        <form id="quizForm">
+            <label for="subject">Select Subject:</label>
+            <select id="subject" name="subject">
+                <option value="math">Mathematics</option>
+                <option value="physics">Physics</option>
+                <option value="chemistry">Chemistry</option>
+                <option value="literature">Literature</option>
+                <option value="history">History</option>
+                <option value="geography">Geography</option>
+                <option value="foreign_language">Foreign Language</option>
+            </select>
+
+            <label for="level">Select Level:</label>
+            <select id="level" name="level">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+
+            <label for="time_limit">Select Time Limit (Minutes):</label>
+            <select id="time_limit" name="time_limit">
+                <option value="30">30 Minutes</option>
+                <option value="60">60 Minutes</option>
+                <option value="90">90 Minutes</option>
+            </select>
+
+            <button type="button" onclick="startQuiz()">Start Test</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Online Multiple Choice Test System | All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function startQuiz() {
+            const subject = document.getElementById('subject').value;
+            const level = document.getElementById('level').value;
+            const timeLimit = document.getElementById('time_limit').value;
+
+            // Redirect to quiz page with selected information
+            window.location.href = `quiz.html?subject=${subject}&level=${level}&time=${timeLimit}`;
+        }
+    </script>
+</body>
+</html>

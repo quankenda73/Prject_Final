@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Sinh Viên</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Giữ nguyên CSS từ phiên bản trước */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e9f1ff, #d9e8ff, #f0f7ff, #e9f1ff);
+            background-size: 300% 300%;
+            animation: gradientBG 15s ease infinite;
+            color: #2c3e50;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            width: 100%;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #e6e6e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            gap: 20px;
+        }
+
+        .dashboard-item {
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.3rem;
+            padding: 12px 25px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .dashboard-item:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+            background: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section {
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 2.6rem;
+            font-weight: 700;
+            margin-bottom: 35px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+            border-radius: 15px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #e0e6ed;
+        }
+
+        th, td {
+            border: 1px solid #e0e6ed;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            color: #e6e6e6;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        td {
+            color: #2c3e50;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+
+        tr:hover {
+            background-color: #e6f0fa;
+        }
+
+        .no-data {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+            padding: 25px;
+            font-size: 1.3rem;
+        }
+
+        .action-icon {
+            font-size: 1.3rem;
+            margin: 0 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .edit-icon {
+            color: #ffd700;
+        }
+
+        .edit-icon:hover {
+            color: #f7b733;
+            transform: scale(1.2);
+        }
+
+        .delete-icon {
+            color: #e74c3c;
+        }
+
+        .delete-icon:hover {
+            color: #c0392b;
+            transform: scale(1.2);
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 25px 0;
+            background: linear-gradient(135deg, #1e3c72, #0a192f);
+            color: #e6e6e6;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 15px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .dashboard-item {
+                font-size: 1rem;
+                padding: 8px 12px;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            section {
+                padding: 25px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 1rem;
+            }
+
+            th, td {
+                padding: 15px;
+                min-width: 100px;
+            }
+
+            .action-icon {
+                font-size: 1rem;
+                margin: 0 5px;
+            }
+
+            footer {
+                padding: 15px 0;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="dashboard-item">Trang Chủ</div>
+    <div class="dashboard-item">Danh Sách Sinh Viên</div>
+    <div class="dashboard-item">Thông Tin Khác</div>
+</header>
+
+<main>
+    <section>
+        <h2>Danh Sách Sinh Viên</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Họ Tên</th>
+                    <th>Email</th>
+                    <th>Lớp</th>
+                    <th>Điểm Trung Bình</th>
+                    <th>Điểm Số Hướng Đến</th>
+                    <th>Môn Học Chọn</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="student-list"></tbody>
+        </table>
+        <button class="btn" id="addStudentBtn">Thêm Sinh Viên</button>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Tạo Lộ Trình Học Tập Cá Nhân Hóa | Mọi quyền được bảo lưu.</p>
+</footer>
+
+<script>
+    // Kiểm tra đăng nhập
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const addStudentBtn = document.getElementById('addStudentBtn');
+    const studentList = document.getElementById('student-list');
+
+    if (!currentUser) {
+        alert('Vui lòng đăng nhập để sử dụng chức năng!');
+        window.location.href = 'Login.html'; // Liên kết với Login.html trong cùng thư mục index
+    }
+
+    // Hàm hiển thị danh sách sinh viên
+    async function displayStudents() {
+        try {
+            const response = await fetch(`http://localhost:3000/api/students?userId=${currentUser.id}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            if (!response.ok) throw new Error('Lỗi lấy danh sách sinh viên');
+            const data = await response.json();
+            studentList.innerHTML = '';
+
+            if (data.students.length > 0) {
+                data.students.forEach((student, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${student.name}</td>
+                        <td>${student.email}</td>
+                        <td>${student.class}</td>
+                        <td>${student.avgScore}</td>
+                        <td>${student.targetScore}</td>
+                        <td>${student.subject}</td>
+                        <td>
+                            <i class="fas fa-edit action-icon edit-icon" onclick="editStudent('${student._id}')" title="Chỉnh sửa"></i>
+                            <i class="fas fa-trash-alt action-icon delete-icon" onclick="deleteStudent('${student._id}')" title="Xóa"></i>
+                        </td>
+                    `;
+                    studentList.appendChild(row);
+                });
+            } else {
+                studentList.innerHTML = '<tr><td colspan="7" class="no-data">Không có thông tin nào đã lưu.</td></tr>';
+            }
+        } catch (error) {
+            console.error('Lỗi hiển thị sinh viên:', error);
+            studentList.innerHTML = '<tr><td colspan="7" class="no-data">Lỗi tải dữ liệu từ server.</td></tr>';
+        }
+    }
+
+    // Hàm xóa sinh viên
+    async function deleteStudent(studentId) {
+        if (confirm('Bạn có chắc chắn muốn xóa sinh viên này không?')) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/students/${studentId}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                if (!response.ok) throw new Error('Lỗi xóa sinh viên');
+                const result = await response.json();
+                alert(result.message);
+                displayStudents();
+            } catch (error) {
+                console.error('Lỗi xóa sinh viên:', error);
+                alert('Lỗi khi xóa sinh viên!');
+            }
+        }
+    }
+
+    // Hàm chỉnh sửa sinh viên
+    async function editStudent(studentId) {
+        try {
+            const response = await fetch(`http://localhost:3000/api/students/${studentId}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            if (!response.ok) throw new Error('Lỗi lấy thông tin sinh viên');
+            const student = await response.json();
+
+            const newName = prompt('Nhập họ tên mới:', student.name);
+            if (newName !== null) {
+                const updatedStudent = {
+                    name: newName,
+                    email: prompt('Nhập email mới:', student.email) || student.email,
+                    class: prompt('Nhập lớp mới:', student.class) || student.class,
+                    avgScore: prompt('Nhập điểm trung bình mới:', student.avgScore) || student.avgScore,
+                    targetScore: prompt('Nhập điểm hướng đến mới:', student.targetScore) || student.targetScore,
+                    subject: prompt('Nhập môn học mới:', student.subject) || student.subject
+                };
+
+                const updateResponse = await fetch(`http://localhost:3000/api/students/${studentId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedStudent)
+                });
+                if (!updateResponse.ok) throw new Error('Lỗi cập nhật sinh viên');
+                const result = await updateResponse.json();
+                alert(result.message);
+                displayStudents();
+            }
+        } catch (error) {
+            console.error('Lỗi chỉnh sửa sinh viên:', error);
+            alert('Lỗi khi chỉnh sửa sinh viên!');
+        }
+    }
+
+    // Hàm thêm sinh viên
+    async function addStudent() {
+        const newStudent = {
+            name: prompt('Nhập họ tên:', ''),
+            email: prompt('Nhập email:', ''),
+            class: prompt('Nhập lớp:', ''),
+            avgScore: prompt('Nhập điểm trung bình:', ''),
+            targetScore: prompt('Nhập điểm hướng đến:', ''),
+            subject: prompt('Nhập môn học:', ''),
+            userId: currentUser.id
+        };
+
+        if (Object.values(newStudent).some(value => !value)) {
+            alert('Vui lòng điền đầy đủ thông tin!');
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/api/students', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newStudent)
+            });
+            if (!response.ok) throw new Error('Lỗi thêm sinh viên');
+            const result = await response.json();
+            alert(result.message);
+            displayStudents();
+        } catch (error) {
+            console.error('Lỗi thêm sinh viên:', error);
+            alert('Lỗi khi thêm sinh viên!');
+        }
+    }
+
+    // Gọi hàm hiển thị khi trang được tải
+    displayStudents();
+
+    // Thêm sự kiện cho nút thêm sinh viên
+    addStudentBtn.addEventListener('click', addStudent);
+
+    // Đăng xuất
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.href = 'Login.html'; // Liên kết với Login.html trong cùng thư mục index
+    }
+</script>
+</body>
+</html>

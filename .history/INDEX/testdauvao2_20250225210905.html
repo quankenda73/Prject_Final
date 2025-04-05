@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Toán Lớp 12</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            color: #333;
+            font-weight: bold;
+        }
+        .timer {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+        .question {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #eef5ff;
+            border-left: 5px solid #007BFF;
+        }
+        .question p {
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="radio"] {
+            margin: 8px;
+            transform: scale(1.2);
+        }
+        .correct {
+            color: green !important;
+            font-weight: bold;
+        }
+        .wrong {
+            color: red !important;
+            font-weight: bold;
+        }
+        button {
+            padding: 12px 25px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body onload="startTimer()">
+    <div class="container">
+        <h2>Bài Kiểm Tra Toán Lớp 12</h2>
+        <p class="timer">Thời gian còn lại: <span id="timer">90:00</span></p>
+        <form id="quizForm"></form>
+        <div id="result" style="margin-top: 20px; font-size: 20px;"></div>
+    </div>
+
+    <script>
+        async function loadQuestions() {
+            try {
+                const responses = await Promise.all([
+                    fetch('test.json'), // Tải từ tệp đầu tiên
+                    fetch('test2.json') // Tải từ tệp thứ hai
+                ]);
+
+                const data = await Promise.all(responses.map(response => response.json()));
+                const questions = [...data[0].questions, ...data[1].questions]; // Kết hợp câu hỏi từ cả hai tệp
+                const quizForm = document.getElementById("quizForm");
+                quizForm.innerHTML = "";
+
+                questions.forEach((q, index) => {
+                    const questionDiv = document.createElement("div");
+                    questionDiv.classList.add("question");
+
+                    let questionHTML = `<p>${index + 1}. ${q.question}</p>`;
+                    q.options.forEach((option, optIndex) => {
+                        questionHTML += `
+                            <label>
+                                <input type="radio" name="q${index}" value="${optIndex}"> ${option}
+                            </label><br>`;
+                    });
+
+                    questionDiv.innerHTML = questionHTML;
+                    quizForm.appendChild(questionDiv);
+                });
+
+                const submitButton = document.createElement("button");
+                submitButton.type = "submit";
+                submitButton.textContent = "Nộp Bài";
+                quizForm.appendChild(submitButton);
+
+                quizForm.addEventListener("submit", submitQuiz);
+            } catch (error) {
+                document.getElementById("quizForm").innerHTML = `<p style="color:red;">Lỗi: ${error.message}</p>`;
+                console.error("Lỗi khi tải câu hỏi:", error);
+            }
+        }
+
+        function submitQuiz(event) {
+            event.preventDefault(); // Ngăn trang tải lại
+
+            Promise.all([
+                fetch('test2.json')
+            ])
+            .then(responses => Promise.all(responses.map(response => response.json())))
+            .then(data => {
+                const questions = [...data[0].questions, ...data[1].questions]; // Kết hợp câu hỏi
+                let score = 0;
+
+                questions.forEach((q, index) => {
+                    const options = document.querySelectorAll(`input[name="q${index}"]`);
+                    let userAnswer = null;
+
+                    options.forEach(option => {
+                        if (option.checked) {
+                            userAnswer = parseInt(option.value);
+                        }
+                    });
+
+                    options.forEach(option => {
+                        const label = option.parentElement; // Lấy thẻ <label> chứa radio button
+
+                        if (parseInt(option.value) === q.correctAnswer) {
+                            label.classList.add("correct"); // Câu đúng màu xanh
+                        }
+
+                        if (userAnswer !== q.correctAnswer && userAnswer === parseInt(option.value)) {
+                            label.classList.add("wrong"); // Câu sai màu đỏ
+                        }
+                    });
+
+                    if (userAnswer === q.correctAnswer) {
+                        score++;
+                    }
+                });
+
+                // Xác định mức độ dựa trên số điểm
+                let level;
+                if (score > 45) {
+                    level = "Giỏi";
+                } else if (score >= 30) {
+                    level = "Khá";
+                } else if (score >= 20) {
+                    level = "Trung Bình";
+                } else {
+                    level = "Yếu";
+                }
+
+                // Hiển thị điểm số và mức độ
+                document.getElementById("result").innerHTML = `
+                    <h3>Bạn đã hoàn thành bài kiểm tra!</h3>
+                    <p>Điểm số của bạn: <strong>${score}/${questions.length}</strong></p>
+                    <p>Mức độ: <strong>${level}</strong></p>
+                `;
+            })
+            .catch(error => {
+                console.error("Lỗi khi tính điểm:", error);
+                document.getElementById("result").innerHTML = `<p style="color:red;">Không thể tính điểm. Vui lòng thử lại!</p>`;
+            });
+        }
+
+        function startTimer() {
+            let timeLeft = 45 * 60; // 45 phút
+            const timerElement = document.getElementById("timer");
+
+            function updateTimer() {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    setTimeout(updateTimer, 1000);
+                } else {
+                    document.getElementById("quizForm").submit();
+                }
+            }
+
+            updateTimer();
+        }
+
+        document.addEventListener("DOMContentLoaded", loadQuestions);
+    </script>
+</body>
+</html>
