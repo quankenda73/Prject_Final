@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 📌 Mô tả
 
 Đây là một hệ thống học tập thông minh sử dụng Node.js làm backend, kết hợp với HTML, CSS và JavaScript cho phần giao diện người dùng. Dự án được thiết kế để cá nhân hóa lộ trình học, triển khai chatbot AI hỗ trợ học tập, và cung cấp nền tảng thi trắc nghiệm trực tuyến có giải thích chi tiết sau bài thi.
@@ -78,3 +79,6 @@ bash
 ├── quizzes/             # Thi trắc nghiệm + giải thích
 ├── app.js               # File chính Node.js
 └── README.md
+=======
+# Prject_Final
+>>>>>>> 9149dbfe06dc38a1d58ed7e66fd55af491432db9
